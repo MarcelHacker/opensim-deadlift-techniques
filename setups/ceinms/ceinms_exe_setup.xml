@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ceinms>
+   <subjectFile>..\ceinms_shared\ceinms_calibrated_subject.xml</subjectFile>
+   <inputDataFile>.\ceinms_trial.xml</inputDataFile>
+   <executionFile>.\ceinms_exe_cfg.xml</executionFile>
+   <excitationGeneratorFile>..\ceinms_shared\ceinms_excitation_generator.xml</excitationGeneratorFile>
+   <outputDirectory>.\ceinms_results</outputDirectory>
+</ceinms>

@@ -1,0 +1,489 @@
+<?xml version='1.0' encoding='utf-8'?>
+<OpenSimDocument Version="30000">
+	<ScaleTool name="Catelli_high_hip_flexion">
+		
+		<mass>200.50000000000009</mass>
+		
+		<height>-1</height>
+		
+		<age>-1</age>
+		
+		<notes>Unassigned</notes>
+		
+		<GenericModelMaker>
+			
+			<model_file>Unassigned</model_file>
+			
+			<marker_set_file>Unassigned</marker_set_file>
+		</GenericModelMaker>
+		
+		<ModelScaler>
+			
+			<apply>true</apply>
+			
+			<scaling_order> manualScale</scaling_order>
+			
+			<MeasurementSet>
+				<objects />
+				<groups />
+			</MeasurementSet>
+			
+			<ScaleSet>
+				<objects>
+					<Scale>
+						<scales>[0.82857335 0.82857335 0.82857335]</scales>
+						<segment>pelvis</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.80486258 0.80486258 0.80486258]</scales>
+						<segment>femur_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.96683045 0.96683045 0.96683045]</scales>
+						<segment>tibia_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.80486258 0.80486258 0.80486258]</scales>
+						<segment>patella_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.90016538 0.90016538 0.90016538]</scales>
+						<segment>talus_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.90016538 0.90016538 0.90016538]</scales>
+						<segment>calcn_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.90016538 0.90016538 0.90016538]</scales>
+						<segment>toes_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.8219108 0.8219108 0.8219108]</scales>
+						<segment>femur_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.94279418 0.94279418 0.94279418]</scales>
+						<segment>tibia_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.8219108 0.8219108 0.8219108]</scales>
+						<segment>patella_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.9018537 0.9018537 0.9018537]</scales>
+						<segment>talus_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.9018537 0.9018537 0.9018537]</scales>
+						<segment>calcn_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.9018537 0.9018537 0.9018537]</scales>
+						<segment>toes_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.89496121 0.89496121 0.89496121]</scales>
+						<segment>torso</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.82268562 0.82268562 0.82268562]</scales>
+						<segment>humerus_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.92381125 0.92381125 0.92381125]</scales>
+						<segment>ulna_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.92925432 0.92925432 0.92925432]</scales>
+						<segment>radius_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.95369965 0.95369965 0.95369965]</scales>
+						<segment>hand_r</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.79228692 0.79228692 0.79228692]</scales>
+						<segment>humerus_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.94019042 0.94019042 0.94019042]</scales>
+						<segment>ulna_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.94065137 0.94065137 0.94065137]</scales>
+						<segment>radius_l</segment>
+						<apply>true</apply>
+					</Scale>
+					<Scale>
+						<scales>[0.91348737 0.91348737 0.91348737]</scales>
+						<segment>hand_l</segment>
+						<apply>true</apply>
+					</Scale>
+				</objects>
+				<groups />
+			</ScaleSet>
+			
+			<marker_file>Unassigned</marker_file>
+			
+			<time_range> -1 -1</time_range>
+			
+			<preserve_mass_distribution>false</preserve_mass_distribution>
+			
+			<output_model_file>Unassigned</output_model_file>
+			
+			<output_scale_file>Unassigned</output_scale_file>
+		</ModelScaler>
+		
+		<MarkerPlacer>
+			
+			<apply>false</apply>
+			
+			<IKTaskSet>
+				<objects>
+					<IKMarkerTask name="RSHO">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LSHO">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="C7">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="CLAV">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RBAK">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RUPA">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RELB">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RFRA">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RWRA">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RWRB">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LUPA">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LELB">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LFRA">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LWRA">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LWRB">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RASI">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LASI">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RPSI">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LPSI">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LHJC">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RHJC">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RTHI">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RLKN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RMKN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RKJC">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RTIB">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RLAN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RMAN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RAJC">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RHEE">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RTOE">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LTHI">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LLKN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LMKN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LKJC">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LTIB">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LLAN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LMAN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LAJC">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LHEE">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LTOE">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="STRN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RLAS">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LLAS">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="T10">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LFHD">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RBHD">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LBHD">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RFHD">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="LFIN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+					<IKMarkerTask name="RFIN">
+						
+						<apply>true</apply>
+						
+						<weight>1</weight>
+					</IKMarkerTask>
+				</objects>
+				<groups />
+			</IKTaskSet>
+			
+			<marker_file />
+			
+			<coordinate_file>Unassigned</coordinate_file>
+			
+			<time_range> -1 -1</time_range>
+			
+			<output_motion_file>Unassigned</output_motion_file>
+			
+			<output_model_file>Unassigned</output_model_file>
+			
+			<output_marker_file>Unassigned</output_marker_file>
+			
+			<max_marker_movement>-1</max_marker_movement>
+		</MarkerPlacer>
+	</ScaleTool>
+</OpenSimDocument>
