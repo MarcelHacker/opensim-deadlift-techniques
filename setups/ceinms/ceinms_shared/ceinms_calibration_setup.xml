@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ceinmsCalibration>
-   <subjectFile>.\ceinms_uncalibrated_subject.xml</subjectFile>
-   <excitationGeneratorFile>.\ceinms_excitation_generator.xml</excitationGeneratorFile>
-   <calibrationFile>.\ceinms_calibration_cfg.xml</calibrationFile>
-   <outputSubjectFile>.\ceinms_calibrated_subject.xml</outputSubjectFile>
-</ceinmsCalibration>
