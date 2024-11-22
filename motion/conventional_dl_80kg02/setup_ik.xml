@@ -106,7 +106,7 @@
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>1</weight>
+					<weight>1.5</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="RSHO">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
@@ -208,7 +208,7 @@
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>2</weight>
+					<weight>2.5</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="LLFC">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
