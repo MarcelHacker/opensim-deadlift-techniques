@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Trial name="static_01" notes="">
+
+  <Parameters>
+    <Param header="0" name="Capture Date" value="2024-Sep-25 16:45:55"/>
+    <Param header="0" name="x2d" value="static_01.x2d"/>
+    <Param header="0" name="x1d" value="static_01.x1d"/>
+  </Parameters>
+
+</Trial>

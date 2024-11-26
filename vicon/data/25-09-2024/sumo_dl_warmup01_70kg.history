@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Trial name="sumo_dl_warmup01_70kg" notes="">
+
+  <Parameters>
+    <Param header="0" name="Capture Date" value="2024-Sep-25 17:00:52"/>
+    <Param header="0" name="x2d" value="sumo_dl_warmup01_70kg.x2d"/>
+    <Param header="0" name="x1d" value="sumo_dl_warmup01_70kg.x1d"/>
+  </Parameters>
+
+</Trial>

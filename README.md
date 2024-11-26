@@ -7,6 +7,10 @@
 3. Sort data.
 4. run OpenSim part again.
 
+# VICON Export
+
+Select only the labelled markers and export those only to trc.
+
 ## Citations
 
 Mainly to Basilio Goncalves from University of Vienna which made all this possible. Thanks!
