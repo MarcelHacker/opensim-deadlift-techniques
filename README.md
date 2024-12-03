@@ -7,6 +7,17 @@
 3. Sort data.
 4. run OpenSim part again.
 
+# WORKFLOW
+
+1. Export c3d from VICON.
+2. Extract TRC for markers, and MOT for ground reaction force data.
+3. Add and Calculate joint centers
+4. Transform the data, when needed with extractMarkers.py
+5. Scaling the generic model
+6. Inverse Kinematics
+7. Inverse Daynamics
+8. Static optimisation
+
 # VICON Export
 
 Select only the labelled markers and export those only to trc.
