@@ -1,11 +1,8 @@
 # opensim-deadlift-techniques
 
-# ToDos
+# Current Problems
 
-1. label complete data again.
-2. Export data via vicon and mokka.
-3. Sort data.
-4. run OpenSim part again.
+TRC files are crashing when joint centers are calculated manualy.
 
 # WORKFLOW
 
