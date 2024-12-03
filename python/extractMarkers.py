@@ -13,7 +13,8 @@
 # pip install pyc3dserver 
 #
 # Usage for VICON data static export:
-# python extractMarkers.py static_00.c3d --output_file=output.trc #--mocap_transform yxz 270 0 90 not working and changes marker namens
+# python extractMarkers.py static_00.c3d --output_file=output.trc #--mocap_transform yxz 270 0 90  working but changes marker namens
+# 
 # 
 # ----------------------------------------------------------------------- #
 # Extract marker locations from C3D files and convert them into OpenSim TRC format
@@ -143,7 +144,7 @@ def rotateAroundAxes(data, rotations, modelMarkers):
         raise ValueError("Correct format is order of axes followed by two marker specifying each axis")
 
     for a, axis in enumerate(rotations[0]):
-
+        print('markers:',rotations),
         markerName1 = rotations[1+a*2]
         markerName2 = rotations[1 + a*2 + 1]
         marker1 = data["Labels"].index(markerName1)
