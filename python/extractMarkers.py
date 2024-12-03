@@ -9,12 +9,10 @@
 #
 # conda install -c opensim-org opensim
 # 
-# 
 # pip install pyc3dserver 
 #
 # Usage for VICON data static export:
-# python extractMarkers.py static_00.c3d --output_file=output.trc #--mocap_transform yxz 270 0 90  working but changes marker namens
-# 
+# python extractMarkers.py static_00.c3d --output_file=static_00.trc #--mocap_transform xyz 270 0 180
 # 
 # ----------------------------------------------------------------------- #
 # Extract marker locations from C3D files and convert them into OpenSim TRC format
