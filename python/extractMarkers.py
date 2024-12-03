@@ -13,7 +13,7 @@
 # pip install pyc3dserver 
 #
 # Usage for VICON data static export:
-# python extractMarkers.py static_00.c3d --output_file=output.trc #--mocap_transform yxz 270 0 90
+# python extractMarkers.py static_00.c3d --output_file=output.trc #--mocap_transform yxz 270 0 90 not working and changes marker namens
 # 
 # ----------------------------------------------------------------------- #
 # Extract marker locations from C3D files and convert them into OpenSim TRC format
