@@ -15,6 +15,10 @@ TRC files are crashing when joint centers are calculated manualy.
 7. Inverse Daynamics
 8. Static optimisation
 
+# Learnings
+
+The scaling pose has to match the model generic pose!
+
 # VICON Export
 
 Select only the labelled markers and export those only to trc.
