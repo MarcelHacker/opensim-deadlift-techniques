@@ -4,6 +4,8 @@
 
 TRC files are crashing when joint centers are calculated manualy.
 
+Pelvis_rotation xml -> zu ändern zu -180 bis 180 Grad oder Radiant
+
 # WORKFLOW
 
 1. Export c3d from VICON.
