@@ -5,37 +5,36 @@
 			<ExternalForce name="externalforce_1">
 				<applied_to_body>ground</applied_to_body>
 				<force_expressed_in_body>ground</force_expressed_in_body>
-				<force_identifier>f1_</force_identifier>
-				<point_identifier>p1_</point_identifier>
-				<torque_identifier>m1_</torque_identifier>
+				<force_identifier>ground_force3</force_identifier>
+				<point_identifier>p1</point_identifier>
+				<torque_identifier>m1</torque_identifier>
 			</ExternalForce>
 			<ExternalForce name="externalforce_2">
 				<applied_to_body>ground</applied_to_body>
 				<force_expressed_in_body>ground</force_expressed_in_body>
-				<force_identifier>f2_</force_identifier>
-				<point_identifier>p2_</point_identifier>
-				<torque_identifier>m2_</torque_identifier>
+				<force_identifier>f2</force_identifier>
+				<point_identifier>p2</point_identifier>
+				<torque_identifier>m2</torque_identifier>
 			</ExternalForce>
 			<ExternalForce name="externalforce_3">
 				<applied_to_body>calcn_l</applied_to_body>
 				<force_expressed_in_body>ground</force_expressed_in_body>
-				<force_identifier>f3_</force_identifier>
-				<point_identifier>p3_</point_identifier>
-				<torque_identifier>m3_</torque_identifier>
+				<force_identifier>f3</force_identifier>
+				<point_identifier>p3</point_identifier>
+				<torque_identifier>m3</torque_identifier>
 			</ExternalForce>
 			<ExternalForce name="externalforce_4">
-				<applied_to_body>ground</applied_to_body>
-				<force_expressed_in_body>ground</force_expressed_in_body>
-				<force_identifier>f4_</force_identifier>
-				<point_identifier>p4_</point_identifier>
-				<torque_identifier>m4_</torque_identifier>
-			</ExternalForce>
-			<ExternalForce name="externalforce_5">
 				<applied_to_body>calcn_r</applied_to_body>
 				<force_expressed_in_body>ground</force_expressed_in_body>
-				<force_identifier>f5_</force_identifier>
-				<point_identifier>p5_</point_identifier>
-				<torque_identifier>m5_</torque_identifier>
+				<force_identifier>f4</force_identifier>
+				<point_identifier>p4</point_identifier>
+				<torque_identifier>m4</torque_identifier>
+			</ExternalForce>
+			<ExternalForce name="externalforce_5">
+				<force_expressed_in_body>ground</force_expressed_in_body>
+				<force_identifier>f5</force_identifier>
+				<point_identifier>p5</point_identifier>
+				<torque_identifier>m5</torque_identifier>
 			</ExternalForce>
 		</objects>
 		<groups />
