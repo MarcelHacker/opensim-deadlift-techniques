@@ -17,7 +17,7 @@ TRC files are crashing when joint centers are calculated manualy.
 
 # Learnings
 
-The scaling pose has to match the model generic pose!
+The scaling pose and the dynamic markerpositions have to match the model (generic) pose!
 
 # VICON Export
 
