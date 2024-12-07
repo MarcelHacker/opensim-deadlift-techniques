@@ -1,4 +1,4 @@
-# pyC3D2OSIM 
+# pyC3D2OSIM
 
 Using this library you can extract and transform markers from C3D files into the OpenSim format and co-ordinate system
 
@@ -46,3 +46,31 @@ You can also use this library as an imported module in your scripts.
 # Issues
 
 In case of any issues, please feel free to open an issue / submit a pull request.
+
+# Make sure the enviroment is activated:
+
+#
+
+# conda activate opensim_scripting
+
+#
+
+# Once you've created a Conda environment, use the following command to
+
+# install the latest version of OpenSim that is compatiable with
+
+# your environment:
+
+#
+
+# conda install -c opensim-org opensim
+
+#
+
+# pip install pyc3dserver
+
+#
+
+# Usage for VICON data static export:
+
+# python extractMarkers.py static_00.c3d --output_file=static_00.trc #--mocap_transform xyz 270 0 180
