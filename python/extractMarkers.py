@@ -31,6 +31,7 @@ import scipy
 import scipy.interpolate
 import pandas as pd
 import xml.etree.ElementTree as ET
+import osim
 
 # Command-line interface definition
 parser = argparse.ArgumentParser(description='Extract marker locations from C3D files and save in TRC format.')
@@ -51,6 +52,27 @@ parser.add_argument('--mocap_transform', metavar='T', type=str, nargs='+', defau
                          'system optionally trailed by axes order for swapping eg. yxz 90 180 0.')
 parser.add_argument('--resample', metavar='S', type=int, default=0,
                     help='Resample data using second order spline to desired rate in Hz.')
+
+def increase_max_isometric_force(model_path, factor): # opensim API
+        model_path = '/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/model/jointcenters/scale_model.osim'
+        print(model_path)
+        
+        # Load the OpenSim model
+        model = osim.Model(model_path)
+
+        # Loop through muscles and update their maximum isometric force
+        for muscle in model.getMuscles():
+            current_max_force = muscle.getMaxIsometricForce()
+            new_max_force = current_max_force * factor
+            muscle.setMaxIsometricForce(new_max_force)
+
+        # Save the modified model
+        output_model_path = model_path.replace('.osim', f'increased_force{factor}.osim')
+        model.printToXML(output_model_path)
+
+        print(f'Model with increased forces saved to: {output_model_path}')
+
+
 
 # Loads marker position from .osim file
 def loadOSIM(file):
