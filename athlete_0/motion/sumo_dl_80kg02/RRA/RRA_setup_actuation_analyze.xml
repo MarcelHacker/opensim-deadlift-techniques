@@ -46,9 +46,9 @@
 		<!--Replace the model's force set with sets specified in <force_set_files>? If false, the force set is appended to.-->
 		<replace_force_set>false</replace_force_set>
 		<!--List of xml files used to construct an force set for the model.-->
-		<force_set_files> ../../residualReductionAnalysis/Run_baseline1/actuators_RAA.xml</force_set_files>
+		<force_set_files>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/sumo_dl_80kg02/RRA/RRA_actuators.xml</force_set_files>
 		<!--Directory used for writing results.-->
-		<results_directory>../../residualReductionAnalysis/Run_baseline1</results_directory>
+		<results_directory>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/sumo_dl_80kg02/RRA/</results_directory>
 		<!--Output precision.  It is 8 by default.-->
 		<output_precision>16</output_precision>
 		<!--Initial time for the simulation.-->
@@ -74,6 +74,6 @@
 			<!--All properties of this object have their default values.-->
 		</ControllerSet>
 		<!--XML file (.xml) containing the forces applied to the model as ExternalLoads.-->
-		<external_loads_file>../../inverseKinematics/Run_baseline1/grf.xml</external_loads_file>
+		<external_loads_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/sumo_dl_80kg02/ID/grf.xml</external_loads_file>
 	</AnalyzeTool>
 </OpenSimDocument>
