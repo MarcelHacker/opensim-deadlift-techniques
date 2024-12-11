@@ -55,61 +55,61 @@
          </TorqueActuator>
          <CoordinateActuator name="hip_flexion_r"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>hip_flexion_r</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="hip_adduction_r"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>hip_adduction_r</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="hip_rotation_r"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>hip_rotation_r</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="knee_angle_r"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>knee_angle_r</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="ankle_angle_r"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>ankle_angle_r</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="hip_flexion_l"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>hip_flexion_l</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="hip_adduction_l"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>hip_adduction_l</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="hip_rotation_l"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>hip_rotation_l</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="knee_angle_l"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>knee_angle_l</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
          <CoordinateActuator name="ankle_angle_l"><!--Name of the generalized coordinate to which the actuator applies.--><!--The maximum generalized force produced by this actuator.-->
             <coordinate>ankle_angle_l</coordinate>
-            <optimal_force>1000</optimal_force>
+            <optimal_force>1500</optimal_force>
             <min_control>-1</min_control>
             <max_control>1</max_control>
          </CoordinateActuator>
