@@ -431,7 +431,7 @@
 			</objects>
 		</IKTaskSet>
 		<!--TRC file (.trc) containing the time history of observations of marker positions obtained during a motion capture experiment. Markers in this file that have a corresponding task and model marker are included.-->
-		<marker_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/conventional_dl_80kg02/IK/../markers_experimental.trc</marker_file>
+		<marker_file>../markers_experimental.trc</marker_file>
 		<!--The name of the storage (.sto or .mot) file containing the time history of coordinate observations. Coordinate values from this file are included if there is a corresponding model coordinate and task. -->
 		<coordinate_file>Unassigned</coordinate_file>
 		<!--Flag indicating whether or not to report model marker locations. Note, model marker locations are expressed in Ground.-->
