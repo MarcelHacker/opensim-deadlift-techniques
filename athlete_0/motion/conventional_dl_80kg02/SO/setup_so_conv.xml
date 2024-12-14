@@ -8,7 +8,7 @@
 		<!--List of xml files used to construct a force set for the model.-->
 		<force_set_files> actuators_so.xml</force_set_files>
 		<!--Directory used for writing results.-->
-		<results_directory>Sum_Activation_1</results_directory>
+		<results_directory>../ID/Sum_Activation_2</results_directory>
 		<!--Output precision.  It is 8 by default.-->
 		<output_precision>20</output_precision>
 		<!--Initial time for the simulation.-->
@@ -28,7 +28,7 @@
 					<!--If true, the model's own force set will be used in the static optimization computation.  Otherwise, inverse dynamics for coordinate actuators will be computed for all unconstrained degrees of freedom.-->
 					<use_model_force_set>true</use_model_force_set>
 					<!--A double indicating the exponent to raise activations to when solving static optimization.  -->
-					<activation_exponent>1</activation_exponent>
+					<activation_exponent>2</activation_exponent>
 					<!--If true muscle force-length curve is observed while running optimization.-->
 					<use_muscle_physiology>true</use_muscle_physiology>
 				</StaticOptimization>
