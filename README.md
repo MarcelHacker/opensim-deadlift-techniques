@@ -17,6 +17,14 @@ Pelvis_rotation xml -> zu ändern zu -180 bis 180 Grad oder Radiant
 7. Inverse Daynamics
 8. Static optimisation
 
+# MAC path for python packages:
+
+Macintosh HD/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/side-packages
+
+# CONDA deactivation:
+
+conda deactivate
+
 # Learnings
 
 The scaling pose and the dynamic markerpositions have to match the model (generic) pose!
@@ -28,6 +36,8 @@ Select only the labelled markers and export those only to trc.
 ## Citations
 
 Mainly to Basilio Goncalves from University of Vienna which made all this possible. Thanks!
+
+Package msk_modelling_python (pre-release) from Basilio Goncalves, PhD, University of Vienna, 2024
 
 Rajagopal, A., Dembia, C. L., DeMers, M. S., Delp, D. D., Hicks, J. L., & Delp, S. L. (2016). Full-Body Musculoskeletal Model for Muscle-Driven Simulation of Human Gait. IEEE transactions on bio-medical engineering, 63(10), 2068–2079. https://doi.org/10.1109/TBME.2016.2586891
 

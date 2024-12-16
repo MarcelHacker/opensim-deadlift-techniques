@@ -7,7 +7,7 @@ import msk_modelling_python as msk
 import seaborn as sns
 
 # the functions below assume that the CSV files have the same structure unless otherwise specified
-# the first column in the CSV files should be named "time" or "frame"
+# the first column in the py files should be named "time" or "frame"
 
 class DataSet:
     # dataset is assumed to be a list of TimeSeries objects
