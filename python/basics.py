@@ -222,10 +222,11 @@ if __name__ == "__main__":
     fig.suptitle('Subplots')
     
     # activate the subplots IK (first row)
-    ik_sumo_path = r"C:\Git\research_documents\students\marcel_BSc_vienna\opensim-deadlift-techniques\athlete_0\motion\sumo_dl_80kg02\IK\ik.mot"
-    ik_conve_path = r"C:\Git\research_documents\students\marcel_BSc_vienna\opensim-deadlift-techniques\athlete_0\motion\conventional_dl_80kg02\IK\ik.mot"
+    ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/sumo_dl_80kg02/IK/ik.mot"
     
-    ik_sumo = pd.read_csv(ik_sumo_path, sep='\\t' ,skiprows=9)
+    ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/conventional_dl_80kg02/IK/ik.mot"
+    
+    ik_sumo = pd.read_csv(ik_sumo_path, sep='\t' ,skiprows=9)
     ik_conv = pd.read_excel(ik_conve_path, skiprows=10)
     import pdb; pdb.set_trace()
     plt.sca(axs[0, 0])
