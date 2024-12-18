@@ -1,0 +1,96 @@
+<DigitalDevices>
+	<DeviceDefinition manufacturer="Kistler" type="Force Plate" version="2.0.0.0" description="Integrates the digital output from a Kistler amplifier" standard-device-category="ForcePlate">
+		<Parameter name="DeviceName" display-name="Name" description="The name of the device" group="General" persistent="false" change-group-key="0">
+			<InitialValue type="String" value=""/>
+		</Parameter>
+		<Parameter name="StandardPosition_X" display-name="X (mm)" description="Position of the force plate X axis origin" group="Position" persistent="true" change-group-key="0">
+			<InitialValue type="Double" value="0"/>
+		</Parameter>
+		<Parameter name="StandardPosition_Y" display-name="Y (mm)" description="Position of the force plate Y axis origin" group="Position" persistent="true" change-group-key="0">
+			<InitialValue type="Double" value="0"/>
+		</Parameter>
+		<Parameter name="StandardPosition_Z" display-name="Z (mm)" description="Position of the force plate Z axis origin" group="Position" persistent="true" change-group-key="0">
+			<InitialValue type="Double" value="0"/>
+		</Parameter>
+		<Parameter name="StandardOrientation_X" display-name="X (deg)" description="X angle axis component." group="Orientation" persistent="true" change-group-key="0">
+			<InitialValue type="Double" read-only="true" value="0"/>
+		</Parameter>
+		<Parameter name="StandardOrientation_Y" display-name="Y (deg)" description="Y angle axis component." group="Orientation" persistent="true" change-group-key="0">
+			<InitialValue type="Double" read-only="true" value="0"/>
+		</Parameter>
+		<Parameter name="StandardOrientation_Z" display-name="Z (deg)" description="Z angle axis component." group="Orientation" persistent="true" change-group-key="0">
+			<InitialValue type="Double" read-only="true" value="0"/>
+		</Parameter>
+		<Parameter name="StandardDimension_X" display-name="X" description="Length of force plate in the X Axis (meters)" group="Dimensions" persistent="true" change-group-key="0">
+			<InitialValue type="Double" read-only="true" advanced="true" value="0.5"/>
+		</Parameter>
+		<Parameter name="StandardDimension_Y" display-name="Y" description="Length of force plate in the Y Axis (meters)" group="Dimensions" persistent="true" change-group-key="0">
+			<InitialValue type="Double" read-only="true" advanced="true" value="0.5"/>
+		</Parameter>
+		<Parameter name="SampleRate" display-name="Sample Rate (Hz)" description="Sample rate of the daq, per channel" group="General" persistent="true" change-group-key="2">
+			<InitialValue type="Double" value="100" min-value="10" max-value="10000"/>
+		</Parameter>
+		<Parameter name="SerialNumber" display-name="Serial Number/DeviceID" description="Serial Number/DeviceID of force platform" group="General" persistent="true" change-group-key="0">
+			<InitialValue type="String" read-only="true" value="&lt;unknown&gt;"/>
+		</Parameter>
+		<Parameter name="IPAddress" display-name="Address" description="IP Address/Network Name of force platform" group="General" persistent="true" change-group-key="0">
+			<InitialValue type="String" read-only="true" advanced="true" value="&lt;unknown&gt;"/>
+		</Parameter>
+		<Parameter name="ModelNumber" display-name="Device Model/Type" description="Model/Type Number of force platform" group="General" persistent="true" change-group-key="0">
+			<InitialValue type="String" read-only="true" advanced="true" value="&lt;unknown&gt;"/>
+		</Parameter>
+		<Parameter name="DataServerVersion" display-name="DataServer Version" description="Version of Kistler DataServer" group="General" persistent="true" change-group-key="0">
+			<InitialValue type="String" read-only="true" advanced="true" value="&lt;unknown&gt;"/>
+		</Parameter>
+		<Parameter name="PluginVersion" display-name="Plugin Version" description="Version of Kistler Plugin" group="General" persistent="false" change-group-key="0">
+			<InitialValue type="String" read-only="true" advanced="true" value=""/>
+		</Parameter>
+		<Parameter name="ExternalSyncEnabled" display-name="External Sync. Enabled" description="Enable if the Kistler Ethernet devices should Sync to the GPO outputs from Vicon" group="General" persistent="true" change-group-key="2">
+			<InitialValue type="Bool" value="true"/>
+		</Parameter>
+		<Parameter name="ExternalSyncRate" display-name="External Sync Rate (Hz)" description="External Clock Sync rate input" group="General" persistent="true" change-group-key="2">
+			<InitialValue type="Double" value="1" min-value="0.5" max-value="10"/>
+		</Parameter>
+		<Parameter name="ExternalClockParam" display-name="Externally clocked" description="Enabled if the Kistler USB-DAQ is externally clocked using the GPO outputs from Vicon" group="General" persistent="true" change-group-key="0">
+			<InitialValue type="Bool" value="false"/>
+		</Parameter>
+		<Parameter name="Threshold" display-name="Threshold Level (N)" description="The threshold, in Newtons, below which the signal is deemed to be noise" group="General" persistent="true" change-group-key="0">
+			<InitialValue type="Double" advanced="true" value="5"/>
+		</Parameter>
+		<Parameter name="ResetParam" display-name="Reset Offsets" description="Reset the Kistler plate's offset values" group="General" persistent="false" change-group-key="0">
+			<InitialValue type="Action" value="0"/>
+		</Parameter>
+		<Parameter name="LogFrameCounter" display-name="Show frame count in log" description="Enable to show received Kistler DAQ frame counter in the log (disable for better performance)" group="Debug" persistent="false" change-group-key="2">
+			<InitialValue type="Bool" advanced="true" value="false"/>
+		</Parameter>
+		<Parameter name="SaveDataToFile" display-name="Save raw plate data to file" description="Enable to stream raw data to C:\Kistler\BioWare\Logs\device_&lt;n&gt;_&lt;sn&gt;.txt file (disable for better performance)" group="Debug" persistent="false" change-group-key="2">
+			<InitialValue type="Bool" advanced="true" value="false"/>
+		</Parameter>
+		<Output name="Force" quantity="Force">
+			<Component name="Fx"/>
+			<Component name="Fy"/>
+			<Component name="Fz"/>
+		</Output>
+		<Output name="Moment" quantity="Moment">
+			<Component name="Mx"/>
+			<Component name="My"/>
+			<Component name="Mz"/>
+		</Output>
+		<Output name="CoP" quantity="Length">
+			<Component name="Cx"/>
+			<Component name="Cy"/>
+			<Component name="Cz"/>
+		</Output>
+		<Output name="Raw" quantity="ElectricPotential">
+			<Component name="FX12"/>
+			<Component name="FX34"/>
+			<Component name="FY14"/>
+			<Component name="FY23"/>
+			<Component name="FZ1"/>
+			<Component name="FZ2"/>
+			<Component name="FZ3"/>
+			<Component name="FZ4"/>
+		</Output>
+	</DeviceDefinition>
+</DigitalDevices>
+

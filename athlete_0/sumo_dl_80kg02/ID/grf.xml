@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSimDocument Version="40500">
+	<ExternalLoads name="externalloads">
+		<objects>
+			<ExternalForce name="externalforce_3">
+				<!--Name of the body the force is applied to.-->
+				<applied_to_body>calcn_l</applied_to_body>
+				<!--Name of the body the force is expressed in (default is ground).-->
+				<force_expressed_in_body>ground</force_expressed_in_body>
+				<!--Name of the body the point is expressed in (default is ground).-->
+				<point_expressed_in_body>ground</point_expressed_in_body>
+				<!--Identifier (string) to locate the force to be applied in the data source.-->
+				<force_identifier>ground_force3_v</force_identifier>
+				<!--Identifier (string) to locate the point to be applied in the data source.-->
+				<point_identifier>ground_force3_p</point_identifier>
+				<!--Identifier (string) to locate the torque to be applied in the data source.-->
+				<torque_identifier>ground_torque3_</torque_identifier>
+				<!--Name of the data source (Storage) that will supply the force data.-->
+				<data_source_name>sumo_dl_80kg02</data_source_name>
+			</ExternalForce>
+			<ExternalForce name="externalforce_5">
+				<!--Name of the body the force is applied to.-->
+				<applied_to_body>ground</applied_to_body>
+				<!--Name of the body the force is expressed in (default is ground).-->
+				<force_expressed_in_body>ground</force_expressed_in_body>
+				<!--Name of the body the point is expressed in (default is ground).-->
+				<point_expressed_in_body>ground</point_expressed_in_body>
+				<!--Identifier (string) to locate the force to be applied in the data source.-->
+				<force_identifier>ground_force5_v</force_identifier>
+				<!--Identifier (string) to locate the point to be applied in the data source.-->
+				<point_identifier>ground_force5_p</point_identifier>
+				<!--Identifier (string) to locate the torque to be applied in the data source.-->
+				<torque_identifier>ground_torque5_</torque_identifier>
+				<!--Name of the data source (Storage) that will supply the force data.-->
+				<data_source_name>sumo_dl_80kg02</data_source_name>
+			</ExternalForce>
+		</objects>
+		<groups />
+		<!--Storage file (.sto) containing (3) components of force and/or torque and point of application.Note: this file overrides the data source specified by the individual external forces if specified.-->
+		<datafile>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/sumo_dl_80kg02/ID/grf.mot</datafile>
+	</ExternalLoads>
+</OpenSimDocument>
