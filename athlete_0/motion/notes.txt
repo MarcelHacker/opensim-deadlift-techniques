@@ -1,5 +1,0 @@
-
-
-
-sumo_dl_emptybar_v2:
-	test run from 9.1 to 9,3 sec. Check why so many outputs during SO
