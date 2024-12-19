@@ -21,7 +21,12 @@ Pelvis_rotation xml -> zu ändern zu -180 bis 180 Grad oder Radiant
 
 Macintosh HD/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/side-packages
 
-# CONDA deactivation:
+# Python alias for terminal
+
+alias python=python3
+source ~/.bashrc
+
+# CONDA deactivation (deinstall it):
 
 conda deactivate
 
