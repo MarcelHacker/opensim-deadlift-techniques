@@ -1,5 +1,14 @@
 # opensim-deadlift-techniques
 
+# 1. Activate env
+
+cd "/Users/marcelhacker/penv/bin"
+source activate
+
+# 2. Navigate to project
+
+cd "/Users/marcelhacker/Documents/opensim-deadlift-techniques"
+
 # Current Problems
 
 TRC files are crashing when joint centers are calculated manualy.
