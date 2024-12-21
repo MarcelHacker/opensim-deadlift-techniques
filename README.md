@@ -21,6 +21,10 @@ Pelvis_rotation xml -> zu ändern zu -180 bis 180 Grad oder Radiant
 
 Macintosh HD/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/side-packages
 
+# Opensim path for python
+
+export PYTHONPATH=/Users/marcelhacker/Applications/OpenSim_4.5/sdk/Python:$PYTHONPATH
+
 # Python alias for terminal
 
 alias python=python3
