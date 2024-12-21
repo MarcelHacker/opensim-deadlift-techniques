@@ -1,5 +1,7 @@
 # opensim-deadlift-techniques
 
+FOR MAC
+
 # 1. Activate env
 
 cd "/Users/marcelhacker/penv/bin"
@@ -8,6 +10,24 @@ source activate
 # 2. Navigate to project
 
 cd "/Users/marcelhacker/Documents/opensim-deadlift-techniques"
+
+FOR WINDOWS PC
+
+# 1. Activate env
+
+cd "C:\Users\ihack\Documents\penv\Scripts"
+activate
+
+# 2. Navigate to project
+
+cd "C:\Users\ihack\Documents\opensim-deadlift-techniques"
+
+# install opensim python
+
+e:
+cd "E:\OpenSim 4.5\sdk\Python"
+python setup_win_python38.py
+python -m pip install .
 
 # Current Problems
 
