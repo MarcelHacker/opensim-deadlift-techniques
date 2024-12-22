@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from tkinter import Tk, filedialog
 import matplotlib.pyplot as plt
 import os
@@ -220,6 +221,7 @@ if __name__ == "__main__":
     # create figute with 5x3 subplots
     fig, axs = plt.subplots(5, 3)
     fig.suptitle('Subplots')
+    fig.set_label('Hip R')
     
     # activate the subplots IK (first row)
     ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
@@ -242,22 +244,18 @@ if __name__ == "__main__":
         print("Desired column not found in file:", ik_conve_path)
     
     plt.sca(axs[0, 0])
-    plt.plot(ik_sumo['hip_flexion_r'])
+    # control x and y limits
+    # todo cut array to 500 items.
+    plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
 
-    #plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
 
     # loop through the subplots and plot random data
-    for i in range(1):
-      for j in range(1):
+    for i in range(5):
+      for j in range(3):
             # test plot_curves
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            filepath1 = os.path.join('/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/', 'csv1.csv')
-            print(filepath1)
-            
-    #  for i in range(5):
-    #   for j in range(3):
-            # test plot_curves
-     #       current_dir = os.path.dirname(os.path.abspath(__file__))
-      #      filepath1 = os.path.join(current_dir, 'csv1.csv')
-      #      filepath2 = os.path.join(current_dir, 'csv2.csv')
+            filepath1 = os.path.join(current_dir, 'csv1.csv')
+            filepath2 = os.path.join(current_dir, 'csv2.csv')
+    plt.show()     
+
 # END
