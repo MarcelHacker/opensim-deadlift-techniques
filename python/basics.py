@@ -222,26 +222,21 @@ if __name__ == "__main__":
     fig.suptitle('Subplots')
     
     # activate the subplots IK (first row)
-    ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/sumo_dl_80kg02/IK/ik.mot"
+    ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
     
-    ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/conventional_dl_80kg02/IK/ik.mot"
-    
+    ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
+
     ik_sumo = pd.read_csv(ik_sumo_path, sep='\t' ,skiprows=9)
-    ik_conv = pd.read_excel(ik_conve_path, skiprows=10)
-    import pdb; pdb.set_trace()
+    ik_conv = pd.read_csv(ik_conve_path, skiprows=10)
     plt.sca(axs[0, 0])
-    plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
-    import pdb; pdb.set_trace()
+    plt.plot(ik_sumo['hip_flexion'], ik_conv['hip_flexion'])
     # loop through the subplots and plot random data
     for i in range(5):
         for j in range(3):
-            
             
             # test plot_curves
             current_dir = os.path.dirname(os.path.abspath(__file__))
             filepath1 = os.path.join(current_dir, 'csv1.csv')
             filepath2 = os.path.join(current_dir, 'csv2.csv')
             
-   
-
 # END
