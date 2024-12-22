@@ -226,17 +226,31 @@ if __name__ == "__main__":
     
     ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
 
-    ik_sumo = pd.read_csv(ik_sumo_path, sep='\t' ,skiprows=9)
-    ik_conv = pd.read_csv(ik_conve_path, skiprows=10)
+    ik_sumo = pd.read_csv(ik_sumo_path, sep='\t', skiprows=10)
+    ik_conv = pd.read_csv(ik_conve_path, sep='\t', skiprows=10)
+    # returns A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
+
+    # check for desired columns in .csv files
+    if 'hip_flexion_r' in ik_sumo.columns:
+        print(ik_sumo['hip_flexion_r'])
+    else:
+        print("Desired column not found in file:", ik_sumo_path)
+    
+    if 'hip_flexion_r' in ik_conv.columns:
+        print(ik_conv['hip_flexion_r'])
+    else:
+        print("Desired column not found in file:", ik_conve_path)
+    
     plt.sca(axs[0, 0])
-    plt.plot(ik_sumo['hip_flexion'], ik_conv['hip_flexion'])
+    plt.plot(ik_sumo['hip_flexion_r'])
+    #plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
     # loop through the subplots and plot random data
-    for i in range(5):
-        for j in range(3):
+    #for i in range(5):
+     #   for j in range(3):
             
             # test plot_curves
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            filepath1 = os.path.join(current_dir, 'csv1.csv')
-            filepath2 = os.path.join(current_dir, 'csv2.csv')
+      #      current_dir = os.path.dirname(os.path.abspath(__file__))
+       #     filepath1 = os.path.join(current_dir, 'csv1.csv')
+        #    filepath2 = os.path.join(current_dir, 'csv2.csv')
             
 # END
