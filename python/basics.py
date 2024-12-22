@@ -243,14 +243,16 @@ if __name__ == "__main__":
     
     plt.sca(axs[0, 0])
     plt.plot(ik_sumo['hip_flexion_r'])
+
     #plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
+
     # loop through the subplots and plot random data
-    #for i in range(5):
-     #   for j in range(3):
-            
+    for i in range(5):
+      for j in range(3):
             # test plot_curves
-      #      current_dir = os.path.dirname(os.path.abspath(__file__))
-       #     filepath1 = os.path.join(current_dir, 'csv1.csv')
-        #    filepath2 = os.path.join(current_dir, 'csv2.csv')
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            filepath1 = os.path.join(current_dir, 'csv1.csv')
+            print(filepath1)
+            # filepath2 = os.path.join(current_dir, 'csv2.csv')
             
 # END
