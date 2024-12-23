@@ -314,68 +314,36 @@ if __name__ == "__main__":
     plt.xlabel("Time")
     plt.ylabel("Ankle Angle Moment R")
 
-    # sumo deadlift curves, ID, moment arms
-    ## row 2, column 0, hip moments
-    plt.sca(axs[2, 0])
-    plt.plot(id_sumo["time"], id_sumo["hip_flexion_r_moment"])
-    plt.xlabel("Time")
-    plt.ylabel("Hip Moment arms R")
-
-    ## row 2, column 1, knee moments
-    plt.sca(axs[2, 1])
-    plt.plot(id_sumo["time"], id_sumo["knee_angle_r_moment"])
-    plt.xlabel("Time")
-    plt.ylabel("Knee Moment arms R")
-
-    ## row 2, column 2, ankle moments
-    plt.sca(axs[2, 2])
-    plt.plot(id_sumo["time"], id_sumo["ankle_angle_r_moment"])
-    plt.xlabel("Time")
-    plt.ylabel("Ankle Moment arms R")
-
     # activate the subplots Moment arms (third row)
+    # momentArmKnee_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto"
+
+    # momentArmAnkle_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto"
+
+    # momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=9)
+    # momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=9)
+
     momentArmHip_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto"
 
-    momentArmKnee_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto"
-
-    momentArmAnkle_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto"
-
     momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=9)
-    momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=9)
-    momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=9)
+    test_momentArmHip_sumo = pd.read_table(momentArmHip_sumo_path, sep="\t", skiprows=9)
 
-    print("object struct:", momentArmHip_sumo)
-    print("object:", momentArmHip_sumo.endheader)
-    for key in range(500):
-        try:
-            print(momentArmHip_sumo.time[key])
-        except KeyError:
-            print("Couldn't find a match for the key:", key)
+    print(test_momentArmHip_sumo)  # no difference to momentArmHip_sumo
+    print(momentArmHip_sumo["time"])  # KeyError(key) from err KeyError: 'time'
+    print(momentArmHip_sumo.time)  # no attribute 'time'
+    print(momentArmHip_sumo["time"][2])  # KeyError: 'time'
 
-    # check for desired columns in .csv files
-    CRED = "\033[91m"
-    CEND = "\033[0m"
-    # if "semimem_r" not in so_sumo:
-    #   print(CRED + "\nDesired column not found in file:" + CEND, so_sumo_path + "\n")
+    # Prints the type of each variable
+    print("The type of momentArmHip is ", type(momentArmHip_sumo))
+    # type is <class 'pandas.core.frame.DataFrame'>
 
-    # sumo deadlift curves, SO, muscle forces
+    # sumo deadlift curves, MA, Moment arms
     ## row 3, column 0, hip moment arms
     plt.sca(axs[2, 0])
-    plt.plot(momentArmHip_sumo, momentArmHip_sumo)
+    plt.plot(
+        momentArmHip_sumo["endheader"]["time"], momentArmHip_sumo["endheader"]["time"]
+    )
     plt.xlabel("Time")
     plt.ylabel("Hip Moment arms R")
-
-    ## row 3, column 1, knee muscle force
-    plt.sca(axs[2, 1])
-    # plt.plot(so_sumo["time"], so_sumo["recfem_r"])
-    plt.xlabel("Time")
-    plt.ylabel("Knee Moment arms R")
-
-    ## row 3, column 2, ankle muscle force
-    plt.sca(axs[2, 2])
-    # plt.plot(so_sumo["time"], so_sumo["gasmed_r"])
-    plt.xlabel("Time")
-    plt.ylabel("Ankle Moment arms R")
 
     # todo: insert also conventional deadlift curves
 
