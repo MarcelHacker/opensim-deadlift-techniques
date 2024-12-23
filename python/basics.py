@@ -256,7 +256,7 @@ if __name__ == "__main__":
     ik_conv = pd.read_csv(ik_conve_path, sep="\t", skiprows=10)
     # returns A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
 
-    # check for desired columns in .csv files
+    # check for desired columns in ik files
     if "hip_flexion_r" not in ik_sumo.columns:
         print("Desired column not found in file:", ik_sumo_path)
 
@@ -336,16 +336,32 @@ if __name__ == "__main__":
     # activate the subplots SO (fourthd row)
     so_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
 
-    so_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
+    # so_conve_path = r"/Users/marcelhacker/Documents/#opensim-deadlift-techniques/athlete_0_increased_force_3/#conventional_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
 
     so_sumo = pd.read_csv(so_sumo_path, sep="\t", skiprows=12)
-    # so_conv = pd.read_csv(so_conve_path, sep="\t", skiprows=0)
-    print(so_sumo["endheader"])
+    # so_conv = pd.read_csv(so_conve_path, sep="\t", skiprows=12)
+
+    # print("IK:", ik_sumo.columns)
+    # print("ID:", id_sumo.columns)
+    # print("SO:", so_sumo["endheader"])
+
+    print("\nSO:", so_sumo["endheader"] + "\n")
+
+    arr = so_sumo["endheader"]["time"]
+    print("Arr:", arr)
+
+    so_sumo = arr
+
+    # check for desired columns in .csv files
+    CRED = "\033[91m"
+    CEND = "\033[0m"
+    if "semimem_r" not in so_sumo:
+        print(CRED + "\nDesired column not found in file:" + CEND, so_sumo_path + "\n")
 
     # sumo deadlift curves, SO, muscle forces
     ## row 3, column 0, hip muscle force
     plt.sca(axs[2, 0])
-    plt.plot(so_sumo["endheader"]["time"], so_sumo["endheader"]["semimem_r"])
+    plt.plot(so_sumo["time"], so_sumo["semimem_r"])
     plt.xlabel("Time")
     plt.ylabel("Hip Muscle Force R")
 
