@@ -232,6 +232,14 @@ if __name__ == "__main__":
     ik_conv = pd.read_csv(ik_conve_path, sep='\t', skiprows=10)
     # returns A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
 
+    # activate the subplots ID (second row)
+    id_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/inverse_dynamics.sto"
+    
+    id_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/inverse_dynamics.sto"
+
+    id_sumo = pd.read_csv(id_sumo_path, sep='\t', skiprows=6)
+    id_conv = pd.read_csv(id_conve_path, sep='\t', skiprows=6)
+
     # check for desired columns in .csv files
     if 'hip_flexion_r' in ik_sumo.columns:
         print(ik_sumo['hip_flexion_r'])
@@ -243,19 +251,56 @@ if __name__ == "__main__":
     else:
         print("Desired column not found in file:", ik_conve_path)
     
-    plt.sca(axs[0, 0])
-    
     # todo cut array to 500 items.
     item_count = 499
-
     ik_sumo = ik_sumo[0:item_count]
     ik_conv = ik_conv[0:item_count]
     print(ik_sumo)
     print(ik_conv)
+    print("Columns in ik file:",ik_sumo.columns)
 
-    plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
-    plt.plot(ik_sumo['hip_flexion_l'], ik_conv['hip_flexion_l'])
+    # sumo deadlift curves, IK
+    ## row 0, column 0
+    plt.sca(axs[0, 0])
+    plt.plot(ik_sumo['time'], ik_sumo['hip_flexion_r'])
+    plt.xlabel("Time")
+    plt.ylabel("Hip Flexion R Sumo")
 
+     ## row 0, column 1, knee
+    plt.sca(axs[0, 1])
+    plt.plot(ik_sumo['time'], ik_sumo['knee_angle_r'])
+    plt.xlabel("Time")
+    plt.ylabel("Knee Angle R Sumo")
+
+    ## row 0, column 2, ankle
+    plt.sca(axs[0, 2])
+    plt.plot(ik_sumo['time'], ik_sumo['ankle_angle_r'] )
+    plt.xlabel("Time")
+    plt.ylabel("Ankle Angle R Sumo")
+
+    print("ID file: ", id_sumo)
+    print("Columns in id file:", id_sumo.columns)
+
+    # sumo deadlift curves, ID
+    ## row 1, column 0, hip moments
+    plt.sca(axs[1, 0])
+    plt.plot(id_sumo['time'], id_sumo['hip_flexion_r_moment'])
+    plt.xlabel("Time")
+    plt.ylabel("Hip Flexion Moment R")
+
+    ## row 1, column 1, knee moments
+    plt.sca(axs[1, 1])
+    plt.plot(id_sumo['time'], id_sumo['knee_angle_r_moment'])
+    plt.xlabel("Time")
+    plt.ylabel("Knee Angle Moment R")
+
+    ## row 1, column 2, ankle moments
+    plt.sca(axs[1, 2])
+    plt.plot(id_sumo['time'], id_sumo['ankle_angle_r_moment'] )
+    plt.xlabel("Time")
+    plt.ylabel("Ankle Angle Moment R")
+
+    # todo: insert also conventional deadlift curves
 
     # loop through the subplots and plot random data
     for i in range(5):
