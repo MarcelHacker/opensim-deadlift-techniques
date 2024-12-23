@@ -244,9 +244,14 @@ if __name__ == "__main__":
         print("Desired column not found in file:", ik_conve_path)
     
     plt.sca(axs[0, 0])
-    # control x and y limits
+    
     # todo cut array to 500 items.
-    plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
+    item_count = 499
+
+    ik_sumo = ik_sumo[0:item_count]
+    ik_conv = ik_conv[0:item_count]
+
+    # plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
 
 
     # loop through the subplots and plot random data
@@ -256,6 +261,6 @@ if __name__ == "__main__":
             current_dir = os.path.dirname(os.path.abspath(__file__))
             filepath1 = os.path.join(current_dir, 'csv1.csv')
             filepath2 = os.path.join(current_dir, 'csv2.csv')
-    plt.show()     
+    #plt.show()     
 
 # END
