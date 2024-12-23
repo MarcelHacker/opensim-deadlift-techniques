@@ -344,7 +344,13 @@ if __name__ == "__main__":
     momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=9)
     momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=9)
 
-    print(momentArmHip_sumo["endheader"])
+    print("object struct:", momentArmHip_sumo)
+    print("object:", momentArmHip_sumo.endheader)
+    for key in range(500):
+        try:
+            print(momentArmHip_sumo.time[key])
+        except KeyError:
+            print("Couldn't find a match for the key:", key)
 
     # check for desired columns in .csv files
     CRED = "\033[91m"
@@ -355,7 +361,7 @@ if __name__ == "__main__":
     # sumo deadlift curves, SO, muscle forces
     ## row 3, column 0, hip moment arms
     plt.sca(axs[2, 0])
-    plt.plot(momentArmHip_sumo.endheader["time"], momentArmHip_sumo.endheader["time"])
+    plt.plot(momentArmHip_sumo, momentArmHip_sumo)
     plt.xlabel("Time")
     plt.ylabel("Hip Moment arms R")
 
@@ -380,6 +386,6 @@ if __name__ == "__main__":
             current_dir = os.path.dirname(os.path.abspath(__file__))
             filepath1 = os.path.join(current_dir, "csv1.csv")
             filepath2 = os.path.join(current_dir, "csv2.csv")
-    plt.show()
+    # plt.show()
 
 # END
