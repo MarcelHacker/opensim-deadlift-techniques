@@ -10,68 +10,78 @@ import seaborn as sns
 # the functions below assume that the CSV files have the same structure unless otherwise specified
 # the first column in the py files should be named "time" or "frame"
 
+
 class DataSet:
     # dataset is assumed to be a list of TimeSeries objects
     # each TimeSeries object is assumed to have a pandas dataframe with the first column named "time" or "frame"
     # usage: data = DataSet(files=[file1, file2, file3])
-    
+
     def __init__(self, files=[]):
-        
+
         self.module_path = os.path.dirname(os.path.abspath(__file__))
-        
+
         if not files:
             self.files = select_multiple_files()
-        elif files == 'template':
-            self.files = [os.path.join(self.module_path, 'data', 'template1.csv'), os.path.join(self.module_path, 'data', 'template2.csv')]
+        elif files == "template":
+            self.files = [
+                os.path.join(self.module_path, "data", "template1.csv"),
+                os.path.join(self.module_path, "data", "template2.csv"),
+            ]
         else:
             self.files = files
-        
+
         self.trials = []
         self.trial_names = []
-        for file in self.files:            
-            if not os.path.basename(file).endswith(".csv"): # check if the file is a CSV file
+        for file in self.files:
+            if not os.path.basename(file).endswith(
+                ".csv"
+            ):  # check if the file is a CSV file
                 Warning(f"File {file} is not a CSV file. Further errors may occur.")
-    
-            self.trials.append(TimeSeries(file))                  
-    
+
+            self.trials.append(TimeSeries(file))
+
     def plot_lines(self, show=True):
-        
+
         for trial in self.trials:
             trial.plot_line(show=False)
-        
+
         if show:
             plt.show()
-    
+
     def correlation_matrix(self, show=True):
-        
+
         try:
             sns.heatmap(self.df.corr(), annot=True)
-            
+
             # save the plot
-            plt.savefig(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'correlation_matrix.png'))
+            plt.savefig(
+                os.path.join(
+                    os.path.dirname(os.path.abspath(__file__)), "correlation_matrix.png"
+                )
+            )
             if show:
                 plt.show()
         except:
             msk.ut.pop_warning("Error: Could not plot the correlation matrix")
-        
 
     def show(self):
         plt.show()
 
-class TimeSeries():
+
+class TimeSeries:
     def __init__(self, file_path):
         self.name = os.path.splitext(os.path.basename(file_path))[0]
         self.file_path = file_path
         self.print = False
         self.read_csv(file_path)
-        
+
     def read_csv(self, file):
         try:
             self.df = pd.read_csv(file)
             self.num_frames = len(self.data)
             self.num_columns = len(self.data.columns)
             self.columns = self.data.columns
-            
+
             if self.columns[0].lower() in ["time", "frame"]:
                 self.time = self.df[self.columns[0]]
                 self.data = self.df.drop(columns=[self.columns[0]])
@@ -80,12 +90,12 @@ class TimeSeries():
                 self.time = self.df["time"]
                 self.data = self.df.drop(columns=["time"])
                 self.header = self.df.columns[0]
-                
+
             self.correlation_matrix = self.data.corr()
-            
+
             if self.print:
                 print(f"Data from {file} has been read successfully")
-            
+
         except:
             self.data = None
             self.header = None
@@ -93,35 +103,48 @@ class TimeSeries():
 
             if self.print:
                 print("Error: Could not read the CSV file")
-    
-    def plot_line(self, show=True):        
+
+    def plot_line(self, show=True):
         plt.plot(self.df[self.header], label=f"{self.name}")
         plt.xlabel("X-axis")
         plt.ylabel("Y-axis")
         plt.legend()
-        plt.savefig(os.path.join(os.path.dirname(os.path.abspath(__file__)), f'{self.name}.png'))
+        plt.savefig(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), f"{self.name}.png")
+        )
         if show:
             try:
                 plt.show(block=False)
-                plt.gcf().canvas.manager.window.attributes('-topmost', 1)
-                plt.gcf().canvas.manager.window.attributes('-topmost', 0)
+                plt.gcf().canvas.manager.window.attributes("-topmost", 1)
+                plt.gcf().canvas.manager.window.attributes("-topmost", 0)
             except:
                 plt.show()
                 Warning("waring! Could not show the plot using the canvas method")
+
 
 def select_file(initialdir=os.path.dirname(os.path.abspath(__file__))):
     # select single file. Default directory is the directory of the script
     root = Tk()
     root.withdraw()
-    file_path = filedialog.askopenfilename(initialdir=initialdir, title="Select file", filetypes=(("CSV files", "*.csv"), ("all files", "*.*")))
+    file_path = filedialog.askopenfilename(
+        initialdir=initialdir,
+        title="Select file",
+        filetypes=(("CSV files", "*.csv"), ("all files", "*.*")),
+    )
     return file_path
+
 
 def select_multiple_files(initialdir=os.path.dirname(os.path.abspath(__file__))):
     # select multiple files from same folder. Default directory is the directory of the script
     root = Tk()
     root.withdraw()
-    files = filedialog.askopenfilenames(initialdir=initialdir, title="Select multiple files", filetypes=(("CSV files", "*.csv"), ("all files", "*.*")))
+    files = filedialog.askopenfilenames(
+        initialdir=initialdir,
+        title="Select multiple files",
+        filetypes=(("CSV files", "*.csv"), ("all files", "*.*")),
+    )
     return files
+
 
 def plot_curves(file1, file2):
     # Read the CSV files
@@ -148,6 +171,7 @@ def plot_curves(file1, file2):
     else:
         print("The first column in both files should be named 'time' or 'frame.'")
 
+
 def plot_multiple_curves(files):
     for file in files:
         df = pd.read_csv(file)
@@ -161,9 +185,10 @@ def plot_multiple_curves(files):
     plt.legend()
     plt.show()
 
+
 def spider(files):
     # Read the CSV files
-    
+
     for file in files:
         df = pd.read_csv(file)
         header = df.columns[0]
@@ -174,141 +199,177 @@ def spider(files):
     plt.xlabel("X-axis")
     plt.ylabel("Y-axis")
     plt.legend()
-    
-    
+
     return None
-    
-    
+
+
 # Testing the functions using unittest module when the script is run directly
 class test(unittest.TestCase):
     # for each function assign True or false to run the test
-    
-    def test_plot_curves(self, run = False):
+
+    def test_plot_curves(self, run=False):
         if run:
-            print('testing plot_curves ... ')
+            print("testing plot_curves ... ")
             file1 = select_file()
             plot_curves(file1, file1)
-                    
-    def test_plot_multiple_curves(self, run = False):
+
+    def test_plot_multiple_curves(self, run=False):
         if run:
-            print('testing plot_multiple_curves ... ')
+            print("testing plot_multiple_curves ... ")
             files = select_multiple_files()
             plot_multiple_curves(files)
-  
-    def test_spider(self, run = False):
+
+    def test_spider(self, run=False):
         if run:
-            print('testing spider ... ')
+            print("testing spider ... ")
             files = select_multiple_files()
             spider(files)
 
-    def show_plot(self, run = False):
+    def show_plot(self, run=False):
         if run:
             plt.show()
-            
-    def test_DataSet(self, run = True):
+
+    def test_DataSet(self, run=True):
         if run:
-            print('testing DataSet ... ')   
+            print("testing DataSet ... ")
             data = DataSet()
             data.plot_lines(show=False)
             data.correlation_matrix(show=False)
             data.show()
-    
+
 
 if __name__ == "__main__":
-    
+
     # output = unittest.main(exit=False)
 
     # create figute with 5x3 subplots
     fig, axs = plt.subplots(5, 3)
-    fig.suptitle('Subplots')
-    fig.set_label('Hip R')
-    
+    fig.suptitle("Subplots")
+    fig.set_label("Hip R")
+
     # activate the subplots IK (first row)
     ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
-    
+
     ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
 
-    ik_sumo = pd.read_csv(ik_sumo_path, sep='\t', skiprows=10)
-    ik_conv = pd.read_csv(ik_conve_path, sep='\t', skiprows=10)
+    ik_sumo = pd.read_csv(ik_sumo_path, sep="\t", skiprows=10)
+    ik_conv = pd.read_csv(ik_conve_path, sep="\t", skiprows=10)
     # returns A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
 
-    # activate the subplots ID (second row)
-    id_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/inverse_dynamics.sto"
-    
-    id_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/inverse_dynamics.sto"
-
-    id_sumo = pd.read_csv(id_sumo_path, sep='\t', skiprows=6)
-    id_conv = pd.read_csv(id_conve_path, sep='\t', skiprows=6)
-
     # check for desired columns in .csv files
-    if 'hip_flexion_r' in ik_sumo.columns:
-        print(ik_sumo['hip_flexion_r'])
-    else:
+    if "hip_flexion_r" not in ik_sumo.columns:
         print("Desired column not found in file:", ik_sumo_path)
-    
-    if 'hip_flexion_r' in ik_conv.columns:
-        print(ik_conv['hip_flexion_r'])
-    else:
+
+    if "hip_flexion_r" not in ik_conv.columns:
         print("Desired column not found in file:", ik_conve_path)
-    
+
     # todo cut array to 500 items.
     item_count = 499
     ik_sumo = ik_sumo[0:item_count]
     ik_conv = ik_conv[0:item_count]
-    print(ik_sumo)
-    print(ik_conv)
-    print("Columns in ik file:",ik_sumo.columns)
 
     # sumo deadlift curves, IK
     ## row 0, column 0
     plt.sca(axs[0, 0])
-    plt.plot(ik_sumo['time'], ik_sumo['hip_flexion_r'])
+    plt.plot(ik_sumo["time"], ik_sumo["hip_flexion_r"])
     plt.xlabel("Time")
     plt.ylabel("Hip Flexion R Sumo")
 
-     ## row 0, column 1, knee
+    ## row 0, column 1, knee
     plt.sca(axs[0, 1])
-    plt.plot(ik_sumo['time'], ik_sumo['knee_angle_r'])
+    plt.plot(ik_sumo["time"], ik_sumo["knee_angle_r"])
     plt.xlabel("Time")
     plt.ylabel("Knee Angle R Sumo")
 
     ## row 0, column 2, ankle
     plt.sca(axs[0, 2])
-    plt.plot(ik_sumo['time'], ik_sumo['ankle_angle_r'] )
+    plt.plot(ik_sumo["time"], ik_sumo["ankle_angle_r"])
     plt.xlabel("Time")
     plt.ylabel("Ankle Angle R Sumo")
 
-    print("ID file: ", id_sumo)
-    print("Columns in id file:", id_sumo.columns)
+    # activate the subplots ID (second row)
+    id_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/inverse_dynamics.sto"
 
-    # sumo deadlift curves, ID
+    id_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/inverse_dynamics.sto"
+
+    id_sumo = pd.read_csv(id_sumo_path, sep="\t", skiprows=6)
+    id_conv = pd.read_csv(id_conve_path, sep="\t", skiprows=6)
+
+    # sumo deadlift curves, ID, moments
     ## row 1, column 0, hip moments
     plt.sca(axs[1, 0])
-    plt.plot(id_sumo['time'], id_sumo['hip_flexion_r_moment'])
+    plt.plot(id_sumo["time"], id_sumo["hip_flexion_r_moment"])
     plt.xlabel("Time")
     plt.ylabel("Hip Flexion Moment R")
 
     ## row 1, column 1, knee moments
     plt.sca(axs[1, 1])
-    plt.plot(id_sumo['time'], id_sumo['knee_angle_r_moment'])
+    plt.plot(id_sumo["time"], id_sumo["knee_angle_r_moment"])
     plt.xlabel("Time")
     plt.ylabel("Knee Angle Moment R")
 
     ## row 1, column 2, ankle moments
     plt.sca(axs[1, 2])
-    plt.plot(id_sumo['time'], id_sumo['ankle_angle_r_moment'] )
+    plt.plot(id_sumo["time"], id_sumo["ankle_angle_r_moment"])
     plt.xlabel("Time")
     plt.ylabel("Ankle Angle Moment R")
+
+    # sumo deadlift curves, ID, moment arms
+    ## row 2, column 0, hip moments
+    plt.sca(axs[2, 0])
+    plt.plot(id_sumo["time"], id_sumo["hip_flexion_r_moment"])
+    plt.xlabel("Time")
+    plt.ylabel("Hip Moment arms R")
+
+    ## row 2, column 1, knee moments
+    plt.sca(axs[2, 1])
+    plt.plot(id_sumo["time"], id_sumo["knee_angle_r_moment"])
+    plt.xlabel("Time")
+    plt.ylabel("Knee Moment arms R")
+
+    ## row 2, column 2, ankle moments
+    plt.sca(axs[2, 2])
+    plt.plot(id_sumo["time"], id_sumo["ankle_angle_r_moment"])
+    plt.xlabel("Time")
+    plt.ylabel("Ankle Moment arms R")
+
+    # activate the subplots SO (fourthd row)
+    so_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
+
+    so_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
+
+    so_sumo = pd.read_csv(so_sumo_path, sep="\t", skiprows=12)
+    # so_conv = pd.read_csv(so_conve_path, sep="\t", skiprows=0)
+    print(so_sumo["endheader"])
+
+    # sumo deadlift curves, SO, muscle forces
+    ## row 3, column 0, hip muscle force
+    plt.sca(axs[2, 0])
+    plt.plot(so_sumo["endheader"]["time"], so_sumo["endheader"]["semimem_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Hip Muscle Force R")
+
+    ## row 3, column 1, knee muscle force
+    plt.sca(axs[2, 1])
+    plt.plot(so_sumo["time"], so_sumo["recfem_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Knee Muscle Force R")
+
+    ## row 3, column 2, ankle muscle force
+    plt.sca(axs[2, 2])
+    plt.plot(so_sumo["time"], so_sumo["gasmed_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Ankle Muscle Force R")
 
     # todo: insert also conventional deadlift curves
 
     # loop through the subplots and plot random data
     for i in range(5):
-      for j in range(3):
+        for j in range(3):
             # test plot_curves
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            filepath1 = os.path.join(current_dir, 'csv1.csv')
-            filepath2 = os.path.join(current_dir, 'csv2.csv')
-    plt.show()     
+            filepath1 = os.path.join(current_dir, "csv1.csv")
+            filepath2 = os.path.join(current_dir, "csv2.csv")
+    plt.show()
 
 # END
