@@ -333,24 +333,20 @@ if __name__ == "__main__":
     plt.xlabel("Time")
     plt.ylabel("Ankle Moment arms R")
 
-    # activate the subplots SO (fourthd row)
-    so_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
+    # activate the subplots Moment arms (third row)
+    momentArmHip_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto"
 
-    # so_conve_path = r"/Users/marcelhacker/Documents/#opensim-deadlift-techniques/athlete_0_increased_force_3/#conventional_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
+    momentArmKnee_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto"
 
-    so_sumo = pd.read_csv(so_sumo_path, sep="\t", skiprows=12)
-    # so_conv = pd.read_csv(so_conve_path, sep="\t", skiprows=12)
+    momentArmAnkle_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto"
+
+    momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=12)
+    momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=12)
+    momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=12)
 
     # print("IK:", ik_sumo.columns)
     # print("ID:", id_sumo.columns)
     # print("SO:", so_sumo["endheader"])
-
-    print("\nSO:", so_sumo["endheader"] + "\n")
-
-    arr = so_sumo["endheader"]["time"]
-    print("Arr:", arr)
-
-    so_sumo = arr
 
     # check for desired columns in .csv files
     CRED = "\033[91m"
