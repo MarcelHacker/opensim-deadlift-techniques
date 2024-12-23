@@ -30,7 +30,7 @@
 			<objects>
 				<StaticOptimization name="StaticOptimization">
 					<!--Flag (true or false) specifying whether on. True by default.-->
-					<on>true</on>
+					<on>false</on>
 					<!--Start time.-->
 					<start_time>6.5</start_time>
 					<!--End time.-->
@@ -50,6 +50,24 @@
 					<!--An integer for setting the maximum number of iterations the optimizer can use at each time.  -->
 					<optimizer_max_iterations>100</optimizer_max_iterations>
 				</StaticOptimization>
+				<MuscleAnalysis name="MuscleAnalysis">
+					<!--Flag (true or false) specifying whether on. True by default.-->
+					<on>true</on>
+					<!--Start time.-->
+					<start_time>6.5</start_time>
+					<!--End time.-->
+					<end_time>9</end_time>
+					<!--Specifies how often to store results during a simulation. More specifically, the interval (a positive integer) specifies how many successful integration steps should be taken before results are recorded again.-->
+					<step_interval>1</step_interval>
+					<!--Flag (true or false) indicating whether the results are in degrees or not.-->
+					<in_degrees>true</in_degrees>
+					<!--List of muscles for which to perform the analysis. Use 'all' to perform the analysis for all muscles.-->
+					<muscle_list> all</muscle_list>
+					<!--List of generalized coordinates for which to compute moment arms. Use 'all' to compute for all coordinates.-->
+					<moment_arm_coordinate_list> all</moment_arm_coordinate_list>
+					<!--Flag indicating whether moment-arms and/or moments should be computed.-->
+					<compute_moments>true</compute_moments>
+				</MuscleAnalysis>
 			</objects>
 			<groups />
 		</AnalysisSet>
@@ -59,7 +77,7 @@
 			<groups />
 		</ControllerSet>
 		<!--XML file (.xml) containing the forces applied to the model as ExternalLoads.-->
-		<external_loads_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/../ID/grf.xml</external_loads_file>
+		<external_loads_file>grf.xml</external_loads_file>
 		<!--Storage file (.sto) containing the time history of states for the model. This file often contains multiple rows of data, each row being a time-stamped array of states. The first column contains the time.  The rest of the columns contain the states in the order appropriate for the model. In a storage file, unlike a motion file (.mot), non-uniform time spacing is allowed.  If the user-specified initial time for a simulation does not correspond exactly to one of the time stamps in this file, interpolation is NOT used because it is sometimes necessary to use an exact set of states for analyses.  Instead, the closest earlier set of states is used.-->
 		<states_file />
 		<!--Motion file (.mot) or storage file (.sto) containing the time history of the generalized coordinates for the model. These can be specified in place of the states file.-->
