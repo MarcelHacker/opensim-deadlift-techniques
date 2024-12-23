@@ -20,7 +20,7 @@
 			</ExternalForce>
 			<ExternalForce name="externalforce_5">
 				<!--Name of the body the force is applied to.-->
-				<applied_to_body>ground</applied_to_body>
+				<applied_to_body>calcn_r</applied_to_body>
 				<!--Name of the body the force is expressed in (default is ground).-->
 				<force_expressed_in_body>ground</force_expressed_in_body>
 				<!--Name of the body the point is expressed in (default is ground).-->
@@ -37,6 +37,6 @@
 		</objects>
 		<groups />
 		<!--Storage file (.sto) containing (3) components of force and/or torque and point of application.Note: this file overrides the data source specified by the individual external forces if specified.-->
-		<datafile>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/sumo_dl_80kg02/ID/grf.mot</datafile>
+		<datafile>./grf.mot</datafile>
 	</ExternalLoads>
 </OpenSimDocument>
