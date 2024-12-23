@@ -250,8 +250,11 @@ if __name__ == "__main__":
 
     ik_sumo = ik_sumo[0:item_count]
     ik_conv = ik_conv[0:item_count]
+    print(ik_sumo)
+    print(ik_conv)
 
-    # plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
+    plt.plot(ik_sumo['hip_flexion_r'], ik_conv['hip_flexion_r'])
+    plt.plot(ik_sumo['hip_flexion_l'], ik_conv['hip_flexion_l'])
 
 
     # loop through the subplots and plot random data
@@ -261,6 +264,6 @@ if __name__ == "__main__":
             current_dir = os.path.dirname(os.path.abspath(__file__))
             filepath1 = os.path.join(current_dir, 'csv1.csv')
             filepath2 = os.path.join(current_dir, 'csv2.csv')
-    #plt.show()     
+    plt.show()     
 
 # END
