@@ -340,38 +340,36 @@ if __name__ == "__main__":
 
     momentArmAnkle_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto"
 
-    momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=12)
-    momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=12)
-    momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=12)
+    momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=9)
+    momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=9)
+    momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=9)
 
-    # print("IK:", ik_sumo.columns)
-    # print("ID:", id_sumo.columns)
-    # print("SO:", so_sumo["endheader"])
+    print(momentArmHip_sumo["endheader"])
 
     # check for desired columns in .csv files
     CRED = "\033[91m"
     CEND = "\033[0m"
-    if "semimem_r" not in so_sumo:
-        print(CRED + "\nDesired column not found in file:" + CEND, so_sumo_path + "\n")
+    # if "semimem_r" not in so_sumo:
+    #   print(CRED + "\nDesired column not found in file:" + CEND, so_sumo_path + "\n")
 
     # sumo deadlift curves, SO, muscle forces
-    ## row 3, column 0, hip muscle force
+    ## row 3, column 0, hip moment arms
     plt.sca(axs[2, 0])
-    plt.plot(so_sumo["time"], so_sumo["semimem_r"])
+    plt.plot(momentArmHip_sumo.endheader["time"], momentArmHip_sumo.endheader["time"])
     plt.xlabel("Time")
-    plt.ylabel("Hip Muscle Force R")
+    plt.ylabel("Hip Moment arms R")
 
     ## row 3, column 1, knee muscle force
     plt.sca(axs[2, 1])
-    plt.plot(so_sumo["time"], so_sumo["recfem_r"])
+    # plt.plot(so_sumo["time"], so_sumo["recfem_r"])
     plt.xlabel("Time")
-    plt.ylabel("Knee Muscle Force R")
+    plt.ylabel("Knee Moment arms R")
 
     ## row 3, column 2, ankle muscle force
     plt.sca(axs[2, 2])
-    plt.plot(so_sumo["time"], so_sumo["gasmed_r"])
+    # plt.plot(so_sumo["time"], so_sumo["gasmed_r"])
     plt.xlabel("Time")
-    plt.ylabel("Ankle Muscle Force R")
+    plt.ylabel("Ankle Moment arms R")
 
     # todo: insert also conventional deadlift curves
 
