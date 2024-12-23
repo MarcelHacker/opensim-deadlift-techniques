@@ -2,13 +2,10 @@
 
 FOR MAC
 
-# 1. Activate env
+# 1. Activate env and nagivate to project
 
 cd "/Users/marcelhacker/penv/bin"
 source activate
-
-# 2. Navigate to project
-
 cd "/Users/marcelhacker/Documents/opensim-deadlift-techniques"
 
 FOR WINDOWS PC
