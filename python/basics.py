@@ -312,29 +312,85 @@ if __name__ == "__main__":
     plt.ylabel("Ankle Angle Moment R")
 
     # activate the subplots Moment arms (third row)
-    # momentArmKnee_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto"
+    momentArmKnee_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto"
 
-    # momentArmAnkle_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto"
-
-    # momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=9)
-    # momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=9)
+    momentArmAnkle_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto"
 
     momentArmHip_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto"
 
-    momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=9)
-
-    print(momentArmHip_sumo.endheader)  # KeyError(key) from err KeyError: 'time'
-
-    # Prints the type of each variable
-    print("The type of momentArmHip is ", type(momentArmHip_sumo))
-    # type is <class 'pandas.core.frame.DataFrame'>
+    momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=11)
+    momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=11)
+    momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=11)
 
     # sumo deadlift curves, MA, Moment arms
     ## row 3, column 0, hip moment arms
     plt.sca(axs[2, 0])
-    plt.plot(momentArmHip_sumo["endheader"], momentArmHip_sumo["endheader"])
+    plt.plot(momentArmHip_sumo["time"], momentArmHip_sumo["semiten_r"])
     plt.xlabel("Time")
     plt.ylabel("Hip Moment arms R")
+
+    ## row 3, column 1, knee moment arms
+    plt.sca(axs[2, 1])
+    plt.plot(momentArmKnee_sumo["time"], momentArmKnee_sumo["vaslat_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Knee Moment arms R")
+
+    ## row 3, column 2, ankle moment arms
+    plt.sca(axs[2, 2])
+    plt.plot(momentArmAnkle_sumo["time"], momentArmAnkle_sumo["soleus_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Ankle Moment arms R")
+
+    # activate the subplots muscle forces arms (fourth row)
+    muscleForces_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
+
+    muscleForces_sumo = pd.read_csv(muscleForces_sumo_path, sep="\t", skiprows=14)
+
+    # sumo deadlift curves, SO, muscle forces
+    ## row 4, column 0, hip muscle forces
+    plt.sca(axs[3, 0])
+    plt.plot(muscleForces_sumo["time"], muscleForces_sumo["semiten_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Hip Muscle force R")
+
+    ## row 4, column 1, knee muscle forces
+    plt.sca(axs[3, 1])
+    plt.plot(muscleForces_sumo["time"], muscleForces_sumo["vaslat_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Knee Muscle force R")
+
+    ## row 4, column 2, ankle muscle forces
+    plt.sca(axs[3, 2])
+    plt.plot(muscleForces_sumo["time"], muscleForces_sumo["soleus_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Ankle Muscle force R")
+
+    # activate the subplots muscle forces arms (fourth row)
+    muscleActivation_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_activation.sto"
+
+    muscleActivation_sumo = pd.read_csv(
+        muscleActivation_sumo_path, sep="\t", skiprows=8
+    )
+    print(muscleActivation_sumo.columns)
+
+    # sumo deadlift curves, SO, muscle forces
+    ## row 4, column 0, hip muscle forces
+    plt.sca(axs[4, 0])
+    plt.plot(muscleActivation_sumo["time"], muscleActivation_sumo["semiten_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Hip Muscle activation R")
+
+    ## row 4, column 1, knee muscle forces
+    plt.sca(axs[4, 1])
+    plt.plot(muscleActivation_sumo["time"], muscleActivation_sumo["vaslat_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Knee Muscle activation R")
+
+    ## row 4, column 2, ankle muscle forces
+    plt.sca(axs[4, 2])
+    plt.plot(muscleActivation_sumo["time"], muscleActivation_sumo["soleus_r"])
+    plt.xlabel("Time")
+    plt.ylabel("Ankle Muscle activation R")
 
     # todo: insert also conventional deadlift curves
 
@@ -345,6 +401,6 @@ if __name__ == "__main__":
             current_dir = os.path.dirname(os.path.abspath(__file__))
             filepath1 = os.path.join(current_dir, "csv1.csv")
             filepath2 = os.path.join(current_dir, "csv2.csv")
-    # plt.show()
+    plt.show()
 
 # END
