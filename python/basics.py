@@ -238,6 +238,14 @@ class test(unittest.TestCase):
             data.show()
 
 
+# Helper functions
+class dataHelper:
+    # for each function assign True or false to run the test
+    def test_plot_curves(self, run=False):
+        if run:
+            print("Hi")
+
+
 if __name__ == "__main__":
 
     # output = unittest.main(exit=False)
