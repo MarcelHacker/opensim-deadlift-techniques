@@ -238,18 +238,7 @@ class test(unittest.TestCase):
             data.show()
 
 
-# Helper functions
-class dataHelper:
-    # for each function assign True or false to run the test
-    def test_plot_curves(self, run=False):
-        if run:
-            print("Hi")
-
-
 if __name__ == "__main__":
-
-    # output = unittest.main(exit=False)
-
     # create figute with 5x3 subplots
     fig, axs = plt.subplots(5, 3)
     fig.suptitle("Subplots")
@@ -271,7 +260,7 @@ if __name__ == "__main__":
     if "hip_flexion_r" not in ik_conv.columns:
         print("Desired column not found in file:", ik_conve_path)
 
-    # todo cut array to 500 items.
+    # cut array to 500 items.
     item_count = 499
     ik_sumo = ik_sumo[0:item_count]
     ik_conv = ik_conv[0:item_count]
@@ -333,12 +322,8 @@ if __name__ == "__main__":
     momentArmHip_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto"
 
     momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=9)
-    test_momentArmHip_sumo = pd.read_table(momentArmHip_sumo_path, sep="\t", skiprows=9)
 
-    print(test_momentArmHip_sumo)  # no difference to momentArmHip_sumo
-    print(momentArmHip_sumo["time"])  # KeyError(key) from err KeyError: 'time'
-    print(momentArmHip_sumo.time)  # no attribute 'time'
-    print(momentArmHip_sumo["time"][2])  # KeyError: 'time'
+    print(momentArmHip_sumo.endheader)  # KeyError(key) from err KeyError: 'time'
 
     # Prints the type of each variable
     print("The type of momentArmHip is ", type(momentArmHip_sumo))
@@ -347,9 +332,7 @@ if __name__ == "__main__":
     # sumo deadlift curves, MA, Moment arms
     ## row 3, column 0, hip moment arms
     plt.sca(axs[2, 0])
-    plt.plot(
-        momentArmHip_sumo["endheader"]["time"], momentArmHip_sumo["endheader"]["time"]
-    )
+    plt.plot(momentArmHip_sumo["endheader"], momentArmHip_sumo["endheader"])
     plt.xlabel("Time")
     plt.ylabel("Hip Moment arms R")
 
