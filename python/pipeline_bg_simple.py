@@ -12,7 +12,7 @@ run_ik = False
 run_id = False
 run_so = False
 
-osim_model_path = None
+osim_model_path = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/athlete_0_increased_force_3.osim"  # test
 static_trc_file_path = None
 max_isometric_force_scale_factor = 1
 

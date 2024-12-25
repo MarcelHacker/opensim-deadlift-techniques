@@ -186,6 +186,98 @@ def plot_multiple_curves(files):
     plt.show()
 
 
+def calculate_joint_centres_modified(
+    trc_filepath, new_filepath=None
+):  # modified from lib
+    """
+    Calculates hip joint centers in a TRC file according to Harrington et al.
+
+    Args:
+        trc_filepath (str): Path to the TRC file.
+        new_filepath (str, optional): Path to save the modified TRC file. Defaults to None.
+
+    Returns:
+        dict: Dictionary containing the modified TRC data.
+    """
+
+    # Load TRC data
+    with open(trc_filepath, "r") as f:
+        # ... (Implementation for loading TRC data using your preferred library)
+        trc = ...
+
+    # Set default output filepath
+    if new_filepath is None:
+        new_filepath = trc_filepath.replace(".trc", "_HJC.trc")
+
+    # Sample rate (assuming data is evenly sampled)
+    rate = round(1 / (trc["Time"][1] - trc["Time"][0]))
+
+    # Add HJC using Harrington equations
+    trc = add_hjc_harrington(trc)
+
+    # Add knee and ankle joint centers (assuming markers exist)
+    trc["RKJC"] = (trc["RKNE"] + trc["RKNM"]) / 2
+    trc["LKJC"] = (trc["LKNE"] + trc["LKNM"]) / 2
+    trc["RAJC"] = (trc["RANK"] + trc["RANM"]) / 2
+    trc["LAJC"] = (trc["LANK"] + trc["LANM"]) / 2
+
+    # Convert markers to separate data and labels (assuming specific format)
+    markers_data = np.array([v for k, v in trc.items() if k != "Time"])
+    marker_labels = list(trc.keys())[1:]
+
+    # Save modified TRC data
+    try:
+        # ... (Implementation for saving TRC data using your preferred library)
+        write_trc_os4(markers_data, marker_labels, rate, new_filepath)
+    except Exception as e:
+        print(f"Error saving TRC file: {e}")
+        # Handle potential issues (e.g., missing markers)
+
+    return trc
+
+
+def add_hjc_harrington(trc):
+    """
+    Calculates hip joint centers (HJC) using Harrington et al. (2006) formulas.
+
+    Args:
+        trc (dict): Dictionary containing TRC data.
+
+    Returns:
+        dict: Modified TRC data with added HJC markers.
+    """
+
+    lasis = trc["LASI"].T
+    rasis = trc["RASI"].T
+
+    # Handle missing SACRUM marker
+    try:
+        sacrum = trc["SACR"].T
+    except KeyError:
+        sacrum = (trc["LPSI"] + trc["RPSI"]) / 2
+        trc["SACR"] = sacrum.T
+
+    num_frames = len(rasis)
+    hjc_left, hjc_right = np.empty((3, num_frames)), np.empty((3, num_frames))
+
+    for i in range(num_frames):
+        # Right-handed pelvis reference system definition
+        pelvis_center = (lasis[:, i] + rasis[:, i]) / 2
+        provv = (rasis[:, i] - sacrum[:, i]) / np.linalg.norm(
+            rasis[:, i] - sacrum[:, i]
+        )
+        ib = (rasis[:, i] - lasis[:, i]) / np.linalg.norm(rasis[:, i] - lasis[:, i])
+        kb = np.cross(ib, provv)
+        kb /= np.linalg.norm(kb)
+        jb = np.cross(kb, ib)
+        jb /= np.linalg.norm(jb)
+
+    pelvis_transform = np.array(
+        [ib[0], jb[0], kb[0], pelvis_center[0]],
+        [ib[1], jb[1], kb[1], pelvis_center[1], ib[2], jb[1]],
+    )
+
+
 def spider(files):
     # Read the CSV files
 
@@ -243,6 +335,10 @@ if __name__ == "__main__":
     fig, axs = plt.subplots(5, 3)
     fig.suptitle("Subplots")
     fig.set_label("Hip R")
+
+    calculate_joint_centres_modified(
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/static_00.trc"
+    )
 
     # activate the subplots IK (first row)
     ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
@@ -371,7 +467,6 @@ if __name__ == "__main__":
     muscleActivation_sumo = pd.read_csv(
         muscleActivation_sumo_path, sep="\t", skiprows=8
     )
-    print(muscleActivation_sumo.columns)
 
     # sumo deadlift curves, SO, muscle forces
     ## row 4, column 0, hip muscle forces
@@ -401,6 +496,6 @@ if __name__ == "__main__":
             current_dir = os.path.dirname(os.path.abspath(__file__))
             filepath1 = os.path.join(current_dir, "csv1.csv")
             filepath2 = os.path.join(current_dir, "csv2.csv")
-    plt.show()
+    # plt.show()
 
 # END
