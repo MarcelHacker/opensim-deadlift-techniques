@@ -199,18 +199,22 @@ def calculate_joint_centres_modified(
     Returns:
         dict: Dictionary containing the modified TRC data.
     """
+    trc = pd.read_csv(trc_filepath, sep="\t", skiprows=3)
+    print("TRC: ", trc)
+    print("TRC: ", trc["Time"][1])  # time [0] is NaN in this trc file
+    print("TRC: ", trc["Time"][2])
 
     # Load TRC data
-    with open(trc_filepath, "r") as f:
-        # ... (Implementation for loading TRC data using your preferred library)
-        trc = ...
+    # with open(trc_filepath, "r") as f:
+    # ... (Implementation for loading TRC data using your preferred library)
+    #   trc = ...
 
     # Set default output filepath
     if new_filepath is None:
         new_filepath = trc_filepath.replace(".trc", "_HJC.trc")
 
     # Sample rate (assuming data is evenly sampled)
-    rate = round(1 / (trc["Time"][1] - trc["Time"][0]))
+    rate = round(1 / (trc["Time"][2] - trc["Time"][1]))  # time[0] is NaN in trc file
 
     # Add HJC using Harrington equations
     trc = add_hjc_harrington(trc)
@@ -252,10 +256,10 @@ def add_hjc_harrington(trc):
 
     # Handle missing SACRUM marker
     try:
-        sacrum = trc["SACR"].T
+        sacrum = trc["USACR"].T  # USACR markers exist in this model
     except KeyError:
         sacrum = (trc["LPSI"] + trc["RPSI"]) / 2
-        trc["SACR"] = sacrum.T
+        trc["USACR"] = sacrum.T
 
     num_frames = len(rasis)
     hjc_left, hjc_right = np.empty((3, num_frames)), np.empty((3, num_frames))
