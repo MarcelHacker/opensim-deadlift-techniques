@@ -9,94 +9,103 @@ import seaborn as sns
 
 
 if __name__ == "__main__":
-    # create figute with 5x3 subplots
-    fig, axs = plt.subplots(3, 3)
-    fig.suptitle("Deadlift Sumo Forces Athlete_0")
-    fig.set_label("Forces R")
 
-    # activate the subplots IK (first row)
+    run_quadriceps_plot = True
+
+    # activate the subplots IK
     ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
+    ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
 
-    # activate the subplots muscle forces arms (fourth row)
+    # activate the subplots muscle forces
     muscleForces_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
-
-    # activate the subplots muscle forces arms (fith row)
-    muscleActivation_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_activation.sto"
+    muscleForces_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
 
     ik_sumo = pd.read_csv(ik_sumo_path, sep="\t", skiprows=10)
+    ik_conve = pd.read_csv(ik_conve_path, sep="\t", skiprows=10)
+
     muscleForces_sumo = pd.read_csv(muscleForces_sumo_path, sep="\t", skiprows=14)
-    muscleActivation_sumo = pd.read_csv(
-        muscleActivation_sumo_path, sep="\t", skiprows=8
-    )
-    # returns A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
-    if ik_sumo.empty:  # check if file is empty
-        print("File is empty:", ik_sumo_path)
-    if muscleForces_sumo.empty:
-        print("File is empty:", muscleForces_sumo_path)
-    if muscleActivation_sumo.empty:
-        print("File is empty:", muscleActivation_sumo_path)
+    muscleForces_conve = pd.read_csv(muscleForces_conve_path, sep="\t", skiprows=14)
 
-    # check for desired columns in ik files
-    if "hip_flexion_r" not in ik_sumo.columns:
-        print("Desired column not found in file:", ik_sumo_path)
+    if run_quadriceps_plot:
+        try:
+            # create figure with 5x2 subplots (1 for sumo and 1 for conventional)
+            fig, axs = plt.subplots(5, 2)
+            fig.suptitle(
+                "Deadlift Quadriceps Forces Athlete_0; Model: athlete_0_increased_force_3 "
+            )
+            fig.set_label("Muscle Forces R")
 
-    # sumo deadlift curves, IK
-    ## row 0, column 0
-    plt.sca(axs[0, 0])
-    plt.plot(ik_sumo["time"], ik_sumo["hip_flexion_r"])
-    plt.xlabel("Time")
-    plt.ylabel("Hip Flexion")
+            if ik_sumo.empty:  # check if file is empty
+                print("File is empty:", ik_sumo_path)
+            if ik_conve.empty:
+                print("File is empty:", ik_conve_path)
+            if muscleForces_sumo.empty:
+                print("File is empty:", muscleForces_sumo_path)
+            if muscleForces_conve.empty:
+                print("File is empty:", muscleForces_conve_path)
 
-    ## row 0, column 1, knee
-    plt.sca(axs[0, 1])
-    plt.plot(ik_sumo["time"], ik_sumo["knee_angle_r"])
-    plt.xlabel("Time")
-    plt.ylabel("Knee Flexion")
+            if "knee_angle_r" not in ik_sumo.columns:
+                print("Desired column not found in file:", ik_sumo_path)
+            if "knee_angle_r" not in ik_conve.columns:
+                print("Desired column not found in file:", ik_conve_path)
+            ## row 0
+            axs[0, 0].set_title("Sumo Deadlift 80kg")
+            plt.sca(axs[0, 0])
+            plt.plot(ik_sumo["time"], ik_sumo["knee_angle_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Knee Flexion")
 
-    ## row 0, column 2, ankle
-    plt.sca(axs[0, 2])
-    plt.plot(ik_sumo["time"], ik_sumo["ankle_angle_r"])
-    plt.xlabel("Time")
-    plt.ylabel("Ankle Flexion")
+            axs[0, 1].set_title("Conventional Deadlift 80kg", color="red")
+            plt.sca(axs[0, 1])
+            plt.plot(ik_conve["time"], ik_conve["knee_angle_r"])
+            plt.title("Conventional Deadlift 80kg")
+            plt.xlabel("Time")
+            plt.ylabel("Knee Flexion")
 
-    # sumo deadlift curves, SO, muscle forces
-    ## row 1, column 0, hip muscle forces
-    plt.sca(axs[1, 0])
-    plt.plot(muscleForces_sumo["time"], muscleForces_sumo["hip_flexion_r_moment"])
-    plt.xlabel("Time")
-    plt.ylabel("Hip Flexion Moment R")
+            plt.sca(axs[1, 0])
+            plt.plot(muscleForces_sumo["time"], muscleForces_sumo["recfem_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Recfem_r")
 
-    ## row 1, column 1, knee moments
-    plt.sca(axs[1, 1])
-    plt.plot(muscleForces_sumo["time"], muscleForces_sumo["knee_angle_r_moment"])
-    plt.xlabel("Time")
-    plt.ylabel("Knee Angle Moment R")
+            plt.sca(axs[1, 1])
+            plt.plot(muscleForces_conve["time"], muscleForces_conve["recfem_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Recfem_r")
 
-    ## row 1, column 2, ankle moments
-    plt.sca(axs[1, 2])
-    plt.plot(muscleForces_sumo["time"], muscleForces_sumo["ankle_angle_r_moment"])
-    plt.xlabel("Time")
-    plt.ylabel("Ankle Angle Moment R")
+            plt.sca(axs[2, 0])
+            plt.plot(muscleForces_sumo["time"], muscleForces_sumo["vaslat_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Vaslat_r")
 
-    # sumo deadlift curves, SO, Muscle activations
-    ## row 3, column 0, hip moment arms
-    plt.sca(axs[2, 0])
-    plt.plot(muscleActivation_sumo["time"], muscleActivation_sumo["semiten_r"])
-    plt.xlabel("Time")
-    plt.ylabel("Hip Moment arms R")
+            plt.sca(axs[2, 1])
+            plt.plot(muscleForces_conve["time"], muscleForces_conve["vaslat_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Vaslat_r")
 
-    ## row 3, column 1, knee moment arms
-    plt.sca(axs[2, 1])
-    plt.plot(muscleActivation_sumo["time"], muscleActivation_sumo["vaslat_r"])
-    plt.xlabel("Time")
-    plt.ylabel("Knee Moment arms R")
+            plt.sca(axs[3, 0])
+            plt.plot(muscleForces_sumo["time"], muscleForces_sumo["vasmed_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Vasmed_r")
 
-    ## row 3, column 2, ankle moment arms
-    plt.sca(axs[2, 2])
-    plt.plot(muscleActivation_sumo["time"], muscleActivation_sumo["soleus_r"])
-    plt.xlabel("Time")
-    plt.ylabel("Ankle Moment arms R")
+            plt.sca(axs[3, 1])
+            plt.plot(muscleForces_conve["time"], muscleForces_conve["vasmed_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Vasmed_r")
 
-    plt.show()
+            plt.sca(axs[4, 0])
+            plt.plot(muscleForces_sumo["time"], muscleForces_sumo["vasint_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Vasint_r")
+
+            plt.sca(axs[4, 1])
+            plt.plot(muscleForces_conve["time"], muscleForces_conve["vasint_r"])
+            plt.xlabel("Time")
+            plt.ylabel("Vasint_r")
+
+            plt.show()
+
+        except Exception as e:
+            print("Error in run_quadriceps_plot")
+            print(e)
 
 # END
