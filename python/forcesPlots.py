@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     # activate the subplots IK
     ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
-    ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
+    ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
 
     # activate the subplots muscle forces
     muscleForces_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     if run_quadriceps_plot:
         try:
             # create figure with 5x2 subplots (1 for sumo and 1 for conventional)
-            fig, axs = plt.subplots(6, 2)
+            fig, axs = plt.subplots(6, 1)
             fig.suptitle(
                 "Muscle Forces Quadriceps Athlete_0; Model: athlete_0_increased_force_3"
             )
@@ -52,70 +52,79 @@ if __name__ == "__main__":
 
             ## row 0
             ## knee angles
-            axs[0, 0].set_title("Sumo Deadlift 80kg")
-            plt.sca(axs[0, 0])
-            plt.plot(ik_sumo["time"], ik_sumo["knee_angle_r"], color="red")
+            plt.sca(axs[0])
+            plt.plot(ik_sumo["time"], ik_sumo["knee_angle_r"], label="Sumo")
+            plt.plot(
+                ik_conve["time"], ik_conve["knee_angle_r"], label="Conventional 80%"
+            )
+            plt.legend()
             plt.xlabel("Time")
             plt.ylabel("Knee Flex [°]")
-
-            axs[0, 1].set_title("Conventional Deadlift 80kg", color="red")
-            plt.sca(axs[0, 1])
-            plt.plot(ik_conve["time"], ik_conve["knee_angle_r"], color="red")
-            plt.xlabel("Time")
-            plt.ylabel("Knee Flex [°]")
+            # Conventional Deadlift 80kg
 
             ## hip angles
-            plt.sca(axs[1, 0])
-            plt.plot(ik_sumo["time"], ik_sumo["hip_flexion_r"], color="green")
-            plt.xlabel("Time")
-            plt.ylabel("Hip Flex [°]")
-
-            plt.sca(axs[1, 1])
-            plt.plot(ik_conve["time"], ik_conve["hip_flexion_r"], color="green")
+            plt.sca(axs[1])
+            plt.plot(ik_sumo["time"], ik_sumo["hip_flexion_r"], label="Sumo")
+            plt.plot(
+                ik_conve["time"], ik_conve["hip_flexion_r"], label="Conventional 80%"
+            )
+            plt.legend()
             plt.xlabel("Time")
             plt.ylabel("Hip Flex [°]")
 
             ## rectus femoris
-            plt.sca(axs[2, 0])
-            plt.plot(muscleForces_sumo["time"], muscleForces_sumo["recfem_r"])
-            plt.xlabel("Time")
-            plt.ylabel("Rec fem. [N]")
-
-            plt.sca(axs[2, 1])
-            plt.plot(muscleForces_conve["time"], muscleForces_conve["recfem_r"])
+            plt.sca(axs[2])
+            plt.plot(
+                muscleForces_sumo["time"], muscleForces_sumo["recfem_r"], label="Sumo"
+            )
+            plt.plot(
+                muscleForces_conve["time"],
+                muscleForces_conve["recfem_r"],
+                label="Conventional 80%",
+            )
+            plt.legend()
             plt.xlabel("Time")
             plt.ylabel("Rec fem. [N]")
 
             ## vastus lateralis
-            plt.sca(axs[3, 0])
-            plt.plot(muscleForces_sumo["time"], muscleForces_sumo["vaslat_r"])
-            plt.xlabel("Time")
-            plt.ylabel("Vas lat. [N]")
-
-            plt.sca(axs[3, 1])
-            plt.plot(muscleForces_conve["time"], muscleForces_conve["vaslat_r"])
+            plt.sca(axs[3])
+            plt.plot(
+                muscleForces_sumo["time"], muscleForces_sumo["vaslat_r"], label="Sumo"
+            )
+            plt.plot(
+                muscleForces_conve["time"],
+                muscleForces_conve["vaslat_r"],
+                label="Conventional 80%",
+            )
+            plt.legend()
             plt.xlabel("Time")
             plt.ylabel("Vas lat. [N]")
 
             ## vastus medialis
-            plt.sca(axs[4, 0])
-            plt.plot(muscleForces_sumo["time"], muscleForces_sumo["vasmed_r"])
-            plt.xlabel("Time")
-            plt.ylabel("Vas med. [N]")
-
-            plt.sca(axs[4, 1])
-            plt.plot(muscleForces_conve["time"], muscleForces_conve["vasmed_r"])
+            plt.sca(axs[4])
+            plt.plot(
+                muscleForces_sumo["time"], muscleForces_sumo["vasmed_r"], label="Sumo"
+            )
+            plt.plot(
+                muscleForces_conve["time"],
+                muscleForces_conve["vasmed_r"],
+                label="Conventional 80%",
+            )
+            plt.legend()
             plt.xlabel("Time")
             plt.ylabel("Vas med. [N]")
 
             ## vastus intermedius
-            plt.sca(axs[5, 0])
-            plt.plot(muscleForces_sumo["time"], muscleForces_sumo["vasint_r"])
-            plt.xlabel("Time")
-            plt.ylabel("Vas int. [N]")
-
-            plt.sca(axs[5, 1])
-            plt.plot(muscleForces_conve["time"], muscleForces_conve["vasint_r"])
+            plt.sca(axs[5])
+            plt.plot(
+                muscleForces_sumo["time"], muscleForces_sumo["vasint_r"], label="Sumo"
+            )
+            plt.plot(
+                muscleForces_conve["time"],
+                muscleForces_conve["vasint_r"],
+                label="Conventional 80%",
+            )
+            plt.legend()
             plt.xlabel("Time")
             plt.ylabel("Vas int. [N]")
 
