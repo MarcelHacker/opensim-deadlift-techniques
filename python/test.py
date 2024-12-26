@@ -1,8 +1,9 @@
 # test opensim
-import struct 
-print("Bit version of python:",struct.calcsize("P") * 8)
+import struct
 
-# activate your virtual environment 
+print("Bit version of python:", struct.calcsize("P") * 8)
+
+# activate your virtual environment
 # cd penv
 # cd bin
 # source activate
@@ -11,7 +12,7 @@ import opensim as osim
 
 model = osim.Model()
 
-print("Version and date of opensim: ",osim.GetVersionAndDate())
+print("Version and date of opensim: ", osim.GetVersionAndDate())
 
 print("OpenSim model created successfully!")
 

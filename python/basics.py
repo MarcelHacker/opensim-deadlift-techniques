@@ -337,21 +337,66 @@ class test(unittest.TestCase):
 if __name__ == "__main__":
     # create figute with 5x3 subplots
     fig, axs = plt.subplots(5, 3)
-    fig.suptitle("Subplots")
+    fig.suptitle("Deadlift Sumo Technique Athlete_0")
     fig.set_label("Hip R")
 
-    calculate_joint_centres_modified(
-        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/static_00.trc"
-    )
+    # calculate_joint_centres_modified(
+    #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/static_00.trc"
+    # )
 
     # activate the subplots IK (first row)
     ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
 
     ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
 
+    # activate the subplots ID (second row)
+    id_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/inverse_dynamics.sto"
+
+    id_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/inverse_dynamics.sto"
+
+    # activate the subplots Moment arms (third row)
+    momentArmKnee_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto"
+
+    momentArmAnkle_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto"
+
+    momentArmHip_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto"
+
+    # activate the subplots muscle forces arms (fourth row)
+    muscleForces_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
+
+    # activate the subplots muscle forces arms (fith row)
+    muscleActivation_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_activation.sto"
+
     ik_sumo = pd.read_csv(ik_sumo_path, sep="\t", skiprows=10)
     ik_conv = pd.read_csv(ik_conve_path, sep="\t", skiprows=10)
+    id_sumo = pd.read_csv(id_sumo_path, sep="\t", skiprows=6)
+    id_conv = pd.read_csv(id_conve_path, sep="\t", skiprows=6)
+    momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=11)
+    momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=11)
+    momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=11)
+    muscleForces_sumo = pd.read_csv(muscleForces_sumo_path, sep="\t", skiprows=14)
+    muscleActivation_sumo = pd.read_csv(
+        muscleActivation_sumo_path, sep="\t", skiprows=8
+    )
     # returns A comma-separated values (csv) file is returned as two-dimensional data structure with labeled axes.
+    if ik_sumo.empty:  # check if file is empty
+        print("File is empty:", ik_sumo_path)
+    if ik_conv.empty:
+        print("File is empty:", ik_conve_path)
+    if id_sumo.empty:
+        print("File is empty:", id_sumo_path)
+    if id_conv.empty:
+        print("File is empty:", id_conve_path)
+    if momentArmHip_sumo.empty:
+        print("File is empty:", momentArmHip_sumo_path)
+    if momentArmKnee_sumo.empty:
+        print("File is empty:", momentArmKnee_sumo_path)
+    if momentArmAnkle_sumo.empty:
+        print("File is empty:", momentArmAnkle_sumo_path)
+    if muscleForces_sumo.empty:
+        print("File is empty:", muscleForces_sumo_path)
+    if muscleActivation_sumo.empty:
+        print("File is empty:", muscleActivation_sumo_path)
 
     # check for desired columns in ik files
     if "hip_flexion_r" not in ik_sumo.columns:
@@ -384,14 +429,6 @@ if __name__ == "__main__":
     plt.xlabel("Time")
     plt.ylabel("Ankle Angle R Sumo")
 
-    # activate the subplots ID (second row)
-    id_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/inverse_dynamics.sto"
-
-    id_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/inverse_dynamics.sto"
-
-    id_sumo = pd.read_csv(id_sumo_path, sep="\t", skiprows=6)
-    id_conv = pd.read_csv(id_conve_path, sep="\t", skiprows=6)
-
     # sumo deadlift curves, ID, moments
     ## row 1, column 0, hip moments
     plt.sca(axs[1, 0])
@@ -410,17 +447,6 @@ if __name__ == "__main__":
     plt.plot(id_sumo["time"], id_sumo["ankle_angle_r_moment"])
     plt.xlabel("Time")
     plt.ylabel("Ankle Angle Moment R")
-
-    # activate the subplots Moment arms (third row)
-    momentArmKnee_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto"
-
-    momentArmAnkle_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto"
-
-    momentArmHip_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto"
-
-    momentArmHip_sumo = pd.read_csv(momentArmHip_sumo_path, sep="\t", skiprows=11)
-    momentArmKnee_sumo = pd.read_csv(momentArmKnee_sumo_path, sep="\t", skiprows=11)
-    momentArmAnkle_sumo = pd.read_csv(momentArmAnkle_sumo_path, sep="\t", skiprows=11)
 
     # sumo deadlift curves, MA, Moment arms
     ## row 3, column 0, hip moment arms
@@ -441,11 +467,6 @@ if __name__ == "__main__":
     plt.xlabel("Time")
     plt.ylabel("Ankle Moment arms R")
 
-    # activate the subplots muscle forces arms (fourth row)
-    muscleForces_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_force.sto"
-
-    muscleForces_sumo = pd.read_csv(muscleForces_sumo_path, sep="\t", skiprows=14)
-
     # sumo deadlift curves, SO, muscle forces
     ## row 4, column 0, hip muscle forces
     plt.sca(axs[3, 0])
@@ -464,13 +485,6 @@ if __name__ == "__main__":
     plt.plot(muscleForces_sumo["time"], muscleForces_sumo["soleus_r"])
     plt.xlabel("Time")
     plt.ylabel("Ankle Muscle force R")
-
-    # activate the subplots muscle forces arms (fourth row)
-    muscleActivation_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_StaticOptimization_activation.sto"
-
-    muscleActivation_sumo = pd.read_csv(
-        muscleActivation_sumo_path, sep="\t", skiprows=8
-    )
 
     # sumo deadlift curves, SO, muscle forces
     ## row 4, column 0, hip muscle forces
@@ -492,14 +506,6 @@ if __name__ == "__main__":
     plt.ylabel("Ankle Muscle activation R")
 
     # todo: insert also conventional deadlift curves
-
-    # loop through the subplots and plot random data
-    for i in range(5):
-        for j in range(3):
-            # test plot_curves
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            filepath1 = os.path.join(current_dir, "csv1.csv")
-            filepath2 = os.path.join(current_dir, "csv2.csv")
-    # plt.show()
+    plt.show()
 
 # END
