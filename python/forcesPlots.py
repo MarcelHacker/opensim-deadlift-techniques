@@ -44,7 +44,7 @@ class athlete:
 
 if __name__ == "__main__":
 
-    run_quadriceps_plot = True
+    run_forces_plot = True
     run_muscle_force_sum_plot = False
 
     # creating athlete list
@@ -68,65 +68,76 @@ if __name__ == "__main__":
     muscleForces_sumo = pd.read_csv(muscleForces_sumo_path, sep="\t", skiprows=14)
     muscleForces_conve = pd.read_csv(muscleForces_conve_path, sep="\t", skiprows=14)
 
-    if run_quadriceps_plot:
+    if ik_sumo.empty:  # check if file is empty
+        print("File is empty:", ik_sumo_path)
+    if ik_conve.empty:
+        print("File is empty:", ik_conve_path)
+    if muscleForces_sumo.empty:
+        print("File is empty:", muscleForces_sumo_path)
+    if muscleForces_conve.empty:
+        print("File is empty:", muscleForces_conve_path)
+
+    if "knee_angle_r" not in ik_sumo.columns:
+        print("Desired column not found in file:", ik_sumo_path)
+    if "knee_angle_r" not in ik_conve.columns:
+        print("Desired column not found in file:", ik_conve_path)
+
+    ### time normalise everything to 101 values
+    ik_sumo_time_normalised = time_normalise_df(ik_sumo)
+    ik_conve_time_normalised = time_normalise_df(ik_conve)
+    muscleForces_sumo_time_normalised = time_normalise_df(muscleForces_sumo)
+    muscleForces_conve_time_normalised = time_normalise_df(muscleForces_conve)
+
+    if run_forces_plot:
         try:
-            # create figure with 5x3 subplots (1 for sumo and 1 for conventional)
+            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 3
             cols = 5
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Muscle Forces Quadriceps {athlete[0].name}; Model: {athlete[0].model}; Preffered: {athlete[0].technique}"
+                "Kinematics & Muscle Forces "
+                + athletes[0].name
+                + "; Model: "
+                + athletes[0].model
+                + "; Preferred: "
+                + athletes[0].technique
             )
             fig.set_label("Muscle Forces R")
-
-            if ik_sumo.empty:  # check if file is empty
-                print("File is empty:", ik_sumo_path)
-            if ik_conve.empty:
-                print("File is empty:", ik_conve_path)
-            if muscleForces_sumo.empty:
-                print("File is empty:", muscleForces_sumo_path)
-            if muscleForces_conve.empty:
-                print("File is empty:", muscleForces_conve_path)
-
-            if "knee_angle_r" not in ik_sumo.columns:
-                print("Desired column not found in file:", ik_sumo_path)
-            if "knee_angle_r" not in ik_conve.columns:
-                print("Desired column not found in file:", ik_conve_path)
-
-            ik_sumo_time_normalised = time_normalise_df(ik_sumo)  # normalise
-            ik_conve_time_normalised = time_normalise_df(ik_conve)
-            muscleForces_sumo_time_normalised = time_normalise_df(muscleForces_sumo)
-            muscleForces_conve_time_normalised = time_normalise_df(muscleForces_conve)
 
             muscle_interest = 0
             muscles_of_interest = [
                 "recfem_r",
-                "addmagMid_r",
                 "vaslat_r",
                 "vasmed_r",
                 "vasint_r",
+                "glmax1_r",
+                "glmax2_r",
+                "glmax3_r",
+                "semiten_r",
+                "semimem_r",
+                "bflh_r",
+                "bfsh_r",
+                "addmagMid_r",
             ]
 
             ## kinematics of hip, knee and ankle, and muscle forces
             for i in range(cols):
                 for j in range(rows):
-                    print("AXIS:", axs[i, j])
                     # i displays the columns, j the rows
                     if i == 0 and j == 0:  # hip angles
-                        print("i: ", i, "j: ", j)
-                        print("durch 1")
                         plt.sca(axs[i, j])
-                        plt.plot(ik_sumo_time_normalised["hip_flexion_r"], label="Sumo")
+                        plt.plot(
+                            ik_sumo_time_normalised["hip_flexion_r"],
+                            label="Sumo",
+                        )
                         plt.plot(
                             ik_conve_time_normalised["hip_flexion_r"],
                             label="Conventional 80%",
                         )
                         plt.legend()
-                        plt.ylabel("Hip Flex [°]")
+                        plt.ylabel("Hip Flex [°]", color="red")
                         plt.xlabel("% concentric deadlift cycle")
                     elif i == 0 and j == 1:  # knee angles
-                        print("i: ", i, "j: ", j)
-                        print("durch 2")
                         plt.sca(axs[i, j])
                         plt.plot(ik_sumo_time_normalised["knee_angle_r"], label="Sumo")
                         plt.plot(
@@ -134,18 +145,16 @@ if __name__ == "__main__":
                             label="Conventional 80%",
                         )
                         plt.legend()
-                        plt.ylabel("Knee Flex [°]")
+                        plt.ylabel("Knee Flex [°]", color="red")
                         plt.xlabel("% concentric deadlift cycle")
                     elif i == 0 and j == 2:  # ankle angles
-                        print("i: ", i, "j: ", j)
-                        print("durch 3")
                         plt.sca(axs[i, j])
                         plt.plot(ik_sumo_time_normalised["ankle_angle_r"], label="Sumo")
                         plt.plot(
                             ik_conve_time_normalised["ankle_angle_r"],
                             label="Conventional 80%",
                         )
-                        plt.ylabel("Ankle Flex [°]")
+                        plt.ylabel("Ankle Flex [°]", color="red")
                         plt.legend()
                         plt.xlabel("% concentric deadlift cycle")
                     elif muscle_interest < len(muscles_of_interest):
@@ -162,10 +171,8 @@ if __name__ == "__main__":
                             ],
                             label="Conventional 80%",
                         )
-                        plt.ylabel(muscles_of_interest[muscle_interest])
-                        print("muscle interest old: ", muscle_interest)
+                        plt.ylabel(muscles_of_interest[muscle_interest] + " [N]")
                         muscle_interest += 1
-                        print("muscle interest new: ", muscle_interest)
                         plt.legend()
                         plt.xlabel("% concentric deadlift cycle")
                     else:
