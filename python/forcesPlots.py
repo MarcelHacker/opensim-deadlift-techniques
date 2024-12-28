@@ -165,22 +165,35 @@ class athlete:
         self.static_trc_path = static_trc_path  # "./static_0.trc"
 
 
-############## IK files
-ik_sumo_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
-ik_conve_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
-
+################################ IK files ###########################################
+# sumo
 ik_sumo_emptybar_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_emptybar/ik.mot"
-## only emptybar trail in athlete_0 for sumo, not in conve
-ik_conve_emptybar_path_0 = None
+ik_sumo_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
 
-############### SO files
-muscleForces_sumo_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
-muscleForces_conve_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+# conventional
+ik_conve_emptybar_path_0 = (
+    None  # only emptybar trail in athlete_0 for sumo, not in conve
+)
+ik_conve_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/ik.mot"
+ik_conve_path_1 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
 
+
+######################## SO files #####################################
+# sumo
 muscleForces_sumo_emptybar_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_emptybar/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+muscleForces_sumo_path_2 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+muscleForces_sumo_path_1 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg01/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+
+# conventional
+muscleForces_conve_path_1 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+muscleForces_conve_path_2 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+
+####################################################################
 
 if __name__ == "__main__":
 
+    # todo check mean func
+    # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
     run_muscle_force_sum_plot = True
@@ -202,8 +215,8 @@ if __name__ == "__main__":
     ik_conve = pd.read_csv(ik_conve_path_0, sep="\t", skiprows=10)
     ik_sumo_emptybar = pd.read_csv(ik_sumo_emptybar_path_0, sep="\t", skiprows=10)
 
-    muscleForces_sumo = pd.read_csv(muscleForces_sumo_path_0, sep="\t", skiprows=14)
-    muscleForces_conve = pd.read_csv(muscleForces_conve_path_0, sep="\t", skiprows=14)
+    muscleForces_sumo = pd.read_csv(muscleForces_sumo_path_2, sep="\t", skiprows=14)
+    muscleForces_conve = pd.read_csv(muscleForces_conve_path_2, sep="\t", skiprows=14)
     muscleForces_sumo_emptybar = pd.read_csv(
         muscleForces_sumo_emptybar_path_0, sep="\t", skiprows=14
     )
@@ -213,9 +226,9 @@ if __name__ == "__main__":
     if ik_conve.empty:
         print("File is empty:", ik_conve_path_0)
     if muscleForces_sumo.empty:
-        print("File is empty:", muscleForces_sumo_path_0)
+        print("File is empty:", muscleForces_sumo_path_2)
     if muscleForces_conve.empty:
-        print("File is empty:", muscleForces_conve_path_0)
+        print("File is empty:", muscleForces_conve_path_2)
 
     if "knee_angle_r" not in ik_sumo.columns:
         print("Desired column not found in file:", ik_sumo_path_0)
