@@ -174,7 +174,7 @@ ik_sumo_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/ath
 ik_conve_emptybar_path_0 = (
     None  # only emptybar trail in athlete_0 for sumo, not in conve
 )
-ik_conve_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/ik.mot"
+ik_conve_path_2 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/ik.mot"
 ik_conve_path_1 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
 
 
@@ -212,7 +212,7 @@ if __name__ == "__main__":
     )
 
     ik_sumo = pd.read_csv(ik_sumo_path_0, sep="\t", skiprows=10)
-    ik_conve = pd.read_csv(ik_conve_path_0, sep="\t", skiprows=10)
+    ik_conve = pd.read_csv(ik_conve_path_2, sep="\t", skiprows=10)
     ik_sumo_emptybar = pd.read_csv(ik_sumo_emptybar_path_0, sep="\t", skiprows=10)
 
     muscleForces_sumo = pd.read_csv(muscleForces_sumo_path_2, sep="\t", skiprows=14)
@@ -224,7 +224,7 @@ if __name__ == "__main__":
     if ik_sumo.empty:  # check if file is empty
         print("File is empty:", ik_sumo_path_0)
     if ik_conve.empty:
-        print("File is empty:", ik_conve_path_0)
+        print("File is empty:", ik_conve_path_2)
     if muscleForces_sumo.empty:
         print("File is empty:", muscleForces_sumo_path_2)
     if muscleForces_conve.empty:
@@ -233,7 +233,7 @@ if __name__ == "__main__":
     if "knee_angle_r" not in ik_sumo.columns:
         print("Desired column not found in file:", ik_sumo_path_0)
     if "knee_angle_r" not in ik_conve.columns:
-        print("Desired column not found in file:", ik_conve_path_0)
+        print("Desired column not found in file:", ik_conve_path_2)
 
     ### time normalise everything to 101 values
     ik_sumo_time_normalised = time_normalise_df(ik_sumo)
