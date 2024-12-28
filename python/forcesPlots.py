@@ -40,11 +40,15 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
     Input:
     muscleForces must be time normalised to 101 values, data frame
     muscle_group = String e.g. "Hamstrings", "Quadriceps"
-
+    limbs = "rl"  # rl for right and left, "r" or "l"
     Output:
     Array with the sum of the hole muscle forces
     """
     muscles_of_interest = []
+
+    if limbs == "r" or limbs == "l":
+        print("limb configuration not programmed, in sum_muscle_forces")
+
     if muscle_group == "Hamstrings" and limbs == "rl":
         muscles_of_interest = [
             "bflh_r",
@@ -91,6 +95,8 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "addmagMid_l",
             "addmagProx_l",
         ]
+    if muscles_of_interest == []:
+        print("no muscle sum choosen, in sum_muscle_forces")
 
     sum_forces = [0] * 101  # defined arry length
 
@@ -384,23 +390,112 @@ if __name__ == "__main__":
 
     if run_muscle_force_sum_plot:
         try:
-            # create figure with 5x2 subplots (1 for sumo and 1 for conventional)
-            fig, axs = plt.subplots(5, 2)
-            fig.suptitle("Muscle Forces Athlete_0; Model: athlete_0_increased_force_3 ")
+            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
+            rows = 3
+            cols = 4
+            fig, axs = plt.subplots(cols, rows)
+            fig.suptitle(
+                "Kinematics & Muscle Force Comparison "
+                + athletes[0].name
+                + "; Model: "
+                + athletes[0].model
+                + "; Preferred: "
+                + athletes[0].technique
+            )
             fig.set_label("Muscle Forces R")
+            x_label = "% concentric deadlift cycle"
 
-            limbs = "rl"  # rl for right and left, "r" or "l"
-            muscle_groups = ["Hamstrings", "Quadriceps", "Gluteus Maximus", "Adductors"]
-
-            sum_muscle_forces(
+            hamstrings_sumo_force = sum_muscle_forces(
                 muscleForces_sumo_time_normalised,  # muslce force data
-                muscle_groups[0],  # Hamstrings
-                limbs,
+                "Hamstrings",  # Hamstrings
+                "rl",
+            )
+            hamstrings_conve_force = sum_muscle_forces(
+                muscleForces_conve_time_normalised,  # muslce force data
+                "Hamstrings",  # Hamstrings
+                "rl",
+            )
+            quadriceps_sumo_force = sum_muscle_forces(
+                muscleForces_sumo_time_normalised,
+                "Quadriceps",  # Quadriceps
+                "rl",
+            )
+            quadriceps_conve_force = sum_muscle_forces(
+                muscleForces_conve_time_normalised,
+                "Quadriceps",  # Quadriceps
+                "rl",
+            )
+            gluteusmax_sumo_force = sum_muscle_forces(
+                muscleForces_sumo_time_normalised,
+                "Gluteus Maximus",  # Gluteus Maximus
+                "rl",
+            )
+            adductors_force = sum_muscle_forces(
+                muscleForces_sumo_time_normalised,
+                "Adductors",  # Adductors
+                "rl",
             )
 
-            ## to do
-            # plt.show()
+            ## kinematics of hip, knee and ankle, and muscle forces
+            plt.sca(axs[0, 0])
+            plt.plot(
+                ik_sumo_time_normalised["hip_flexion_r"],
+                color="red",
+                label="Sumo",
+            )
+            plt.plot(
+                ik_conve_time_normalised["hip_flexion_r"],
+                label="Conventional 80%",
+            )
+            plt.legend()
+            plt.ylabel("Hip Flex [°]", color="grey")
+            plt.xlabel(x_label)
 
+            plt.sca(axs[0, 1])
+            plt.plot(
+                ik_sumo_time_normalised["knee_angle_r"],
+                color="red",
+                label="Sumo",
+            )
+            plt.plot(
+                ik_conve_time_normalised["knee_angle_r"],
+                label="Conventional 80%",
+            )
+            plt.legend()
+            plt.ylabel("Knee Flex [°]", color="grey")
+            plt.xlabel(x_label)
+
+            plt.sca(axs[0, 2])
+            plt.plot(ik_sumo_time_normalised["ankle_angle_r"], label="Sumo")
+            plt.plot(
+                ik_conve_time_normalised["ankle_angle_r"],
+                label="Sumo emptybar",
+            )
+            plt.ylabel("Ankle Flex [°]", color="red")
+            plt.legend()
+            plt.xlabel(x_label)
+            # hamstrings
+            plt.sca(axs[1, 0])
+            plt.plot(hamstrings_sumo_force, label="Sumo", color="red")
+            plt.plot(
+                hamstrings_conve_force,
+                label="Conventional 80%",
+            )
+            plt.ylabel("Hamstrings [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+            # quadricpes
+            plt.sca(axs[1, 1])
+            plt.plot(quadriceps_sumo_force, label="Sumo", color="red")
+            plt.plot(
+                quadriceps_conve_force,
+                label="Conventional 80%",
+            )
+            plt.ylabel("Hamstrings [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.show()
         except Exception as e:
             print("Error in run_muscle_force_sum_plot")
             print(e)
