@@ -33,6 +33,34 @@ def time_normalise_df(df, fs=""):
     return normalised_df
 
 
+def mean_trail_values(
+    column_1_time_normalised, column_2_time_normalised, column_3_time_normalised
+):
+    """
+    calculate the mean value of the 3 trails
+    Input:
+    3 columns of the trail files, data frame
+
+
+    Output:
+    Array with the sum of the mean
+    """
+    mean = [0] * 101  # defined arry length of 101 values
+
+    values_sum = 0
+    index = 0
+    for value in column_1_time_normalised:
+        values_sum = sum(
+            value,
+            column_2_time_normalised[index],
+            column_3_time_normalised[index],
+        )
+        mean[index] = values_sum / 3  # 3 trails
+        index += 1
+    print(mean)
+    return mean
+
+
 def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
     """sum_muscle_forces
     sum of intrested muscle forces
@@ -120,18 +148,18 @@ class athlete:
 
 
 ############## IK files
-ik_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
-ik_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
+ik_sumo_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
+ik_conve_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
 
-ik_sumo_emptybar_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_emptybar/ik.mot"
+ik_sumo_emptybar_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_emptybar/ik.mot"
 ## only emptybar trail in athlete_0 for sumo, not in conve
-ik_conve_emptybar_path = None
+ik_conve_emptybar_path_0 = None
 
 ############### SO files
-muscleForces_sumo_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
-muscleForces_conve_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+muscleForces_sumo_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+muscleForces_conve_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
 
-muscleForces_sumo_emptybar_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_emptybar/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
+muscleForces_sumo_emptybar_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_emptybar/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
 
 if __name__ == "__main__":
 
@@ -152,29 +180,29 @@ if __name__ == "__main__":
         )
     )
 
-    ik_sumo = pd.read_csv(ik_sumo_path, sep="\t", skiprows=10)
-    ik_conve = pd.read_csv(ik_conve_path, sep="\t", skiprows=10)
-    ik_sumo_emptybar = pd.read_csv(ik_sumo_emptybar_path, sep="\t", skiprows=10)
+    ik_sumo = pd.read_csv(ik_sumo_path_0, sep="\t", skiprows=10)
+    ik_conve = pd.read_csv(ik_conve_path_0, sep="\t", skiprows=10)
+    ik_sumo_emptybar = pd.read_csv(ik_sumo_emptybar_path_0, sep="\t", skiprows=10)
 
-    muscleForces_sumo = pd.read_csv(muscleForces_sumo_path, sep="\t", skiprows=14)
-    muscleForces_conve = pd.read_csv(muscleForces_conve_path, sep="\t", skiprows=14)
+    muscleForces_sumo = pd.read_csv(muscleForces_sumo_path_0, sep="\t", skiprows=14)
+    muscleForces_conve = pd.read_csv(muscleForces_conve_path_0, sep="\t", skiprows=14)
     muscleForces_sumo_emptybar = pd.read_csv(
-        muscleForces_sumo_emptybar_path, sep="\t", skiprows=14
+        muscleForces_sumo_emptybar_path_0, sep="\t", skiprows=14
     )
 
     if ik_sumo.empty:  # check if file is empty
-        print("File is empty:", ik_sumo_path)
+        print("File is empty:", ik_sumo_path_0)
     if ik_conve.empty:
-        print("File is empty:", ik_conve_path)
+        print("File is empty:", ik_conve_path_0)
     if muscleForces_sumo.empty:
-        print("File is empty:", muscleForces_sumo_path)
+        print("File is empty:", muscleForces_sumo_path_0)
     if muscleForces_conve.empty:
-        print("File is empty:", muscleForces_conve_path)
+        print("File is empty:", muscleForces_conve_path_0)
 
     if "knee_angle_r" not in ik_sumo.columns:
-        print("Desired column not found in file:", ik_sumo_path)
+        print("Desired column not found in file:", ik_sumo_path_0)
     if "knee_angle_r" not in ik_conve.columns:
-        print("Desired column not found in file:", ik_conve_path)
+        print("Desired column not found in file:", ik_conve_path_0)
 
     ### time normalise everything to 101 values
     ik_sumo_time_normalised = time_normalise_df(ik_sumo)
@@ -430,8 +458,18 @@ if __name__ == "__main__":
                 "Gluteus Maximus",  # Gluteus Maximus
                 "rl",
             )
-            adductors_force = sum_muscle_forces(
+            gluteusmax_conve_force = sum_muscle_forces(
+                muscleForces_conve_time_normalised,
+                "Gluteus Maximus",  # Gluteus Maximus
+                "rl",
+            )
+            adductors_sumo_force = sum_muscle_forces(
                 muscleForces_sumo_time_normalised,
+                "Adductors",  # Adductors
+                "rl",
+            )
+            adductors_conve_force = sum_muscle_forces(
+                muscleForces_conve_time_normalised,
                 "Adductors",  # Adductors
                 "rl",
             )
@@ -466,12 +504,14 @@ if __name__ == "__main__":
             plt.xlabel(x_label)
 
             plt.sca(axs[0, 2])
-            plt.plot(ik_sumo_time_normalised["ankle_angle_r"], label="Sumo")
+            plt.plot(
+                ik_sumo_time_normalised["ankle_angle_r"], label="Sumo", color="red"
+            )
             plt.plot(
                 ik_conve_time_normalised["ankle_angle_r"],
-                label="Sumo emptybar",
+                label="Conventional 80%",
             )
-            plt.ylabel("Ankle Flex [°]", color="red")
+            plt.ylabel("Ankle Flex [°]", color="grey")
             plt.legend()
             plt.xlabel(x_label)
             # hamstrings
@@ -491,7 +531,28 @@ if __name__ == "__main__":
                 quadriceps_conve_force,
                 label="Conventional 80%",
             )
-            plt.ylabel("Hamstrings [N]")
+            plt.ylabel("Quadriceps [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+            # gluteus maximus
+            plt.sca(axs[1, 2])
+            plt.plot(gluteusmax_sumo_force, label="Sumo", color="red")
+            plt.plot(
+                gluteusmax_conve_force,
+                label="Conventional 80%",
+            )
+            plt.ylabel("Gluteus maximus [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            # gluteus maximus
+            plt.sca(axs[2, 0])
+            plt.plot(adductors_sumo_force, label="Sumo", color="red")
+            plt.plot(
+                adductors_conve_force,
+                label="Conventional 80%",
+            )
+            plt.ylabel("Adductors [N]")
             plt.legend()
             plt.xlabel(x_label)
 
