@@ -12,7 +12,7 @@
 		<!--The time range for the study.-->
 		<time_range>6.5 9</time_range>
 		<!--Name of the resulting inverse kinematics motion (.mot) file.-->
-		<output_motion_file>IK/ik.mot</output_motion_file>
+		<output_motion_file>ik.mot</output_motion_file>
 		<!--Flag (true or false) indicating whether or not to report errors from the inverse kinematics solution. Default is true.-->
 		<report_errors>true</report_errors>
 		<!--Markers and coordinates to be considered (tasks) and their weightings. The sum of weighted-squared task errors composes the cost function.-->

@@ -37,6 +37,6 @@
 		</objects>
 		<groups />
 		<!--Storage file (.sto) containing (3) components of force and/or torque and point of application.Note: this file overrides the data source specified by the individual external forces if specified.-->
-		<datafile>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/motion/conventional_dl_80kg03/ID/grf.mot</datafile>
+		<datafile>./grf.mot</datafile>
 	</ExternalLoads>
 </OpenSimDocument>
