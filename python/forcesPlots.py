@@ -33,6 +33,76 @@ def time_normalise_df(df, fs=""):
     return normalised_df
 
 
+def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
+    """sum_muscle_forces
+    sum of intrested muscle forces
+
+    Input:
+    muscleForces must be time normalised to 101 values, data frame
+    muscle_group = String e.g. "Hamstrings", "Quadriceps"
+
+    Output:
+    Array with the sum of the hole muscle forces
+    """
+    muscles_of_interest = []
+    if muscle_group == "Hamstrings" and limbs == "rl":
+        muscles_of_interest = [
+            "bflh_r",
+            "bfsh_r",
+            "semimem_r",
+            "semiten_r",
+            "bflh_l",
+            "bfsh_l",
+            "semimem_l",
+            "semiten_l",
+        ]
+    if muscle_group == "Quadriceps" and limbs == "rl":
+        muscles_of_interest = [
+            "recfem_r",
+            "vaslat_r",
+            "vasmed_r",
+            "vasint_r",
+            "recfem_l",
+            "vaslat_l",
+            "vasmed_l",
+            "vasint_l",
+        ]
+    if muscle_group == "Gluteus Maximus" and limbs == "rl":
+        muscles_of_interest = [
+            "glmax1_r",
+            "glmax2_r",
+            "glmax3_r",
+            "glmax1_l",
+            "glmax2_l",
+            "glmax3_l",
+        ]
+    if muscle_group == "Adductors" and limbs == "rl":
+        muscles_of_interest = [
+            "addbrev_r",
+            "addlong_r",
+            "addmagDist_r",
+            "addmagIsch_r",
+            "addmagMid_r",
+            "addmagProx_r",
+            "addbrev_l",
+            "addlong_l",
+            "addmagDist_l",
+            "addmagIsch_l",
+            "addmagMid_l",
+            "addmagProx_l",
+        ]
+
+    sum_forces = [0] * 101  # defined arry length
+
+    for i in range(len(muscles_of_interest)):
+        index = 0
+        for value in muscleForces[muscles_of_interest[i]]:
+            sum_forces[index] = sum_forces[index] + value
+            index += 1
+    print(sum_forces)
+    return sum_forces
+
+
 # creating class for athletes list
 class athlete:
     def __init__(self, name, mass, model, technique, static_trc_path):
@@ -59,9 +129,9 @@ muscleForces_sumo_emptybar_path = r"/Users/marcelhacker/Documents/opensim-deadli
 
 if __name__ == "__main__":
 
-    run_forces_plot = True
+    run_forces_plot = False
     run_emptybar_comparison = False
-    run_muscle_force_sum_plot = False
+    run_muscle_force_sum_plot = True
 
     # creating athlete list
     athletes = []
@@ -318,6 +388,15 @@ if __name__ == "__main__":
             fig, axs = plt.subplots(5, 2)
             fig.suptitle("Muscle Forces Athlete_0; Model: athlete_0_increased_force_3 ")
             fig.set_label("Muscle Forces R")
+
+            limbs = "rl"  # rl for right and left, "r" or "l"
+            muscle_groups = ["Hamstrings", "Quadriceps", "Gluteus Maximus", "Adductors"]
+
+            sum_muscle_forces(
+                muscleForces_sumo_time_normalised,  # muslce force data
+                muscle_groups[0],  # Hamstrings
+                limbs,
+            )
 
             ## to do
             # plt.show()
