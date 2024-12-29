@@ -24,7 +24,7 @@ class athlete:
 athletes = []  # appending instances to athletes list
 athletes.append(
     athlete(
-        "athlete_0",
+        "athlete_0_increased_force_3",
         "57",
         "athlete_0_increased_force_3",
         "conventional",
@@ -89,6 +89,30 @@ def get_paths_athlete(athlete, model_name=None):
             )
             data["id_sumo_path_" + str(i)] = (
                 dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/id.sto"
+            )
+            # e.g. athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto
+            data["moment_arms_hip_flexion_r_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_MuscleAnalysis_Moment_hip_flexion_r.sto"
+            )
+            # e.g. athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_l.sto
+            data["moment_arms_hip_flexion_l_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_MuscleAnalysis_Moment_hip_flexion_l.sto"
             )
             data["muscle_forces_sumo_path_" + str(i)] = (
                 dir_name
@@ -350,11 +374,11 @@ if __name__ == "__main__":
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
-    run_muscle_force_sum_plot = False
+    run_muscle_force_sum_plot = True
 
     file_paths = get_paths_athlete(athletes[0], athletes[0].model)
 
-    ik_sumo = pd.read_csv(file_paths["ik_sumo_path_0"], sep="\t", skiprows=10)
+    ik_sumo = pd.read_csv(file_paths["ik_sumo_path_1"], sep="\t", skiprows=10)
     ik_conv = pd.read_csv(file_paths["ik_conv_path_2"], sep="\t", skiprows=10)
     ik_sumo_emptybar = pd.read_csv(
         file_paths["ik_sumo_emptybar_path_0"],
@@ -362,8 +386,12 @@ if __name__ == "__main__":
         skiprows=10,
     )
     muscleForces_sumo = pd.read_csv(
-        file_paths["muscle_forces_sumo_path_2"], sep="\t", skiprows=14
+        file_paths["muscle_forces_sumo_path_1"], sep="\t", skiprows=14
     )
+    momentArms_sumo = pd.read_csv(
+        file_paths["moment_arms_sumo_path_1"], sep="\t", skiprows=14
+    )
+    print("momentArms sumo: ", momentArms_sumo.columns)
     muscleForces_conv = pd.read_csv(
         file_paths["muscle_forces_conv_path_2"], sep="\t", skiprows=14
     )
@@ -597,7 +625,12 @@ if __name__ == "__main__":
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 3
-            cols = 3
+            cols = 5
+            color_row_0 = "red"
+            color_row_1 = "red"
+            color_row_2 = "orange"
+            color_row_3 = "magenta"
+            color_row_4 = "brown"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Kinematics & Muscle Force Comparison "
@@ -672,6 +705,17 @@ if __name__ == "__main__":
                 "Adductors",  # Adductors
                 "rl",
             )
+            # Hip flexors
+            hip_flexors_sumo_force = sum_muscle_forces(
+                muscleForces_sumo_time_normalised,
+                "Hip flexors",  # Adductors
+                "rl",
+            )
+            hip_flexors_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,
+                "Hip flexors",  # Adductors
+                "rl",
+            )
 
             # Triceps Surae
             triceps_surae_sumo_force = sum_muscle_forces(
@@ -689,13 +733,12 @@ if __name__ == "__main__":
             plt.sca(axs[0, 0])
             plt.plot(
                 ik_sumo_time_normalised["hip_flexion_r"],
-                color="lime",
+                color=color_row_0,
                 label="Sumo",
             )
             plt.plot(
                 ik_conv_time_normalised["hip_flexion_r"],
                 label="Conventional 80%",
-                color="darkgreen",
             )
             plt.legend()
             plt.ylabel("Hip Flex [°]", color="grey")
@@ -704,13 +747,12 @@ if __name__ == "__main__":
             plt.sca(axs[0, 1])
             plt.plot(
                 ik_sumo_time_normalised["knee_angle_r"],
-                color="navy",
+                color=color_row_0,
                 label="Sumo",
             )
             plt.plot(
                 ik_conv_time_normalised["knee_angle_r"],
                 label="Conventional 80%",
-                color="peru",
             )
             plt.legend()
             plt.ylabel("Knee Flex [°]", color="grey")
@@ -718,72 +760,94 @@ if __name__ == "__main__":
 
             plt.sca(axs[0, 2])
             plt.plot(
-                ik_sumo_time_normalised["ankle_angle_r"], label="Sumo", color="khaki"
+                ik_sumo_time_normalised["ankle_angle_r"],
+                label="Sumo",
+                color=color_row_0,
             )
             plt.plot(
                 ik_conv_time_normalised["ankle_angle_r"],
                 label="Conventional 80%",
-                color="lightcoral",
             )
             plt.ylabel("Ankle Flex [°]", color="grey")
             plt.legend()
             plt.xlabel(x_label)
-            # hamstrings medial
+            ## moments
             plt.sca(axs[1, 0])
-            plt.plot(hamstrings_medial_sumo_force, label="Sumo")
             plt.plot(
-                hamstrings_medial_conv_force, label="Conventional 80%", color="blue"
+                ik_sumo_time_normalised["ankle_angle_r"],
+                label="Sumo",
+                color=color_row_1,
             )
+
+            plt.sca(axs[1, 1])
+            plt.sca(axs[1, 2])
+            plt.plot(
+                ik_sumo_time_normalised["ankle_angle_r"],
+                label="Sumo",
+                color=color_row_1,
+            )
+            # hamstrings medial
+            plt.sca(axs[2, 0])
+            plt.plot(
+                hamstrings_medial_sumo_force,
+                label="Sumo",
+                color=color_row_2,
+            )
+            plt.plot(hamstrings_medial_conv_force, label="Conventional 80%")
             plt.ylabel("Hamstrings medial [N]")
             plt.legend()
             plt.xlabel(x_label)
             # hamstrings lateral
-            plt.sca(axs[1, 0])
-            plt.plot(hamstrings_lateral_sumo_force, label="Sumo")
-            plt.plot(
-                hamstrings_lateral_conv_force, label="Conventional 80%", color="blue"
-            )
+            plt.sca(axs[2, 1])
+            plt.plot(hamstrings_lateral_sumo_force, label="Sumo", color=color_row_2)
+            plt.plot(hamstrings_lateral_conv_force, label="Conventional 80%")
             plt.ylabel("Hamstrings lateral [N]")
             plt.legend()
             plt.xlabel(x_label)
-            # quadricpes
-            plt.sca(axs[1, 1])
-            plt.plot(vasti_sumo_force, label="Sumo", color="red")
-            plt.plot(vasti_conv_force, label="Conventional 80%", color="blue")
-            plt.ylabel("Quadriceps [N]")
+            # vasti
+            plt.sca(axs[2, 2])
+            plt.plot(vasti_sumo_force, label="Sumo", color=color_row_2)
+            plt.plot(vasti_conv_force, label="Conventional 80%")
+            plt.ylabel("Vasti [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # gluteus maximus
-            plt.sca(axs[1, 2])
-            plt.plot(gluteusmax_sumo_force, label="Sumo", color="pink")
-            plt.plot(gluteusmax_conv_force, label="Conventional 80%", color="purple")
+            plt.sca(axs[3, 0])
+            plt.plot(gluteusmax_sumo_force, label="Sumo", color=color_row_3)
+            plt.plot(gluteusmax_conv_force, label="Conventional 80%")
             plt.ylabel("Gluteus maximus [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # adductors
-            plt.sca(axs[2, 0])
-            plt.plot(adductors_sumo_force, label="Sumo", color="cyan")
-            plt.plot(adductors_conv_force, label="Conventional 80%", color="olive")
+            plt.sca(axs[3, 1])
+            plt.plot(adductors_sumo_force, label="Sumo", color=color_row_3)
+            plt.plot(adductors_conv_force, label="Conventional 80%")
             plt.ylabel("Adductors [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # gluteus medius
-            plt.sca(axs[2, 1])
-            plt.plot(gluteusmed_sumo_force, label="Sumo", color="magenta")
-            plt.plot(gluteusmed_conv_force, label="Conventional 80%", color="gold")
+            plt.sca(axs[3, 2])
+            plt.plot(gluteusmed_sumo_force, label="Sumo", color=color_row_3)
+            plt.plot(gluteusmed_conv_force, label="Conventional 80%")
             plt.ylabel("Gluteus medius [N]")
             plt.legend()
             plt.xlabel(x_label)
 
+            # hip flexors
+            plt.sca(axs[4, 1])
+            plt.plot(hip_flexors_sumo_force, label="Sumo", color=color_row_4)
+            plt.plot(hip_flexors_conv_force, label="Conventional 80%")
+            plt.ylabel("Hip flexors [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+
             # Triceps surae
-            plt.sca(axs[2, 2])
-            plt.plot(triceps_surae_sumo_force, label="Sumo", color="chartreuse")
-            plt.plot(
-                triceps_surae_conve_force, label="Conventional 80%", color="olivedrab"
-            )
+            plt.sca(axs[4, 0])
+            plt.plot(triceps_surae_sumo_force, label="Sumo", color=color_row_4)
+            plt.plot(triceps_surae_conve_force, label="Conventional 80%")
             plt.ylabel("Triceps surae [N]")
             plt.legend()
             plt.xlabel(x_label)
