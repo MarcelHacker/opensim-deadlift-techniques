@@ -42,6 +42,7 @@ athletes.append(
 
 def get_paths_athlete(athlete, model_name=None):
     # todos include moment arm paths in the emptybar trails, not only in the weighted trails
+    # todos recheck moment arms paths
     if model_name == None:
         print("No model name given, get_paths_athlete")
         return None
@@ -113,6 +114,54 @@ def get_paths_athlete(athlete, model_name=None):
                 + "/"
                 + model_name
                 + "_MuscleAnalysis_Moment_hip_flexion_l.sto"
+            )
+            # e.g. athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto
+            data["moment_arms_knee_flexion_r_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_MuscleAnalysis_Moment_knee_angle_r.sto"
+            )
+            # e.g. athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_l.sto
+            data["moment_arms_knee_flexion_l_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_MuscleAnalysis_Moment_knee_angle_l.sto"
+            )
+            # e.g. athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_r.sto
+            data["moment_arms_ankle_flexion_r_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_MuscleAnalysis_Moment_ankle_angle_r.sto"
+            )
+            # e.g. athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_ankle_angle_l.sto
+            data["moment_arms_ankle_flexion_l_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_MuscleAnalysis_Moment_ankle_angle_l.sto"
             )
             data["muscle_forces_sumo_path_" + str(i)] = (
                 dir_name
