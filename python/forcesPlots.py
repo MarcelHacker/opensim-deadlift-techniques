@@ -412,6 +412,68 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "addmagMid_l",
             "addmagProx_l",
         ]
+
+    if muscle_group == "All" and limbs == "rl":
+        muscles_of_interest = [
+            "bflh_r",
+            "bfsh_r",
+            "semimem_r",
+            "semiten_r",
+            "bflh_l",
+            "bfsh_l",
+            "semimem_l",
+            "semiten_l",
+            "recfem_r",
+            "recfem_l",
+            "iliacus_r",
+            "iliacus_l",
+            "psoas_r",
+            "psoas_l",
+            "tfl_r",
+            "tfl_l",
+            "vaslat_r",
+            "vasmed_r",
+            "vasint_r",
+            "vaslat_l",
+            "vasmed_l",
+            "vasint_l",
+            "glmax1_r",
+            "glmax2_r",
+            "glmax3_r",
+            "glmax1_l",
+            "glmax2_l",
+            "glmax3_l",
+            "glmed1_r",
+            "glmed2_r",
+            "glmed3_r",
+            "glmed1_l",
+            "glmed2_l",
+            "glmed3_l",
+            "glmin1_r",
+            "glmin2_r",
+            "glmin3_r",
+            "glmin1_l",
+            "glmin2_l",
+            "glmin3_l",
+            "gaslat_r",
+            "gasmed_r",
+            "soleus_r",
+            "gaslat_l",
+            "gasmed_l",
+            "soleus_l",
+            "addbrev_r",
+            "addlong_r",
+            "addmagDist_r",
+            "addmagIsch_r",
+            "addmagMid_r",
+            "addmagProx_r",
+            "addbrev_l",
+            "addlong_l",
+            "addmagDist_l",
+            "addmagIsch_l",
+            "addmagMid_l",
+            "addmagProx_l",
+        ]
     if muscles_of_interest == []:
         print("no muscle sum choosen, in sum_muscle_forces")
 
@@ -432,7 +494,8 @@ if __name__ == "__main__":
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
-    run_muscle_force_sum_plot = True
+    run_muscle_force_sum_plot = False
+    run_total_force_comparison = True
 
     file_paths = get_paths_athlete(athletes[0], athletes[0].model)
 
@@ -971,6 +1034,47 @@ if __name__ == "__main__":
             plt.show()
         except Exception as e:
             print("Error in run_muscle_force_sum_plot")
+            print(e)
+
+    # just for sumo currently avaiable
+    if run_total_force_comparison:
+        try:
+            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
+            rows = 2
+            cols = 2
+            fig, axs = plt.subplots(cols, rows)
+            fig.suptitle(
+                "Total Muscle Force Comparison "
+                + athletes[0].name
+                + "; Model: "
+                + athletes[0].model
+                + "; Preferred: "
+                + athletes[0].technique
+            )
+            fig.set_label("Muscle Forces R")
+            x_label = "% concentric deadlift cycle"
+
+            # Total forces
+            total_sumo_force = sum_muscle_forces(
+                muscleForces_sumo_time_normalised,  # muscle force data
+                "All",  # All muscle groups
+                "rl",
+            )
+            total_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,  # muscle force data
+                "All",  # All muscle groups
+                "rl",
+            )
+            # Total force
+            plt.sca(axs[0, 0])
+            plt.plot(total_sumo_force, label="Sumo", color="red")
+            plt.plot(total_conv_force, label="Conventional 80%")
+            plt.ylabel("Total [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+            plt.show()
+        except Exception as e:
+            print("Error in run_total_force_comparison")
             print(e)
 
 # END
