@@ -260,31 +260,40 @@ def time_normalise_df(df, fs=""):
 
 
 def mean_trail_values(
-    column_1_time_normalised, column_2_time_normalised, column_3_time_normalised
+    data_1_time_normalised,
+    data_2_time_normalised,
+    divider=2,
 ):
+    ## todo fix mean functions and calculations
     """
-    calculate the mean value of the 3 trails
+    calculate the mean value of the 2 trails
     Input:
-    3 columns of the trail files, data frame
-
+    2 columns of the trail files, data frame
 
     Output:
-    Array with the sum of the mean
+    Data Frame with the mean
     """
-    mean = [0] * 101  # defined arry length of 101 values
+    data = data_1_time_normalised.copy()  # make a copy of delivered dataFrame
 
-    values_sum = 0
-    index = 0
-    for value in column_1_time_normalised:
-        values_sum = sum(
-            value,
-            column_2_time_normalised[index],
-            column_3_time_normalised[index],
-        )
-        mean[index] = values_sum / 3  # 3 trails
-        index += 1
-    print(mean)
-    return mean
+    for colum in data_1_time_normalised.columns:
+        index = 0  # resets the value after index = 101
+
+        for values in data_1_time_normalised.values:
+            # print("index:", index)
+            try:
+                # values[index] is the specific value
+                # print("values[index]:", values[index])
+                # buf = values[index] + data_2_time_normalised[colum].values[index]
+                data[colum].values[index] = (
+                    values[index] + data_2_time_normalised[colum].values[index]
+                ) / divider  # divider = trail count
+                # print("Final mean:", data[colum].values[index])
+                index += 1
+            except IndexError:
+                index += 1
+                continue
+    print(data)
+    return data
 
 
 def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
@@ -484,7 +493,6 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
         for value in muscleForces[muscles_of_interest[i]]:
             sum_forces[index] = sum_forces[index] + value
             index += 1
-    print(sum_forces)
     return sum_forces
 
 
@@ -498,19 +506,45 @@ if __name__ == "__main__":
     run_total_force_comparison = True
 
     file_paths = get_paths_athlete(athletes[0], athletes[0].model)
-
-    ik_sumo = pd.read_csv(file_paths["ik_sumo_path_1"], sep="\t", skiprows=10)
-    ik_conv = pd.read_csv(file_paths["ik_conv_path_2"], sep="\t", skiprows=10)
-    ik_sumo_emptybar = pd.read_csv(
+    # IK sumo
+    ik_sumo_emptybar_0 = pd.read_csv(
         file_paths["ik_sumo_emptybar_path_0"],
         sep="\t",
         skiprows=10,
     )
+    ik_sumo_emptybar_1 = None
+    ik_sumo_emptybar_2 = None
+    ik_sumo_emptybar_3 = None
+    ik_sumo_0 = None
+    ik_sumo_1 = pd.read_csv(file_paths["ik_sumo_path_1"], sep="\t", skiprows=10)
+    ik_sumo_2 = None
+    ik_sumo_3 = None
+    # IK conv
+    ik_conv_emptybar_0 = None
+    ik_conv_emptybar_1 = None
+    ik_conv_emptybar_2 = None
+    ik_conv_emptybar_3 = None
+    ik_conv_0 = None
+    ik_conv_1 = pd.read_csv(file_paths["ik_conv_path_1"], sep="\t", skiprows=10)
+    ik_conv_2 = pd.read_csv(file_paths["ik_conv_path_2"], sep="\t", skiprows=10)
+    ik_conv_3 = None
+    # ID sumo
     id_sumo = pd.read_csv(file_paths["id_sumo_path_1"], sep="\t", skiprows=6)
     id_conv = pd.read_csv(file_paths["id_conv_path_2"], sep="\t", skiprows=6)
-    muscleForces_sumo = pd.read_csv(
+
+    # ID conv
+    # SO sumo
+    muscleForces_sumo_emptybar_0 = pd.read_csv(
+        file_paths["muscle_forces_sumo_emptybar_path_0"], sep="\t", skiprows=14
+    )
+    muscleForces_sumo_1 = pd.read_csv(
         file_paths["muscle_forces_sumo_path_1"], sep="\t", skiprows=14
     )
+    muscleForces_conv_2 = pd.read_csv(
+        file_paths["muscle_forces_conv_path_2"], sep="\t", skiprows=14
+    )
+
+    # SO conv
     ## to do fix moment arms
     # print("\n PATH: ", file_paths["moment_arms_hip_flexion_r_sumo_path_1"])
     # athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto
@@ -519,24 +553,31 @@ if __name__ == "__main__":
     #   file_paths["moment_arms_hip_flexion_r_sumo_path_1"], sep="\t", skiprows=0
     # )
     # print("\n momentArms sumo: ", momentArms_sumo.columns)
-    muscleForces_conv = pd.read_csv(
-        file_paths["muscle_forces_conv_path_2"], sep="\t", skiprows=14
-    )
-    muscleForces_sumo_emptybar = pd.read_csv(
-        file_paths["muscle_forces_sumo_emptybar_path_0"], sep="\t", skiprows=14
-    )
 
     ### time normalise everything to 101 values
-    ik_sumo_time_normalised = time_normalise_df(ik_sumo)
-    ik_conv_time_normalised = time_normalise_df(ik_conv)
+    ik_sumo_time_normalised_1 = time_normalise_df(ik_sumo_1)
+    ik_conv_time_normalised_1 = time_normalise_df(ik_conv_1)
+    ik_conv_time_normalised_2 = time_normalise_df(ik_conv_2)
     id_sumo_time_nomalised = time_normalise_df(id_sumo)
     id_conv_time_normalised = time_normalise_df(id_conv)
-    ik_sumo_emptybar_time_normalised = time_normalise_df(ik_sumo_emptybar)
-    muscleForces_sumo_time_normalised = time_normalise_df(muscleForces_sumo)
-    muscleForces_conv_time_normalised = time_normalise_df(muscleForces_conv)
-    muscleForces_sumo_emptybar_time_normalised = time_normalise_df(
-        muscleForces_sumo_emptybar
+    ik_sumo_emptybar_time_normalised_0 = time_normalise_df(ik_sumo_emptybar_0)
+    muscleForces_sumo_time_normalised_1 = time_normalise_df(muscleForces_sumo_1)
+    muscleForces_conv_time_normalised_2 = time_normalise_df(muscleForces_conv_2)
+    muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
+        muscleForces_sumo_emptybar_0
     )
+    print(ik_conv_time_normalised_1)
+    print(ik_conv_time_normalised_2)
+
+    ### get time normalised mean values of the trails
+    ## todo get all mean values of the columns back, not only on column
+    ik_conv_mean_values = mean_trail_values(
+        ik_conv_time_normalised_1,  # have to be time normalised
+        ik_conv_time_normalised_2,
+        2,
+    )
+    print("ik_sumo_mean values:", ik_conv_mean_values)
+    print("ik_sumo_mean values:", ik_conv_mean_values.columns)
 
     if run_forces_plot:
         try:
@@ -578,12 +619,12 @@ if __name__ == "__main__":
                     if i == 0 and j == 0:  # hip angles
                         plt.sca(axs[i, j])
                         plt.plot(
-                            ik_sumo_time_normalised["hip_flexion_r"],
+                            ik_sumo_time_normalised_1["hip_flexion_r"],
                             label="Sumo",
                             color="red",
                         )
                         plt.plot(
-                            ik_conv_time_normalised["hip_flexion_r"],
+                            ik_conv_time_normalised_1["hip_flexion_r"],
                             label="Conventional 80%",
                         )
                         plt.legend()
@@ -592,12 +633,12 @@ if __name__ == "__main__":
                     elif i == 0 and j == 1:  # knee angles
                         plt.sca(axs[i, j])
                         plt.plot(
-                            ik_sumo_time_normalised["knee_angle_r"],
+                            ik_sumo_time_normalised_1["knee_angle_r"],
                             label="Sumo",
                             color="red",
                         )
                         plt.plot(
-                            ik_conv_time_normalised["knee_angle_r"],
+                            ik_conv_time_normalised_1["knee_angle_r"],
                             label="Conventional 80%",
                         )
                         plt.legend()
@@ -606,12 +647,12 @@ if __name__ == "__main__":
                     elif i == 0 and j == 2:  # ankle angles
                         plt.sca(axs[i, j])
                         plt.plot(
-                            ik_sumo_time_normalised["ankle_angle_r"],
+                            ik_sumo_time_normalised_1["ankle_angle_r"],
                             label="Sumo",
                             color="red",
                         )
                         plt.plot(
-                            ik_conv_time_normalised["ankle_angle_r"],
+                            ik_conv_time_normalised_1["ankle_angle_r"],
                             label="Conventional 80%",
                         )
                         plt.ylabel("Ankle Flex [°]", color="grey")
@@ -620,14 +661,14 @@ if __name__ == "__main__":
                     elif muscle_interest < len(muscles_of_interest):
                         plt.sca(axs[i, j])
                         plt.plot(
-                            muscleForces_sumo_time_normalised[
+                            muscleForces_sumo_time_normalised_1[
                                 muscles_of_interest[muscle_interest]
                             ],
                             label="Sumo",
                             color="red",
                         )
                         plt.plot(
-                            muscleForces_conv_time_normalised[
+                            muscleForces_conv_time_normalised_2[
                                 muscles_of_interest[muscle_interest]
                             ],
                             label="Conventional 80%",
@@ -685,11 +726,11 @@ if __name__ == "__main__":
                     if i == 0 and j == 0:  # hip angles
                         plt.sca(axs[i, j])
                         plt.plot(
-                            ik_sumo_time_normalised["hip_flexion_r"],
+                            ik_sumo_time_normalised_1["hip_flexion_r"],
                             label="Sumo",
                         )
                         plt.plot(
-                            ik_sumo_emptybar_time_normalised["hip_flexion_r"],
+                            ik_sumo_emptybar_time_normalised_0["hip_flexion_r"],
                             label="Sumo emptybar",
                         )
                         plt.legend()
@@ -697,9 +738,11 @@ if __name__ == "__main__":
                         plt.xlabel(x_label)
                     elif i == 0 and j == 1:  # knee angles
                         plt.sca(axs[i, j])
-                        plt.plot(ik_sumo_time_normalised["knee_angle_r"], label="Sumo")
                         plt.plot(
-                            ik_sumo_emptybar_time_normalised["knee_angle_r"],
+                            ik_sumo_time_normalised_1["knee_angle_r"], label="Sumo"
+                        )
+                        plt.plot(
+                            ik_sumo_emptybar_time_normalised_0["knee_angle_r"],
                             label="Sumo emptybar",
                         )
                         plt.legend()
@@ -707,9 +750,11 @@ if __name__ == "__main__":
                         plt.xlabel(x_label)
                     elif i == 0 and j == 2:  # ankle angles
                         plt.sca(axs[i, j])
-                        plt.plot(ik_sumo_time_normalised["ankle_angle_r"], label="Sumo")
                         plt.plot(
-                            ik_sumo_emptybar_time_normalised["ankle_angle_r"],
+                            ik_sumo_time_normalised_1["ankle_angle_r"], label="Sumo"
+                        )
+                        plt.plot(
+                            ik_sumo_emptybar_time_normalised_0["ankle_angle_r"],
                             label="Sumo emptybar",
                         )
                         plt.ylabel("Ankle Flex [°]", color="red")
@@ -718,13 +763,13 @@ if __name__ == "__main__":
                     elif muscle_interest < len(muscles_of_interest):
                         plt.sca(axs[i, j])
                         plt.plot(
-                            muscleForces_sumo_time_normalised[
+                            muscleForces_sumo_time_normalised_1[
                                 muscles_of_interest[muscle_interest]
                             ],
                             label="Sumo",
                         )
                         plt.plot(
-                            muscleForces_sumo_emptybar_time_normalised[
+                            muscleForces_sumo_emptybar_time_normalised_0[
                                 muscles_of_interest[muscle_interest]
                             ],
                             label="Sumo emptybar",
@@ -773,99 +818,99 @@ if __name__ == "__main__":
             x_label = "% concentric deadlift cycle"
             # Hamstrings medial (Semitend and Semimem)
             hamstrings_medial_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,  # muscle force data
+                muscleForces_sumo_time_normalised_1,  # muscle force data
                 "Hamstrings medial",  # Hamstrings medial
                 "rl",
             )
             hamstrings_medial_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,
+                muscleForces_conv_time_normalised_2,
                 "Hamstrings medial",
                 "rl",
             )
             # Hamstrings lateral (biceps long and short heads)
             hamstrings_lateral_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,  # muscle force data
+                muscleForces_sumo_time_normalised_1,  # muscle force data
                 "Hamstrings lateral",  # Hamstrings lateral
                 "rl",
             )
             hamstrings_lateral_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,  # muscle force data
+                muscleForces_conv_time_normalised_2,  # muscle force data
                 "Hamstrings lateral",
                 "rl",
             )
             vasti_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,
+                muscleForces_sumo_time_normalised_1,
                 "Vasti",  # Quadriceps
                 "rl",
             )
             vasti_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,
+                muscleForces_conv_time_normalised_2,
                 "Vasti",  # Quadriceps
                 "rl",
             )
             gluteusmax_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,
+                muscleForces_sumo_time_normalised_1,
                 "Gluteus maximus",  # Gluteus Maximus
                 "rl",
             )
             gluteusmax_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,
+                muscleForces_conv_time_normalised_2,
                 "Gluteus maximus",  # Gluteus Maximus
                 "rl",
             )
             # Gluteus Medius
             gluteusmed_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,
+                muscleForces_sumo_time_normalised_1,
                 "Gluteus medius",
                 "rl",
             )
             gluteusmed_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,
+                muscleForces_conv_time_normalised_2,
                 "Gluteus medius",
                 "rl",
             )
             # Gluteus Minimus
             gluteusmin_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,
+                muscleForces_sumo_time_normalised_1,
                 "Gluteus minimus",
                 "rl",
             )
             gluteusmin_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,
+                muscleForces_conv_time_normalised_2,
                 "Gluteus minimus",
                 "rl",
             )
 
             adductors_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,
+                muscleForces_sumo_time_normalised_1,
                 "Adductors",  # Adductors
                 "rl",
             )
             adductors_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,
+                muscleForces_conv_time_normalised_2,
                 "Adductors",  # Adductors
                 "rl",
             )
             # Hip flexors
             hip_flexors_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,
+                muscleForces_sumo_time_normalised_1,
                 "Hip flexors",  # Adductors
                 "rl",
             )
             hip_flexors_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,
+                muscleForces_conv_time_normalised_2,
                 "Hip flexors",  # Adductors
                 "rl",
             )
 
             # Triceps Surae
             triceps_surae_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,
+                muscleForces_sumo_time_normalised_1,
                 "Triceps surae",  # Adductors
                 "rl",
             )
             triceps_surae_conve_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,
+                muscleForces_conv_time_normalised_2,
                 "Triceps surae",  # Adductors
                 "rl",
             )
@@ -873,12 +918,12 @@ if __name__ == "__main__":
             ## kinematics of hip, knee and ankle, and muscle forces
             plt.sca(axs[0, 0])
             plt.plot(
-                ik_sumo_time_normalised["hip_flexion_r"],
+                ik_sumo_time_normalised_1["hip_flexion_r"],
                 color=color_row_0,
                 label="Sumo",
             )
             plt.plot(
-                ik_conv_time_normalised["hip_flexion_r"],
+                ik_conv_time_normalised_1["hip_flexion_r"],
                 label="Conventional 80%",
             )
             plt.legend()
@@ -887,12 +932,12 @@ if __name__ == "__main__":
 
             plt.sca(axs[0, 1])
             plt.plot(
-                ik_sumo_time_normalised["knee_angle_r"],
+                ik_sumo_time_normalised_1["knee_angle_r"],
                 color=color_row_0,
                 label="Sumo",
             )
             plt.plot(
-                ik_conv_time_normalised["knee_angle_r"],
+                ik_conv_time_normalised_1["knee_angle_r"],
                 label="Conventional 80%",
             )
             plt.legend()
@@ -901,12 +946,12 @@ if __name__ == "__main__":
 
             plt.sca(axs[0, 2])
             plt.plot(
-                ik_sumo_time_normalised["ankle_angle_r"],
+                ik_sumo_time_normalised_1["ankle_angle_r"],
                 label="Sumo",
                 color=color_row_0,
             )
             plt.plot(
-                ik_conv_time_normalised["ankle_angle_r"],
+                ik_conv_time_normalised_1["ankle_angle_r"],
                 label="Conventional 80%",
             )
             plt.ylabel("Ankle Flex [°]", color="grey")
@@ -1036,7 +1081,6 @@ if __name__ == "__main__":
             print("Error in run_muscle_force_sum_plot")
             print(e)
 
-    # just for sumo currently avaiable
     if run_total_force_comparison:
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
@@ -1056,12 +1100,12 @@ if __name__ == "__main__":
 
             # Total forces
             total_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,  # muscle force data
+                muscleForces_sumo_time_normalised_1,  # muscle force data
                 "All",  # All muscle groups
                 "rl",
             )
             total_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,  # muscle force data
+                muscleForces_conv_time_normalised_2,  # muscle force data
                 "All",  # All muscle groups
                 "rl",
             )
@@ -1069,7 +1113,18 @@ if __name__ == "__main__":
             plt.sca(axs[0, 0])
             plt.plot(total_sumo_force, label="Sumo", color="red")
             plt.plot(total_conv_force, label="Conventional 80%")
-            plt.ylabel("Total [N]")
+            plt.ylabel("Total muscle force [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+            ## testing mean values
+            plt.sca(axs[0, 1])
+            plt.plot(ik_conv_time_normalised_1["hip_flexion_r"], label="1", color="red")
+            plt.plot(
+                ik_conv_time_normalised_2["hip_flexion_r"], label="2", color="blue"
+            )
+            plt.plot(ik_conv_mean_values["hip_flexion_r"], label="MEAN", color="gold")
+            # plt.plot(total_conv_force, label="Conventional 80%")
+            plt.ylabel("Hip Flexion [°]")
             plt.legend()
             plt.xlabel(x_label)
             plt.show()
