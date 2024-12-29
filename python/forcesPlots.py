@@ -260,10 +260,22 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
         muscles_of_interest = [
             "recfem_r",
             "recfem_l",
+            
+        ]
+    if muscle_group == "Vasti" and limbs == "rl":
+        muscles_of_interest = [
+            "vaslat_r",
+            "vasmed_r",
+            "vasint_r",
+            "vaslat_l",
+            "vasmed_l",
+            "vasint_l",
         ]
 
-    if muscle_group == "Quadriceps" and limbs == "rl":  # rec fem removed
+    if muscle_group == "Quadriceps" and limbs == "rl":
         muscles_of_interest = [
+            "recfem_r",
+            "recfem_l",
             "vaslat_r",
             "vasmed_r",
             "vasint_r",
@@ -614,14 +626,14 @@ if __name__ == "__main__":
                 "Hamstrings lateral",
                 "rl",
             )
-            quadriceps_sumo_force = sum_muscle_forces(
+            vasti_sumo_force = sum_muscle_forces(
                 muscleForces_sumo_time_normalised,
-                "Quadriceps",  # Quadriceps
+                "Vasti",  # Quadriceps
                 "rl",
             )
-            quadriceps_conv_force = sum_muscle_forces(
+            vasti_conv_force = sum_muscle_forces(
                 muscleForces_conv_time_normalised,
-                "Quadriceps",  # Quadriceps
+                "Vasti",  # Quadriceps
                 "rl",
             )
             gluteusmax_sumo_force = sum_muscle_forces(
@@ -731,8 +743,8 @@ if __name__ == "__main__":
             plt.xlabel(x_label)
             # quadricpes
             plt.sca(axs[1, 1])
-            plt.plot(quadriceps_sumo_force, label="Sumo", color="red")
-            plt.plot(quadriceps_conv_force, label="Conventional 80%", color="blue")
+            plt.plot(vasti_sumo_force, label="Sumo", color="red")
+            plt.plot(vasti_conv_force, label="Conventional 80%", color="blue")
             plt.ylabel("Quadriceps [N]")
             plt.legend()
             plt.xlabel(x_label)
