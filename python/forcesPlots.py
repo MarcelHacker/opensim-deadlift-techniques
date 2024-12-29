@@ -26,7 +26,7 @@ athletes.append(
     athlete(
         "athlete_0_increased_force_3",
         "57",
-        "athlete_0_increased_force_3",
+        "athlete_0_scaled_increased_force_3",
         "conventional",
     ),
 )
@@ -42,7 +42,7 @@ athletes.append(
 
 def get_paths_athlete(athlete, model_name=None):
     # todos include moment arm paths in the emptybar trails, not only in the weighted trails
-    # todos recheck moment arms paths
+    # todos recheck moment arms paths, and add moment arms to conv
     if model_name == None:
         print("No model name given, get_paths_athlete")
         return None
@@ -77,9 +77,9 @@ def get_paths_athlete(athlete, model_name=None):
                 + model_name
                 + "_StaticOptimization_force.sto"
             )
-            print("\n", data["id_sumo_emptybar_path_" + str(i)])
-            print("\n", data["id_sumo_emptybar_path_" + str(i)])
-            print("\n", data["muscle_forces_sumo_emptybar_path_" + str(i)])
+            # print("\n", data["id_sumo_emptybar_path_" + str(i)])
+            # print("\n", data["id_sumo_emptybar_path_" + str(i)])
+            # print("\n", data["muscle_forces_sumo_emptybar_path_" + str(i)])
 
         # sumo, fullbar
         for i in range(4):  # 4 trails per technique and load (weighted and emptybar)
@@ -174,9 +174,9 @@ def get_paths_athlete(athlete, model_name=None):
                 + model_name
                 + "_StaticOptimization_force.sto"
             )
-            print("\n", data["id_sumo_path_" + str(i)])
-            print("\n", data["id_sumo_path_" + str(i)])
-            print("\n", data["muscle_forces_sumo_path_" + str(i)])
+            # print("\n", data["id_sumo_path_" + str(i)])
+            # print("\n", data["id_sumo_path_" + str(i)])
+            # print("\n", data["muscle_forces_sumo_path_" + str(i)])
 
         # conv, emptybar
         for i in range(4):  # 4 trails per technique and load (weighted and emptybar)
@@ -199,9 +199,9 @@ def get_paths_athlete(athlete, model_name=None):
                 + model_name
                 + "_StaticOptimization_force.sto"
             )
-            print("\n", data["ik_conv_emptybar_path_" + str(i)])
-            print("\n", data["id_conv_emptybar_path_" + str(i)])
-            print("\n", data["muscle_forces_conv_emptybar_path_" + str(i)])
+            # print("\n", data["ik_conv_emptybar_path_" + str(i)])
+            # print("\n", data["id_conv_emptybar_path_" + str(i)])
+            # print("\n", data["muscle_forces_conv_emptybar_path_" + str(i)])
 
         # conv, fullbar
         for i in range(4):  # 4 trails per technique and load (weighted and emptybar)
@@ -224,9 +224,9 @@ def get_paths_athlete(athlete, model_name=None):
                 + model_name
                 + "_StaticOptimization_force.sto"
             )
-            print("\n", data["ik_conv_path_" + str(i)])
-            print("\n", data["id_conv_path_" + str(i)])
-            print("\n", data["muscle_forces_conv_path_" + str(i)])
+            # print("\n", data["ik_conv_path_" + str(i)])
+            # print("\n", data["id_conv_path_" + str(i)])
+            # print("\n", data["muscle_forces_conv_path_" + str(i)])
 
         return data
 
@@ -361,7 +361,7 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "vasmed_l",
             "vasint_l",
         ]
-    if muscle_group == "Gluteus Maximus" and limbs == "rl":
+    if muscle_group == "Gluteus maximus" and limbs == "rl":
         muscles_of_interest = [
             "glmax1_r",
             "glmax2_r",
@@ -370,7 +370,7 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "glmax2_l",
             "glmax3_l",
         ]
-    if muscle_group == "Gluteus Medius" and limbs == "rl":
+    if muscle_group == "Gluteus medius" and limbs == "rl":
         muscles_of_interest = [
             "glmed1_r",
             "glmed2_r",
@@ -379,7 +379,16 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "glmed2_l",
             "glmed3_l",
         ]
-    if muscle_group == "Triceps Surae" and limbs == "rl":
+    if muscle_group == "Gluteus minimus" and limbs == "rl":
+        muscles_of_interest = [
+            "glmin1_r",
+            "glmin2_r",
+            "glmin3_r",
+            "glmin1_l",
+            "glmin2_l",
+            "glmin3_l",
+        ]
+    if muscle_group == "Triceps surae" and limbs == "rl":
         muscles_of_interest = [
             "gaslat_r",
             "gasmed_r",
@@ -434,13 +443,19 @@ if __name__ == "__main__":
         sep="\t",
         skiprows=10,
     )
+    id_sumo = pd.read_csv(file_paths["id_sumo_path_1"], sep="\t", skiprows=6)
+    id_conv = pd.read_csv(file_paths["id_conv_path_2"], sep="\t", skiprows=6)
     muscleForces_sumo = pd.read_csv(
         file_paths["muscle_forces_sumo_path_1"], sep="\t", skiprows=14
     )
-    momentArms_sumo = pd.read_csv(
-        file_paths["moment_arms_sumo_path_1"], sep="\t", skiprows=14
-    )
-    print("momentArms sumo: ", momentArms_sumo.columns)
+    ## to do fix moment arms
+    # print("\n PATH: ", file_paths["moment_arms_hip_flexion_r_sumo_path_1"])
+    # athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto
+    # athlete_0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto
+    # momentArms_sumo = pd.read_csv(
+    #   file_paths["moment_arms_hip_flexion_r_sumo_path_1"], sep="\t", skiprows=0
+    # )
+    # print("\n momentArms sumo: ", momentArms_sumo.columns)
     muscleForces_conv = pd.read_csv(
         file_paths["muscle_forces_conv_path_2"], sep="\t", skiprows=14
     )
@@ -451,6 +466,8 @@ if __name__ == "__main__":
     ### time normalise everything to 101 values
     ik_sumo_time_normalised = time_normalise_df(ik_sumo)
     ik_conv_time_normalised = time_normalise_df(ik_conv)
+    id_sumo_time_nomalised = time_normalise_df(id_sumo)
+    id_conv_time_normalised = time_normalise_df(id_conv)
     ik_sumo_emptybar_time_normalised = time_normalise_df(ik_sumo_emptybar)
     muscleForces_sumo_time_normalised = time_normalise_df(muscleForces_sumo)
     muscleForces_conv_time_normalised = time_normalise_df(muscleForces_conv)
@@ -676,13 +693,13 @@ if __name__ == "__main__":
             rows = 3
             cols = 5
             color_row_0 = "red"
-            color_row_1 = "red"
+            color_row_1 = "lawngreen"
             color_row_2 = "orange"
             color_row_3 = "magenta"
             color_row_4 = "brown"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Kinematics & Muscle Force Comparison "
+                "Kinematics, Kinetics & Muscle Force Comparison "
                 + athletes[0].name
                 + "; Model: "
                 + athletes[0].model
@@ -725,25 +742,37 @@ if __name__ == "__main__":
             )
             gluteusmax_sumo_force = sum_muscle_forces(
                 muscleForces_sumo_time_normalised,
-                "Gluteus Maximus",  # Gluteus Maximus
+                "Gluteus maximus",  # Gluteus Maximus
                 "rl",
             )
             gluteusmax_conv_force = sum_muscle_forces(
                 muscleForces_conv_time_normalised,
-                "Gluteus Maximus",  # Gluteus Maximus
+                "Gluteus maximus",  # Gluteus Maximus
                 "rl",
             )
             # Gluteus Medius
             gluteusmed_sumo_force = sum_muscle_forces(
                 muscleForces_sumo_time_normalised,
-                "Gluteus Medius",
+                "Gluteus medius",
                 "rl",
             )
             gluteusmed_conv_force = sum_muscle_forces(
                 muscleForces_conv_time_normalised,
-                "Gluteus Medius",
+                "Gluteus medius",
                 "rl",
             )
+            # Gluteus Minimus
+            gluteusmin_sumo_force = sum_muscle_forces(
+                muscleForces_sumo_time_normalised,
+                "Gluteus minimus",
+                "rl",
+            )
+            gluteusmin_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,
+                "Gluteus minimus",
+                "rl",
+            )
+
             adductors_sumo_force = sum_muscle_forces(
                 muscleForces_sumo_time_normalised,
                 "Adductors",  # Adductors
@@ -769,12 +798,12 @@ if __name__ == "__main__":
             # Triceps Surae
             triceps_surae_sumo_force = sum_muscle_forces(
                 muscleForces_sumo_time_normalised,
-                "Triceps Surae",  # Adductors
+                "Triceps surae",  # Adductors
                 "rl",
             )
             triceps_surae_conve_force = sum_muscle_forces(
                 muscleForces_conv_time_normalised,
-                "Triceps Surae",  # Adductors
+                "Triceps surae",  # Adductors
                 "rl",
             )
 
@@ -820,21 +849,51 @@ if __name__ == "__main__":
             plt.ylabel("Ankle Flex [°]", color="grey")
             plt.legend()
             plt.xlabel(x_label)
-            ## moments
+            ## moments, just right leg
+            # todo get mean of both
+            # hip
             plt.sca(axs[1, 0])
             plt.plot(
-                ik_sumo_time_normalised["ankle_angle_r"],
+                id_sumo_time_nomalised["hip_flexion_r_moment"],
                 label="Sumo",
                 color=color_row_1,
             )
-
+            plt.plot(
+                id_conv_time_normalised["hip_flexion_r_moment"],
+                label="Conventional 80%",
+            )
+            plt.ylabel("Hip moment [Nm]", color="grey")
+            plt.legend()
+            plt.xlabel(x_label)
+            # knee
             plt.sca(axs[1, 1])
+            plt.plot(
+                id_sumo_time_nomalised["knee_angle_r_moment"],
+                label="Sumo",
+                color=color_row_1,
+            )
+            plt.plot(
+                id_conv_time_normalised["knee_angle_r_moment"],
+                label="Conventional 80%",
+            )
+            plt.ylabel("Knee moment [Nm]", color="grey")
+            plt.legend()
+            plt.xlabel(x_label)
+            # ankle
             plt.sca(axs[1, 2])
             plt.plot(
-                ik_sumo_time_normalised["ankle_angle_r"],
+                id_sumo_time_nomalised["ankle_angle_r_moment"],
                 label="Sumo",
                 color=color_row_1,
             )
+            plt.plot(
+                id_conv_time_normalised["ankle_angle_r_moment"],
+                label="Conventional 80%",
+            )
+            plt.ylabel("Ankle moment [Nm]", color="grey")
+            plt.legend()
+            plt.xlabel(x_label)
+
             # hamstrings medial
             plt.sca(axs[2, 0])
             plt.plot(
@@ -885,6 +944,14 @@ if __name__ == "__main__":
             plt.legend()
             plt.xlabel(x_label)
 
+            # Triceps surae
+            plt.sca(axs[4, 0])
+            plt.plot(triceps_surae_sumo_force, label="Sumo", color=color_row_4)
+            plt.plot(triceps_surae_conve_force, label="Conventional 80%")
+            plt.ylabel("Triceps surae [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+
             # hip flexors
             plt.sca(axs[4, 1])
             plt.plot(hip_flexors_sumo_force, label="Sumo", color=color_row_4)
@@ -893,11 +960,11 @@ if __name__ == "__main__":
             plt.legend()
             plt.xlabel(x_label)
 
-            # Triceps surae
-            plt.sca(axs[4, 0])
-            plt.plot(triceps_surae_sumo_force, label="Sumo", color=color_row_4)
-            plt.plot(triceps_surae_conve_force, label="Conventional 80%")
-            plt.ylabel("Triceps surae [N]")
+            # Gluteus minimus
+            plt.sca(axs[4, 2])
+            plt.plot(gluteusmin_sumo_force, label="Sumo", color=color_row_4)
+            plt.plot(gluteusmin_conv_force, label="Conventional 80%")
+            plt.ylabel("Gluteus minimus [N]")
             plt.legend()
             plt.xlabel(x_label)
 
