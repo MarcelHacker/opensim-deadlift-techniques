@@ -260,7 +260,12 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
         muscles_of_interest = [
             "recfem_r",
             "recfem_l",
-            
+            "iliacus_r",
+            "iliacus_l",
+            "psoas_r",
+            "psoas_l",
+            "tfl_r",
+            "tfl_l",
         ]
     if muscle_group == "Vasti" and limbs == "rl":
         muscles_of_interest = [
