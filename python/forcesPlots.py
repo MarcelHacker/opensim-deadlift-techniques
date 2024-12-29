@@ -1,8 +1,161 @@
+# Copyright (c) 2024 Basilio Gonçalves & Marcel Hacker
+
+################################ IMPORTS ###########################################
 from msk_modelling_python.src.bops import *
 import msk_modelling_python.src.bops as bp
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+
+dir_name = "/Users/marcelhacker/Documents/opensim-deadlift-techniques"  # your dircetory
+
+
+################################ CLASSES ###########################################
+class athlete:
+    def __init__(self, name, mass, model, technique):
+        # informations
+        self.name = name  # "athlete_x", used for reading files
+        self.mass = mass  # "57"
+        self.model = model  # "athlete_x_scaled"
+        self.technique = technique  # "sumo" or "conventional", preffered deadlift
+
+
+################################ CREATING ATHLETES ###########################################
+athletes = []  # appending instances to athletes list
+athletes.append(
+    athlete(
+        "athlete_0",
+        "57",
+        "athlete_0_increased_force_3",
+        "conventional",
+    ),
+)
+athletes.append(
+    athlete(
+        "athlete_1",
+        "87",
+        "athlete_1_scaled",
+        "sumo",
+    ),
+)
+
+
+def get_paths_athlete(athlete, model_name=None):
+    # todos include moment arm paths in the emptybar trails, not only in the weighted trails
+    if model_name == None:
+        print("No model name given, get_paths_athlete")
+        return None
+    else:
+        print("\n model name:", model_name)
+        print("\n athlete name:", athlete.name)
+
+        data = {}
+        # set athletes model and static trail
+        data["osim"] = dir_name + "/" + athlete.name + "/" + model_name + ".osim"
+        data["static_c3d"] = dir_name + "/" + athlete.name + "/static.c3d"
+        data["static_trc"] = dir_name + "/" + athlete.name + "/static.trc"
+
+        # sumo, emptybar
+        for i in range(4):  # 4 trails per technique and load (weighted and emptybar)
+            # ik, id and forces of sumo, emptybar trails
+            trail_prefix = "sumo_emptybar_"  # folder prefix
+            data["ik_sumo_emptybar_path_" + str(i)] = (
+                dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/ik.mot"
+            )
+            data["id_sumo_emptybar_path_" + str(i)] = (
+                dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/id.sto"
+            )
+            data["muscle_forces_sumo_emptybar_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_StaticOptimization_force.sto"
+            )
+            print("\n", data["id_sumo_emptybar_path_" + str(i)])
+            print("\n", data["id_sumo_emptybar_path_" + str(i)])
+            print("\n", data["muscle_forces_sumo_emptybar_path_" + str(i)])
+
+        # sumo, fullbar
+        for i in range(4):  # 4 trails per technique and load (weighted and emptybar)
+            # ik, id and forces of sumo, fullbar trails
+            trail_prefix = "sumo_dl_"  # folder prefix
+            data["ik_sumo_path_" + str(i)] = (
+                dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/ik.mot"
+            )
+            data["id_sumo_path_" + str(i)] = (
+                dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/id.sto"
+            )
+            data["muscle_forces_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_StaticOptimization_force.sto"
+            )
+            print("\n", data["id_sumo_path_" + str(i)])
+            print("\n", data["id_sumo_path_" + str(i)])
+            print("\n", data["muscle_forces_sumo_path_" + str(i)])
+
+        # conv, emptybar
+        for i in range(4):  # 4 trails per technique and load (weighted and emptybar)
+            # ik, id and forces of sumo, emptybar trails
+            trail_prefix = "conv_emptybar_"  # folder prefix
+            data["ik_conv_emptybar_path_" + str(i)] = (
+                dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/ik.mot"
+            )
+            data["id_conv_emptybar_path_" + str(i)] = (
+                dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/id.sto"
+            )
+            data["muscle_forces_conv_emptybar_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_StaticOptimization_force.sto"
+            )
+            print("\n", data["ik_conv_emptybar_path_" + str(i)])
+            print("\n", data["id_conv_emptybar_path_" + str(i)])
+            print("\n", data["muscle_forces_conv_emptybar_path_" + str(i)])
+
+        # conv, fullbar
+        for i in range(4):  # 4 trails per technique and load (weighted and emptybar)
+            # ik, id and forces of sumo, fullbar trails
+            trail_prefix = "conv_dl_"  # folder prefix
+            data["ik_conv_path_" + str(i)] = (
+                dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/ik.mot"
+            )
+            data["id_conv_path_" + str(i)] = (
+                dir_name + "/" + athlete.name + "/" + trail_prefix + str(i) + "/id.sto"
+            )
+            data["muscle_forces_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_StaticOptimization_force.sto"
+            )
+            print("\n", data["ik_conv_path_" + str(i)])
+            print("\n", data["id_conv_path_" + str(i)])
+            print("\n", data["muscle_forces_conv_path_" + str(i)])
+
+        return data
 
 
 def time_normalise_df(df, fs=""):
@@ -155,92 +308,39 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
     return sum_forces
 
 
-# creating class for athletes list
-class athlete:
-    def __init__(self, name, mass, model, technique, static_trc_path):
-        self.name = name  # "athlete_x"
-        self.mass = mass  # "57"
-        self.model = model  # "athlete_x"
-        self.technique = technique  # "sumo" or "conventional"
-        self.static_trc_path = static_trc_path  # "./static_0.trc"
-
-
-################################ IK files ###########################################
-# sumo
-ik_sumo_emptybar_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_emptybar/ik.mot"
-ik_sumo_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/ik.mot"
-
-# conventional
-ik_conve_emptybar_path_0 = (
-    None  # only emptybar trail in athlete_0 for sumo, not in conve
-)
-ik_conve_path_2 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/ik.mot"
-ik_conve_path_1 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/ik.mot"
-
-
-######################## SO files #####################################
-# sumo
-muscleForces_sumo_emptybar_path_0 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_emptybar/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
-muscleForces_sumo_path_2 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg02/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
-muscleForces_sumo_path_1 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_80kg01/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
-
-# conventional
-muscleForces_conve_path_1 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg02/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
-muscleForces_conve_path_2 = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/conventional_dl_80kg03/Athlete0_scaled_increased_force_3_StaticOptimization_force.sto"
-
-####################################################################
-
 if __name__ == "__main__":
 
     # todo check mean func
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
-    run_muscle_force_sum_plot = True
+    run_muscle_force_sum_plot = False
 
-    # creating athlete list
-    athletes = []
-    # appending instances to list
-    athletes.append(
-        athlete(
-            "athlete_0",
-            "57",
-            "athlete_0_increased_force_3",
-            "conventional",
-            "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/static_00.trc",
-        )
+    file_paths = get_paths_athlete(athletes[0], athletes[0].model)
+
+    ik_sumo = pd.read_csv(file_paths["ik_sumo_path_0"], sep="\t", skiprows=10)
+    ik_conv = pd.read_csv(file_paths["ik_conv_path_2"], sep="\t", skiprows=10)
+    ik_sumo_emptybar = pd.read_csv(
+        file_paths["ik_sumo_emptybar_path_0"],
+        sep="\t",
+        skiprows=10,
     )
-
-    ik_sumo = pd.read_csv(ik_sumo_path_0, sep="\t", skiprows=10)
-    ik_conve = pd.read_csv(ik_conve_path_2, sep="\t", skiprows=10)
-    ik_sumo_emptybar = pd.read_csv(ik_sumo_emptybar_path_0, sep="\t", skiprows=10)
-
-    muscleForces_sumo = pd.read_csv(muscleForces_sumo_path_2, sep="\t", skiprows=14)
-    muscleForces_conve = pd.read_csv(muscleForces_conve_path_2, sep="\t", skiprows=14)
+    muscleForces_sumo = pd.read_csv(
+        file_paths["muscle_forces_sumo_path_2"], sep="\t", skiprows=14
+    )
+    muscleForces_conv = pd.read_csv(
+        file_paths["muscle_forces_conv_path_2"], sep="\t", skiprows=14
+    )
     muscleForces_sumo_emptybar = pd.read_csv(
-        muscleForces_sumo_emptybar_path_0, sep="\t", skiprows=14
+        file_paths["muscle_forces_sumo_emptybar_path_0"], sep="\t", skiprows=14
     )
-
-    if ik_sumo.empty:  # check if file is empty
-        print("File is empty:", ik_sumo_path_0)
-    if ik_conve.empty:
-        print("File is empty:", ik_conve_path_2)
-    if muscleForces_sumo.empty:
-        print("File is empty:", muscleForces_sumo_path_2)
-    if muscleForces_conve.empty:
-        print("File is empty:", muscleForces_conve_path_2)
-
-    if "knee_angle_r" not in ik_sumo.columns:
-        print("Desired column not found in file:", ik_sumo_path_0)
-    if "knee_angle_r" not in ik_conve.columns:
-        print("Desired column not found in file:", ik_conve_path_2)
 
     ### time normalise everything to 101 values
     ik_sumo_time_normalised = time_normalise_df(ik_sumo)
-    ik_conve_time_normalised = time_normalise_df(ik_conve)
+    ik_conv_time_normalised = time_normalise_df(ik_conv)
     ik_sumo_emptybar_time_normalised = time_normalise_df(ik_sumo_emptybar)
     muscleForces_sumo_time_normalised = time_normalise_df(muscleForces_sumo)
-    muscleForces_conve_time_normalised = time_normalise_df(muscleForces_conve)
+    muscleForces_conv_time_normalised = time_normalise_df(muscleForces_conv)
     muscleForces_sumo_emptybar_time_normalised = time_normalise_df(
         muscleForces_sumo_emptybar
     )
@@ -260,6 +360,7 @@ if __name__ == "__main__":
                 + athletes[0].technique
             )
             fig.set_label("Muscle Forces R")
+            x_label = "% concentric deadlift cycle"
 
             muscle_interest = 0
             muscles_of_interest = [
@@ -289,12 +390,12 @@ if __name__ == "__main__":
                             color="red",
                         )
                         plt.plot(
-                            ik_conve_time_normalised["hip_flexion_r"],
+                            ik_conv_time_normalised["hip_flexion_r"],
                             label="Conventional 80%",
                         )
                         plt.legend()
                         plt.ylabel("Hip Flex [°]", color="grey")
-                        plt.xlabel("% concentric deadlift cycle")
+                        plt.xlabel(x_label)
                     elif i == 0 and j == 1:  # knee angles
                         plt.sca(axs[i, j])
                         plt.plot(
@@ -303,12 +404,12 @@ if __name__ == "__main__":
                             color="red",
                         )
                         plt.plot(
-                            ik_conve_time_normalised["knee_angle_r"],
+                            ik_conv_time_normalised["knee_angle_r"],
                             label="Conventional 80%",
                         )
                         plt.legend()
                         plt.ylabel("Knee Flex [°]", color="grey")
-                        plt.xlabel("% concentric deadlift cycle")
+                        plt.xlabel(x_label)
                     elif i == 0 and j == 2:  # ankle angles
                         plt.sca(axs[i, j])
                         plt.plot(
@@ -317,12 +418,12 @@ if __name__ == "__main__":
                             color="red",
                         )
                         plt.plot(
-                            ik_conve_time_normalised["ankle_angle_r"],
+                            ik_conv_time_normalised["ankle_angle_r"],
                             label="Conventional 80%",
                         )
                         plt.ylabel("Ankle Flex [°]", color="grey")
                         plt.legend()
-                        plt.xlabel("% concentric deadlift cycle")
+                        plt.xlabel(x_label)
                     elif muscle_interest < len(muscles_of_interest):
                         plt.sca(axs[i, j])
                         plt.plot(
@@ -333,7 +434,7 @@ if __name__ == "__main__":
                             color="red",
                         )
                         plt.plot(
-                            muscleForces_conve_time_normalised[
+                            muscleForces_conv_time_normalised[
                                 muscles_of_interest[muscle_interest]
                             ],
                             label="Conventional 80%",
@@ -341,7 +442,7 @@ if __name__ == "__main__":
                         plt.ylabel(muscles_of_interest[muscle_interest] + " [N]")
                         muscle_interest += 1
                         plt.legend()
-                        plt.xlabel("% concentric deadlift cycle")
+                        plt.xlabel(x_label)
                     else:
                         print("You can plot more curves, my master\n")
 
@@ -367,6 +468,7 @@ if __name__ == "__main__":
                 + athletes[0].technique
             )
             fig.set_label("Muscle Forces R")
+            x_label = "% concentric deadlift cycle"
 
             muscle_interest = 0
             muscles_of_interest = [
@@ -399,7 +501,7 @@ if __name__ == "__main__":
                         )
                         plt.legend()
                         plt.ylabel("Hip Flex [°]", color="red")
-                        plt.xlabel("% concentric deadlift cycle")
+                        plt.xlabel(x_label)
                     elif i == 0 and j == 1:  # knee angles
                         plt.sca(axs[i, j])
                         plt.plot(ik_sumo_time_normalised["knee_angle_r"], label="Sumo")
@@ -409,7 +511,7 @@ if __name__ == "__main__":
                         )
                         plt.legend()
                         plt.ylabel("Knee Flex [°]", color="red")
-                        plt.xlabel("% concentric deadlift cycle")
+                        plt.xlabel(x_label)
                     elif i == 0 and j == 2:  # ankle angles
                         plt.sca(axs[i, j])
                         plt.plot(ik_sumo_time_normalised["ankle_angle_r"], label="Sumo")
@@ -419,7 +521,7 @@ if __name__ == "__main__":
                         )
                         plt.ylabel("Ankle Flex [°]", color="red")
                         plt.legend()
-                        plt.xlabel("% concentric deadlift cycle")
+                        plt.xlabel(x_label)
                     elif muscle_interest < len(muscles_of_interest):
                         plt.sca(axs[i, j])
                         plt.plot(
@@ -437,7 +539,7 @@ if __name__ == "__main__":
                         plt.ylabel(muscles_of_interest[muscle_interest] + " [N]")
                         muscle_interest += 1
                         plt.legend()
-                        plt.xlabel("% concentric deadlift cycle")
+                        plt.xlabel(x_label)
                     else:
                         print("You can plot more curves, my master\n")
 
@@ -469,8 +571,8 @@ if __name__ == "__main__":
                 "Hamstrings",  # Hamstrings
                 "rl",
             )
-            hamstrings_conve_force = sum_muscle_forces(
-                muscleForces_conve_time_normalised,  # muslce force data
+            hamstrings_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,  # muslce force data
                 "Hamstrings",  # Hamstrings
                 "rl",
             )
@@ -479,8 +581,8 @@ if __name__ == "__main__":
                 "Quadriceps",  # Quadriceps
                 "rl",
             )
-            quadriceps_conve_force = sum_muscle_forces(
-                muscleForces_conve_time_normalised,
+            quadriceps_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,
                 "Quadriceps",  # Quadriceps
                 "rl",
             )
@@ -489,8 +591,8 @@ if __name__ == "__main__":
                 "Gluteus Maximus",  # Gluteus Maximus
                 "rl",
             )
-            gluteusmax_conve_force = sum_muscle_forces(
-                muscleForces_conve_time_normalised,
+            gluteusmax_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,
                 "Gluteus Maximus",  # Gluteus Maximus
                 "rl",
             )
@@ -500,8 +602,8 @@ if __name__ == "__main__":
                 "Gluteus Medius",
                 "rl",
             )
-            gluteusmed_conve_force = sum_muscle_forces(
-                muscleForces_conve_time_normalised,
+            gluteusmed_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,
                 "Gluteus Medius",
                 "rl",
             )
@@ -510,8 +612,8 @@ if __name__ == "__main__":
                 "Adductors",  # Adductors
                 "rl",
             )
-            adductors_conve_force = sum_muscle_forces(
-                muscleForces_conve_time_normalised,
+            adductors_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,
                 "Adductors",  # Adductors
                 "rl",
             )
@@ -523,7 +625,7 @@ if __name__ == "__main__":
                 "rl",
             )
             triceps_surae_conve_force = sum_muscle_forces(
-                muscleForces_conve_time_normalised,
+                muscleForces_conv_time_normalised,
                 "Triceps Surae",  # Adductors
                 "rl",
             )
@@ -536,7 +638,7 @@ if __name__ == "__main__":
                 label="Sumo",
             )
             plt.plot(
-                ik_conve_time_normalised["hip_flexion_r"],
+                ik_conv_time_normalised["hip_flexion_r"],
                 label="Conventional 80%",
                 color="darkgreen",
             )
@@ -551,7 +653,7 @@ if __name__ == "__main__":
                 label="Sumo",
             )
             plt.plot(
-                ik_conve_time_normalised["knee_angle_r"],
+                ik_conv_time_normalised["knee_angle_r"],
                 label="Conventional 80%",
                 color="peru",
             )
@@ -564,7 +666,7 @@ if __name__ == "__main__":
                 ik_sumo_time_normalised["ankle_angle_r"], label="Sumo", color="khaki"
             )
             plt.plot(
-                ik_conve_time_normalised["ankle_angle_r"],
+                ik_conv_time_normalised["ankle_angle_r"],
                 label="Conventional 80%",
                 color="lightcoral",
             )
@@ -574,14 +676,14 @@ if __name__ == "__main__":
             # hamstrings
             plt.sca(axs[1, 0])
             plt.plot(hamstrings_sumo_force, label="Sumo")
-            plt.plot(hamstrings_conve_force, label="Conventional 80%", color="blue")
+            plt.plot(hamstrings_conv_force, label="Conventional 80%", color="blue")
             plt.ylabel("Hamstrings [N]")
             plt.legend()
             plt.xlabel(x_label)
             # quadricpes
             plt.sca(axs[1, 1])
             plt.plot(quadriceps_sumo_force, label="Sumo", color="red")
-            plt.plot(quadriceps_conve_force, label="Conventional 80%", color="blue")
+            plt.plot(quadriceps_conv_force, label="Conventional 80%", color="blue")
             plt.ylabel("Quadriceps [N]")
             plt.legend()
             plt.xlabel(x_label)
@@ -589,7 +691,7 @@ if __name__ == "__main__":
             # gluteus maximus
             plt.sca(axs[1, 2])
             plt.plot(gluteusmax_sumo_force, label="Sumo", color="pink")
-            plt.plot(gluteusmax_conve_force, label="Conventional 80%", color="purple")
+            plt.plot(gluteusmax_conv_force, label="Conventional 80%", color="purple")
             plt.ylabel("Gluteus maximus [N]")
             plt.legend()
             plt.xlabel(x_label)
@@ -597,7 +699,7 @@ if __name__ == "__main__":
             # adductors
             plt.sca(axs[2, 0])
             plt.plot(adductors_sumo_force, label="Sumo", color="cyan")
-            plt.plot(adductors_conve_force, label="Conventional 80%", color="olive")
+            plt.plot(adductors_conv_force, label="Conventional 80%", color="olive")
             plt.ylabel("Adductors [N]")
             plt.legend()
             plt.xlabel(x_label)
@@ -605,7 +707,7 @@ if __name__ == "__main__":
             # gluteus medius
             plt.sca(axs[2, 1])
             plt.plot(gluteusmed_sumo_force, label="Sumo", color="magenta")
-            plt.plot(gluteusmed_conve_force, label="Conventional 80%", color="gold")
+            plt.plot(gluteusmed_conv_force, label="Conventional 80%", color="gold")
             plt.ylabel("Gluteus medius [N]")
             plt.legend()
             plt.xlabel(x_label)
