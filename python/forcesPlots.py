@@ -241,13 +241,32 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "semimem_l",
             "semiten_l",
         ]
-    if muscle_group == "Quadriceps" and limbs == "rl":
+    if muscle_group == "Hamstrings lateral" and limbs == "rl":
+        muscles_of_interest = [
+            "bflh_r",
+            "bfsh_r",
+            "bflh_l",
+            "bfsh_l",
+        ]
+    if muscle_group == "Hamstrings medial" and limbs == "rl":
+        muscles_of_interest = [
+            "semimem_r",
+            "semiten_r",
+            "semimem_l",
+            "semiten_l",
+        ]
+
+    if muscle_group == "Hip flexors" and limbs == "rl":  # rec fem added
         muscles_of_interest = [
             "recfem_r",
+            "recfem_l",
+        ]
+
+    if muscle_group == "Quadriceps" and limbs == "rl":  # rec fem removed
+        muscles_of_interest = [
             "vaslat_r",
             "vasmed_r",
             "vasint_r",
-            "recfem_l",
             "vaslat_l",
             "vasmed_l",
             "vasint_l",
@@ -550,6 +569,14 @@ if __name__ == "__main__":
             print(e)
 
     if run_muscle_force_sum_plot:
+        # For the next plot:
+        """
+        1.⁠ ⁠Add a row below angles with the 3 joint moments
+        2.⁠ ⁠Make them all same colors in all plots
+        3.⁠ ⁠Split hams by medial (Semitend and Semimem) and lateral (biceps long and short heads)
+        4.⁠ ⁠Add hip flexors as a muscle group (TFL, iliacus, psoas, and rectfem)
+        5.⁠ ⁠Don't include rect fem on quads
+        """
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 3
@@ -565,15 +592,26 @@ if __name__ == "__main__":
             )
             fig.set_label("Muscle Forces R")
             x_label = "% concentric deadlift cycle"
-
-            hamstrings_sumo_force = sum_muscle_forces(
-                muscleForces_sumo_time_normalised,  # muslce force data
-                "Hamstrings",  # Hamstrings
+            # Hamstrings medial (Semitend and Semimem)
+            hamstrings_medial_sumo_force = sum_muscle_forces(
+                muscleForces_sumo_time_normalised,  # muscle force data
+                "Hamstrings medial",  # Hamstrings medial
                 "rl",
             )
-            hamstrings_conv_force = sum_muscle_forces(
-                muscleForces_conv_time_normalised,  # muslce force data
-                "Hamstrings",  # Hamstrings
+            hamstrings_medial_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,
+                "Hamstrings medial",
+                "rl",
+            )
+            # Hamstrings lateral (biceps long and short heads)
+            hamstrings_lateral_sumo_force = sum_muscle_forces(
+                muscleForces_sumo_time_normalised,  # muscle force data
+                "Hamstrings lateral",  # Hamstrings lateral
+                "rl",
+            )
+            hamstrings_lateral_conv_force = sum_muscle_forces(
+                muscleForces_conv_time_normalised,  # muscle force data
+                "Hamstrings lateral",
                 "rl",
             )
             quadriceps_sumo_force = sum_muscle_forces(
@@ -673,11 +711,22 @@ if __name__ == "__main__":
             plt.ylabel("Ankle Flex [°]", color="grey")
             plt.legend()
             plt.xlabel(x_label)
-            # hamstrings
+            # hamstrings medial
             plt.sca(axs[1, 0])
-            plt.plot(hamstrings_sumo_force, label="Sumo")
-            plt.plot(hamstrings_conv_force, label="Conventional 80%", color="blue")
-            plt.ylabel("Hamstrings [N]")
+            plt.plot(hamstrings_medial_sumo_force, label="Sumo")
+            plt.plot(
+                hamstrings_medial_conv_force, label="Conventional 80%", color="blue"
+            )
+            plt.ylabel("Hamstrings medial [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+            # hamstrings lateral
+            plt.sca(axs[1, 0])
+            plt.plot(hamstrings_lateral_sumo_force, label="Sumo")
+            plt.plot(
+                hamstrings_lateral_conv_force, label="Conventional 80%", color="blue"
+            )
+            plt.ylabel("Hamstrings lateral [N]")
             plt.legend()
             plt.xlabel(x_label)
             # quadricpes
