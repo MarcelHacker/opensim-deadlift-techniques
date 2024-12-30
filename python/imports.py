@@ -9,6 +9,7 @@ structure:
 4. Time normalisation 
 5. Muscle group force sums
 6. Mean value definitions
+7. Angles and Moments
 """
 # file_paths func parameters say which athlete is active
 
@@ -72,6 +73,7 @@ ik_conv_3 = None
 id_sumo_1 = pd.read_csv(file_paths["id_sumo_path_1"], sep="\t", skiprows=6)
 
 # ID conv
+id_conv_1 = pd.read_csv(file_paths["id_conv_path_1"], sep="\t", skiprows=6)
 id_conv_2 = pd.read_csv(file_paths["id_conv_path_2"], sep="\t", skiprows=6)
 
 # SO sumo
@@ -103,6 +105,7 @@ ik_sumo_time_normalised_1 = time_normalise_df(ik_sumo_1)
 ik_conv_time_normalised_1 = time_normalise_df(ik_conv_1)
 ik_conv_time_normalised_2 = time_normalise_df(ik_conv_2)
 id_sumo_time_nomalised_1 = time_normalise_df(id_sumo_1)
+id_conv_time_normalised_1 = time_normalise_df(id_conv_1)
 id_conv_time_normalised_2 = time_normalise_df(id_conv_2)
 muscleForces_sumo_time_normalised_0 = None  # time_normalise_df(muscleForces_sumo_0)
 muscleForces_sumo_time_normalised_1 = time_normalise_df(muscleForces_sumo_1)
@@ -228,14 +231,20 @@ total_conv_force_2 = sum_muscle_forces(
     "rl",
 )
 ##################################################################################################
-## MEAN VARIABLES
+## MEAN VARIABLES, absolute mean values over all trails
 # IMPORTANT: only calculate the mean with the time normalised vars
+ik_sumo_mean = get_mean_trail_values(
+    ik_sumo_time_normalised_1,  # have to be time normalised
+    ik_sumo_time_normalised_1,  ##!!! to do change this, when having trail 2 ready
+    ## todo add trail 3
+)
 
 ik_conv_mean = get_mean_trail_values(
     ik_conv_time_normalised_1,  # have to be time normalised
     ik_conv_time_normalised_2,
     ## todo add trail 3
 )
+
 muscle_forces_conv_mean = get_mean_trail_values(
     muscleForces_conv_time_normalised_1,  # have to be time normalised
     muscleForces_conv_time_normalised_2,  # have to be time normalised
@@ -254,3 +263,11 @@ total_muscle_forces_conv_mean = (
 total_muscle_forces_sumo_mean = None
 
 ##################################################################################################
+# ANGLES & MOMENTS of both limbs
+## to do use here the mean time normalised trails ik and id, then rename vars to mean
+mean_sumo_both_angles_and_moments = sum_both_limb_moments_and_mean_angles(
+    ik_sumo_time_normalised_1, id_sumo_time_nomalised_1  # use here means
+)
+mean_conv_both_angles_and_moments = sum_both_limb_moments_and_mean_angles(
+    ik_conv_time_normalised_1, id_conv_time_normalised_1  # use here means
+)

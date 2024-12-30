@@ -14,8 +14,8 @@ if __name__ == "__main__":
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
-    run_muscle_force_sum_plot = False
-    run_total_force_comparison = True
+    run_muscle_force_sum_plot = True
+    run_total_force_comparison = False
     run_trail_comparison = False
 
     if run_forces_plot:
@@ -236,113 +236,111 @@ if __name__ == "__main__":
         5.⁠ ⁠Don't include rect fem on quads
         """
         try:
-            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
-            rows = 3
-            cols = 5
             color_sumo = "red"
             color_conv = "blue"
-            fig, axs = plt.subplots(cols, rows)
+            x_label = "% concentric deadlift cycle"
+            fig, axs = plt.subplots(5, 3)
             fig.suptitle(
                 "Kinematics, Kinetics & Muscle Force Comparison "
                 + athletes[0].name
                 + "; Model: "
                 + athletes[0].model
                 + "; Preferred: "
-                + athletes[0].technique
+                + athletes[0].technique,
+                fontweight="bold",
             )
             fig.set_label("Muscle Forces R")
-            x_label = "% concentric deadlift cycle"
 
             ## kinematics of hip, knee and ankle, and muscle forces
+            # angles from both and mean value
             plt.sca(axs[0, 0])
             plt.plot(
-                ik_sumo_time_normalised_1["hip_flexion_r"],
+                mean_sumo_both_angles_and_moments["hip_angle"],
                 color=color_sumo,
                 label="Sumo",
             )
             plt.plot(
-                ik_conv_time_normalised_1["hip_flexion_r"],
+                mean_conv_both_angles_and_moments["hip_angle"],
                 color=color_conv,
                 label="Conventional 80%",
             )
             plt.legend()
-            plt.ylabel("Hip Flex [°]", color="grey")
+            plt.ylabel("Hip Flex [°]")
             plt.xlabel(x_label)
 
             plt.sca(axs[0, 1])
             plt.plot(
-                ik_sumo_time_normalised_1["knee_angle_r"],
+                mean_sumo_both_angles_and_moments["knee_angle"],
                 color=color_sumo,
                 label="Sumo",
             )
             plt.plot(
-                ik_conv_time_normalised_1["knee_angle_r"],
+                mean_conv_both_angles_and_moments["knee_angle"],
                 color=color_conv,
                 label="Conventional 80%",
             )
             plt.legend()
-            plt.ylabel("Knee Flex [°]", color="grey")
+            plt.ylabel("Knee Flex [°]")
             plt.xlabel(x_label)
 
             plt.sca(axs[0, 2])
             plt.plot(
-                ik_sumo_time_normalised_1["ankle_angle_r"],
+                mean_sumo_both_angles_and_moments["ankle_angle"],
                 color=color_sumo,
                 label="Sumo",
             )
             plt.plot(
-                ik_conv_time_normalised_1["ankle_angle_r"],
+                mean_conv_both_angles_and_moments["ankle_angle"],
                 color=color_conv,
                 label="Conventional 80%",
             )
-            plt.ylabel("Ankle Flex [°]", color="grey")
+            plt.ylabel("Ankle Flex [°]")
             plt.legend()
             plt.xlabel(x_label)
-            ## moments, just right leg
-            # todo get mean of both
+            ## moments, both legs
             # hip
             plt.sca(axs[1, 0])
             plt.plot(
-                id_sumo_time_nomalised_1["hip_flexion_r_moment"],
+                mean_sumo_both_angles_and_moments["hip_flexion_moment"],
                 label="Sumo",
                 color=color_sumo,
             )
             plt.plot(
-                id_conv_time_normalised_2["hip_flexion_r_moment"],
+                mean_conv_both_angles_and_moments["hip_flexion_moment"],
                 color=color_conv,
                 label="Conventional 80%",
             )
-            plt.ylabel("Hip moment [Nm]", color="grey")
+            plt.ylabel("Hip moment [Nm]")
             plt.legend()
             plt.xlabel(x_label)
             # knee
             plt.sca(axs[1, 1])
             plt.plot(
-                id_sumo_time_nomalised_1["knee_angle_r_moment"],
+                mean_sumo_both_angles_and_moments["knee_flexion_moment"],
                 label="Sumo",
                 color=color_sumo,
             )
             plt.plot(
-                id_conv_time_normalised_2["knee_angle_r_moment"],
+                mean_conv_both_angles_and_moments["knee_flexion_moment"],
                 color=color_conv,
                 label="Conventional 80%",
             )
-            plt.ylabel("Knee moment [Nm]", color="grey")
+            plt.ylabel("Knee moment [Nm]")
             plt.legend()
             plt.xlabel(x_label)
             # ankle
             plt.sca(axs[1, 2])
             plt.plot(
-                id_sumo_time_nomalised_1["ankle_angle_r_moment"],
+                mean_sumo_both_angles_and_moments["ankle_flexion_moment"],
                 label="Sumo",
                 color=color_sumo,
             )
             plt.plot(
-                id_conv_time_normalised_2["ankle_angle_r_moment"],
+                mean_conv_both_angles_and_moments["ankle_flexion_moment"],
                 color=color_conv,
                 label="Conventional 80%",
             )
-            plt.ylabel("Ankle moment [Nm]", color="grey")
+            plt.ylabel("Ankle moment [Nm]")
             plt.legend()
             plt.xlabel(x_label)
 

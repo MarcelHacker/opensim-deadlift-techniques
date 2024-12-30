@@ -253,6 +253,50 @@ def get_mean_trail_values(
     return data
 
 
+def sum_both_limb_moments_and_mean_angles(
+    ik_file_time_normalised, id_file_time_normalised
+):
+    angles_and_moments = pd.DataFrame(
+        {
+            "hip_angle": [],
+            "knee_angle": [],
+            "ankle_angle": [],
+            "hip_flexion_moment": [],
+            "knee_flexion_moment": [],
+            "ankle_flexion_moment": [],
+        }
+    )
+    # angles
+    angles_and_moments["hip_angle"] = (
+        ik_file_time_normalised["hip_flexion_r"]
+        + ik_file_time_normalised["hip_flexion_l"]
+    ) / 2  # mean angle values of both limbs
+    angles_and_moments["knee_angle"] = (
+        ik_file_time_normalised["knee_angle_r"]
+        + ik_file_time_normalised["knee_angle_l"]
+    ) / 2  # mean angle values of both limbs
+    angles_and_moments["ankle_angle"] = (
+        ik_file_time_normalised["ankle_angle_r"]
+        + ik_file_time_normalised["ankle_angle_l"]
+    ) / 2  # mean angle values of both limbs
+
+    # moments
+    angles_and_moments["hip_flexion_moment"] = (
+        id_file_time_normalised["hip_flexion_r_moment"]
+        + id_file_time_normalised["hip_flexion_l_moment"]
+    )
+    angles_and_moments["knee_flexion_moment"] = (
+        id_file_time_normalised["knee_angle_r_moment"]
+        + id_file_time_normalised["knee_angle_l_moment"]
+    )
+    angles_and_moments["ankle_flexion_moment"] = (
+        id_file_time_normalised["ankle_angle_r_moment"]
+        + id_file_time_normalised["ankle_angle_l_moment"]
+    )
+
+    return angles_and_moments
+
+
 def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
     """sum_muscle_forces
     sum of intrested muscle forces
