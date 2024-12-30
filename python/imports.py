@@ -114,99 +114,99 @@ muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
 ##################################################################################################
 
 # Hamstrings medial (Semitend and Semimem)
-hamstrings_medial_sumo_force = sum_muscle_forces(
+hamstrings_medial_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,  # muscle force data
     "Hamstrings medial",  # Hamstrings medial
     "rl",
 )
-hamstrings_medial_conv_force = sum_muscle_forces(
+hamstrings_medial_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Hamstrings medial",
     "rl",
 )
 # Hamstrings lateral (biceps long and short heads)
-hamstrings_lateral_sumo_force = sum_muscle_forces(
+hamstrings_lateral_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,  # muscle force data
     "Hamstrings lateral",  # Hamstrings lateral
     "rl",
 )
-hamstrings_lateral_conv_force = sum_muscle_forces(
+hamstrings_lateral_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,  # muscle force data
     "Hamstrings lateral",
     "rl",
 )
-vasti_sumo_force = sum_muscle_forces(
+vasti_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
     "Vasti",  # Quadriceps
     "rl",
 )
-vasti_conv_force = sum_muscle_forces(
+vasti_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Vasti",  # Quadriceps
     "rl",
 )
-gluteusmax_sumo_force = sum_muscle_forces(
+gluteusmax_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
     "Gluteus maximus",  # Gluteus Maximus
     "rl",
 )
-gluteusmax_conv_force = sum_muscle_forces(
+gluteusmax_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Gluteus maximus",  # Gluteus Maximus
     "rl",
 )
 # Gluteus Medius
-gluteusmed_sumo_force = sum_muscle_forces(
+gluteusmed_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
     "Gluteus medius",
     "rl",
 )
-gluteusmed_conv_force = sum_muscle_forces(
+gluteusmed_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Gluteus medius",
     "rl",
 )
 # Gluteus Minimus
-gluteusmin_sumo_force = sum_muscle_forces(
+gluteusmin_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
     "Gluteus minimus",
     "rl",
 )
-gluteusmin_conv_force = sum_muscle_forces(
+gluteusmin_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Gluteus minimus",
     "rl",
 )
 
-adductors_sumo_force = sum_muscle_forces(
+adductors_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
     "Adductors",  # Adductors
     "rl",
 )
-adductors_conv_force = sum_muscle_forces(
+adductors_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Adductors",  # Adductors
     "rl",
 )
 # Hip flexors
-hip_flexors_sumo_force = sum_muscle_forces(
+hip_flexors_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
     "Hip flexors",  # Adductors
     "rl",
 )
-hip_flexors_conv_force = sum_muscle_forces(
+hip_flexors_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Hip flexors",  # Adductors
     "rl",
 )
 
 # Triceps Surae
-triceps_surae_sumo_force = sum_muscle_forces(
+triceps_surae_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
     "Triceps surae",  # Adductors
     "rl",
 )
-triceps_surae_conve_force = sum_muscle_forces(
+triceps_surae_conve_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Triceps surae",  # Adductors
     "rl",
