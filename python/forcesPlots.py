@@ -451,13 +451,6 @@ if __name__ == "__main__":
             fig.set_label("Muscle Forces R")
             x_label = "% concentric deadlift cycle"
 
-            mean_total_force_conv = [0] * 101
-            index = 0
-            # mean total for two trail files
-            for value in total_conv_force_1:
-                mean_total_force_conv[index] = (value + total_conv_force_2[index]) / 2
-                index += 1
-
             # Total force between two techniques
             plt.sca(axs[0])
             plt.plot(total_sumo_force_1, label="Sumo", color="red")
@@ -469,7 +462,7 @@ if __name__ == "__main__":
             plt.sca(axs[1])
             plt.plot(total_conv_force_1, label="Conv 1", color="red")
             plt.plot(total_conv_force_2, label="Conv 2", color="blue")
-            plt.plot(mean_total_force_conv, label="MEAN", color="magenta")
+            plt.plot(total_muscle_forces_conv_mean, label="MEAN", color="magenta")
             plt.ylabel("Total muscle force CONV [N]")
             plt.legend()
             plt.xlabel(x_label)
@@ -481,7 +474,6 @@ if __name__ == "__main__":
             print(e)
 
     if run_trail_comparison:
-
         try:
             fig, axs = plt.subplots(2, 3)
             fig.suptitle(

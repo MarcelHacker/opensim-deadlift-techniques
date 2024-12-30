@@ -241,6 +241,16 @@ muscle_forces_conv_mean = get_mean_trail_values(
     muscleForces_conv_time_normalised_1,  # have to be time normalised
     muscleForces_conv_time_normalised_2,  # have to be time normalised
 )
+# calcute mean of array values get from muscle force sums
+buffer_mean_total_conv = [0] * 101  # buffer
+i = 0
+for value in total_conv_force_1:
+    buffer_mean_total_conv[i] = (value + total_conv_force_2[i]) / 2  # made for 2 trails
+    i += 1
+total_muscle_forces_conv_mean = (
+    buffer_mean_total_conv  # set mean of conventional technique
+)
 
+total_muscle_forces_sumo_mean = None
 
 ##################################################################################################
