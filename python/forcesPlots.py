@@ -15,8 +15,8 @@ if __name__ == "__main__":
     run_forces_plot = False
     run_emptybar_comparison = False
     run_muscle_force_sum_plot = False
-    run_total_force_comparison = False
-    run_trail_comparison = True
+    run_total_force_comparison = True
+    run_trail_comparison = False
 
     if run_forces_plot:
         try:
@@ -523,7 +523,7 @@ if __name__ == "__main__":
     if run_total_force_comparison:
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
-            cols = 1
+            cols = 2
             fig, axs = plt.subplots(cols)
             fig.suptitle(
                 "Total Muscle Force Comparison "
@@ -536,14 +536,19 @@ if __name__ == "__main__":
             fig.set_label("Muscle Forces R")
             x_label = "% concentric deadlift cycle"
 
-            # Total forces
-            total_sumo_force_0 = sum_muscle_forces(
-                muscleForces_sumo_time_normalised_0,  # muscle force data
+            # Total forces of both limbs
+            # total_sumo_force_0 = sum_muscle_forces(
+            #    muscleForces_sumo_time_normalised_0,  # muscle force data
+            #   "All",  # All muscle groups
+            #  "rl",
+            # )
+            total_sumo_force_1 = sum_muscle_forces(
+                muscleForces_sumo_time_normalised_1,  # muscle force data
                 "All",  # All muscle groups
                 "rl",
             )
-            total_sumo_force_1 = sum_muscle_forces(
-                muscleForces_sumo_time_normalised_1,  # muscle force data
+            total_conv_force_1 = sum_muscle_forces(
+                muscleForces_conv_time_normalised_1,  # muscle force data
                 "All",  # All muscle groups
                 "rl",
             )
@@ -552,6 +557,12 @@ if __name__ == "__main__":
                 "All",  # All muscle groups
                 "rl",
             )
+            mean_total_force_conv = [0] * 101
+            index = 0
+            for value in total_conv_force_1:
+                mean_total_force_conv[index] = (value + total_conv_force_2[index]) / 2
+                index += 1
+
             # Total force
             plt.sca(axs[0])
             plt.plot(total_sumo_force_1, label="Sumo", color="red")
@@ -559,6 +570,15 @@ if __name__ == "__main__":
             plt.ylabel("Total muscle force [N]")
             plt.legend()
             plt.xlabel(x_label)
+
+            plt.sca(axs[1])
+            plt.plot(total_conv_force_1, label="Conv 1", color="red")
+            plt.plot(total_conv_force_2, label="Conv 2", color="blue")
+            plt.plot(mean_total_force_conv, label="MEAN", color="magenta")
+            plt.ylabel("Total muscle force CONV [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+
             plt.show()
 
         except Exception as e:
@@ -576,7 +596,6 @@ if __name__ == "__main__":
             ik_trail_1,  # have to be time normalised
             ik_trail_2,
         )
-
         muscle_forces_mean = get_mean_trail_values(
             muscle_forces_trail_1,  # have to be time normalised
             muscle_forces_trail_2,
