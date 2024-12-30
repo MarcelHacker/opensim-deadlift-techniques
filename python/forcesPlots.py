@@ -265,28 +265,28 @@ def mean_trail_values(
     data_2_time_normalised,
     data_3_time_normalised=None,
 ):
-    ## todo fix mean functions and calculations
     """
-    calculate the mean value of the 2 trails
+    calculate the mean value of the given trails
     Input:
-    2 columns of the trail files, data frame
+    Data Frame of the trail files, columns have to identical!
 
     Output:
-    Data Frame with the mean
+    New data frame with the mean of values
     """
     data = pd.DataFrame()  # make a copy of delivered dataFrame
 
     for column in data_1_time_normalised.columns:
-        # works data[column] = data_1_time_normalised[column]
         if data_3_time_normalised == None:
+            print("2 data trails given")
             data[column] = (
                 data_1_time_normalised[column] + data_2_time_normalised[column]
             ) / 2
         else:
+            print("3 data trails given")
             data[column] = (
                 data_1_time_normalised[column]
                 + data_2_time_normalised[column]
-                + data_2_time_normalised[column]
+                + data_3_time_normalised[column]
             ) / 3
     return data
 
@@ -491,16 +491,46 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
     return sum_forces
 
 
+def plot_data(
+    axs,
+    data_1,
+    label_data_1,
+    color_data_1,
+    data_2,
+    label_data_2,
+    color_data_2,
+    legend,
+    y_label,
+    x_label,
+):
+    plt.sca(axs)
+    plt.plot(
+        data_1,
+        label=label_data_1,
+        color=color_data_1,
+    )
+    plt.plot(
+        data_2,
+        label=label_data_2,
+        color=color_data_2,
+    )
+    if legend:
+        plt.legend()
+    plt.ylabel(y_label)
+    plt.xlabel(x_label)
+
+
 if __name__ == "__main__":
 
-    # todo check mean func
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
     run_muscle_force_sum_plot = False
-    run_total_force_comparison = True
+    run_total_force_comparison = False
+    run_trail_comparison = True
 
     file_paths = get_paths_athlete(athletes[0], athletes[0].model)
+    ##################################################################################################
     # IK sumo
     ik_sumo_emptybar_0 = pd.read_csv(
         file_paths["ik_sumo_emptybar_path_0"],
@@ -524,8 +554,8 @@ if __name__ == "__main__":
     ik_conv_2 = pd.read_csv(file_paths["ik_conv_path_2"], sep="\t", skiprows=10)
     ik_conv_3 = None
     # ID sumo
-    id_sumo = pd.read_csv(file_paths["id_sumo_path_1"], sep="\t", skiprows=6)
-    id_conv = pd.read_csv(file_paths["id_conv_path_2"], sep="\t", skiprows=6)
+    id_sumo_1 = pd.read_csv(file_paths["id_sumo_path_1"], sep="\t", skiprows=6)
+    id_conv_2 = pd.read_csv(file_paths["id_conv_path_2"], sep="\t", skiprows=6)
 
     # ID conv
     # SO sumo
@@ -553,26 +583,16 @@ if __name__ == "__main__":
     ik_sumo_time_normalised_1 = time_normalise_df(ik_sumo_1)
     ik_conv_time_normalised_1 = time_normalise_df(ik_conv_1)
     ik_conv_time_normalised_2 = time_normalise_df(ik_conv_2)
-    id_sumo_time_nomalised = time_normalise_df(id_sumo)
-    id_conv_time_normalised = time_normalise_df(id_conv)
+    id_sumo_time_nomalised_1 = time_normalise_df(id_sumo_1)
+    id_conv_time_normalised_2 = time_normalise_df(id_conv_2)
     ik_sumo_emptybar_time_normalised_0 = time_normalise_df(ik_sumo_emptybar_0)
     muscleForces_sumo_time_normalised_1 = time_normalise_df(muscleForces_sumo_1)
     muscleForces_conv_time_normalised_2 = time_normalise_df(muscleForces_conv_2)
     muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
         muscleForces_sumo_emptybar_0
     )
-    print(ik_conv_time_normalised_1)
-    print(ik_conv_time_normalised_2)
 
-    ### get time normalised mean values of the trails
-    ## todo get all mean values of the columns back, not only on column
-    ik_conv_mean_values = mean_trail_values(
-        ik_conv_time_normalised_1,  # have to be time normalised
-        ik_conv_time_normalised_2,
-    )
-    print("\n ik_conv hip flexion r 1:", ik_conv_time_normalised_1["hip_flexion_r"])
-    print("\n ik_conv hip flexion r 2:", ik_conv_time_normalised_2["hip_flexion_r"])
-    print("\n ik_conv_mean hip flexion r final:", ik_conv_mean_values["hip_flexion_r"])
+    ##################################################################################################
 
     if run_forces_plot:
         try:
@@ -957,12 +977,12 @@ if __name__ == "__main__":
             # hip
             plt.sca(axs[1, 0])
             plt.plot(
-                id_sumo_time_nomalised["hip_flexion_r_moment"],
+                id_sumo_time_nomalised_1["hip_flexion_r_moment"],
                 label="Sumo",
                 color=color_row_1,
             )
             plt.plot(
-                id_conv_time_normalised["hip_flexion_r_moment"],
+                id_conv_time_normalised_2["hip_flexion_r_moment"],
                 label="Conventional 80%",
             )
             plt.ylabel("Hip moment [Nm]", color="grey")
@@ -971,12 +991,12 @@ if __name__ == "__main__":
             # knee
             plt.sca(axs[1, 1])
             plt.plot(
-                id_sumo_time_nomalised["knee_angle_r_moment"],
+                id_sumo_time_nomalised_1["knee_angle_r_moment"],
                 label="Sumo",
                 color=color_row_1,
             )
             plt.plot(
-                id_conv_time_normalised["knee_angle_r_moment"],
+                id_conv_time_normalised_2["knee_angle_r_moment"],
                 label="Conventional 80%",
             )
             plt.ylabel("Knee moment [Nm]", color="grey")
@@ -985,12 +1005,12 @@ if __name__ == "__main__":
             # ankle
             plt.sca(axs[1, 2])
             plt.plot(
-                id_sumo_time_nomalised["ankle_angle_r_moment"],
+                id_sumo_time_nomalised_1["ankle_angle_r_moment"],
                 label="Sumo",
                 color=color_row_1,
             )
             plt.plot(
-                id_conv_time_normalised["ankle_angle_r_moment"],
+                id_conv_time_normalised_2["ankle_angle_r_moment"],
                 label="Conventional 80%",
             )
             plt.ylabel("Ankle moment [Nm]", color="grey")
@@ -1079,9 +1099,8 @@ if __name__ == "__main__":
     if run_total_force_comparison:
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
-            rows = 2
-            cols = 2
-            fig, axs = plt.subplots(cols, rows)
+            cols = 1
+            fig, axs = plt.subplots(cols)
             fig.suptitle(
                 "Total Muscle Force Comparison "
                 + athletes[0].name
@@ -1105,27 +1124,80 @@ if __name__ == "__main__":
                 "rl",
             )
             # Total force
-            plt.sca(axs[0, 0])
+            plt.sca(axs[0])
             plt.plot(total_sumo_force, label="Sumo", color="red")
             plt.plot(total_conv_force, label="Conventional 80%")
             plt.ylabel("Total muscle force [N]")
             plt.legend()
             plt.xlabel(x_label)
-            ## testing mean values
-            plt.sca(axs[0, 1])
-            plt.plot(ik_conv_time_normalised_1["hip_flexion_r"], label="1", color="red")
-            plt.plot(
-                ik_conv_time_normalised_2["hip_flexion_r"], label="2", color="blue"
-            )
-            plt.plot(ik_conv_mean_values["hip_flexion_r"], label="MEAN", color="gold")
-            # plt.plot(total_conv_force, label="Conventional 80%")
-            plt.ylabel("Hip Flexion [°]")
-            plt.legend()
-            plt.xlabel(x_label)
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in run_total_force_comparison")
+            print(e)
+
+    if run_trail_comparison:
+        ### get time normalised mean values of the trails
+        ik_trail_0 = ik_conv_time_normalised_1
+        ik_trail_1 = ik_conv_time_normalised_2
+        ik_mean = ik_conv_mean_values = mean_trail_values(
+            ik_conv_time_normalised_1,  # have to be time normalised
+            ik_conv_time_normalised_2,
+        )
+        try:
+            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
+            rows = 3
+            cols = 2
+            fig, axs = plt.subplots(cols, rows)
+            fig.suptitle(
+                "Trail Comparison Conventional"
+                + athletes[0].name
+                + "; Model: "
+                + athletes[0].model
+                + "; Preferred: "
+                + athletes[0].technique
+            )
+            fig.set_label("Muscle Forces R")
+            x_label = "% concentric deadlift cycle"
+
+            # display mean, and trail values
+
+            plot_data(
+                axs[0, 0],  # axis
+                ik_trail_0["hip_flexion_r"],  # data 1
+                "1",  # label data 1
+                "red",  # color data 1
+                ik_trail_1["hip_flexion_r"],  # data 2
+                "2",  # label data 2
+                "blue",  # color data 2
+                True,  # legend
+                "Hip Flexion [°]",  # y label
+                x_label,
+            ),
+            plt.plot(
+                ik_mean["hip_flexion_r"], label="MEAN", color="gold"
+            )  # add mean curve
+
+            plt.sca(axs[0, 1])
+            plt.plot(ik_trail_0["knee_angle_r"], label="1", color="red")
+            plt.plot(ik_trail_1["knee_angle_r"], label="2", color="blue")
+            plt.plot(ik_mean["knee_angle_r"], label="MEAN", color="gold")
+            plt.ylabel("Knee Flexion [°]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.sca(axs[0, 2])
+            plt.plot(ik_trail_0["ankle_angle_r"], label="1", color="red")
+            plt.plot(ik_trail_1["ankle_angle_r"], label="2", color="blue")
+            plt.plot(ik_mean["ankle_angle_r"], label="MEAN", color="gold")
+            plt.ylabel("Knee Flexion [°]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.show()
+
+        except Exception as e:
+            print("Error in run_trail_comparison")
             print(e)
 
 # END
