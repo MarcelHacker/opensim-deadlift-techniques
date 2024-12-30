@@ -277,12 +277,10 @@ def mean_trail_values(
 
     for column in data_1_time_normalised.columns:
         if data_3_time_normalised == None:
-            print("2 data trails given")
             data[column] = (
                 data_1_time_normalised[column] + data_2_time_normalised[column]
             ) / 2
         else:
-            print("3 data trails given")
             data[column] = (
                 data_1_time_normalised[column]
                 + data_2_time_normalised[column]
@@ -565,6 +563,9 @@ if __name__ == "__main__":
     muscleForces_sumo_1 = pd.read_csv(
         file_paths["muscle_forces_sumo_path_1"], sep="\t", skiprows=14
     )
+    muscleForces_conv_1 = pd.read_csv(
+        file_paths["muscle_forces_conv_path_1"], sep="\t", skiprows=14
+    )
     muscleForces_conv_2 = pd.read_csv(
         file_paths["muscle_forces_conv_path_2"], sep="\t", skiprows=14
     )
@@ -587,6 +588,7 @@ if __name__ == "__main__":
     id_conv_time_normalised_2 = time_normalise_df(id_conv_2)
     ik_sumo_emptybar_time_normalised_0 = time_normalise_df(ik_sumo_emptybar_0)
     muscleForces_sumo_time_normalised_1 = time_normalise_df(muscleForces_sumo_1)
+    muscleForces_conv_time_normalised_1 = time_normalise_df(muscleForces_conv_1)
     muscleForces_conv_time_normalised_2 = time_normalise_df(muscleForces_conv_2)
     muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
         muscleForces_sumo_emptybar_0
@@ -1138,19 +1140,27 @@ if __name__ == "__main__":
 
     if run_trail_comparison:
         ### get time normalised mean values of the trails
-        ik_trail_0 = ik_conv_time_normalised_1
-        ik_trail_1 = ik_conv_time_normalised_2
+        ik_trail_1 = ik_conv_time_normalised_1
+        ik_trail_2 = ik_conv_time_normalised_2
+        muscle_forces_trail_1 = muscleForces_conv_time_normalised_1
+        muscle_forces_trail_2 = muscleForces_conv_time_normalised_2
+        ## get mean
         ik_mean = ik_conv_mean_values = mean_trail_values(
-            ik_conv_time_normalised_1,  # have to be time normalised
-            ik_conv_time_normalised_2,
+            ik_trail_1,  # have to be time normalised
+            ik_trail_2,
         )
+        muscle_forces_mean = mean_trail_values(
+            muscle_forces_trail_1,  # have to be time normalised
+            muscle_forces_trail_2,
+        )
+
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 3
             cols = 2
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Trail Comparison Conventional"
+                "Trail Comparison Conventional "
                 + athletes[0].name
                 + "; Model: "
                 + athletes[0].model
@@ -1159,16 +1169,17 @@ if __name__ == "__main__":
             )
             fig.set_label("Muscle Forces R")
             x_label = "% concentric deadlift cycle"
+            label_data_1 = "1 trail"
+            label_data_2 = "2 trail"
 
             # display mean, and trail values
-
             plot_data(
                 axs[0, 0],  # axis
-                ik_trail_0["hip_flexion_r"],  # data 1
-                "1",  # label data 1
+                ik_trail_1["hip_flexion_r"],  # data 1
+                label_data_1,  # label data 1
                 "red",  # color data 1
-                ik_trail_1["hip_flexion_r"],  # data 2
-                "2",  # label data 2
+                ik_trail_2["hip_flexion_r"],  # data 2
+                label_data_2,  # label data 2
                 "blue",  # color data 2
                 True,  # legend
                 "Hip Flexion [°]",  # y label
@@ -1178,21 +1189,82 @@ if __name__ == "__main__":
                 ik_mean["hip_flexion_r"], label="MEAN", color="gold"
             )  # add mean curve
 
-            plt.sca(axs[0, 1])
-            plt.plot(ik_trail_0["knee_angle_r"], label="1", color="red")
-            plt.plot(ik_trail_1["knee_angle_r"], label="2", color="blue")
+            plot_data(
+                axs[0, 1],  # axis
+                ik_trail_1["knee_angle_r"],  # data 1
+                label_data_1,  # label data 1
+                "red",  # color data 1
+                ik_trail_2["knee_angle_r"],  # data 2
+                label_data_2,  # label data 2
+                "blue",  # color data 2
+                True,  # legend
+                "Knee Flexion [°]",  # y label
+                x_label,
+            ),
             plt.plot(ik_mean["knee_angle_r"], label="MEAN", color="gold")
-            plt.ylabel("Knee Flexion [°]")
-            plt.legend()
-            plt.xlabel(x_label)
 
-            plt.sca(axs[0, 2])
-            plt.plot(ik_trail_0["ankle_angle_r"], label="1", color="red")
-            plt.plot(ik_trail_1["ankle_angle_r"], label="2", color="blue")
+            plot_data(
+                axs[0, 2],  # axis
+                ik_trail_1["ankle_angle_r"],  # data 1
+                label_data_1,  # label data 1
+                "red",  # color data 1
+                ik_trail_2["ankle_angle_r"],  # data 2
+                label_data_2,  # label data 2
+                "blue",  # color data 2
+                True,  # legend
+                "Ankle Flexion [°]",  # y label
+                x_label,
+            ),
             plt.plot(ik_mean["ankle_angle_r"], label="MEAN", color="gold")
-            plt.ylabel("Knee Flexion [°]")
-            plt.legend()
-            plt.xlabel(x_label)
+
+            plot_data(
+                axs[1, 0],  # axis
+                muscle_forces_trail_1["vaslat_r"],  # data 1
+                label_data_1,  # label data 1
+                "red",  # color data 1
+                muscle_forces_trail_2["vaslat_r"],  # data 2
+                label_data_2,  # label data 2
+                "blue",  # color data 2
+                True,  # legend
+                "vaslat_r [N]",  # y label
+                x_label,
+            ),
+            plt.plot(
+                muscle_forces_mean["vaslat_r"], label="MEAN", color="gold"
+            )  # add mean curve
+
+            plot_data(
+                axs[1, 1],  # axis
+                muscle_forces_trail_1["semiten_r"],  # data 1
+                label_data_1,  # label data 1
+                "red",  # color data 1
+                muscle_forces_trail_2["semiten_r"],  # data 2
+                label_data_2,  # label data 2
+                "blue",  # color data 2
+                True,  # legend
+                "semiten_r [N]",  # y label
+                x_label,
+            ),
+            plt.plot(
+                muscle_forces_mean["semiten_r"], label="MEAN", color="gold"
+            )  # add mean curve
+
+            plot_data(
+                axs[1, 2],  # axis
+                muscle_forces_trail_1["glmax3_r"],  # data 1
+                label_data_1,  # label data 1
+                "red",  # color data 1
+                muscle_forces_trail_2["glmax3_r"],  # data 2
+                label_data_2,  # label data 2
+                "blue",  # color data 2
+                True,  # legend
+                "glmax3_r [N]",  # y label
+                x_label,
+            ),
+            plt.sca(axs[1, 2])
+            plt.plot(
+                muscle_forces_mean["glmax3_r"], label="MEAN", color="gold"
+            )  # add mean curve
 
             plt.show()
 
