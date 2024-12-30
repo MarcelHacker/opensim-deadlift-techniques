@@ -7,8 +7,10 @@ structure:
 2. athletes initialisation
 3. IK, ID and SO file definitions
 4. Time normalisation 
-5. 
+5. Muscle group force sums
+6. Mean value definitions
 """
+# file_paths func parameters say which athlete is active
 
 
 ################################ CLASSES ###########################################
