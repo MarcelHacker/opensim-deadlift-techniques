@@ -1,6 +1,15 @@
 from local_functions import *
 import pandas as pd
 
+"""
+structure:
+1. class athlete
+2. athletes initialisation
+3. IK, ID and SO file definitions
+4. Time normalisation 
+5. 
+"""
+
 
 ################################ CLASSES ###########################################
 class athlete:
@@ -204,5 +213,34 @@ triceps_surae_conve_force = sum_muscle_forces(
     "Triceps surae",  # Adductors
     "rl",
 )
+
+total_sumo_force_1 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_1,  # muscle force data
+    "All",  # All muscle groups
+    "rl",
+)
+total_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,  # muscle force data
+    "All",  # All muscle groups
+    "rl",
+)
+total_conv_force_2 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_2,  # muscle force data
+    "All",  # All muscle groups
+    "rl",
+)
+##################################################################################################
+## MEAN VARIABLES
+
+ik_conv_mean = get_mean_trail_values(
+    ik_conv_time_normalised_1,  # have to be time normalised
+    ik_conv_time_normalised_2,
+    ## todo add trail 3
+)
+muscle_forces_conv_mean = get_mean_trail_values(
+    muscleForces_conv_time_normalised_1,  # have to be time normalised
+    muscleForces_conv_time_normalised_2,  # have to be time normalised
+)
+
 
 ##################################################################################################
