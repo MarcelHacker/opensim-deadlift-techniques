@@ -7,6 +7,7 @@ from local_functions import *  # local functions for the project
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#####################################################################################
 
 if __name__ == "__main__":
 
@@ -536,20 +537,25 @@ if __name__ == "__main__":
             x_label = "% concentric deadlift cycle"
 
             # Total forces
-            total_sumo_force = sum_muscle_forces(
+            total_sumo_force_0 = sum_muscle_forces(
+                muscleForces_sumo_time_normalised_0,  # muscle force data
+                "All",  # All muscle groups
+                "rl",
+            )
+            total_sumo_force_1 = sum_muscle_forces(
                 muscleForces_sumo_time_normalised_1,  # muscle force data
                 "All",  # All muscle groups
                 "rl",
             )
-            total_conv_force = sum_muscle_forces(
+            total_conv_force_2 = sum_muscle_forces(
                 muscleForces_conv_time_normalised_2,  # muscle force data
                 "All",  # All muscle groups
                 "rl",
             )
             # Total force
             plt.sca(axs[0])
-            plt.plot(total_sumo_force, label="Sumo", color="red")
-            plt.plot(total_conv_force, label="Conventional 80%")
+            plt.plot(total_sumo_force_1, label="Sumo", color="red")
+            plt.plot(total_conv_force_2, label="Conventional 80%")
             plt.ylabel("Total muscle force [N]")
             plt.legend()
             plt.xlabel(x_label)

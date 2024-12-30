@@ -30,7 +30,9 @@ athletes.append(
         "sumo",
     ),
 )
-file_paths = get_paths_athlete(athletes[0], athletes[0].model)
+file_paths = get_paths_athlete(
+    athletes[0], athletes[0].model  # from which athlete
+)  # gets array with specific file paths
 
 ##################################################################################################
 # IK sumo
@@ -42,7 +44,7 @@ ik_sumo_emptybar_0 = pd.read_csv(
 ik_sumo_emptybar_1 = None
 ik_sumo_emptybar_2 = None
 ik_sumo_emptybar_3 = None
-ik_sumo_0 = None
+ik_sumo_0 = None  # pd.read_csv(file_paths["ik_sumo_path_0"], sep="\t", skiprows=10)
 ik_sumo_1 = pd.read_csv(file_paths["ik_sumo_path_1"], sep="\t", skiprows=10)
 ik_sumo_2 = None
 ik_sumo_3 = None
@@ -64,6 +66,10 @@ id_conv_2 = pd.read_csv(file_paths["id_conv_path_2"], sep="\t", skiprows=6)
 muscleForces_sumo_emptybar_0 = pd.read_csv(
     file_paths["muscle_forces_sumo_emptybar_path_0"], sep="\t", skiprows=14
 )
+muscleForces_sumo_0 = None
+# pd.read_csv(
+#   file_paths["muscle_forces_sumo_path_0"], sep="\t", skiprows=14
+# )
 muscleForces_sumo_1 = pd.read_csv(
     file_paths["muscle_forces_sumo_path_1"], sep="\t", skiprows=14
 )
@@ -91,6 +97,7 @@ ik_conv_time_normalised_2 = time_normalise_df(ik_conv_2)
 id_sumo_time_nomalised_1 = time_normalise_df(id_sumo_1)
 id_conv_time_normalised_2 = time_normalise_df(id_conv_2)
 ik_sumo_emptybar_time_normalised_0 = time_normalise_df(ik_sumo_emptybar_0)
+muscleForces_sumo_time_normalised_0 = time_normalise_df(muscleForces_sumo_0)
 muscleForces_sumo_time_normalised_1 = time_normalise_df(muscleForces_sumo_1)
 muscleForces_conv_time_normalised_1 = time_normalise_df(muscleForces_conv_1)
 muscleForces_conv_time_normalised_2 = time_normalise_df(muscleForces_conv_2)

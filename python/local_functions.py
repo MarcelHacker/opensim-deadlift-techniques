@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 dir_name = "/Users/marcelhacker/Documents/opensim-deadlift-techniques"  # your dircetory
 
 
