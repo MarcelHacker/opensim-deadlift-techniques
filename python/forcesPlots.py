@@ -6,6 +6,7 @@ import msk_modelling_python.src.bops as bp
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import statistics
 
 dir_name = "/Users/marcelhacker/Documents/opensim-deadlift-techniques"  # your dircetory
 
@@ -262,7 +263,7 @@ def time_normalise_df(df, fs=""):
 def mean_trail_values(
     data_1_time_normalised,
     data_2_time_normalised,
-    divider=2,
+    data_3_time_normalised=None,
 ):
     ## todo fix mean functions and calculations
     """
@@ -273,26 +274,20 @@ def mean_trail_values(
     Output:
     Data Frame with the mean
     """
-    data = data_1_time_normalised.copy()  # make a copy of delivered dataFrame
+    data = pd.DataFrame()  # make a copy of delivered dataFrame
 
-    for colum in data_1_time_normalised.columns:
-        index = 0  # resets the value after index = 101
-
-        for values in data_1_time_normalised.values:
-            # print("index:", index)
-            try:
-                # values[index] is the specific value
-                # print("values[index]:", values[index])
-                # buf = values[index] + data_2_time_normalised[colum].values[index]
-                data[colum].values[index] = (
-                    values[index] + data_2_time_normalised[colum].values[index]
-                ) / divider  # divider = trail count
-                # print("Final mean:", data[colum].values[index])
-                index += 1
-            except IndexError:
-                index += 1
-                continue
-    print(data)
+    for column in data_1_time_normalised.columns:
+        # works data[column] = data_1_time_normalised[column]
+        if data_3_time_normalised == None:
+            data[column] = (
+                data_1_time_normalised[column] + data_2_time_normalised[column]
+            ) / 2
+        else:
+            data[column] = (
+                data_1_time_normalised[column]
+                + data_2_time_normalised[column]
+                + data_2_time_normalised[column]
+            ) / 3
     return data
 
 
@@ -574,10 +569,10 @@ if __name__ == "__main__":
     ik_conv_mean_values = mean_trail_values(
         ik_conv_time_normalised_1,  # have to be time normalised
         ik_conv_time_normalised_2,
-        2,
     )
-    print("ik_sumo_mean values:", ik_conv_mean_values)
-    print("ik_sumo_mean values:", ik_conv_mean_values.columns)
+    print("\n ik_conv hip flexion r 1:", ik_conv_time_normalised_1["hip_flexion_r"])
+    print("\n ik_conv hip flexion r 2:", ik_conv_time_normalised_2["hip_flexion_r"])
+    print("\n ik_conv_mean hip flexion r final:", ik_conv_mean_values["hip_flexion_r"])
 
     if run_forces_plot:
         try:
@@ -1127,7 +1122,8 @@ if __name__ == "__main__":
             plt.ylabel("Hip Flexion [°]")
             plt.legend()
             plt.xlabel(x_label)
-            plt.show()
+            # plt.show()
+
         except Exception as e:
             print("Error in run_total_force_comparison")
             print(e)
