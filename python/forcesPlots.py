@@ -14,8 +14,8 @@ if __name__ == "__main__":
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
-    run_muscle_force_sum_plot = False
-    run_total_force_comparison = True
+    run_muscle_force_sum_plot = True
+    run_total_force_comparison = False
     run_trail_comparison = False
     run_complete_plot = False
 
@@ -229,6 +229,8 @@ if __name__ == "__main__":
 
     if run_muscle_force_sum_plot:
         # For the next plot:
+        # muscle forces are from one single limb
+        # moments from both limbs
         """
         1.⁠ ⁠Add a row below angles with the 3 joint moments
         2.⁠ ⁠Make them all same colors in all plots
