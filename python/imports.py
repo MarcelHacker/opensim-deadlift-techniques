@@ -58,7 +58,7 @@ ik_sumo_emptybar_2 = None
 ik_sumo_emptybar_3 = None
 ik_sumo_0 = None  # pd.read_csv(file_paths["ik_sumo_path_0"], sep="\t", skiprows=10)
 ik_sumo_1 = pd.read_csv(file_paths["ik_sumo_path_1"], sep="\t", skiprows=10)
-ik_sumo_2 = None
+ik_sumo_2 = pd.read_csv(file_paths["ik_sumo_path_2"], sep="\t", skiprows=10)
 ik_sumo_3 = None
 # IK conv
 ik_conv_emptybar_0 = None
@@ -71,7 +71,7 @@ ik_conv_2 = pd.read_csv(file_paths["ik_conv_path_2"], sep="\t", skiprows=10)
 ik_conv_3 = None
 # ID sumo
 id_sumo_1 = pd.read_csv(file_paths["id_sumo_path_1"], sep="\t", skiprows=6)
-
+id_sumo_2 = pd.read_csv(file_paths["id_sumo_path_2"], sep="\t", skiprows=6)
 # ID conv
 id_conv_1 = pd.read_csv(file_paths["id_conv_path_1"], sep="\t", skiprows=6)
 id_conv_2 = pd.read_csv(file_paths["id_conv_path_2"], sep="\t", skiprows=6)
@@ -84,6 +84,9 @@ muscleForces_sumo_0 = None
 
 muscleForces_sumo_1 = pd.read_csv(
     file_paths["muscle_forces_sumo_path_1"], sep="\t", skiprows=14
+)
+muscleForces_sumo_2 = pd.read_csv(
+    file_paths["muscle_forces_sumo_path_2"], sep="\t", skiprows=14
 )
 muscleForces_conv_1 = pd.read_csv(
     file_paths["muscle_forces_conv_path_1"], sep="\t", skiprows=14
@@ -100,26 +103,39 @@ momentArms_sumo = None
 ##################################################################################################
 
 ### time normalise everything to 101 values
+# ik
 ik_sumo_emptybar_time_normalised_0 = time_normalise_df(ik_sumo_emptybar_0)
 ik_sumo_time_normalised_1 = time_normalise_df(ik_sumo_1)
+ik_sumo_time_normalised_2 = time_normalise_df(ik_sumo_2)
 ik_conv_time_normalised_1 = time_normalise_df(ik_conv_1)
 ik_conv_time_normalised_2 = time_normalise_df(ik_conv_2)
+# id
 id_sumo_time_nomalised_1 = time_normalise_df(id_sumo_1)
+id_sumo_time_nomalised_2 = time_normalise_df(id_sumo_2)
 id_conv_time_normalised_1 = time_normalise_df(id_conv_1)
 id_conv_time_normalised_2 = time_normalise_df(id_conv_2)
+# muscle forces
 muscleForces_sumo_time_normalised_0 = None  # time_normalise_df(muscleForces_sumo_0)
 muscleForces_sumo_time_normalised_1 = time_normalise_df(muscleForces_sumo_1)
+muscleForces_sumo_time_normalised_2 = time_normalise_df(muscleForces_sumo_2)
 muscleForces_conv_time_normalised_1 = time_normalise_df(muscleForces_conv_1)
 muscleForces_conv_time_normalised_2 = time_normalise_df(muscleForces_conv_2)
 muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
     muscleForces_sumo_emptybar_0
 )
+# moment arms
+##
 ##################################################################################################
 # MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
 # Hamstrings medial (Semitend and Semimem)
 hamstrings_medial_sumo_force_0 = None
 hamstrings_medial_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,  # muscle force data
+    "Hamstrings medial",  # Hamstrings medial
+    "rl",
+)
+hamstrings_medial_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,  # muscle force data
     "Hamstrings medial",  # Hamstrings medial
     "rl",
 )
@@ -139,6 +155,11 @@ hamstrings_lateral_sumo_force_1 = sum_muscle_forces(
     "Hamstrings lateral",  # Hamstrings lateral
     "rl",
 )
+hamstrings_lateral_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,  # muscle force data
+    "Hamstrings lateral",  # Hamstrings lateral
+    "rl",
+)
 hamstrings_lateral_conv_force_1 = sum_muscle_forces(
     muscleForces_conv_time_normalised_1,  # muscle force data
     "Hamstrings lateral",
@@ -152,6 +173,11 @@ hamstrings_lateral_conv_force_2 = sum_muscle_forces(
 
 vasti_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
+    "Vasti",  # Quadriceps
+    "rl",
+)
+vasti_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,
     "Vasti",  # Quadriceps
     "rl",
 )
@@ -171,6 +197,11 @@ gluteusmax_sumo_force_1 = sum_muscle_forces(
     "Gluteus maximus",  # Gluteus Maximus
     "rl",
 )
+gluteusmax_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,
+    "Gluteus maximus",  # Gluteus Maximus
+    "rl",
+)
 gluteusmax_conv_force_1 = sum_muscle_forces(
     muscleForces_conv_time_normalised_1,
     "Gluteus maximus",  # Gluteus Maximus
@@ -184,6 +215,11 @@ gluteusmax_conv_force_2 = sum_muscle_forces(
 # Gluteus Medius
 gluteusmed_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
+    "Gluteus medius",
+    "rl",
+)
+gluteusmed_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,
     "Gluteus medius",
     "rl",
 )
@@ -203,6 +239,11 @@ gluteusmin_sumo_force_1 = sum_muscle_forces(
     "Gluteus minimus",
     "rl",
 )
+gluteusmin_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,
+    "Gluteus minimus",
+    "rl",
+)
 gluteusmin_conv_force_1 = sum_muscle_forces(
     muscleForces_conv_time_normalised_1,
     "Gluteus minimus",
@@ -219,6 +260,11 @@ adductors_sumo_force_1 = sum_muscle_forces(
     "Adductors",  # Adductors
     "rl",
 )
+adductors_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,
+    "Adductors",  # Adductors
+    "rl",
+)
 adductors_conv_force_1 = sum_muscle_forces(
     muscleForces_conv_time_normalised_1,
     "Adductors",  # Adductors
@@ -232,6 +278,11 @@ adductors_conv_force_2 = sum_muscle_forces(
 # Hip flexors
 hip_flexors_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
+    "Hip flexors",  # Adductors
+    "rl",
+)
+hip_flexors_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,
     "Hip flexors",  # Adductors
     "rl",
 )
@@ -252,6 +303,11 @@ triceps_surae_sumo_force_1 = sum_muscle_forces(
     "Triceps surae",  # Adductors
     "rl",
 )
+triceps_surae_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,
+    "Triceps surae",  # Adductors
+    "rl",
+)
 triceps_surae_conv_force_1 = sum_muscle_forces(
     muscleForces_conv_time_normalised_1,
     "Triceps surae",  # Adductors
@@ -265,6 +321,11 @@ triceps_surae_conv_force_2 = sum_muscle_forces(
 
 total_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,  # muscle force data
+    "All",  # All muscle groups
+    "rl",
+)
+total_sumo_force_2 = sum_muscle_forces(
+    muscleForces_sumo_time_normalised_2,  # muscle force data
     "All",  # All muscle groups
     "rl",
 )
@@ -283,13 +344,30 @@ total_conv_force_2 = sum_muscle_forces(
 # IMPORTANT: only calculate the mean with the time normalised vars
 ik_sumo_mean = get_mean_trail_values(
     ik_sumo_time_normalised_1,  # have to be time normalised
-    ik_sumo_time_normalised_1,  ##!!! to do change this, when having trail 2 ready
+    ik_sumo_time_normalised_2,  ##!!! to do change this, when having trail 2 ready
+    ## todo add trail 3
+)
+id_sumo_mean = get_mean_trail_values(
+    id_sumo_time_nomalised_1,  # have to be time normalised
+    id_sumo_time_nomalised_2,  ##!!! to do change this, when having trail 2 ready
     ## todo add trail 3
 )
 
 ik_conv_mean = get_mean_trail_values(
     ik_conv_time_normalised_1,  # have to be time normalised
     ik_conv_time_normalised_2,
+    ## todo add trail 3
+)
+
+id_conv_mean = get_mean_trail_values(
+    id_conv_time_normalised_1,  # have to be time normalised
+    id_conv_time_normalised_2,
+    ## todo add trail 3
+)
+
+muscle_forces_sumo_mean = get_mean_trail_values(
+    muscleForces_sumo_time_normalised_1,  # have to be time normalised
+    muscleForces_sumo_time_normalised_2,  # have to be time normalised
     ## todo add trail 3
 )
 
@@ -301,51 +379,69 @@ muscle_forces_conv_mean = get_mean_trail_values(
 
 # get mean of array values get from muscle force sums
 total_muscle_forces_conv_mean = get_mean_array_values(
-    total_conv_force_1, total_conv_force_2
+    total_conv_force_1, total_conv_force_2  # todo change this for 3 trails
 )
 
-total_muscle_forces_sumo_mean = None  # sumo no force
+total_muscle_forces_sumo_mean = get_mean_array_values(
+    total_sumo_force_1, total_sumo_force_2  # todo change this for 3 trails
+)
 
-hamstrings_medial_sumo_force_mean = (
-    hamstrings_medial_sumo_force_1  # todo change this for 3 trails
+hamstrings_medial_sumo_force_mean = get_mean_array_values(
+    hamstrings_medial_sumo_force_1,
+    hamstrings_medial_sumo_force_2,  # todo change this for 3 trails
 )
 hamstrings_medial_conv_force_mean = get_mean_array_values(
     hamstrings_medial_conv_force_1, hamstrings_medial_conv_force_2  ## todo add 3 trail
 )
-hamstrings_lateral_sumo_force_mean = (
-    hamstrings_lateral_sumo_force_1  # todo change this for 3 trails
+hamstrings_lateral_sumo_force_mean = get_mean_array_values(
+    hamstrings_lateral_sumo_force_1,
+    hamstrings_lateral_sumo_force_2,  # todo change this for 3 trails
 )
 hamstrings_lateral_conv_force_mean = get_mean_array_values(
     hamstrings_lateral_conv_force_1,
     hamstrings_lateral_conv_force_2,  ## todo add 3 trail
 )
-vasti_sumo_force_mean = vasti_sumo_force_1  ## todo add 3 trail
+vasti_sumo_force_mean = get_mean_array_values(
+    vasti_sumo_force_1, vasti_sumo_force_2
+)  ## todo add 3 trail
 vasti_conv_force_mean = get_mean_array_values(
     vasti_sumo_force_1,  ## todo add 3 trail
     vasti_conv_force_2,
 )
-gluteusmax_sumo_force_mean = gluteusmax_sumo_force_1
+gluteusmax_sumo_force_mean = get_mean_array_values(
+    gluteusmax_sumo_force_1, gluteusmax_sumo_force_2  # todo add 3 trail
+)
 gluteusmax_conv_force_mean = get_mean_array_values(
     gluteusmax_conv_force_1, gluteusmax_conv_force_2  ## todo add 3 trail
 )
-adductors_sumo_force_mean = adductors_sumo_force_1  # todo add 3 trail
+adductors_sumo_force_mean = get_mean_array_values(
+    adductors_sumo_force_1, adductors_sumo_force_2
+)  # todo add 3 trail
 adductors_conv_force_mean = get_mean_array_values(
     adductors_conv_force_1, adductors_conv_force_2  ## todo add 3 trail
 )
-gluteusmed_sumo_force_mean = gluteusmed_sumo_force_1  # todo add 3 trail
+gluteusmed_sumo_force_mean = get_mean_array_values(
+    gluteusmed_sumo_force_1, gluteusmed_sumo_force_2
+)  # todo add 3 trail
 gluteusmed_conv_force_mean = get_mean_array_values(
     gluteusmed_conv_force_1, gluteusmed_conv_force_2  ## todo add 3 trail
 )
-triceps_surae_sumo_force_mean = triceps_surae_sumo_force_1  # todo add 3 trail
+triceps_surae_sumo_force_mean = get_mean_array_values(
+    triceps_surae_sumo_force_1, triceps_surae_sumo_force_2
+)  # todo add 3 trail
 triceps_surae_conv_force_mean = get_mean_array_values(
     triceps_surae_conv_force_1, triceps_surae_conv_force_2  ## todo add 3 trail
 )
-hip_flexors_sumo_force_mean = hip_flexors_sumo_force_1  # todo add 3 trail
+hip_flexors_sumo_force_mean = get_mean_array_values(
+    hip_flexors_sumo_force_1, hip_flexors_sumo_force_2
+)  # todo add 3 trail
 hip_flexors_conv_force_mean = get_mean_array_values(
     hip_flexors_conv_force_1, hip_flexors_conv_force_2  ## todo add 3 trail
 )
 
-gluteusmin_sumo_force_mean = gluteusmin_sumo_force_1  # todo add 3 trail
+gluteusmin_sumo_force_mean = get_mean_array_values(
+    gluteusmin_sumo_force_1, gluteusmin_sumo_force_2
+)  # todo add 3 trail
 gluteusmin_conv_force_mean = get_mean_array_values(
     gluteusmin_conv_force_1, gluteusmin_conv_force_2  ## todo add 3 trail
 )
@@ -354,8 +450,8 @@ gluteusmin_conv_force_mean = get_mean_array_values(
 # ANGLES & MOMENTS of both limbs
 ## to do use here the mean time normalised trails ik and id, then rename vars to mean
 mean_sumo_both_angles_and_moments = sum_both_limb_moments_and_mean_angles(
-    ik_sumo_time_normalised_1, id_sumo_time_nomalised_1  # use here means
+    ik_sumo_mean, id_sumo_mean  # use here means
 )
 mean_conv_both_angles_and_moments = sum_both_limb_moments_and_mean_angles(
-    ik_conv_time_normalised_1, id_conv_time_normalised_1  # use here means
+    ik_conv_mean, id_conv_mean  # use here means
 )
