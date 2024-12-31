@@ -1,3 +1,4 @@
+import numpy as np
 from src.imports import (
     plt,
     athletes,
@@ -6,12 +7,12 @@ from src.imports import (
 )
 
 """
-For the angles the mean of all right and left leg of the trails was used.
+Plot the total muscle forces of the two techniques.
 The joint moments are the sum of right and leg divided and then the mean of all trails
 """
 
 
-def run_muscle_force_sum_plot(bool):
+def run_muscle_force_total_plot(bool):
     if bool:
         try:
             color_sumo = "red"
@@ -31,6 +32,7 @@ def run_muscle_force_sum_plot(bool):
             )
             fig.set_label("Total muscle force [N]")
 
+            axs.set_yticks(np.arange(0, 25000.1, 2000))
             # Total force between two techniques
             plt.sca(axs)
             plt.plot(total_muscle_forces_sumo_mean, label=label_sumo, color=color_sumo)
