@@ -364,7 +364,8 @@ id_conv_mean = get_mean_trail_values(
     id_conv_time_normalised_2,
     ## todo add trail 3
 )
-
+print("\n 1: ", muscleForces_sumo_time_normalised_1)
+print("\n 2:", muscleForces_sumo_time_normalised_2)
 muscle_forces_sumo_mean = get_mean_trail_values(
     muscleForces_sumo_time_normalised_1,  # have to be time normalised
     muscleForces_sumo_time_normalised_2,  # have to be time normalised

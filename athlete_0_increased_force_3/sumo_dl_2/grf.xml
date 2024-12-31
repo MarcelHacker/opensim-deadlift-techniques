@@ -16,7 +16,7 @@
 				<!--Identifier (string) to locate the torque to be applied in the data source.-->
 				<torque_identifier>ground_torque3_</torque_identifier>
 				<!--Name of the data source (Storage) that will supply the force data.-->
-				<data_source_name>sumo_dl_2</data_source_name>
+				<data_source_name>sumo_dl_80kg03</data_source_name>
 			</ExternalForce>
 			<ExternalForce name="externalforce_5">
 				<!--Name of the body the force is applied to.-->
@@ -32,7 +32,7 @@
 				<!--Identifier (string) to locate the torque to be applied in the data source.-->
 				<torque_identifier>ground_torque5_</torque_identifier>
 				<!--Name of the data source (Storage) that will supply the force data.-->
-				<data_source_name>sumo_dl_2</data_source_name>
+				<data_source_name>sumo_dl_80kg03</data_source_name>
 			</ExternalForce>
 		</objects>
 		<groups />
