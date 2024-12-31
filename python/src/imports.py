@@ -1,4 +1,4 @@
-from local_functions import *
+from src.local_functions import *
 import pandas as pd
 
 """
@@ -131,7 +131,12 @@ muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
     muscleForces_sumo_emptybar_0
 )
 # moment arms
-##
+momentArms_hip_flexion_r_sumo_time_normalised_1 = time_normalise_df(
+    momentArms_hip_flexion_r_sumo_1
+)
+momentArms_hip_flexion_r_conv_time_normalised_1 = time_normalise_df(
+    momentArms_hip_flexion_r_conv_1
+)
 ##################################################################################################
 # MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
 # Hamstrings medial (Semitend and Semimem)

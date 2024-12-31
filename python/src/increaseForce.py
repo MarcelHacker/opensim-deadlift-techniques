@@ -1,13 +1,12 @@
 ##
-#
 # # Usage for VICON data static export:
 # python increaseForce.py
-#
+##
 import opensim as osim
 
 
 def increase_max_isometric_force(factor):  # opensim API
-    model_path = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/model/jointcenters/scale_model.osim"
+    model_path = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/scale_model.osim"  # change
     print(model_path)
 
     # Load the OpenSim model
