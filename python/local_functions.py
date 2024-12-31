@@ -253,6 +253,35 @@ def get_mean_trail_values(
     return data
 
 
+def get_mean_array_values(
+    array_1_time_normalised,
+    array_2_time_normalised,
+    array_3_time_normalised=None,
+):
+    """
+    calculate the mean value of the given values in arrays
+    Input:
+    Array with values whit the same context!
+
+    Output:
+    Mean of the values in the arrays, as a array.
+    """
+    array = [0] * 101  # buffer
+    i = 0
+    if array_3_time_normalised == None:
+        for value in array_1_time_normalised:
+            array[i] = (value + array_2_time_normalised[i]) / 2  # made for 2 trails
+            i += 1
+    else:
+        for value in array_1_time_normalised:
+            array[i] = (
+                value + array_2_time_normalised[i] + array_3_time_normalised[i]
+            ) / 3  # made for 3 trails
+            i += 1
+
+    return array
+
+
 def sum_both_limb_moments_and_mean_angles(
     ik_file_time_normalised, id_file_time_normalised
 ):

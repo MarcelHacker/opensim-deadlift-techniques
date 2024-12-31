@@ -28,10 +28,10 @@ class athlete:
 athletes = []  # appending instances to athletes list
 athletes.append(
     athlete(
-        "athlete_0_increased_force_3",
-        "57",
-        "athlete_0_scaled_increased_force_3",
-        "conventional",
+        "athlete_0_increased_force_3",  #  folder name
+        "57",  # just for normalising
+        "athlete_0_scaled_increased_force_3",  # model name in folder
+        "sumo",  # preferred technique
     ),
 )
 athletes.append(
@@ -115,11 +115,17 @@ muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
     muscleForces_sumo_emptybar_0
 )
 ##################################################################################################
-
+# MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
 # Hamstrings medial (Semitend and Semimem)
+hamstrings_medial_sumo_force_0 = None
 hamstrings_medial_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,  # muscle force data
     "Hamstrings medial",  # Hamstrings medial
+    "rl",
+)
+hamstrings_medial_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,
+    "Hamstrings medial",
     "rl",
 )
 hamstrings_medial_conv_force_2 = sum_muscle_forces(
@@ -133,11 +139,17 @@ hamstrings_lateral_sumo_force_1 = sum_muscle_forces(
     "Hamstrings lateral",  # Hamstrings lateral
     "rl",
 )
+hamstrings_lateral_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,  # muscle force data
+    "Hamstrings lateral",
+    "rl",
+)
 hamstrings_lateral_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,  # muscle force data
     "Hamstrings lateral",
     "rl",
 )
+
 vasti_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
     "Vasti",  # Quadriceps
@@ -250,17 +262,28 @@ muscle_forces_conv_mean = get_mean_trail_values(
     muscleForces_conv_time_normalised_2,  # have to be time normalised
     ## todo add trail 3
 )
-# calcute mean of array values get from muscle force sums
-buffer_mean_total_conv = [0] * 101  # buffer
-i = 0
-for value in total_conv_force_1:
-    buffer_mean_total_conv[i] = (value + total_conv_force_2[i]) / 2  # made for 2 trails
-    i += 1
-total_muscle_forces_conv_mean = (
-    buffer_mean_total_conv  # set mean of conventional technique
+
+# get mean of array values get from muscle force sums
+total_muscle_forces_conv_mean = get_mean_array_values(
+    total_conv_force_1, total_conv_force_2
 )
 
-total_muscle_forces_sumo_mean = None
+total_muscle_forces_sumo_mean = None  # sumo no force
+
+hamstrings_medial_sumo_force_mean = (
+    hamstrings_medial_sumo_force_1  # todo change this for 3 trails
+)
+hamstrings_medial_conv_force_mean = get_mean_array_values(
+    hamstrings_medial_conv_force_1, hamstrings_medial_conv_force_2  ## todo add 3 trail
+)
+hamstrings_lateral_sumo_force_mean = (
+    hamstrings_lateral_sumo_force_1  # todo change this for 3 trails
+)
+hamstrings_lateral_conv_force_mean = get_mean_array_values(
+    hamstrings_lateral_conv_force_1,
+    hamstrings_lateral_conv_force_2,  ## todo add 3 trail
+)
+
 
 ##################################################################################################
 # ANGLES & MOMENTS of both limbs
