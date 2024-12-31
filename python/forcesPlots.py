@@ -623,7 +623,7 @@ if __name__ == "__main__":
             plt.legend()
             plt.xlabel(x_label)
 
-            plt.show()
+        # plt.show()
         except Exception as e:
             print("Error in run_complete_plot")
             print(e)

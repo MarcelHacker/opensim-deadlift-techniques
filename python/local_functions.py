@@ -139,6 +139,90 @@ def get_paths_athlete(athlete, model_name=None):
                 + model_name
                 + "_StaticOptimization_force.sto"
             )
+            # moment_arms_hip_flexion_r_sumo_path_X
+            data["moment_arms_hip_flexion_r_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_hip_flexion_r.sto"
+            )
+            # moment_arms_hip_flexion_l_sumo_path_X
+            data["moment_arms_hip_flexion_l_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_hip_flexion_l.sto"
+            )
+            # moment_arms_hip_flexion_l_sumo_path_X
+            data["moment_arms_hip_flexion_l_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_hip_flexion_l.sto"
+            )
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r
+            data["moment_arms_knee_angle_r_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_knee_angle_r.sto"
+            )
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_l
+            data["moment_arms_knee_angle_l_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_knee_angle_l.sto"
+            )
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r
+            data["moment_arms_ankle_angle_r_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_ankle_angle_r.sto"
+            )
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_l
+            data["moment_arms_ankle_angle_l_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_ankle_angle_l.sto"
+            )
             # print("\n", data["id_sumo_path_" + str(i)])
             # print("\n", data["id_sumo_path_" + str(i)])
             # print("\n", data["muscle_forces_sumo_path_" + str(i)])
@@ -188,6 +272,90 @@ def get_paths_athlete(athlete, model_name=None):
                 + "/"
                 + model_name
                 + "_StaticOptimization_force.sto"
+            )
+            # moment_arms_hip_flexion_r_conv_path_X
+            data["moment_arms_hip_flexion_r_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_hip_flexion_r.sto"
+            )
+            # moment_arms_hip_flexion_l_conv_path_X
+            data["moment_arms_hip_flexion_l_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_hip_flexion_l.sto"
+            )
+            # moment_arms_hip_flexion_l_conv_path_X
+            data["moment_arms_hip_flexion_l_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_hip_flexion_l.sto"
+            )
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r
+            data["moment_arms_knee_angle_r_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_knee_angle_r.sto"
+            )
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_l
+            data["moment_arms_knee_angle_l_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_knee_angle_l.sto"
+            )
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r
+            data["moment_arms_ankle_angle_r_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_ankle_angle_r.sto"
+            )
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_l
+            data["moment_arms_ankle_angle_l_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "__MuscleAnalysis_MomentArm_ankle_angle_l.sto"
             )
             # print("\n", data["ik_conv_path_" + str(i)])
             # print("\n", data["id_conv_path_" + str(i)])

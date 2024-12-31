@@ -98,7 +98,10 @@ muscleForces_conv_2 = pd.read_csv(
 # print("\n PATH: ", file_paths["moment_arms_hip_flexion_r_sumo_path_1"])
 # athlete0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto
 # athlete_0_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_r.sto
-momentArms_sumo = None
+momentArms_hip_flexion_r_conv_1 = pd.read_csv(
+    file_paths["moment_arms_hip_flexion_r_conv_path_1"], sep="\t", skiprows=14
+)
+print(momentArms_hip_flexion_r_conv_1)
 
 ##################################################################################################
 
