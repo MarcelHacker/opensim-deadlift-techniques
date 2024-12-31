@@ -453,6 +453,8 @@ def get_mean_array_values(
 def sum_both_limb_moments_and_mean_angles(
     ik_file_time_normalised, id_file_time_normalised
 ):
+    # data should be the mean of all trails
+    # and time normalised
     angles_and_moments = pd.DataFrame(
         {
             "hip_angle": [],
@@ -478,6 +480,8 @@ def sum_both_limb_moments_and_mean_angles(
     ) / 2  # mean angle values of both limbs
 
     # moments
+    # now the sum of both limbs with the means
+    # maybe for later the moments are for one leg, the sum of the means right and leg is divided by 2.
     angles_and_moments["hip_flexion_moment"] = (
         id_file_time_normalised["hip_flexion_r_moment"]
         + id_file_time_normalised["hip_flexion_l_moment"]
