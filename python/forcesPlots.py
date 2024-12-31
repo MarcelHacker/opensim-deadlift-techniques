@@ -14,10 +14,10 @@ if __name__ == "__main__":
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
-    run_muscle_force_sum_plot = True
+    run_muscle_force_sum_plot = False
     run_total_force_comparison = False
     run_trail_comparison = False
-    run_complete_plot = False
+    run_complete_plot = True
 
     if run_forces_plot:
         try:
@@ -592,8 +592,38 @@ if __name__ == "__main__":
             print(e)
 
     if run_complete_plot:
+        """
+        Row 1: Hip, knee and ankle joint angles
+        Row 2: Hip, knee and ankle joint moments
+        Row 3: Muscle moment arms ()
+        """
         try:
-            x = 0
+            color_sumo = "red"
+            color_conv = "blue"
+            label_sumo = "Sumo"
+            label_conv = "Conventional"
+            x_label = "% concentric deadlift cycle"
+            fig, axs = plt.subplots(6, 3)
+            fig.suptitle(
+                "Complete Biomechanical Analysis "
+                + athletes[0].name
+                + "; Model: "
+                + athletes[0].model
+                + "; Preferred: "
+                + athletes[0].technique,
+                fontweight="bold",
+            )
+            fig.set_label("Total muscle force [N]")
+
+            # Total force between two techniques
+            plt.sca(axs[0, 0])
+            plt.plot(total_muscle_forces_sumo_mean, label=label_sumo, color=color_sumo)
+            plt.plot(total_muscle_forces_conv_mean, label=label_conv, color=color_conv)
+            plt.ylabel("Total muscle force [N]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.show()
         except Exception as e:
             print("Error in run_complete_plot")
             print(e)
