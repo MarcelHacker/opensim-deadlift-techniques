@@ -364,8 +364,7 @@ id_conv_mean = get_mean_trail_values(
     id_conv_time_normalised_2,
     ## todo add trail 3
 )
-print("\n 1: ", muscleForces_sumo_time_normalised_1)
-print("\n 2:", muscleForces_sumo_time_normalised_2)
+
 muscle_forces_sumo_mean = get_mean_trail_values(
     muscleForces_sumo_time_normalised_1,  # have to be time normalised
     muscleForces_sumo_time_normalised_2,  # have to be time normalised
@@ -377,15 +376,21 @@ muscle_forces_conv_mean = get_mean_trail_values(
     muscleForces_conv_time_normalised_2,  # have to be time normalised
     ## todo add trail 3
 )
-
+######################## TOTAL MUSCLE FORCES ##############################
+#
+print("\n SUMO1:", total_sumo_force_1[0])
+print("\n SUMO2:", total_sumo_force_2[0])
+print("\n CONV1:", total_conv_force_1[0])
+print("\n CONV2:", total_conv_force_2[0])
 # get mean of array values get from muscle force sums
+total_muscle_forces_sumo_mean = get_mean_array_values(
+    total_sumo_force_1, total_sumo_force_2  # todo change this for 3 trails
+)
 total_muscle_forces_conv_mean = get_mean_array_values(
     total_conv_force_1, total_conv_force_2  # todo change this for 3 trails
 )
 
-total_muscle_forces_sumo_mean = get_mean_array_values(
-    total_sumo_force_1, total_sumo_force_2  # todo change this for 3 trails
-)
+###########################################################################
 
 hamstrings_medial_sumo_force_mean = get_mean_array_values(
     hamstrings_medial_sumo_force_1,
@@ -439,7 +444,6 @@ hip_flexors_sumo_force_mean = get_mean_array_values(
 hip_flexors_conv_force_mean = get_mean_array_values(
     hip_flexors_conv_force_1, hip_flexors_conv_force_2  ## todo add 3 trail
 )
-
 gluteusmin_sumo_force_mean = get_mean_array_values(
     gluteusmin_sumo_force_1, gluteusmin_sumo_force_2
 )  # todo add 3 trail

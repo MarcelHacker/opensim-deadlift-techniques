@@ -14,8 +14,8 @@ if __name__ == "__main__":
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_forces_plot = False
     run_emptybar_comparison = False
-    run_muscle_force_sum_plot = True
-    run_total_force_comparison = False
+    run_muscle_force_sum_plot = False
+    run_total_force_comparison = True
     run_trail_comparison = False
     run_complete_plot = False
 
@@ -442,31 +442,28 @@ if __name__ == "__main__":
 
     if run_total_force_comparison:
         try:
-            fig, axs = plt.subplots(2)
+            color_sumo = "red"
+            color_conv = "blue"
+            label_sumo = "Sumo"
+            label_conv = "Conventional"
+            x_label = "% concentric deadlift cycle"
+            fig, axs = plt.subplots(1)
             fig.suptitle(
                 "Total Muscle Force Comparison "
                 + athletes[0].name
                 + "; Model: "
                 + athletes[0].model
                 + "; Preferred: "
-                + athletes[0].technique
+                + athletes[0].technique,
+                fontweight="bold",
             )
-            fig.set_label("Muscle Forces R")
-            x_label = "% concentric deadlift cycle"
+            fig.set_label("Total muscle force [N]")
 
             # Total force between two techniques
-            plt.sca(axs[0])
-            plt.plot(total_sumo_force_1, label="Sumo", color="red")
-            plt.plot(total_conv_force_2, label="Conventional 80%")
+            plt.sca(axs)
+            plt.plot(total_muscle_forces_sumo_mean, label=label_sumo, color=color_sumo)
+            plt.plot(total_muscle_forces_conv_mean, label=label_conv, color=color_conv)
             plt.ylabel("Total muscle force [N]")
-            plt.legend()
-            plt.xlabel(x_label)
-
-            plt.sca(axs[1])
-            plt.plot(total_conv_force_1, label="Conv 1", color="red")
-            plt.plot(total_conv_force_2, label="Conv 2", color="blue")
-            plt.plot(total_muscle_forces_conv_mean, label="MEAN", color="magenta")
-            plt.ylabel("Total muscle force CONV [N]")
             plt.legend()
             plt.xlabel(x_label)
 
