@@ -97,6 +97,9 @@ muscleForces_conv_2 = pd.read_csv(
 
 #################### MOMENT ARMS ################################################################
 ## SUMO
+momentArms_hip_flexion_r_sumo_1 = pd.read_csv(
+    file_paths["moment_arms_hip_flexion_r_sumo_path_1"], sep="\t", skiprows=11
+)
 
 ## CONVENTIONAL
 momentArms_hip_flexion_r_conv_1 = pd.read_csv(
