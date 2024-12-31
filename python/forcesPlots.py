@@ -429,8 +429,8 @@ if __name__ == "__main__":
 
             # Gluteus minimus
             plt.sca(axs[4, 2])
-            plt.plot(gluteusmin_sumo_force_1, label=label_sumo, color=color_sumo)
-            plt.plot(gluteusmin_conv_force_2, label=label_conv, color=color_conv)
+            plt.plot(gluteusmin_sumo_force_mean, label=label_sumo, color=color_sumo)
+            plt.plot(gluteusmin_conv_force_mean, label=label_conv, color=color_conv)
             plt.ylabel("Gluteus minimus [N]")
             plt.legend()
             plt.xlabel(x_label)
