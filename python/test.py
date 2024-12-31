@@ -17,3 +17,4 @@ print("Version and date of opensim: ", osim.GetVersionAndDate())
 print("OpenSim model created successfully!")
 
 # solution was export PYTHONPATH=/Users/marcelhacker/Applications/OpenSim_4.5/sdk/Python:$PYTHONPATH
+
