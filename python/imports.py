@@ -155,13 +155,24 @@ vasti_sumo_force_1 = sum_muscle_forces(
     "Vasti",  # Quadriceps
     "rl",
 )
+vasti_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,
+    "Vasti",  # Quadriceps
+    "rl",
+)
 vasti_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Vasti",  # Quadriceps
     "rl",
 )
+
 gluteusmax_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
+    "Gluteus maximus",  # Gluteus Maximus
+    "rl",
+)
+gluteusmax_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,
     "Gluteus maximus",  # Gluteus Maximus
     "rl",
 )
@@ -176,6 +187,11 @@ gluteusmed_sumo_force_1 = sum_muscle_forces(
     "Gluteus medius",
     "rl",
 )
+gluteusmed_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,
+    "Gluteus medius",
+    "rl",
+)
 gluteusmed_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Gluteus medius",
@@ -184,6 +200,11 @@ gluteusmed_conv_force_2 = sum_muscle_forces(
 # Gluteus Minimus
 gluteusmin_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
+    "Gluteus minimus",
+    "rl",
+)
+gluteusmin_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,
     "Gluteus minimus",
     "rl",
 )
@@ -198,6 +219,11 @@ adductors_sumo_force_1 = sum_muscle_forces(
     "Adductors",  # Adductors
     "rl",
 )
+adductors_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,
+    "Adductors",  # Adductors
+    "rl",
+)
 adductors_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Adductors",  # Adductors
@@ -206,6 +232,11 @@ adductors_conv_force_2 = sum_muscle_forces(
 # Hip flexors
 hip_flexors_sumo_force_1 = sum_muscle_forces(
     muscleForces_sumo_time_normalised_1,
+    "Hip flexors",  # Adductors
+    "rl",
+)
+hip_flexors_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,
     "Hip flexors",  # Adductors
     "rl",
 )
@@ -221,7 +252,12 @@ triceps_surae_sumo_force_1 = sum_muscle_forces(
     "Triceps surae",  # Adductors
     "rl",
 )
-triceps_surae_conve_force_2 = sum_muscle_forces(
+triceps_surae_conv_force_1 = sum_muscle_forces(
+    muscleForces_conv_time_normalised_1,
+    "Triceps surae",  # Adductors
+    "rl",
+)
+triceps_surae_conv_force_2 = sum_muscle_forces(
     muscleForces_conv_time_normalised_2,
     "Triceps surae",  # Adductors
     "rl",
@@ -283,7 +319,36 @@ hamstrings_lateral_conv_force_mean = get_mean_array_values(
     hamstrings_lateral_conv_force_1,
     hamstrings_lateral_conv_force_2,  ## todo add 3 trail
 )
+vasti_sumo_force_mean = vasti_sumo_force_1  ## todo add 3 trail
+vasti_conv_force_mean = get_mean_array_values(
+    vasti_sumo_force_1,  ## todo add 3 trail
+    vasti_conv_force_2,
+)
+gluteusmax_sumo_force_mean = gluteusmax_sumo_force_1
+gluteusmax_conv_force_mean = get_mean_array_values(
+    gluteusmax_conv_force_1, gluteusmax_conv_force_2  ## todo add 3 trail
+)
+adductors_sumo_force_mean = adductors_sumo_force_1  # todo add 3 trail
+adductors_conv_force_mean = get_mean_array_values(
+    adductors_conv_force_1, adductors_conv_force_2  ## todo add 3 trail
+)
+gluteusmed_sumo_force_mean = gluteusmed_sumo_force_1  # todo add 3 trail
+gluteusmed_conv_force_mean = get_mean_array_values(
+    gluteusmed_conv_force_1, gluteusmed_conv_force_2  ## todo add 3 trail
+)
+triceps_surae_sumo_force_mean = triceps_surae_sumo_force_1  # todo add 3 trail
+triceps_surae_conv_force_mean = get_mean_array_values(
+    triceps_surae_conv_force_1, triceps_surae_conv_force_2  ## todo add 3 trail
+)
+hip_flexors_sumo_force_mean = hip_flexors_sumo_force_1  # todo add 3 trail
+hip_flexors_conv_force_mean = get_mean_array_values(
+    hip_flexors_conv_force_1, hip_flexors_conv_force_2  ## todo add 3 trail
+)
 
+gluteusmin_sumo_force_mean = gluteusmin_sumo_force_1  # todo add 3 trail
+gluteusmin_conv_force_mean = get_mean_array_values(
+    gluteusmin_conv_force_1, gluteusmin_conv_force_2  ## todo add 3 trail
+)
 
 ##################################################################################################
 # ANGLES & MOMENTS of both limbs
