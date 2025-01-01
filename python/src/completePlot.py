@@ -1,4 +1,3 @@
-import os
 from src.imports import (
     plt,
     athletes,
@@ -13,7 +12,7 @@ from src.imports import (
 )
 
 
-def run_complete_plot(bool):
+def run_momentarms_plot(bool):
 
     if bool:
         """
