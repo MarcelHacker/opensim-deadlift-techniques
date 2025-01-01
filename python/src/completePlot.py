@@ -1,3 +1,4 @@
+import os
 from src.imports import (
     plt,
     athletes,
@@ -7,6 +8,8 @@ from src.imports import (
     momentArms_knee_flexion_r_sumo_time_normalised_1,
     momentArms_ankle_flexion_r_sumo_time_normalised_1,
     momentArms_hip_flexion_r_conv_time_normalised_1,
+    momentArms_knee_flexion_r_conv_time_normalised_1,
+    momentArms_ankle_flexion_r_conv_time_normalised_1,
 )
 
 
@@ -19,12 +22,12 @@ def run_complete_plot(bool):
         Row 3: Hip, knee and ankle moment arms single leg
         """
         try:
-            color_sumo = "red"
+            color_sumo = "deeppink"
             color_conv = "blue"
             label_sumo = "Sumo"
             label_conv = "Conventional"
             x_label = "% concentric deadlift cycle"
-            fig, axs = plt.subplots(6, 3)
+            fig, axs = plt.subplots(4, 3)
             fig.suptitle(
                 "Moment Arms Analysis "
                 + athletes[0].name
@@ -40,6 +43,7 @@ def run_complete_plot(bool):
             ## moments, both legs
             # hip
             plt.sca(axs[0, 0])
+            plt.title("Hip")
             plt.plot(
                 mean_sumo_both_angles_and_moments["hip_flexion_moment"],
                 label=label_sumo,
@@ -50,11 +54,12 @@ def run_complete_plot(bool):
                 color=color_conv,
                 label=label_conv,
             )
-            plt.ylabel("Hip moment [Nm]")
+            plt.ylabel("Moment [Nm]")
             plt.legend()
             plt.xlabel(x_label)
             # knee
             plt.sca(axs[0, 1])
+            plt.title("Knee")
             plt.plot(
                 mean_sumo_both_angles_and_moments["knee_flexion_moment"],
                 label=label_sumo,
@@ -70,6 +75,7 @@ def run_complete_plot(bool):
             plt.xlabel(x_label)
             # ankle
             plt.sca(axs[0, 2])
+            plt.title("Ankle")
             plt.plot(
                 mean_sumo_both_angles_and_moments["ankle_flexion_moment"],
                 label=label_sumo,
@@ -85,6 +91,7 @@ def run_complete_plot(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs[1, 0])
+            plt.title("Hip Flex")
             plt.plot(
                 momentArms_hip_flexion_r_sumo_time_normalised_1["glmax1_r"],
                 label=label_sumo,
@@ -100,6 +107,7 @@ def run_complete_plot(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs[1, 1])
+            plt.title("Hip Flex")
             plt.plot(
                 momentArms_hip_flexion_r_sumo_time_normalised_1["glmax2_r"],
                 label=label_sumo,
@@ -115,6 +123,7 @@ def run_complete_plot(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs[1, 2])
+            plt.title("Hip Flex")
             plt.plot(
                 momentArms_hip_flexion_r_sumo_time_normalised_1["glmax3_r"],
                 label=label_sumo,
@@ -130,6 +139,7 @@ def run_complete_plot(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs[2, 0])
+            plt.title("Hip Flex")
             plt.plot(
                 momentArms_hip_flexion_r_sumo_time_normalised_1["recfem_r"],
                 label=label_sumo,
@@ -143,18 +153,84 @@ def run_complete_plot(bool):
             plt.ylabel("Recfem_r [cm]")
             plt.legend()
             plt.xlabel(x_label)
-            plt.sca(axs[2, 0])
+
+            plt.sca(axs[2, 1])
+            plt.title("Knee Flex")
             plt.plot(
-                momentArms_hip_flexion_r_sumo_time_normalised_1["recfem_r"],
+                momentArms_knee_flexion_r_sumo_time_normalised_1["recfem_r"],
                 label=label_sumo,
                 color=color_sumo,
             )
             plt.plot(
-                momentArms_hip_flexion_r_conv_time_normalised_1["recfem_r"],
+                momentArms_knee_flexion_r_conv_time_normalised_1["recfem_r"],
                 label=label_conv,
                 color=color_conv,
             )
             plt.ylabel("Recfem_r [cm]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.sca(axs[2, 2])
+            plt.title("Knee Flex")
+            plt.plot(
+                momentArms_knee_flexion_r_sumo_time_normalised_1["semiten_r"],
+                label=label_sumo,
+                color=color_sumo,
+            )
+            plt.plot(
+                momentArms_knee_flexion_r_conv_time_normalised_1["semiten_r"],
+                label=label_conv,
+                color=color_conv,
+            )
+            plt.ylabel("semiten_r [cm]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.sca(axs[3, 0])
+            plt.title("Knee Flex")
+            plt.plot(
+                momentArms_knee_flexion_r_sumo_time_normalised_1["vaslat_r"],
+                label=label_sumo,
+                color=color_sumo,
+            )
+            plt.plot(
+                momentArms_knee_flexion_r_conv_time_normalised_1["vaslat_r"],
+                label=label_conv,
+                color=color_conv,
+            )
+            plt.ylabel("vaslat_r [cm]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.sca(axs[3, 1])
+            plt.title("Knee Flex")
+            plt.plot(
+                momentArms_knee_flexion_r_sumo_time_normalised_1["vasmed_r"],
+                label=label_sumo,
+                color=color_sumo,
+            )
+            plt.plot(
+                momentArms_knee_flexion_r_conv_time_normalised_1["vasmed_r"],
+                label=label_conv,
+                color=color_conv,
+            )
+            plt.ylabel("vasmed_r [cm]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.sca(axs[3, 2])
+            plt.title("Ankle Flex")
+            plt.plot(
+                momentArms_ankle_flexion_r_sumo_time_normalised_1["soleus_r"],
+                label=label_sumo,
+                color=color_sumo,
+            )
+            plt.plot(
+                momentArms_ankle_flexion_r_conv_time_normalised_1["soleus_r"],
+                label=label_conv,
+                color=color_conv,
+            )
+            plt.ylabel("soleus_r [cm]")
             plt.legend()
             plt.xlabel(x_label)
 

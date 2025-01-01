@@ -16,11 +16,11 @@ from src.seeTrailComparison import run_trail_comparison
 if __name__ == "__main__":
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
     run_muscle_force_total_plot(False)  # total muscle forces between the techniques
-    run_muscle_force_total_additional_plot(True)
+    run_muscle_force_total_additional_plot(False)
     run_forces_plot(False)  # angles and single muscles
     run_emptybar_comparison(False)  # sumo dl comparison
-    run_complete_plot(False)  # plot used for moment arms
     run_muscle_force_sum_plot(False)  #
+    run_complete_plot(True)  # plot used for moment arms
 
     ##################### TESTING ##########################
     run_trail_comparison(False)  # plot for testing the mean values
