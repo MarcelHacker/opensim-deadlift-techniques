@@ -102,7 +102,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("Glmax1_r [cm]")
+            plt.ylabel("Glmax1_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
@@ -118,7 +118,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("Glmax2_r [cm]")
+            plt.ylabel("Glmax2_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
@@ -134,7 +134,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("Glmax3_r [cm]")
+            plt.ylabel("Glmax3_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
@@ -150,7 +150,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("Recfem_r [cm]")
+            plt.ylabel("Recfem_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
@@ -166,7 +166,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("Recfem_r [cm]")
+            plt.ylabel("Recfem_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
@@ -182,7 +182,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("semiten_r [cm]")
+            plt.ylabel("semiten_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
@@ -198,7 +198,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("vaslat_r [cm]")
+            plt.ylabel("vaslat_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
@@ -214,7 +214,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("vasmed_r [cm]")
+            plt.ylabel("vasmed_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
@@ -230,7 +230,7 @@ def run_complete_plot(bool):
                 label=label_conv,
                 color=color_conv,
             )
-            plt.ylabel("soleus_r [cm]")
+            plt.ylabel("soleus_r [m]")
             plt.legend()
             plt.xlabel(x_label)
 
