@@ -8,6 +8,8 @@ from src.imports import (
     vasti_conv_force_mean,
     gluteusmax_sumo_force_mean,
     gluteusmax_conv_force_mean,
+    hamstrings_medial_sumo_force_mean,
+    hamstrings_medial_conv_force_mean,
 )
 
 """
@@ -24,7 +26,7 @@ def run_muscle_force_total_additional_plot(bool):
             label_sumo = "Sumo"
             label_conv = "Conventional"
             x_label = "% concentric deadlift cycle"
-            fig, axs = plt.subplots(3)
+            fig, axs = plt.subplots(2)
             fig.suptitle(
                 "Total Muscle Force Comparison "
                 + athletes[0].name
@@ -57,17 +59,32 @@ def run_muscle_force_total_additional_plot(bool):
 
             # Total force between two techniques
             plt.sca(axs[1])
-            plt.plot(vasti_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(vasti_conv_force_mean, label=label_conv, color=color_conv)
-            plt.ylabel("Vasti [N]")
-            plt.legend()
-            plt.xlabel(x_label)
-
-            # Total force between two techniques
-            plt.sca(axs[2])
-            plt.plot(gluteusmax_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(gluteusmax_conv_force_mean, label=label_conv, color=color_conv)
-            plt.ylabel("Gluteus maximus [N]")
+            plt.plot(
+                vasti_sumo_force_mean,
+                label="Vasti",
+                color=color_sumo,
+                linewidth=2.0,
+            )
+            plt.plot(
+                gluteusmax_sumo_force_mean,
+                label="Gluteus max",
+                color="red",
+                linewidth=2.0,
+            )
+            plt.plot(
+                hamstrings_medial_sumo_force_mean,
+                label="Hamstrings medial",
+                color="darkred",
+                linewidth=2.0,
+            )
+            plt.plot(vasti_conv_force_mean, label="Vasti", color="royalblue")
+            plt.plot(gluteusmax_conv_force_mean, label="Gluteus max", color="navy")
+            plt.plot(
+                hamstrings_medial_conv_force_mean,
+                label="Hamstrings medial",
+                color="dodgerblue",
+            )
+            plt.ylabel("Muscle forces [N]")
             plt.legend()
             plt.xlabel(x_label)
 
