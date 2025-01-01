@@ -91,5 +91,5 @@ def run_muscle_force_total_additional_plot(bool):
             plt.show()
 
         except Exception as e:
-            print("Error in run_total_force_comparison")
+            print("Error in run_muscle_force_total_additional_plot")
             print(e)

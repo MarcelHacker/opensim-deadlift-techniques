@@ -4,6 +4,8 @@ from src.imports import (
     mean_sumo_both_angles_and_moments,
     mean_conv_both_angles_and_moments,
     momentArms_hip_flexion_r_sumo_time_normalised_1,
+    momentArms_knee_flexion_r_sumo_time_normalised_1,
+    momentArms_ankle_flexion_r_sumo_time_normalised_1,
     momentArms_hip_flexion_r_conv_time_normalised_1,
 )
 

@@ -100,10 +100,22 @@ muscleForces_conv_2 = pd.read_csv(
 momentArms_hip_flexion_r_sumo_1 = pd.read_csv(
     file_paths["moment_arms_hip_flexion_r_sumo_path_1"], sep="\t", skiprows=11
 )
+momentArms_knee_flexion_r_sumo_1 = pd.read_csv(  # renamed the original
+    file_paths["moment_arms_knee_angle_r_sumo_path_1"], sep="\t", skiprows=11
+)
+momentArms_ankle_flexion_r_sumo_1 = pd.read_csv(
+    file_paths["moment_arms_ankle_angle_r_sumo_path_1"], sep="\t", skiprows=11
+)
 
 ## CONVENTIONAL
 momentArms_hip_flexion_r_conv_1 = pd.read_csv(
     file_paths["moment_arms_hip_flexion_r_conv_path_1"], sep="\t", skiprows=11
+)
+momentArms_knee_flexion_r_conv_1 = pd.read_csv(  # renamed the original
+    file_paths["moment_arms_knee_angle_r_conv_path_1"], sep="\t", skiprows=11
+)
+momentArms_ankle_flexion_r_conv_1 = pd.read_csv(
+    file_paths["moment_arms_ankle_angle_r_conv_path_1"], sep="\t", skiprows=11
 )
 
 
@@ -130,13 +142,28 @@ muscleForces_conv_time_normalised_2 = time_normalise_df(muscleForces_conv_2)
 muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
     muscleForces_sumo_emptybar_0
 )
-# moment arms
+## moment arms
+# sumo
 momentArms_hip_flexion_r_sumo_time_normalised_1 = time_normalise_df(
     momentArms_hip_flexion_r_sumo_1
 )
+momentArms_knee_flexion_r_sumo_time_normalised_1 = time_normalise_df(
+    momentArms_knee_flexion_r_sumo_1
+)
+momentArms_ankle_flexion_r_sumo_time_normalised_1 = time_normalise_df(
+    momentArms_ankle_flexion_r_sumo_1
+)
+# conv
 momentArms_hip_flexion_r_conv_time_normalised_1 = time_normalise_df(
     momentArms_hip_flexion_r_conv_1
 )
+momentArms_knee_flexion_r_conv_time_normalised_1 = time_normalise_df(
+    momentArms_knee_flexion_r_conv_1
+)
+momentArms_ankle_flexion_r_conv_time_normalised_1 = time_normalise_df(
+    momentArms_ankle_flexion_r_conv_1
+)
+
 ##################################################################################################
 # MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
 # Hamstrings medial (Semitend and Semimem)
