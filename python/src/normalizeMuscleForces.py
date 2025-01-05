@@ -1,12 +1,12 @@
 import opensim as osim
-from src.imports import plt, athletes
+from src.imports import plt, athletes, dir_name, muscle_forces_sumo_mean
 
 
-def normalize_Force(muscle):
+def normalize_Force(muscle_forces, muscle_name):
     # needs time normalized values
-    print(athletes[0].osim)
-    model_path = athletes[0].osim
-    print(model_path)
+    model_path = (
+        dir_name + "/athlete_0_increased_force_3/athlete_0_increased_force_3.osim"
+    )
     # time normalized values
     normalized_force = [0] * 101
 
@@ -15,15 +15,19 @@ def normalize_Force(muscle):
 
     # Loop through muscles and update their maximum isometric force
     for muscle in model.getMuscles():
-        current_max_force = muscle.getMaxIsometricForce()
-
-    normalize_force = normalize_force / current_max_force
+        print(muscle)
+        print(model.getMuscles())
+        if muscle == muscle_name:
+            current_max_force = muscle.getMaxIsometricForce()
+            print(current_max_force)
+            normalized_force = muscle_forces / current_max_force
     print(normalized_force)
     return normalized_force
 
 
 def run_normalized_muscle_force(bool):
-    muscles_of_interest = ["glmax1_r", ""]
+    normalized_force_glmax1_r = normalize_Force(muscle_forces_sumo_mean, "glmax1_r")
+
     if bool:
         try:
             color_sumo = "red"
@@ -45,14 +49,13 @@ def run_normalized_muscle_force(bool):
 
             ## kinematics of hip, knee and ankle, and muscle forces
             # angles from both and mean value
-            plt.sca(axs[0])
-            plt.plot(label=label_sumo, color=color_sumo)
-            plt.plot(label=label_conv, color=color_conv)
-            plt.ylabel("Gluteus minimus [N]")
+            plt.sca(axs)
+            plt.plot(normalized_force_glmax1_r, label=label_sumo, color=color_sumo)
+            plt.ylabel("Gluteus maximus 1 [N/N]")
             plt.legend()
             plt.xlabel(x_label)
 
             plt.show()
         except Exception as e:
-            print("Error in run_muscle_force_sum_plot")
+            print("Error in run_normalized_muscle_force")
             print(e)

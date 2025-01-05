@@ -16,11 +16,12 @@ structure:
 
 ################################ CLASSES ###########################################
 class athlete:
-    def __init__(self, name, mass, model, technique):
+    def __init__(self, name, mass, model, model_path, technique):
         # informations
         self.name = name  # "athlete_x", used for reading files
         self.mass = mass  # "57"
         self.model = model  # "athlete_x_scaled"
+        self.model_path = model_path
         self.technique = technique  # "sumo" or "conventional", preffered deadlift
 
 
