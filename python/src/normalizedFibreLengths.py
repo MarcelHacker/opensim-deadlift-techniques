@@ -89,6 +89,40 @@ def run_normalized_fibres(bool):
             plt.legend()
             plt.xlabel(x_label)
 
+            plt.sca(axs[1, 1])
+            plt.plot(
+                normalized_fiber_lengths_sumo_time_normalised_1["addbrev_r"],
+                label="addbrev",
+            )
+            plt.plot(
+                normalized_fiber_lengths_sumo_time_normalised_1["addlong_r"],
+                label="addlong",
+            )
+            plt.plot(
+                normalized_fiber_lengths_sumo_time_normalised_1["addmagDist_r"],
+                label="addmagDist",
+            )
+            plt.ylabel("Normalized fiber length [l/l_opt]")
+            plt.legend()
+            plt.xlabel(x_label)
+
+            plt.sca(axs[1, 2])
+            plt.plot(
+                normalized_fiber_lengths_sumo_time_normalised_1["gaslat_r"],
+                label="gaslat_r",
+            )
+            plt.plot(
+                normalized_fiber_lengths_sumo_time_normalised_1["gasmed_r"],
+                label="gasmed_r",
+            )
+            plt.plot(
+                normalized_fiber_lengths_sumo_time_normalised_1["soleus_r"],
+                label="soleus_r",
+            )
+            plt.ylabel("Normalized fiber length [l/l_opt]")
+            plt.legend()
+            plt.xlabel(x_label)
+
             plt.show()
 
         except Exception as e:
