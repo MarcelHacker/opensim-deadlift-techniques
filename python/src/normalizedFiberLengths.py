@@ -1,7 +1,7 @@
 from src.imports import plt, athletes, normalized_fiber_lengths_sumo_time_normalised_1
 
 
-def run_normalized_fibres(bool):
+def run_normalized_fibers(bool):
     if bool:
         try:
             fig, axs = plt.subplots(2, 3)

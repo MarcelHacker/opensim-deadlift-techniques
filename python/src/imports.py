@@ -29,7 +29,7 @@ athletes = []  # appending instances to athletes list
 athletes.append(
     athlete(
         "athlete_0_increased_force_3",  #  folder name
-        "57",  # just for normalising
+        57.0,  # just for normalising
         "athlete_0_scaled_increased_force_3",  # model name in folder
         "sumo",  # preferred technique
     ),
@@ -37,7 +37,7 @@ athletes.append(
 athletes.append(
     athlete(
         "athlete_1",
-        "87",
+        87.3,
         "athlete_1_scaled",
         "sumo",
     ),
@@ -120,11 +120,17 @@ momentArms_ankle_flexion_r_conv_1 = pd.read_csv(
 
 #################### NORMALIZED FIBER LENGTHS ################################################################
 # SUMO
+normalized_fiber_lengths_sumo_0 = None
 normalized_fiber_lengths_sumo_1 = pd.read_csv(
     file_paths["normalized_fiber_lengths_sumo_path_1"], sep="\t", skiprows=11
 )
+normalized_fiber_lengths_sumo_2 = pd.read_csv(
+    file_paths["normalized_fiber_lengths_sumo_path_2"], sep="\t", skiprows=11
+)
 
 print(normalized_fiber_lengths_sumo_1)
+print(normalized_fiber_lengths_sumo_2)
+
 
 ##################################################################################################
 
@@ -173,10 +179,13 @@ momentArms_ankle_flexion_r_conv_time_normalised_1 = time_normalise_df(
 
 ## normalized fiber lengths
 # sumo
+normalized_fiber_lengths_sumo_time_normalised_0 = None
 normalized_fiber_lengths_sumo_time_normalised_1 = time_normalise_df(
     normalized_fiber_lengths_sumo_1
 )
-
+normalized_fiber_lengths_sumo_time_normalised_2 = time_normalise_df(
+    normalized_fiber_lengths_sumo_2
+)
 ##################################################################################################
 # MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
 # Hamstrings medial (Semitend and Semimem)

@@ -10,13 +10,17 @@ from src.muscleForceSum import run_muscle_force_sum_plot
 from src.totalMuscleForce import run_muscle_force_total_plot
 from src.totalMuscleForceAdditional import run_muscle_force_total_additional_plot
 from src.seeTrailComparison import run_trail_comparison
-from src.normalizedFibreLengths import run_normalized_fibres
+from src.normalizedFiberLengths import run_normalized_fibers
+from src.normalizeMuscleForces import run_normalized_muscle_force
 
 #####################################################################################
 
 if __name__ == "__main__":
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_sum_plot(False)  #
+    run_muscle_force_sum_plot(False)
+
+    ########################## NORMALIZED MUSCLE FORCES ###################################
+    run_normalized_muscle_force(True)
 
     ##################### TOTAL MUSCLE FORCES #############################################
     run_muscle_force_total_plot(False)  # total muscle forces between the techniques
@@ -24,8 +28,8 @@ if __name__ == "__main__":
     ########################## MOMENT ARMS ################################################
     run_momentarms_plot(False)  # moments and moment arms between the techniques
 
-    ########################## NORMALIZED FIBRE LENGTHS ####################################
-    run_normalized_fibres(True)
+    ########################## NORMALIZED FIBER LENGTHS ####################################
+    run_normalized_fibers(False)
 
     ##################################### testing #########################################
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data
