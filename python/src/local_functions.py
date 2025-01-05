@@ -225,7 +225,7 @@ def get_paths_athlete(athlete, model_name=None):
             )
 
             # athlete_0_scaled_increased_force_3_MuscleAnalysis_NormalizedFiberLength.sto
-            data["normalized_fiber_length_sumo_path_" + str(i)] = (
+            data["normalized_fiber_lengths_sumo_path_" + str(i)] = (
                 dir_name
                 + "/"
                 + athlete.name
@@ -370,7 +370,7 @@ def get_paths_athlete(athlete, model_name=None):
                 + model_name
                 + "_MuscleAnalysis_MomentArm_ankle_angle_l.sto"
             )
-            data["normalized_fiber_length_conv_path_" + str(i)] = (
+            data["normalized_fiber_lengths_conv_path_" + str(i)] = (
                 dir_name
                 + "/"
                 + athlete.name

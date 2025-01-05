@@ -25,7 +25,7 @@ if __name__ == "__main__":
     run_momentarms_plot(False)  # moments and moment arms between the techniques
 
     ########################## NORMALIZED FIBRE LENGTHS ####################################
-    run_normalized_fibres(False)
+    run_normalized_fibres(True)
 
     ##################################### testing #########################################
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data

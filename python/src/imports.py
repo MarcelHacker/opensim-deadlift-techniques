@@ -118,6 +118,13 @@ momentArms_ankle_flexion_r_conv_1 = pd.read_csv(
     file_paths["moment_arms_ankle_angle_r_conv_path_1"], sep="\t", skiprows=11
 )
 
+#################### NORMALIZED FIBER LENGTHS ################################################################
+# SUMO
+normalized_fiber_lengths_sumo_1 = pd.read_csv(
+    file_paths["normalized_fiber_lengths_sumo_path_1"], sep="\t", skiprows=11
+)
+
+print(normalized_fiber_lengths_sumo_1)
 
 ##################################################################################################
 
@@ -162,6 +169,12 @@ momentArms_knee_flexion_r_conv_time_normalised_1 = time_normalise_df(
 )
 momentArms_ankle_flexion_r_conv_time_normalised_1 = time_normalise_df(
     momentArms_ankle_flexion_r_conv_1
+)
+
+## normalized fiber lengths
+# sumo
+normalized_fiber_lengths_sumo_time_normalised_1 = time_normalise_df(
+    normalized_fiber_lengths_sumo_1
 )
 
 ##################################################################################################
