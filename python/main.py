@@ -10,18 +10,22 @@ from src.muscleForceSum import run_muscle_force_sum_plot
 from src.totalMuscleForce import run_muscle_force_total_plot
 from src.totalMuscleForceAdditional import run_muscle_force_total_additional_plot
 from src.seeTrailComparison import run_trail_comparison
+from src.normalizedFibreLengths import run_normalized_fibres
 
 #####################################################################################
 
 if __name__ == "__main__":
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_sum_plot(True)  #
+    run_muscle_force_sum_plot(False)  #
 
     ##################### TOTAL MUSCLE FORCES #############################################
     run_muscle_force_total_plot(False)  # total muscle forces between the techniques
 
     ########################## MOMENT ARMS ################################################
     run_momentarms_plot(False)  # moments and moment arms between the techniques
+
+    ########################## NORMALIZED FIBRE LENGTHS ####################################
+    run_normalized_fibres(False)
 
     ##################################### testing #########################################
     # todo add test_plot with angles, moments, moment arms, activations and forces for the data

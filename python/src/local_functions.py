@@ -223,6 +223,19 @@ def get_paths_athlete(athlete, model_name=None):
                 + model_name
                 + "_MuscleAnalysis_MomentArm_ankle_angle_l.sto"
             )
+
+            # athlete_0_scaled_increased_force_3_MuscleAnalysis_NormalizedFiberLength.sto
+            data["normalized_fiber_length_sumo_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_MuscleAnalysis_NormalizedFiberLength.sto"
+            )
             # print("\n", data["id_sumo_path_" + str(i)])
             # print("\n", data["id_sumo_path_" + str(i)])
             # print("\n", data["muscle_forces_sumo_path_" + str(i)])
@@ -356,6 +369,17 @@ def get_paths_athlete(athlete, model_name=None):
                 + "/"
                 + model_name
                 + "_MuscleAnalysis_MomentArm_ankle_angle_l.sto"
+            )
+            data["normalized_fiber_length_conv_path_" + str(i)] = (
+                dir_name
+                + "/"
+                + athlete.name
+                + "/"
+                + trail_prefix
+                + str(i)
+                + "/"
+                + model_name
+                + "_MuscleAnalysis_NormalizedFiberLength.sto"
             )
             # print("\n", data["ik_conv_path_" + str(i)])
             # print("\n", data["id_conv_path_" + str(i)])
