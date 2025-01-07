@@ -1,3 +1,4 @@
+import opensim as osim
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -720,6 +721,98 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             sum_forces[index] = sum_forces[index] + value
             index += 1
     return sum_forces
+
+
+lower_body_muscles = [
+    "bflh_r",
+    "bfsh_r",
+    "semimem_r",
+    "semiten_r",
+    "bflh_l",
+    "bfsh_l",
+    "semimem_l",
+    "semiten_l",
+    "recfem_r",
+    "recfem_l",
+    "iliacus_r",
+    "iliacus_l",
+    "psoas_r",
+    "psoas_l",
+    "tfl_r",
+    "tfl_l",
+    "vaslat_r",
+    "vasmed_r",
+    "vasint_r",
+    "vaslat_l",
+    "vasmed_l",
+    "vasint_l",
+    "glmax1_r",
+    "glmax2_r",
+    "glmax3_r",
+    "glmax1_l",
+    "glmax2_l",
+    "glmax3_l",
+    "glmed1_r",
+    "glmed2_r",
+    "glmed3_r",
+    "glmed1_l",
+    "glmed2_l",
+    "glmed3_l",
+    "glmin1_r",
+    "glmin2_r",
+    "glmin3_r",
+    "glmin1_l",
+    "glmin2_l",
+    "glmin3_l",
+    "gaslat_r",
+    "gasmed_r",
+    "soleus_r",
+    "gaslat_l",
+    "gasmed_l",
+    "soleus_l",
+    "addbrev_r",
+    "addlong_r",
+    "addmagDist_r",
+    "addmagIsch_r",
+    "addmagMid_r",
+    "addmagProx_r",
+    "addbrev_l",
+    "addlong_l",
+    "addmagDist_l",
+    "addmagIsch_l",
+    "addmagMid_l",
+    "addmagProx_l",
+]
+
+
+def normalize_Force(muscle_forces):
+    """
+    Normalize muscle force on maximum isometric force.
+
+    Parameter:
+    muscle_forces: time normalized data frame with muscle forces
+
+    Return:
+    Time normalized and normalized muscle forces of all lower body muscles
+    """
+    model_path = (
+        dir_name + "/athlete_0_increased_force_3/athlete_0_increased_force_3.osim"
+    )
+    normalized_forces = muscle_forces.copy()
+
+    # Load the OpenSim model
+    model = osim.Model(model_path)
+
+    # Loop through muscles and update their maximum isometric force
+    for muscle in lower_body_muscles:
+        target = model.getMuscles().get(muscle)
+        current_max_force = target.getMaxIsometricForce()
+        print("\n MAXIMUM ISOMETRIC FORCE:", current_max_force)
+        # time normalized muscle forces
+        normalized_forces[lower_body_muscles] = (
+            muscle_forces[lower_body_muscles] / current_max_force
+        )
+    return normalized_forces
 
 
 def plot_data(
