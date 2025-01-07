@@ -807,7 +807,6 @@ def normalize_Force(muscle_forces):
     for muscle in lower_body_muscles:
         target = model.getMuscles().get(muscle)
         current_max_force = target.getMaxIsometricForce()
-        print("\n MAXIMUM ISOMETRIC FORCE:", current_max_force)
         # time normalized muscle forces
         normalized_forces[lower_body_muscles] = (
             muscle_forces[lower_body_muscles] / current_max_force
