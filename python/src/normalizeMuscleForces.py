@@ -51,7 +51,10 @@ def run_normalized_muscle_force(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs[1])
-            plt.title("Gluteus maximus 2", fontsize=12)
+            plt.title(
+                "Gluteus maximus 2",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["glmax2_r"],
                 label=label_sumo,
@@ -67,7 +70,10 @@ def run_normalized_muscle_force(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs[2])
-            plt.title("Gluteus maximus 3", fontsize=12)
+            plt.title(
+                "Gluteus maximus 3",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["glmax3_r"],
                 label=label_sumo,
@@ -96,7 +102,10 @@ def run_normalized_muscle_force(bool):
             fig_2.set_label("Muscle Forces R")
 
             plt.sca(axs_2[0])
-            plt.title("Biceps Femoris longus", fontsize=12)
+            plt.title(
+                "Biceps Femoris longus",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["bflh_r"],
                 label=label_sumo,
@@ -112,7 +121,10 @@ def run_normalized_muscle_force(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs_2[1])
-            plt.title("Biceps Femoris breve", fontsize=12)
+            plt.title(
+                "Biceps Femoris breve",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["bfsh_r"],
                 label=label_sumo,
@@ -128,7 +140,10 @@ def run_normalized_muscle_force(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs_2[2])
-            plt.title("Semitendinosus", fontsize=12)
+            plt.title(
+                "Semitendinosus",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["semiten_r"],
                 label=label_sumo,
@@ -144,7 +159,10 @@ def run_normalized_muscle_force(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs_2[3])
-            plt.title("Semimembranosus", fontsize=12)
+            plt.title(
+                "Semimembranosus",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["semimem_r"],
                 label=label_sumo,
@@ -173,7 +191,10 @@ def run_normalized_muscle_force(bool):
             fig_2.set_label("Muscle Forces R")
 
             plt.sca(axs_3[0])
-            plt.title("Vastus lateralis", fontsize=12)
+            plt.title(
+                "Vastus lateralis",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["vaslat_r"],
                 label=label_sumo,
@@ -189,7 +210,10 @@ def run_normalized_muscle_force(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs_3[1])
-            plt.title("Vastus medialis", fontsize=12)
+            plt.title(
+                "Vastus medialis",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["vasmed_r"],
                 label=label_sumo,
@@ -205,7 +229,10 @@ def run_normalized_muscle_force(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs_3[2])
-            plt.title("Vastus intermedius", fontsize=12)
+            plt.title(
+                "Vastus intermedius",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["vasint_r"],
                 label=label_sumo,
@@ -221,7 +248,10 @@ def run_normalized_muscle_force(bool):
             plt.xlabel(x_label)
 
             plt.sca(axs_3[3])
-            plt.title("Rectus femoris", fontsize=12)
+            plt.title(
+                "Rectus femoris",
+                fontweight="bold",
+            )
             plt.plot(
                 normalized_forces_sumo["recfem_r"],
                 label=label_sumo,
