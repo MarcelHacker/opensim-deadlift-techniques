@@ -16,11 +16,17 @@ from src.normalizeMuscleForces import run_normalized_muscle_force
 #####################################################################################
 
 if __name__ == "__main__":
+
+    trc_filepath = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1/static_00.trc"
+    calculate_joint_centres_modified(
+        trc_filepath,
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1/static_00_hjc.trc",
+    )
     ########################## MUSCLE FORCES ##############################################
     run_muscle_force_sum_plot(False)
 
     ########################## NORMALIZED MUSCLE FORCES ###################################
-    run_normalized_muscle_force(True)
+    run_normalized_muscle_force(False)
 
     ##################### TOTAL MUSCLE FORCES #############################################
     run_muscle_force_total_plot(False)  # total muscle forces between the techniques

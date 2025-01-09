@@ -1,0 +1,6 @@
+{
+  "atheletes": [
+    { "name": "athlete_0", "mass": "52", "height": "177", "load": "150" },
+    { "name": "athlete_1", "mass": "82.5", "height": "177", "load": "150" }
+  ]
+}

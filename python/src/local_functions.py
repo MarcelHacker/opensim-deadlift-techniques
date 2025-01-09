@@ -2,6 +2,8 @@ import opensim as osim
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import msk_modelling_python as msk
+
 
 dir_name = "/Users/marcelhacker/Documents/opensim-deadlift-techniques"  # your dircetory
 
@@ -841,3 +843,99 @@ def plot_data(
         plt.legend()
     plt.ylabel(y_label)
     plt.xlabel(x_label)
+
+
+def calculate_joint_centres_modified(
+    trc_filepath, new_filepath=None
+):  # modified from lib
+    """
+    Calculates hip joint centers in a TRC file according to Harrington et al.
+
+    Args:
+        trc_filepath (str): Path to the TRC file.
+        new_filepath (str, optional): Path to save the modified TRC file. Defaults to None.
+
+    Returns:
+        dict: Dictionary containing the modified TRC data.
+    """
+    trc = pd.read_csv(trc_filepath, sep="\t", skiprows=3)
+    print("TRC: ", trc)
+    print("TRC: ", trc["Time"][1])  # time [0] is NaN in this trc file
+    print("TRC: ", trc["Time"][2])
+
+    # Load TRC data
+    # with open(trc_filepath, "r") as f:
+    # ... (Implementation for loading TRC data using your preferred library)
+    #   trc = ...
+
+    # Set default output filepath
+    if new_filepath is None:
+        new_filepath = trc_filepath.replace(".trc", "_HJC.trc")
+
+    # Sample rate (assuming data is evenly sampled)
+    rate = round(1 / (trc["Time"][2] - trc["Time"][1]))  # time[0] is NaN in trc file
+
+    # Add HJC using Harrington equations
+    trc = add_hjc_harrington(trc)
+
+    # Add knee and ankle joint centers (assuming markers exist)
+    trc["RKJC"] = (trc["RKNE"] + trc["RKNM"]) / 2
+    trc["LKJC"] = (trc["LKNE"] + trc["LKNM"]) / 2
+    trc["RAJC"] = (trc["RANK"] + trc["RANM"]) / 2
+    trc["LAJC"] = (trc["LANK"] + trc["LANM"]) / 2
+
+    # Convert markers to separate data and labels (assuming specific format)
+    markers_data = np.array([v for k, v in trc.items() if k != "Time"])
+    marker_labels = list(trc.keys())[1:]
+
+    # Save modified TRC data
+    try:
+        # ... (Implementation for saving TRC data using your preferred library)
+        msk.write_trc_os4(markers_data, marker_labels, rate, new_filepath)
+    except Exception as e:
+        print(f"Error saving TRC file: {e}")
+        # Handle potential issues (e.g., missing markers)
+
+    return trc
+
+
+def add_hjc_harrington(trc):
+    """
+    Calculates hip joint centers (HJC) using Harrington et al. (2006) formulas.
+
+    Args:
+        trc (dict): Dictionary containing TRC data.
+
+    Returns:
+        dict: Modified TRC data with added HJC markers.
+    """
+
+    lasis = trc["LASI"].T
+    rasis = trc["RASI"].T
+
+    # Handle missing SACRUM marker
+    try:
+        sacrum = trc["USACR"].T  # USACR markers exist in this model
+    except KeyError:
+        sacrum = (trc["LPSI"] + trc["RPSI"]) / 2
+        trc["USACR"] = sacrum.T
+
+    num_frames = len(rasis)
+    hjc_left, hjc_right = np.empty((3, num_frames)), np.empty((3, num_frames))
+
+    for i in range(num_frames):
+        # Right-handed pelvis reference system definition
+        pelvis_center = (lasis[:, i] + rasis[:, i]) / 2
+        provv = (rasis[:, i] - sacrum[:, i]) / np.linalg.norm(
+            rasis[:, i] - sacrum[:, i]
+        )
+        ib = (rasis[:, i] - lasis[:, i]) / np.linalg.norm(rasis[:, i] - lasis[:, i])
+        kb = np.cross(ib, provv)
+        kb /= np.linalg.norm(kb)
+        jb = np.cross(kb, ib)
+        jb /= np.linalg.norm(jb)
+
+    pelvis_transform = np.array(
+        [ib[0], jb[0], kb[0], pelvis_center[0]],
+        [ib[1], jb[1], kb[1], pelvis_center[1], ib[2], jb[1]],
+    )

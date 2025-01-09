@@ -232,7 +232,7 @@ def calculate_joint_centres_modified(
     # Save modified TRC data
     try:
         # ... (Implementation for saving TRC data using your preferred library)
-        write_trc_os4(markers_data, marker_labels, rate, new_filepath)
+        msk.write_trc_os4(markers_data, marker_labels, rate, new_filepath)
     except Exception as e:
         print(f"Error saving TRC file: {e}")
         # Handle potential issues (e.g., missing markers)
