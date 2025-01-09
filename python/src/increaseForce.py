@@ -5,8 +5,7 @@
 import opensim as osim
 
 
-def increase_max_isometric_force(factor):  # opensim API
-    model_path = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0/scale_model.osim"  # change
+def increase_max_isometric_force(model_path, factor):  # opensim API
     print(model_path)
 
     # Load the OpenSim model
@@ -19,7 +18,7 @@ def increase_max_isometric_force(factor):  # opensim API
         muscle.setMaxIsometricForce(new_max_force)
 
     # Save the modified model
-    output_model_path = model_path.replace(".osim", f"increased_force{factor}.osim")
+    output_model_path = model_path.replace(".osim", f"_increased_force_{factor}.osim")
     model.printToXML(output_model_path)
 
     print(f"Model with increased forces saved to: {output_model_path}")
