@@ -1,7 +1,7 @@
 from src.imports import (
     plt,
     athletes,
-    ik_sumo_time_normalised_1,
+    athlete_0_ik_sumo_time_normalised_1,
     ik_conv_time_normalised_1,
     muscleForces_sumo_time_normalised_1,
     muscleForces_conv_time_normalised_2,
