@@ -26,12 +26,17 @@ class athlete:
 
 
 # set the current athlete
+with open(dir_name + "/athlete_0_increased_force_3/settings.json") as f:
+    athlete_0_parsed = json.load(f)
+
+# set the current athlete
 with open(dir_name + "/athlete_1_increased_force_3/settings.json") as f:
     athlete_1_parsed = json.load(f)
 
 ################################ CREATING ATHLETES ###########################################
 athletes = []  # appending instances to athletes list
 
+print(athlete_0_parsed)
 print(athlete_1_parsed)
 # file_paths = get_paths_athlete(
 #   athlete_1_parsed, athlete_1_parsed["model"]  # from which athlete
@@ -39,61 +44,108 @@ print(athlete_1_parsed)
 
 ##################################################################################################
 # IK sumo
-athlete_1_ik_sumo_emptybar_0 = pd.read_csv(
-    athlete_1_parsed["paths"]["ik"]["sumo_dl_0"],
+athlete_0_ik_sumo_emptybar_0 = pd.read_csv(
+    athlete_0_parsed["paths"]["ik"]["sumo_emptybar_0"],
     sep="\t",
     skiprows=10,
 )
-print(athlete_1_ik_sumo_emptybar_0)
-ik_sumo_emptybar_1 = None
-ik_sumo_emptybar_2 = None
-ik_sumo_emptybar_3 = None
-ik_sumo_0 = None  # pd.read_csv(file_paths["ik_sumo_path_0"], sep="\t", skiprows=10)
-ik_sumo_1 = pd.read_csv(file_paths["ik_sumo_path_1"], sep="\t", skiprows=10)
-ik_sumo_2 = pd.read_csv(file_paths["ik_sumo_path_2"], sep="\t", skiprows=10)
-ik_sumo_3 = None
+print("ATHLETE 0:", athlete_0_ik_sumo_emptybar_0)
+athlete_0_ik_sumo_emptybar_1 = None
+athlete_0_ik_sumo_emptybar_2 = None
+athlete_0_ik_sumo_emptybar_3 = None
+athlete_0_ik_sumo_0 = (
+    None  # pd.read_csv(file_paths["ik_sumo_path_0"], sep="\t", skiprows=10)
+)
+athlete_0_ik_sumo_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["ik"]["sumo_dl_1"],
+    sep="\t",
+    skiprows=10,
+)
+athlete_0_ik_sumo_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["ik"]["sumo_dl_2"],
+    sep="\t",
+    skiprows=10,
+)
+athlete_0_ik_sumo_3 = None
 # IK conv
-ik_conv_emptybar_0 = None
-ik_conv_emptybar_1 = None
-ik_conv_emptybar_2 = None
-ik_conv_emptybar_3 = None
-ik_conv_0 = None
-ik_conv_1 = pd.read_csv(file_paths["ik_conv_path_1"], sep="\t", skiprows=10)
-ik_conv_2 = pd.read_csv(file_paths["ik_conv_path_2"], sep="\t", skiprows=10)
-ik_conv_3 = None
+athlete_0_ik_conv_emptybar_0 = None
+athlete_0_ik_conv_emptybar_1 = None
+athlete_0_ik_conv_emptybar_2 = None
+athlete_0_ik_conv_emptybar_3 = None
+athlete_0_ik_conv_0 = None
+athlete_0_ik_conv_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["ik"]["conv_dl_1"],
+    sep="\t",
+    skiprows=10,
+)
+athlete_0_ik_conv_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["ik"]["conv_dl_2"],
+    sep="\t",
+    skiprows=10,
+)
+athlete_0_ik_conv_3 = None
 # ID sumo
-id_sumo_1 = pd.read_csv(file_paths["id_sumo_path_1"], sep="\t", skiprows=6)
-id_sumo_2 = pd.read_csv(file_paths["id_sumo_path_2"], sep="\t", skiprows=6)
+athlete_0_id_sumo_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["id"]["sumo_dl_1"],
+    sep="\t",
+    skiprows=6,
+)
+athlete_0_id_sumo_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["id"]["sumo_dl_2"],
+    sep="\t",
+    skiprows=6,
+)
 # ID conv
-id_conv_1 = pd.read_csv(file_paths["id_conv_path_1"], sep="\t", skiprows=6)
-id_conv_2 = pd.read_csv(file_paths["id_conv_path_2"], sep="\t", skiprows=6)
+athlete_0_id_conv_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["id"]["conv_dl_1"],
+    sep="\t",
+    skiprows=6,
+)
+athlete_0_id_conv_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["id"]["conv_dl_2"],
+    sep="\t",
+    skiprows=6,
+)
 
 # SO sumo
-muscleForces_sumo_emptybar_0 = pd.read_csv(
-    file_paths["muscle_forces_sumo_emptybar_path_0"], sep="\t", skiprows=14
+athlete_0_muscleForces_sumo_emptybar_0 = pd.read_csv(
+    athlete_0_parsed["paths"]["so"]["forces"]["sumo_emptybar_0"],
+    sep="\t",
+    skiprows=14,
 )
-muscleForces_sumo_0 = None
+athlete_0_muscleForces_sumo_0 = None
 
-muscleForces_sumo_1 = pd.read_csv(
-    file_paths["muscle_forces_sumo_path_1"], sep="\t", skiprows=14
+athlete_0_muscleForces_sumo_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["so"]["forces"]["sumo_dl_1"],
+    sep="\t",
+    skiprows=14,
 )
-muscleForces_sumo_2 = pd.read_csv(
-    file_paths["muscle_forces_sumo_path_2"], sep="\t", skiprows=14
+athlete_0_muscleForces_sumo_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["so"]["forces"]["sumo_dl_2"],
+    sep="\t",
+    skiprows=14,
 )
-muscleForces_conv_1 = pd.read_csv(
-    file_paths["muscle_forces_conv_path_1"], sep="\t", skiprows=14
+athlete_0_muscleForces_conv_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["so"]["forces"]["conv_dl_1"],
+    sep="\t",
+    skiprows=14,
 )
-muscleForces_conv_2 = pd.read_csv(
-    file_paths["muscle_forces_conv_path_2"], sep="\t", skiprows=14
+athlete_0_muscleForces_conv_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["so"]["forces"]["conv_dl_2"],
+    sep="\t",
+    skiprows=14,
 )
-
 #################### MOMENT ARMS ################################################################
 ## SUMO
-momentArms_hip_flexion_r_sumo_1 = pd.read_csv(
-    file_paths["moment_arms_hip_flexion_r_sumo_path_1"], sep="\t", skiprows=11
+athlete_0_momentArms_hip_flexion_r_sumo_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["sumo_dl_1"],
+    sep="\t",
+    skiprows=11,
 )
-momentArms_knee_flexion_r_sumo_1 = pd.read_csv(  # renamed the original
-    file_paths["moment_arms_knee_angle_r_sumo_path_1"], sep="\t", skiprows=11
+athlete_0_momentArms_knee_flexion_r_sumo_1 = pd.read_csv(  # renamed the original
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["knee_angle_r"]["sumo_dl_1"],
+    sep="\t",
+    skiprows=11,
 )
 momentArms_ankle_flexion_r_sumo_1 = pd.read_csv(
     file_paths["moment_arms_ankle_angle_r_sumo_path_1"], sep="\t", skiprows=11
