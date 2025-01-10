@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSimDocument Version="40500">
+	<AnalyzeTool name="athlete_0_scaled_increased_force_3">
+		<!--Name of the .osim file used to construct a model.-->
+		<model_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_1/../athlete_0_increased_force_3.osim</model_file>
+		<!--Replace the model's force set with sets specified in <force_set_files>? If false, the force set is appended to.-->
+		<replace_force_set>false</replace_force_set>
+		<!--List of xml files used to construct a force set for the model.-->
+		<force_set_files> actuators_so.xml</force_set_files>
+		<!--Directory used for writing results.-->
+		<results_directory>.</results_directory>
+		<!--Output precision.  It is 8 by default.-->
+		<output_precision>4</output_precision>
+		<!--Initial time for the simulation.-->
+		<initial_time>6.5</initial_time>
+		<!--Final time for the simulation.-->
+		<final_time>9</final_time>
+		<!--Flag indicating whether or not to compute equilibrium values for states other than the coordinates or speeds.  For example, equilibrium muscle fiber lengths or muscle forces.-->
+		<solve_for_equilibrium_for_auxiliary_states>false</solve_for_equilibrium_for_auxiliary_states>
+		<!--Maximum number of integrator steps.-->
+		<maximum_number_of_integrator_steps>20000</maximum_number_of_integrator_steps>
+		<!--Maximum integration step size.-->
+		<maximum_integrator_step_size>1</maximum_integrator_step_size>
+		<!--Integrator error tolerance. When the error is greater, the integrator step size is decreased.-->
+		<integrator_error_tolerance>9.9999999999999995e-08</integrator_error_tolerance>
+		<!--Set of analyses to be run during the investigation.-->
+		<AnalysisSet name="Analyses">
+			<objects>
+				<InducedAccelerations name="InducedAccelerations">
+					<!--Flag (true or false) specifying whether on. True by default.-->
+					<on>true</on>
+					<!--Specifies how often to store results during a simulation. More specifically, the interval (a positive integer) specifies how many successful integration steps should be taken before results are recorded again.-->
+					<step_interval>40</step_interval>
+					<!--Flag (true or false) indicating whether the results are in degrees or not.-->
+					<in_degrees>true</in_degrees>
+					<!--Names of the coordinates for which to compute induced accelerations.The key word 'All' indicates that the analysis should be performed for all coordinates.-->
+					<coordinate_names> knee_angle_r</coordinate_names>
+					<!--Names of the bodies for which to compute induced accelerations.The key word 'All' indicates that the analysis should be performed for all bodies.Use 'center_of_mass' to indicate the induced accelerations of the system center of mass.-->
+					<body_names> center_of_mass</body_names>
+					<!--Specify the constraints used to replace external forces applied to run the forward simulation. Currently, RollingOnSurfaceConstraint, PointConstraint and WeldConstraint are supported. There must be as many constraints listed as external forces applied to the model. Constraints must be between the body to which the external force is applied and ground.-->
+					<ConstraintSet name="constraintset">
+						<objects>
+							<PointConstraint name="pointconstraint">
+								<!--Path to a Component that satisfies the Socket 'body_1' of type PhysicalFrame (description: A frame fixed to the first body participating in the constraint.).-->
+								<socket_body_1></socket_body_1>
+								<!--Path to a Component that satisfies the Socket 'body_2' of type PhysicalFrame (description: A frame fixed to the second body participating in the constraint.).-->
+								<socket_body_2></socket_body_2>
+							</PointConstraint>
+						</objects>
+					</ConstraintSet>
+					<!--The minimum amount of external force (N) that is necessary to be replaced with a constraint.-->
+					<force_threshold>15</force_threshold>
+				</InducedAccelerations>
+			</objects>
+		</AnalysisSet>
+		<!--XML file (.xml) containing the forces applied to the model as ExternalLoads.-->
+		<external_loads_file>grf.xml</external_loads_file>
+		<!--Storage file (.sto) containing the time history of states for the model. This file often contains multiple rows of data, each row being a time-stamped array of states. The first column contains the time.  The rest of the columns contain the states in the order appropriate for the model. In a storage file, unlike a motion file (.mot), non-uniform time spacing is allowed.  If the user-specified initial time for a simulation does not correspond exactly to one of the time stamps in this file, interpolation is NOT used because it is sometimes necessary to use an exact set of states for analyses.  Instead, the closest earlier set of states is used.-->
+		<states_file />
+		<!--Motion file (.mot) or storage file (.sto) containing the time history of the generalized coordinates for the model. These can be specified in place of the states file.-->
+		<coordinates_file>athlete_0_scaled_increased_force_3_Kinematics_q.sto</coordinates_file>
+		<!--Storage file (.sto) containing the time history of the generalized speeds for the model. If coordinates_file is used in place of states_file, these can be optionally set as well to give the speeds. If not specified, speeds will be computed from coordinates by differentiation.-->
+		<speeds_file>athlete_0_scaled_increased_force_3_Kinematics_u.sto</speeds_file>
+	</AnalyzeTool>
+</OpenSimDocument>
