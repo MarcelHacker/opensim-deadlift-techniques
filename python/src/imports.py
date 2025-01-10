@@ -1,5 +1,6 @@
 from src.local_functions import *
 import pandas as pd
+import json
 
 """
 structure:
@@ -24,35 +25,26 @@ class athlete:
         self.technique = technique  # "sumo" or "conventional", preffered deadlift
 
 
+# set the current athlete
+with open(dir_name + "/athlete_1_increased_force_3/settings.json") as f:
+    athlete_1_parsed = json.load(f)
+
 ################################ CREATING ATHLETES ###########################################
 athletes = []  # appending instances to athletes list
-athletes.append(
-    athlete(
-        "athlete_0_increased_force_3",  #  folder name
-        57.0,  # just for normalising
-        "athlete_0_scaled_increased_force_3",  # model name in folder
-        "sumo",  # preferred technique
-    ),
-)
-athletes.append(
-    athlete(
-        "athlete_1",
-        87.3,
-        "athlete_1_scaled",
-        "sumo",
-    ),
-)
-file_paths = get_paths_athlete(
-    athletes[0], athletes[0].model  # from which athlete
-)  # gets array with specific file paths
+
+print(athlete_1_parsed)
+# file_paths = get_paths_athlete(
+#   athlete_1_parsed, athlete_1_parsed["model"]  # from which athlete
+# )  # gets array with specific file paths
 
 ##################################################################################################
 # IK sumo
-ik_sumo_emptybar_0 = pd.read_csv(
-    file_paths["ik_sumo_emptybar_path_0"],
+athlete_1_ik_sumo_emptybar_0 = pd.read_csv(
+    athlete_1_parsed["paths"]["ik"]["sumo_dl_0"],
     sep="\t",
     skiprows=10,
 )
+print(athlete_1_ik_sumo_emptybar_0)
 ik_sumo_emptybar_1 = None
 ik_sumo_emptybar_2 = None
 ik_sumo_emptybar_3 = None
