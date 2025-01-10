@@ -49,7 +49,9 @@
       }
     },
     "ma": {
-      "normalized_fiber_length": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_0/athlete_0_scaled_increased_force_3_MuscleAnalysis_NormalizedFiberLength.sto",
+      "normalized_fiber_length": {
+        "X": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_0/athlete_0_scaled_increased_force_3_MuscleAnalysis_NormalizedFiberLength.sto"
+      },
       "moment_arm": {
         "hip_flexion_r": {
           "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/sumo_dl_1/athlete_0_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
