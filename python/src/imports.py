@@ -169,7 +169,6 @@ athlete_0_momentArms_ankle_flexion_r_conv_1 = pd.read_csv(
     sep="\t",
     skiprows=11,
 )
-
 #################### NORMALIZED FIBER LENGTHS ################################################################
 # SUMO
 athlete_0_normalized_fiber_lengths_sumo_0 = None
@@ -179,56 +178,64 @@ athlete_0_normalized_fiber_lengths_sumo_2 = None
 
 ### time normalise everything to 101 values
 # ik
-ik_sumo_emptybar_time_normalised_0 = time_normalise_df(ik_sumo_emptybar_0)
-ik_sumo_time_normalised_1 = time_normalise_df(ik_sumo_1)
-ik_sumo_time_normalised_2 = time_normalise_df(ik_sumo_2)
-ik_conv_time_normalised_1 = time_normalise_df(ik_conv_1)
-ik_conv_time_normalised_2 = time_normalise_df(ik_conv_2)
+athlete_0_ik_sumo_emptybar_time_normalised_0 = time_normalise_df(
+    athlete_0_ik_sumo_emptybar_0
+)
+athlete_0_ik_sumo_time_normalised_1 = time_normalise_df(athlete_0_ik_sumo_1)
+athlete_0_ik_sumo_time_normalised_2 = time_normalise_df(athlete_0_ik_sumo_2)
+athlete_0_ik_conv_time_normalised_1 = time_normalise_df(athlete_0_ik_conv_1)
+athlete_0_ik_conv_time_normalised_2 = time_normalise_df(athlete_0_ik_conv_2)
 # id
-id_sumo_time_nomalised_1 = time_normalise_df(id_sumo_1)
-id_sumo_time_nomalised_2 = time_normalise_df(id_sumo_2)
-id_conv_time_normalised_1 = time_normalise_df(id_conv_1)
-id_conv_time_normalised_2 = time_normalise_df(id_conv_2)
+athlete_0_id_sumo_time_nomalised_1 = time_normalise_df(athlete_0_id_sumo_1)
+athlete_0_id_sumo_time_nomalised_2 = time_normalise_df(athlete_0_id_sumo_2)
+athlete_0_id_conv_time_normalised_1 = time_normalise_df(athlete_0_id_conv_1)
+athlete_0_id_conv_time_normalised_2 = time_normalise_df(athlete_0_id_conv_2)
 # muscle forces
-muscleForces_sumo_time_normalised_0 = None  # time_normalise_df(muscleForces_sumo_0)
-muscleForces_sumo_time_normalised_1 = time_normalise_df(muscleForces_sumo_1)
-muscleForces_sumo_time_normalised_2 = time_normalise_df(muscleForces_sumo_2)
-muscleForces_conv_time_normalised_1 = time_normalise_df(muscleForces_conv_1)
-muscleForces_conv_time_normalised_2 = time_normalise_df(muscleForces_conv_2)
-muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
-    muscleForces_sumo_emptybar_0
+athlete_0_muscleForces_sumo_time_normalised_0 = (
+    None  # time_normalise_df(muscleForces_sumo_0)
+)
+athlete_0_muscleForces_sumo_time_normalised_1 = time_normalise_df(
+    athlete_0_muscleForces_sumo_1
+)
+athlete_0_muscleForces_sumo_time_normalised_2 = time_normalise_df(
+    athlete_0_muscleForces_sumo_2
+)
+athlete_0_muscleForces_conv_time_normalised_1 = time_normalise_df(
+    athlete_0_muscleForces_conv_1
+)
+athlete_0_muscleForces_conv_time_normalised_2 = time_normalise_df(
+    athlete_0_muscleForces_conv_2
+)
+athlete_0_muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
+    athlete_0_muscleForces_sumo_emptybar_0
 )
 ## moment arms
 # sumo
-momentArms_hip_flexion_r_sumo_time_normalised_1 = time_normalise_df(
-    momentArms_hip_flexion_r_sumo_1
+athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1 = time_normalise_df(
+    athlete_0_momentArms_hip_flexion_r_sumo_1
 )
-momentArms_knee_flexion_r_sumo_time_normalised_1 = time_normalise_df(
-    momentArms_knee_flexion_r_sumo_1
+athlete_0_momentArms_knee_flexion_r_sumo_time_normalised_1 = time_normalise_df(
+    athlete_0_momentArms_knee_flexion_r_sumo_1
 )
-momentArms_ankle_flexion_r_sumo_time_normalised_1 = time_normalise_df(
-    momentArms_ankle_flexion_r_sumo_1
+athlete_0_momentArms_ankle_flexion_r_sumo_time_normalised_1 = time_normalise_df(
+    athlete_0_momentArms_ankle_flexion_r_sumo_1
 )
 # conv
-momentArms_hip_flexion_r_conv_time_normalised_1 = time_normalise_df(
-    momentArms_hip_flexion_r_conv_1
+athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1 = time_normalise_df(
+    athlete_0_momentArms_hip_flexion_r_conv_1
 )
-momentArms_knee_flexion_r_conv_time_normalised_1 = time_normalise_df(
-    momentArms_knee_flexion_r_conv_1
+athlete_0_momentArms_knee_flexion_r_conv_time_normalised_1 = time_normalise_df(
+    athlete_0_momentArms_knee_flexion_r_conv_1
 )
-momentArms_ankle_flexion_r_conv_time_normalised_1 = time_normalise_df(
-    momentArms_ankle_flexion_r_conv_1
+athlete_0_momentArms_ankle_flexion_r_conv_time_normalised_1 = time_normalise_df(
+    athlete_0_momentArms_ankle_flexion_r_conv_1
 )
 
 ## normalized fiber lengths
 # sumo
-normalized_fiber_lengths_sumo_time_normalised_0 = None
-normalized_fiber_lengths_sumo_time_normalised_1 = time_normalise_df(
-    normalized_fiber_lengths_sumo_1
-)
-normalized_fiber_lengths_sumo_time_normalised_2 = time_normalise_df(
-    normalized_fiber_lengths_sumo_2
-)
+athlete_0_normalized_fiber_lengths_sumo_time_normalised_0 = None
+athlete_0_normalized_fiber_lengths_sumo_time_normalised_1 = None
+athlete_0_normalized_fiber_lengths_sumo_time_normalised_2 = None
 ##################################################################################################
 # MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
 # Hamstrings medial (Semitend and Semimem)
