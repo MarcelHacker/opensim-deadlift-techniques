@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import msk_modelling_python as msk
 
 
-dir_name = "/Users/marcelhacker/Documents/opensim-deadlift-techniques"  # your dircetory
+dir_name = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations"  # your dircetory
 
 
 def get_paths_athlete(athlete, model_name=None):

@@ -26,6 +26,7 @@ class athlete:
 
 
 # set the current athlete
+# /Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_3/settings.json
 with open(dir_name + "/athlete_0_increased_force_3/settings.json") as f:
     athlete_0_parsed = json.load(f)
 

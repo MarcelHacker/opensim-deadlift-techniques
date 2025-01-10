@@ -13,10 +13,13 @@ from src.seeTrailComparison import run_trail_comparison
 from src.normalizedFiberLengths import run_normalized_fibers
 from src.normalizeMuscleForces import run_normalized_muscle_force
 from src.increaseForce import increase_max_isometric_force
+from src.kinematicsPlot import run_kinematics_plot
 
 #####################################################################################
 
 if __name__ == "__main__":
+
+    run_kinematics_plot(True)
 
     # increase_max_isometric_force(
     #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_4/athlete_1_scaled.osim",
