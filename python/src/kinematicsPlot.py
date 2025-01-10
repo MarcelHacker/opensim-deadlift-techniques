@@ -51,39 +51,45 @@ def run_kinematics_plot(bool):
                 plt.title("Sumo Deadlift")
                 plt.plot(
                     athlete_0_ik_sumo_time_normalised_1[coordinates_r[i]],
-                    label="Trail 1",
-                    color="red",
+                    label="Trail 1 r",
+                )
+                plt.plot(
+                    athlete_0_ik_sumo_time_normalised_1[coordinates_l[i]],
+                    label="Trail 1 l",
                 )
                 plt.plot(
                     athlete_0_ik_sumo_time_normalised_2[coordinates_r[i]],
-                    label="Trail 2",
-                    color="blue",
+                    label="Trail 2 r",
                 )
-                #  plt.plot(
-                #         athlete_0_ik_sumo_2["hip_flexion_r"],
-                #        label="Conventional 80%",
-                # )
+                plt.plot(
+                    athlete_0_ik_sumo_time_normalised_2[coordinates_l[i]],
+                    label="Trail 2 l",
+                )
+                #  add third trail
                 plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
-            for i in range(len(coordinates_l)):
+            for i in range(len(coordinates_r)):
                 plt.sca(axs[1, i])
                 plt.title("Conventional Deadlift")
                 plt.plot(
+                    athlete_0_ik_conv_time_normalised_1[coordinates_r[i]],
+                    label="Trail 1 r",
+                )
+                plt.plot(
                     athlete_0_ik_conv_time_normalised_1[coordinates_l[i]],
-                    label="Trail 1",
-                    color="red",
+                    label="Trail 1 l",
+                )
+                plt.plot(
+                    athlete_0_ik_conv_time_normalised_2[coordinates_r[i]],
+                    label="Trail 2 r",
                 )
                 plt.plot(
                     athlete_0_ik_conv_time_normalised_2[coordinates_l[i]],
-                    label="Trail 2",
-                    color="blue",
+                    label="Trail 2 l",
                 )
-                #  plt.plot(
-                #         athlete_0_ik_sumo_2["hip_flexion_r"],
-                #        label="Conventional 80%",
-                # )
+                #  add third trail
                 plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
