@@ -51,7 +51,7 @@ def run_kinematics_plot(bool):
                 #        label="Conventional 80%",
                 # )
                 plt.legend()
-                plt.ylabel([ylabels[i]], color="grey")
+                plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
             plt.show()
