@@ -147,18 +147,25 @@ athlete_0_momentArms_knee_flexion_r_sumo_1 = pd.read_csv(  # renamed the origina
     sep="\t",
     skiprows=11,
 )
-momentArms_ankle_flexion_r_sumo_1 = pd.read_csv(
-    file_paths["moment_arms_ankle_angle_r_sumo_path_1"], sep="\t", skiprows=11
+athlete_0_momentArms_ankle_flexion_r_sumo_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["ankle_angle_r"]["sumo_dl_1"],
+    sep="\t",
+    skiprows=11,
 )
 
 ## CONVENTIONAL
-momentArms_hip_flexion_r_conv_1 = pd.read_csv(
-    file_paths["moment_arms_hip_flexion_r_conv_path_1"], sep="\t", skiprows=11
+athlete_0_momentArms_hip_flexion_r_conv_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_1"],
+    sep="\t",
+    skiprows=11,
 )
-momentArms_knee_flexion_r_conv_1 = pd.read_csv(  # renamed the original
-    file_paths["moment_arms_knee_angle_r_conv_path_1"], sep="\t", skiprows=11
+athlete_0_momentArms_knee_flexion_r_conv_1 = pd.read_csv(
+    # renamed the original
+    file_paths["moment_arms_knee_angle_r_conv_path_1"],
+    sep="\t",
+    skiprows=11,
 )
-momentArms_ankle_flexion_r_conv_1 = pd.read_csv(
+athlete_0_momentArms_ankle_flexion_r_conv_1 = pd.read_csv(
     file_paths["moment_arms_ankle_angle_r_conv_path_1"], sep="\t", skiprows=11
 )
 
