@@ -1,6 +1,6 @@
 {
   "name": "athlete_0",
-  "model": "athlete_0_scaled_increased_force_3",
+  "model_name": "athlete_0_scaled_increased_force_3",
   "age": 20,
   "gender": "female",
   "mass": 56.1,
