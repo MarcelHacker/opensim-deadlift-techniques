@@ -187,8 +187,8 @@ athlete_0_ik_sumo_time_normalised_2 = time_normalise_df(athlete_0_ik_sumo_2)
 athlete_0_ik_conv_time_normalised_1 = time_normalise_df(athlete_0_ik_conv_1)
 athlete_0_ik_conv_time_normalised_2 = time_normalise_df(athlete_0_ik_conv_2)
 # id
-athlete_0_id_sumo_time_nomalised_1 = time_normalise_df(athlete_0_id_sumo_1)
-athlete_0_id_sumo_time_nomalised_2 = time_normalise_df(athlete_0_id_sumo_2)
+athlete_0_id_sumo_time_normalised_1 = time_normalise_df(athlete_0_id_sumo_1)
+athlete_0_id_sumo_time_normalised_2 = time_normalise_df(athlete_0_id_sumo_2)
 athlete_0_id_conv_time_normalised_1 = time_normalise_df(athlete_0_id_conv_1)
 athlete_0_id_conv_time_normalised_2 = time_normalise_df(athlete_0_id_conv_2)
 # muscle forces
@@ -460,8 +460,8 @@ athlete_0_ik_sumo_mean = get_mean_trail_values(
     ## todo add trail 3
 )
 athlete_0_id_sumo_mean = get_mean_trail_values(
-    athlete_0_id_sumo_time_nomalised_1,  # have to be time normalised
-    athlete_0_id_sumo_time_nomalised_2,  ##!!! to do change this, when having trail 2 ready
+    athlete_0_id_sumo_time_normalised_1,  # have to be time normalised
+    athlete_0_id_sumo_time_normalised_2,  ##!!! to do change this, when having trail 2 ready
     ## todo add trail 3
 )
 

@@ -1,10 +1,10 @@
-from src.imports import (
+from .imports import (
     plt,
     athlete_0_parsed,
-    athlete_0_ik_sumo_time_normalised_1,
-    athlete_0_ik_sumo_time_normalised_2,
-    athlete_0_ik_conv_time_normalised_1,
-    athlete_0_ik_conv_time_normalised_2,
+    athlete_0_id_sumo_time_normalised_1,
+    athlete_0_id_sumo_time_normalised_2,
+    athlete_0_id_conv_time_normalised_1,
+    athlete_0_id_conv_time_normalised_2,
 )
 
 active_athlete_json = athlete_0_parsed
@@ -31,38 +31,38 @@ def run_moments_plot(bool):
             x_label = "% concentric deadlift cycle"
 
             coordinates_r = [
-                "hip_flexion_r",
-                "knee_angle_r",
-                "ankle_angle_r",
+                "hip_flexion_r_moment",
+                "knee_angle_r_moment",
+                "ankle_angle_r_moment",
             ]
             coordinates_l = [
-                "hip_flexion_l",
-                "knee_angle_l",
-                "ankle_angle_l",
+                "hip_flexion_l_moment",
+                "knee_angle_l_moment",
+                "ankle_angle_l_moment",
             ]
             ylabels = [
-                "Hip Flex [°]",
-                "Knee Flex [°]",
-                "Ankle Flex [°]",
+                "Hip Moment [Nm]",
+                "Knee Moment [Nm]",
+                "Ankle Moment [Nm]",
             ]
 
             for i in range(len(coordinates_r)):
                 plt.sca(axs[0, i])
                 plt.title("Sumo Deadlift")
                 plt.plot(
-                    athlete_0_ik_sumo_time_normalised_1[coordinates_r[i]],
+                    athlete_0_id_sumo_time_normalised_1[coordinates_r[i]],
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_ik_sumo_time_normalised_1[coordinates_l[i]],
+                    athlete_0_id_sumo_time_normalised_1[coordinates_l[i]],
                     label="Trail 1 l",
                 )
                 plt.plot(
-                    athlete_0_ik_sumo_time_normalised_2[coordinates_r[i]],
+                    athlete_0_id_sumo_time_normalised_2[coordinates_r[i]],
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_ik_sumo_time_normalised_2[coordinates_l[i]],
+                    athlete_0_id_sumo_time_normalised_2[coordinates_l[i]],
                     label="Trail 2 l",
                 )
                 #  add third trail
@@ -74,19 +74,19 @@ def run_moments_plot(bool):
                 plt.sca(axs[1, i])
                 plt.title("Conventional Deadlift")
                 plt.plot(
-                    athlete_0_ik_conv_time_normalised_1[coordinates_r[i]],
+                    athlete_0_id_conv_time_normalised_1[coordinates_r[i]],
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_ik_conv_time_normalised_1[coordinates_l[i]],
+                    athlete_0_id_conv_time_normalised_1[coordinates_l[i]],
                     label="Trail 1 l",
                 )
                 plt.plot(
-                    athlete_0_ik_conv_time_normalised_2[coordinates_r[i]],
+                    athlete_0_id_conv_time_normalised_2[coordinates_r[i]],
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_ik_conv_time_normalised_2[coordinates_l[i]],
+                    athlete_0_id_conv_time_normalised_2[coordinates_l[i]],
                     label="Trail 2 l",
                 )
                 #  add third trail
