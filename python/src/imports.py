@@ -160,29 +160,21 @@ athlete_0_momentArms_hip_flexion_r_conv_1 = pd.read_csv(
     skiprows=11,
 )
 athlete_0_momentArms_knee_flexion_r_conv_1 = pd.read_csv(
-    # renamed the original
-    file_paths["moment_arms_knee_angle_r_conv_path_1"],
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["knee_angle_r"]["conv_dl_1"],
     sep="\t",
     skiprows=11,
 )
 athlete_0_momentArms_ankle_flexion_r_conv_1 = pd.read_csv(
-    file_paths["moment_arms_ankle_angle_r_conv_path_1"], sep="\t", skiprows=11
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["ankle_angle_r"]["conv_dl_1"],
+    sep="\t",
+    skiprows=11,
 )
 
 #################### NORMALIZED FIBER LENGTHS ################################################################
 # SUMO
-normalized_fiber_lengths_sumo_0 = None
-normalized_fiber_lengths_sumo_1 = pd.read_csv(
-    file_paths["normalized_fiber_lengths_sumo_path_1"], sep="\t", skiprows=11
-)
-normalized_fiber_lengths_sumo_2 = pd.read_csv(
-    file_paths["normalized_fiber_lengths_sumo_path_2"], sep="\t", skiprows=11
-)
-
-print(normalized_fiber_lengths_sumo_1)
-print(normalized_fiber_lengths_sumo_2)
-
-
+athlete_0_normalized_fiber_lengths_sumo_0 = None
+athlete_0_normalized_fiber_lengths_sumo_1 = None
+athlete_0_normalized_fiber_lengths_sumo_2 = None
 ##################################################################################################
 
 ### time normalise everything to 101 values
