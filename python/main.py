@@ -19,8 +19,8 @@ from src.increaseForce import increase_max_isometric_force
 if __name__ == "__main__":
 
     increase_max_isometric_force(
-        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/athlete_1_scaled.osim",
-        4,
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_4/athlete_1_scaled.osim",
+        3,
     )
     # trc_filepath = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1/static_00.trc"
     # calculate_joint_centres_modified(
