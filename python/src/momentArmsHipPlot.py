@@ -10,7 +10,7 @@ from .imports import (
 active_athlete_json = athlete_0_parsed
 
 
-def run_moment_arms_plot(bool):
+def run_moment_arms_hip_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
@@ -18,7 +18,7 @@ def run_moment_arms_plot(bool):
             cols = 2
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Moment Arms Trails "
+                "Moment Arms Hip Flexion Trails "
                 + active_athlete_json["name"]
                 + "; Model: "
                 + active_athlete_json["model_name"]
@@ -119,5 +119,5 @@ def run_moment_arms_plot(bool):
             plt.show()
 
         except Exception as e:
-            print("Error in run_moment_arms_plot")
+            print("Error in run_moment_arms_hip_plot")
             print(e)
