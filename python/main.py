@@ -15,7 +15,7 @@ if __name__ == "__main__":
     run_kinematics_plot(False)
     run_moments_plot(False)
     run_forces_plot(False)
-    run_moment_arms_hip_plot(True)
+    run_moment_arms_hip_plot(False)
 
     # increase_max_isometric_force(
     #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_4/athlete_1_scaled.osim",
