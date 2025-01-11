@@ -2,9 +2,13 @@ from .imports import (
     plt,
     athlete_0_parsed,
     athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1,
+    athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_1,
     athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_2,
+    athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_2,
     athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1,
+    athlete_0_momentArms_hip_flexion_l_conv_time_normalised_1,
     athlete_0_momentArms_hip_flexion_r_conv_time_normalised_2,
+    athlete_0_momentArms_hip_flexion_l_conv_time_normalised_2,
 )
 
 active_athlete_json = athlete_0_parsed
@@ -31,27 +35,27 @@ def run_moment_arms_hip_plot(bool):
 
             coordinates_r = [
                 "recfem_r",
-                "vaslat_r",
-                "vasmed_r",
+                "semiten_r",
+                "addmagIsch_r",
                 "glmax1_r",
                 "glmax2_r",
                 "glmax3_r",
             ]
             coordinates_l = [
                 "recfem_l",
-                "vaslat_l",
-                "vasmed_l",
+                "semiten_l",
+                "addmagIsch_l",
                 "glmax1_l",
                 "glmax2_l",
                 "glmax3_l",
             ]
             ylabels = [
-                "Rectus femoris [N]",
-                "Vastus laterlis [N]",
-                "Vastus medialis [N]",
-                "Gluteus maximus 1 [N]",
-                "Gluteus maximus 2 [N]",
-                "Gluteus maximus 3 [N]",
+                "Rectus femoris [m]",
+                "Semitendinosus [m]",
+                "Adductor magnus isch [m]",
+                "Gluteus maximus 1 [m]",
+                "Gluteus maximus 2 [m]",
+                "Gluteus maximus 3 [m]",
             ]
             for i in range(len(coordinates_r)):
                 plt.sca(axs[0, i])
@@ -63,7 +67,7 @@ def run_moment_arms_hip_plot(bool):
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1[
+                    athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_1[
                         coordinates_l[i]
                     ],
                     label="Trail 1 l",
@@ -75,7 +79,7 @@ def run_moment_arms_hip_plot(bool):
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_2[
+                    athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_2[
                         coordinates_l[i]
                     ],
                     label="Trail 2 l",
@@ -95,7 +99,7 @@ def run_moment_arms_hip_plot(bool):
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1[
+                    athlete_0_momentArms_hip_flexion_l_conv_time_normalised_1[
                         coordinates_l[x]
                     ],
                     label="Trail 1 l",
@@ -107,7 +111,7 @@ def run_moment_arms_hip_plot(bool):
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_2[
+                    athlete_0_momentArms_hip_flexion_l_conv_time_normalised_2[
                         coordinates_l[x]
                     ],
                     label="Trail 2 l",
