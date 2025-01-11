@@ -1,11 +1,12 @@
+import os
 import opensim as osim
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import msk_modelling_python as msk
 
-
-dir_name = "/Users/marcelhacker/Documents/opensim-deadlift-techniques"  # your dircetory
+current_directory = os.path.dirname(os.path.realpath(__file__))
+dir_name = os.path.dirname(os.path.dirname(current_directory))
 
 
 def get_paths_athlete(athlete, model_name=None):

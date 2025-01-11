@@ -1,3 +1,4 @@
+import unittest
 from src.imports import (
     plt,
     athletes,
@@ -61,51 +62,26 @@ def run_muscle_force_sum_plot(bool):
 
             ## kinematics of hip, knee and ankle, and muscle forces
             # angles from both and mean value
-            plt.sca(axs[0, 0])
-            plt.plot(
-                mean_sumo_both_angles_and_moments["hip_angle"],
-                color=color_sumo,
-                label=label_sumo,
-            )
-            plt.plot(
-                mean_conv_both_angles_and_moments["hip_angle"],
-                color=color_conv,
-                label=label_conv,
-            )
-            plt.legend()
-            plt.ylabel("Hip Flex [°]")
-            plt.xlabel(x_label)
-
-            plt.sca(axs[0, 1])
-            plt.plot(
-                mean_sumo_both_angles_and_moments["knee_angle"],
-                color=color_sumo,
-                label=label_sumo,
-            )
-            plt.plot(
-                mean_conv_both_angles_and_moments["knee_angle"],
-                color=color_conv,
-                label=label_conv,
-            )
-            plt.legend()
-            plt.ylabel("Knee Flex [°]")
-            plt.xlabel(x_label)
-
-            plt.sca(axs[0, 2])
-            plt.plot(
-                mean_sumo_both_angles_and_moments["ankle_angle"],
-                color=color_sumo,
-                label=label_sumo,
-            )
-            plt.plot(
-                mean_conv_both_angles_and_moments["ankle_angle"],
-                color=color_conv,
-                label=label_conv,
-            )
-            plt.ylabel("Ankle Flex [°]")
-            plt.legend()
-            plt.xlabel(x_label)
-
+            
+            coordinated_to_plot = ["hip_angle", "knee_angle", "ankle_angle"]
+            ylabels_plot = ["Hip Flex [°]", "Knee Flex [°]", "Ankle Flex [°]"]
+            
+            for i, coordinated in enumerate(coordinated_to_plot):
+                plt.sca(axs[0, i])
+                plt.plot(
+                    mean_sumo_both_angles_and_moments[coordinated],
+                    color=color_sumo,
+                    label=label_sumo,
+                )
+                plt.plot(
+                    mean_conv_both_angles_and_moments[coordinated],
+                    color=color_conv,
+                    label=label_conv,
+                )
+                plt.legend()
+                plt.ylabel(ylabels_plot[i])
+                plt.xlabel(x_label)
+            
             ## moments, both legs
             # hip
             plt.sca(axs[1, 0])
@@ -244,3 +220,5 @@ def run_muscle_force_sum_plot(bool):
         except Exception as e:
             print("Error in run_muscle_force_sum_plot")
             print(e)
+
+    

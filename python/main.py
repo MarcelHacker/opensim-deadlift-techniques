@@ -1,6 +1,7 @@
 # Copyright (c) 2024 Basilio Gonçalves & Marcel Hacker
 
 ################################ IMPORTS ###########################################
+import unittest
 from src.imports import *  # file paths of the athlete
 from src.local_functions import *  # local functions for the project
 from src.forcesPlot import run_forces_plot
@@ -15,9 +16,14 @@ from src.normalizeMuscleForces import run_normalized_muscle_force
 from src.increaseForce import increase_max_isometric_force
 
 #####################################################################################
-
+class test(unittest.TestCase):
+    
+    ##### TESTS WORKING ######
+    def test_update_version(self):
+        run_muscle_force_sum_plot(True)
+        
 if __name__ == "__main__":
-
+    unittest.main()
     # increase_max_isometric_force(
     #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_4/athlete_1_scaled.osim",
     #  3,
@@ -49,3 +55,4 @@ if __name__ == "__main__":
     run_forces_plot(False)  # angles and single muscles right leg, refactor when needed
     run_muscle_force_total_additional_plot(False)
     #######################################################################################
+

@@ -9,7 +9,7 @@
   "technique": "sumo",
   "paths": {
     "main": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3",
-    "model_generic": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/setup/rajagopal_generic.osim",
+    "model_generic": "../setup/rajagopal_generic.osim",
     "model_scaled": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/athlete_1_scaled_increased_force_3.osim",
     "static": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/static_00.trc",
     "ik": {

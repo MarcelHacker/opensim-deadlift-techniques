@@ -23,6 +23,25 @@ class athlete:
         self.mass = mass  # "57"
         self.model = model  # "athlete_x_scaled"
         self.technique = technique  # "sumo" or "conventional", preffered deadlift
+        
+    def create_athlete_json(self, athlete_folder_path):
+        
+        # warning not completed
+        msk.ui.show_warning("Warning", "This function is not completed yet")
+        
+        athlete_dict = {
+            "paths": athlete_folder_path,
+            "name": self.name,
+            "mass": self.mass,
+            "model": self.model,
+            "technique": self.technique,
+        }
+        
+        # save json file in the athlete folder
+        with open(athlete_folder_path + "/settings.json", "w") as f:
+            json.dump(athlete_dict, f)
+            
+        return athlete_dict
 
 
 # set the current athlete

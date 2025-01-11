@@ -39,7 +39,7 @@ if run_setup:
             ".c3d", "\\forces\\" + file_name_no_ext + "\\grf.mot"
         )
         msk.bops.create_grf_xml(
-            grf_file,
+            grf_file, 
             output_file="",
             apply_force_body_name="calcn_r",
             force_expressed_in_body_name="ground",
