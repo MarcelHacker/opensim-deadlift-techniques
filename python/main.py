@@ -5,13 +5,17 @@ from src.imports import *  # file paths of the athlete
 from src.local_functions import *  # local functions for the project
 from src.kinematicsPlot import run_kinematics_plot
 from src.momentsPlot import run_moments_plot
+from src.forcesPlot import run_forces_plot
+from src.momentArmsPlot import run_moment_arms_plot
 
 #####################################################################################
 
 if __name__ == "__main__":
 
     run_kinematics_plot(False)
-    run_moments_plot(True)
+    run_moments_plot(False)
+    run_forces_plot(False)
+    run_moment_arms_plot(True)
 
     # increase_max_isometric_force(
     #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_4/athlete_1_scaled.osim",

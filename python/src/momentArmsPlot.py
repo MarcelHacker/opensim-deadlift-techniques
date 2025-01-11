@@ -1,16 +1,16 @@
 from .imports import (
     plt,
     athlete_0_parsed,
-    athlete_0_muscleForces_sumo_time_normalised_1,
-    athlete_0_muscleForces_sumo_time_normalised_2,
-    athlete_0_muscleForces_conv_time_normalised_1,
-    athlete_0_muscleForces_conv_time_normalised_2,
+    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1,
+    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_2,
+    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1,
+    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_2,
 )
 
 active_athlete_json = athlete_0_parsed
 
 
-def run_forces_plot(bool):
+def run_moment_arms_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
@@ -18,7 +18,7 @@ def run_forces_plot(bool):
             cols = 2
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Muscle Forces Trails "
+                "Moment Arms Trails "
                 + active_athlete_json["name"]
                 + "; Model: "
                 + active_athlete_json["model_name"]
@@ -57,19 +57,27 @@ def run_forces_plot(bool):
                 plt.sca(axs[0, i])
                 plt.title("Sumo Deadlift")
                 plt.plot(
-                    athlete_0_muscleForces_sumo_time_normalised_1[coordinates_r[i]],
+                    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1[
+                        coordinates_r[i]
+                    ],
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_muscleForces_sumo_time_normalised_1[coordinates_l[i]],
+                    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1[
+                        coordinates_l[i]
+                    ],
                     label="Trail 1 l",
                 )
                 plt.plot(
-                    athlete_0_muscleForces_sumo_time_normalised_2[coordinates_r[i]],
+                    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_2[
+                        coordinates_r[i]
+                    ],
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_muscleForces_sumo_time_normalised_2[coordinates_l[i]],
+                    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_2[
+                        coordinates_l[i]
+                    ],
                     label="Trail 2 l",
                 )
                 #  add third trail
@@ -81,19 +89,27 @@ def run_forces_plot(bool):
                 plt.sca(axs[1, x])
                 plt.title("Conventional Deadlift")
                 plt.plot(
-                    athlete_0_muscleForces_conv_time_normalised_1[coordinates_r[x]],
+                    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1[
+                        coordinates_r[x]
+                    ],
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_muscleForces_conv_time_normalised_1[coordinates_l[x]],
+                    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1[
+                        coordinates_l[x]
+                    ],
                     label="Trail 1 l",
                 )
                 plt.plot(
-                    athlete_0_muscleForces_conv_time_normalised_2[coordinates_r[x]],
+                    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_2[
+                        coordinates_r[x]
+                    ],
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_muscleForces_conv_time_normalised_2[coordinates_l[x]],
+                    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_2[
+                        coordinates_l[x]
+                    ],
                     label="Trail 2 l",
                 )
                 #  add third trail
@@ -103,5 +119,5 @@ def run_forces_plot(bool):
             plt.show()
 
         except Exception as e:
-            print("Error in run_forces_plot")
+            print("Error in run_moment_arms_plot")
             print(e)

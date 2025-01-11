@@ -7,6 +7,7 @@ FOR MAC
 cd "/Users/marcelhacker/penv/bin"
 source activate
 cd "/Users/marcelhacker/Documents/opensim-deadlift-techniques"
+cd python
 
 FOR WINDOWS PC
 
