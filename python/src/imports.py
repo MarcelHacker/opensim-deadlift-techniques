@@ -164,8 +164,11 @@ try:
         sep="\t",
         skiprows=14,
     )
-    active_athlete_muscleForces_sumo_0 = None
-
+    active_athlete_muscleForces_sumo_0 = pd.read_csv(
+        active_athlete["paths"]["so"]["forces"]["sumo_dl_0"],
+        sep="\t",
+        skiprows=14,
+    )
     active_athlete_muscleForces_sumo_1 = pd.read_csv(
         active_athlete["paths"]["so"]["forces"]["sumo_dl_1"],
         sep="\t",
