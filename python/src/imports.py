@@ -179,6 +179,11 @@ try:
         sep="\t",
         skiprows=14,
     )
+    active_athlete_muscleForces_sumo_3 = pd.read_csv(
+        active_athlete["paths"]["so"]["forces"]["sumo_dl_3"],
+        sep="\t",
+        skiprows=14,
+    )
     active_athlete_muscleForces_conv_1 = pd.read_csv(
         active_athlete["paths"]["so"]["forces"]["conv_dl_1"],
         sep="\t",
