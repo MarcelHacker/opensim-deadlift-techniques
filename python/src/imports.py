@@ -26,38 +26,28 @@ class athlete:
         self.technique = technique  # "sumo" or "conventional", preffered deadlift
 
 
+active_athlete_folder = "athlete_1_increased_force_3"
+
 ################################ CREATING ATHLETES ###########################################
+active_athlete = None
 athletes = []  # appending instances to athletes list
 ##################################################################################################
 
-
 ################################ GETTING ATHLETE JSON ###########################################
-def set_active_athlete(active_athlete_folder):
-    try:
-        # fix this
-        # os.pardir()
-        dirname = os.path.dirname(__file__)
-        # print(dirname)
-        # filename = os.path.join(dirname, "../path/to/file/you/want")
-        # print(filename)
-        with open(dir_name + "/" + active_athlete_folder + "/settings.json") as f:
-            global active_athlete  # define global athlete
-            active_athlete = json.load(f)
-            print(active_athlete["name"])
-
-    except Exception as e:
-        print("Error in set_active_athlete; src/imports.py")
-        print(e)
-
+try:
+    # fix this
+    dirname = os.path.dirname(__file__)  # not used
+    with open(dir_name + "/" + str(active_athlete_folder) + "/settings.json") as f:
+        active_athlete = json.load(f)
+        print("\nACTIVE ATHLETE:\n", active_athlete["name"])
+except Exception as e:
+    print("\nError in setting active_athlete; src/imports.py\n")
+    print(e)
 
 ##################################################################################################
 # IK sumo
 try:
-    active_athlete_ik_sumo_emptybar_0 = pd.read_csv(
-        active_athlete["paths"]["ik"]["sumo_emptybar_0"],
-        sep="\t",
-        skiprows=10,
-    )
+    active_athlete_ik_sumo_emptybar_0 = None
     active_athlete_ik_sumo_emptybar_1 = None
     active_athlete_ik_sumo_emptybar_2 = None
     active_athlete_ik_sumo_emptybar_3 = None
@@ -76,11 +66,7 @@ try:
         sep="\t",
         skiprows=10,
     )
-    active_athlete_ik_sumo_3 = pd.read_csv(
-        active_athlete["paths"]["ik"]["sumo_dl_3"],
-        sep="\t",
-        skiprows=10,
-    )
+    active_athlete_ik_sumo_3 = None
     # IK conv
     active_athlete_ik_conv_emptybar_0 = None
     active_athlete_ik_conv_emptybar_1 = None
@@ -101,11 +87,7 @@ try:
         sep="\t",
         skiprows=10,
     )
-    active_athlete_ik_conv_3 = pd.read_csv(
-        active_athlete["paths"]["ik"]["conv_dl_3"],
-        sep="\t",
-        skiprows=10,
-    )
+    active_athlete_ik_conv_3 = None
 
 except Exception as e:
     print("Error in IK files; src/imports.py")
@@ -127,11 +109,7 @@ try:
         sep="\t",
         skiprows=6,
     )
-    active_athlete_id_sumo_3 = pd.read_csv(
-        active_athlete["paths"]["id"]["sumo_dl_3"],
-        sep="\t",
-        skiprows=6,
-    )
+    active_athlete_id_sumo_3 = None
     # ID conv
     active_athlete_id_conv_0 = pd.read_csv(
         active_athlete["paths"]["id"]["conv_dl_0"],
@@ -148,22 +126,14 @@ try:
         sep="\t",
         skiprows=6,
     )
-    active_athlete_id_conv_3 = pd.read_csv(
-        active_athlete["paths"]["id"]["conv_dl_3"],
-        sep="\t",
-        skiprows=6,
-    )
+    active_athlete_id_conv_3 = None
 except Exception as e:
     print("Error in ID files; src/imports.py")
     print(e)
 
 # SO sumo
 try:
-    active_athlete_muscleForces_sumo_emptybar_0 = pd.read_csv(
-        active_athlete["paths"]["so"]["forces"]["sumo_emptybar_0"],
-        sep="\t",
-        skiprows=14,
-    )
+    active_athlete_muscleForces_sumo_emptybar_0 = None
     active_athlete_muscleForces_sumo_0 = pd.read_csv(
         active_athlete["paths"]["so"]["forces"]["sumo_dl_0"],
         sep="\t",
@@ -179,11 +149,7 @@ try:
         sep="\t",
         skiprows=14,
     )
-    active_athlete_muscleForces_sumo_3 = pd.read_csv(
-        active_athlete["paths"]["so"]["forces"]["sumo_dl_3"],
-        sep="\t",
-        skiprows=14,
-    )
+    active_athlete_muscleForces_sumo_3 = None
     active_athlete_muscleForces_conv_0 = pd.read_csv(
         active_athlete["paths"]["so"]["forces"]["conv_dl_0"],
         sep="\t",
@@ -199,11 +165,7 @@ try:
         sep="\t",
         skiprows=14,
     )
-    active_athlete_muscleForces_conv_3 = pd.read_csv(
-        active_athlete["paths"]["so"]["forces"]["conv_dl_3"],
-        sep="\t",
-        skiprows=14,
-    )
+    active_athlete_muscleForces_conv_3 = None
 except Exception as e:
     print("Error in SO muscle forces files; src/imports.py")
     print(e)
