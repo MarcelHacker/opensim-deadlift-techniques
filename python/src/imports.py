@@ -184,6 +184,11 @@ try:
         sep="\t",
         skiprows=14,
     )
+    active_athlete_muscleForces_conv_0 = pd.read_csv(
+        active_athlete["paths"]["so"]["forces"]["conv_dl_0"],
+        sep="\t",
+        skiprows=14,
+    )
     active_athlete_muscleForces_conv_1 = pd.read_csv(
         active_athlete["paths"]["so"]["forces"]["conv_dl_1"],
         sep="\t",
@@ -191,6 +196,11 @@ try:
     )
     active_athlete_muscleForces_conv_2 = pd.read_csv(
         active_athlete["paths"]["so"]["forces"]["conv_dl_2"],
+        sep="\t",
+        skiprows=14,
+    )
+    active_athlete_muscleForces_conv_3 = pd.read_csv(
+        active_athlete["paths"]["so"]["forces"]["conv_dl_3"],
         sep="\t",
         skiprows=14,
     )
