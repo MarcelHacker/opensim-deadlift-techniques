@@ -12,6 +12,9 @@ from src.momentArmsHipPlot import run_moment_arms_hip_plot
 
 if __name__ == "__main__":
 
+    active_athlete_folder = "athlete_0_increased_force_3"
+    set_active_athlete(active_athlete_folder)
+
     run_kinematics_plot(False)
     run_moments_plot(False)
     run_forces_plot(False)
