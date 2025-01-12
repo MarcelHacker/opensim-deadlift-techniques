@@ -608,40 +608,44 @@ except Exception as e:
 ##################################################################################################
 ## MEAN VARIABLES, absolute mean values over all trails
 # IMPORTANT: only calculate the mean with the time normalised vars
-active_athlete_ik_sumo_mean = get_mean_trail_values(
-    active_athlete_ik_sumo_time_normalised_1,  # have to be time normalised
-    active_athlete_ik_sumo_time_normalised_2,  ##!!! to do change this, when having trail 2 ready
-    ## todo add trail 3
-)
-active_athlete_id_sumo_mean = get_mean_trail_values(
-    active_athlete_id_sumo_time_normalised_1,  # have to be time normalised
-    active_athlete_id_sumo_time_normalised_2,  ##!!! to do change this, when having trail 2 ready
-    ## todo add trail 3
-)
+try:
+    active_athlete_ik_sumo_mean = get_mean_trail_values(
+        active_athlete_ik_sumo_time_normalised_1,  # have to be time normalised
+        active_athlete_ik_sumo_time_normalised_2,  ##!!! to do change this, when having trail 2 ready
+        ## todo add trail 3
+    )
+    active_athlete_id_sumo_mean = get_mean_trail_values(
+        active_athlete_id_sumo_time_normalised_1,  # have to be time normalised
+        active_athlete_id_sumo_time_normalised_2,  ##!!! to do change this, when having trail 2 ready
+        ## todo add trail 3
+    )
 
-active_athlete_ik_conv_mean = get_mean_trail_values(
-    active_athlete_ik_conv_time_normalised_1,  # have to be time normalised
-    active_athlete_ik_conv_time_normalised_2,
-    ## todo add trail 3
-)
+    active_athlete_ik_conv_mean = get_mean_trail_values(
+        active_athlete_ik_conv_time_normalised_1,  # have to be time normalised
+        active_athlete_ik_conv_time_normalised_2,
+        ## todo add trail 3
+    )
 
-active_athlete_id_conv_mean = get_mean_trail_values(
-    active_athlete_id_conv_time_normalised_1,  # have to be time normalised
-    active_athlete_id_conv_time_normalised_2,
-    ## todo add trail 3
-)
+    active_athlete_id_conv_mean = get_mean_trail_values(
+        active_athlete_id_conv_time_normalised_1,  # have to be time normalised
+        active_athlete_id_conv_time_normalised_2,
+        ## todo add trail 3
+    )
 
-active_athlete_muscle_forces_sumo_mean = get_mean_trail_values(
-    active_athlete_muscleForces_sumo_time_normalised_1,  # have to be time normalised
-    active_athlete_muscleForces_sumo_time_normalised_2,  # have to be time normalised
-    ## todo add trail 3
-)
+    active_athlete_muscle_forces_sumo_mean = get_mean_trail_values(
+        active_athlete_muscleForces_sumo_time_normalised_1,  # have to be time normalised
+        active_athlete_muscleForces_sumo_time_normalised_2,  # have to be time normalised
+        ## todo add trail 3
+    )
 
-active_athlete_muscle_forces_conv_mean = get_mean_trail_values(
-    active_athlete_muscleForces_conv_time_normalised_1,  # have to be time normalised
-    active_athlete_muscleForces_conv_time_normalised_2,  # have to be time normalised
-    ## todo add trail 3
-)
+    active_athlete_muscle_forces_conv_mean = get_mean_trail_values(
+        active_athlete_muscleForces_conv_time_normalised_1,  # have to be time normalised
+        active_athlete_muscleForces_conv_time_normalised_2,  # have to be time normalised
+        ## todo add trail 3
+    )
+except Exception as e:
+    print("Error in MUSCLE FORCES MEANS; src/imports.py")
+    print(e)
 ######################## TOTAL MUSCLE FORCES ##############################
 # get mean of array values get from muscle force sums
 try:
