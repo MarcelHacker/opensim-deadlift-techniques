@@ -172,6 +172,16 @@ except Exception as e:
 #################### MOMENT ARMS ################################################################
 ## SUMO
 try:
+    active_athlete_momentArms_hip_flexion_r_sumo_0 = pd.read_csv(
+        active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["sumo_dl_0"],
+        sep="\t",
+        skiprows=11,
+    )
+    active_athlete_momentArms_hip_flexion_l_sumo_0 = pd.read_csv(
+        active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["sumo_dl_0"],
+        sep="\t",
+        skiprows=11,
+    )
     active_athlete_momentArms_hip_flexion_r_sumo_1 = pd.read_csv(
         active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["sumo_dl_1"],
         sep="\t",
@@ -192,12 +202,22 @@ try:
         sep="\t",
         skiprows=11,
     )
+    active_athlete_momentArms_knee_flexion_r_sumo_0 = pd.read_csv(
+        active_athlete["paths"]["ma"]["moment_arm"]["knee_angle_r"]["sumo_dl_0"],
+        sep="\t",
+        skiprows=11,
+    )
     active_athlete_momentArms_knee_flexion_r_sumo_1 = (
         pd.read_csv(  # renamed the original
             active_athlete["paths"]["ma"]["moment_arm"]["knee_angle_r"]["sumo_dl_1"],
             sep="\t",
             skiprows=11,
         )
+    )
+    active_athlete_momentArms_ankle_flexion_r_sumo_0 = pd.read_csv(
+        active_athlete["paths"]["ma"]["moment_arm"]["ankle_angle_r"]["sumo_dl_0"],
+        sep="\t",
+        skiprows=11,
     )
     active_athlete_momentArms_ankle_flexion_r_sumo_1 = pd.read_csv(
         active_athlete["paths"]["ma"]["moment_arm"]["ankle_angle_r"]["sumo_dl_1"],
@@ -206,6 +226,16 @@ try:
     )
 
     ## CONVENTIONAL
+    active_athlete_momentArms_hip_flexion_r_conv_0 = pd.read_csv(
+        active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_0"],
+        sep="\t",
+        skiprows=11,
+    )
+    active_athlete_momentArms_hip_flexion_l_conv_0 = pd.read_csv(
+        active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["conv_dl_0"],
+        sep="\t",
+        skiprows=11,
+    )
     active_athlete_momentArms_hip_flexion_r_conv_1 = pd.read_csv(
         active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_1"],
         sep="\t",
@@ -308,6 +338,9 @@ try:
     active_athlete_muscleForces_sumo_emptybar_time_normalised_0 = None
     ## moment arms
     # sumo
+    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_0 = time_normalise_df(
+        active_athlete_momentArms_hip_flexion_r_sumo_0
+    )
     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_1 = time_normalise_df(
         active_athlete_momentArms_hip_flexion_r_sumo_1
     )

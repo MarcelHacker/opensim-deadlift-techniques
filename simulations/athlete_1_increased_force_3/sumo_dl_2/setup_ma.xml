@@ -2,19 +2,19 @@
 <OpenSimDocument Version="40500">
 	<AnalyzeTool name="athlete_1_scaled_increased_force_3">
 		<!--Name of the .osim file used to construct a model.-->
-		<model_file>../athlete_1_increased_force_3.osim</model_file>
+		<model_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_2/../athlete_1_increased_force_3.osim</model_file>
 		<!--Replace the model's force set with sets specified in <force_set_files>? If false, the force set is appended to.-->
 		<replace_force_set>false</replace_force_set>
 		<!--List of xml files used to construct a force set for the model.-->
 		<force_set_files> actuators_so.xml</force_set_files>
 		<!--Directory used for writing results.-->
-		<results_directory />
+		<results_directory>.</results_directory>
 		<!--Output precision.  It is 8 by default.-->
 		<output_precision>8</output_precision>
 		<!--Initial time for the simulation.-->
-		<initial_time>6.5</initial_time>
+		<initial_time>10</initial_time>
 		<!--Final time for the simulation.-->
-		<final_time>9</final_time>
+		<final_time>11.4</final_time>
 		<!--Flag indicating whether or not to compute equilibrium values for states other than the coordinates or speeds.  For example, equilibrium muscle fiber lengths or muscle forces.-->
 		<solve_for_equilibrium_for_auxiliary_states>false</solve_for_equilibrium_for_auxiliary_states>
 		<!--Maximum number of integrator steps.-->
@@ -25,7 +25,6 @@
 		<minimum_integrator_step_size>1e-08</minimum_integrator_step_size>
 		<!--Integrator error tolerance. When the error is greater, the integrator step size is decreased.-->
 		<integrator_error_tolerance>1.0000000000000001e-05</integrator_error_tolerance>
-
 		<!--Set of analyses to be run during the investigation.-->
 		<AnalysisSet name="Analyses">
 			<objects>
@@ -33,9 +32,9 @@
 					<!--Flag (true or false) specifying whether on. True by default.-->
 					<on>false</on>
 					<!--Start time.-->
-					<start_time>6.5</start_time>
+					<start_time>10</start_time>
 					<!--End time.-->
-					<end_time>9</end_time>
+					<end_time>11.4</end_time>
 					<!--Specifies how often to store results during a simulation. More specifically, the interval (a positive integer) specifies how many successful integration steps should be taken before results are recorded again.-->
 					<step_interval>1</step_interval>
 					<!--Flag (true or false) indicating whether the results are in degrees or not.-->
@@ -53,11 +52,11 @@
 				</StaticOptimization>
 				<MuscleAnalysis name="MuscleAnalysis">
 					<!--Flag (true or false) specifying whether on. True by default.-->
-					<on>false</on>
+					<on>true</on>
 					<!--Start time.-->
-					<start_time>6.5</start_time>
+					<start_time>10</start_time>
 					<!--End time.-->
-					<end_time>9</end_time>
+					<end_time>11.4</end_time>
 					<!--Specifies how often to store results during a simulation. More specifically, the interval (a positive integer) specifies how many successful integration steps should be taken before results are recorded again.-->
 					<step_interval>1</step_interval>
 					<!--Flag (true or false) indicating whether the results are in degrees or not.-->
