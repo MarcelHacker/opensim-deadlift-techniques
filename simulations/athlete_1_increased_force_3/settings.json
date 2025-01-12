@@ -6,6 +6,7 @@
   "mass": 82.5,
   "height": 177,
   "load": 150,
+  "fmax": 195,
   "technique": "sumo",
   "paths": {
     "main": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3",
@@ -26,18 +27,53 @@
       "sumo_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/id.sto"
     },
     "so": {
-      "activation": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_increased_force_3_StaticOptimization_activation.sto",
-      "force": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_increased_force_3_StaticOptimization_force.sto"
+      "activations": {
+        "sumo_dl_0": "",
+        "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_1/athlete_1_increased_force_3_StaticOptimization_activation.sto",
+        "sumo_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_2/athlete_1_increased_force_3_StaticOptimization_activation.sto",
+        "conv_dl_0": "",
+        "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_1/athlete_1_increased_force_3_StaticOptimization_activation.sto",
+        "conv_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_2/athlete_1_increased_force_3_StaticOptimization_activation.sto"
+      },
+      "forces": {
+        "sumo_dl_0": "",
+        "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_1/athlete_1_scaled_increased_force_3_StaticOptimization_force.sto",
+        "sumo_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_2/athlete_1_scaled_increased_force_3_StaticOptimization_force.sto",
+        "conv_dl_0": "",
+        "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_1/athlete_1_scaled_increased_force_3_StaticOptimization_force.sto",
+        "conv_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_2/athlete_1_scaled_increased_force_3_StaticOptimization_force.sto"
+      }
     },
     "ma": {
-      "normalized_fiber_length": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_NormalizedFiberLength.sto",
+      "normalized_fiber_length": {},
       "moment_arm": {
-        "hip_flexion_r": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
-        "hip_flexion_l": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_Moment_hip_flexion_l.sto",
-        "knee_angle_r": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_Moment_knee_angle_r.sto",
-        "knee_angle_l": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_l.sto",
-        "ankle_angle_r": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
-        "ankle_angle_l": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_l.sto"
+        "hip_flexion_r": {
+          "sumo_dl_0": "",
+          "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+          "sumo_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_2/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+          "sumo_dl_3": "",
+          "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+          "conv_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_2/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+          "conv_dl_3": ""
+        },
+        "hip_flexion_l": {
+          "sumo_dl_0": "",
+          "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+          "sumo_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_2/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+          "sumo_dl_3": "",
+          "conv_dl_0": "",
+          "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+          "conv_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_2/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+          "conv_dl_3": ""
+        },
+        "knee_angle_r": {
+          "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r.sto",
+          "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r.sto"
+        },
+        "ankle_angle_r": {
+          "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
+          "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto"
+        }
       }
     },
     "iaa": {}
