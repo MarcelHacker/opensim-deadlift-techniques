@@ -255,11 +255,17 @@ except Exception as e:
 # ik
 try:
     active_athlete_ik_sumo_emptybar_time_normalised_0 = None
+    active_athlete_ik_sumo_time_normalised_0 = time_normalise_df(
+        active_athlete_ik_sumo_0
+    )
     active_athlete_ik_sumo_time_normalised_1 = time_normalise_df(
         active_athlete_ik_sumo_1
     )
     active_athlete_ik_sumo_time_normalised_2 = time_normalise_df(
         active_athlete_ik_sumo_2
+    )
+    active_athlete_ik_conv_time_normalised_0 = time_normalise_df(
+        active_athlete_ik_conv_0
     )
     active_athlete_ik_conv_time_normalised_1 = time_normalise_df(
         active_athlete_ik_conv_1

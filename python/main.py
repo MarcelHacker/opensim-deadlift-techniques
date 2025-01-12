@@ -13,19 +13,10 @@ from src.momentArmsHipPlot import run_moment_arms_hip_plot
 if __name__ == "__main__":
     # set athlete in imports.py
     run_kinematics_plot(False)
-    run_moments_plot(False)
-    run_forces_plot(False)
-    run_moment_arms_hip_plot(False)
+    # run_moments_plot(False)
+    # run_forces_plot(False)
+    # run_moment_arms_hip_plot(False)
 
-    # increase_max_isometric_force(
-    #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_4/athlete_1_scaled.osim",
-    #  3,
-    # )
-    # trc_filepath = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1/static_00.trc"
-    # calculate_joint_centres_modified(
-    #   trc_filepath,
-    #  "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1/static_00_hjc.trc",
-    # )
     ########################## MUSCLE FORCES ##############################################
     # run_muscle_force_sum_plot(False)
 
