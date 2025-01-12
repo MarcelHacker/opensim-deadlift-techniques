@@ -643,16 +643,19 @@ active_athlete_muscle_forces_conv_mean = get_mean_trail_values(
     ## todo add trail 3
 )
 ######################## TOTAL MUSCLE FORCES ##############################
-#
 # get mean of array values get from muscle force sums
-active_athlete_total_muscle_forces_sumo_mean = get_mean_array_values(
-    active_athlete_total_sumo_force_1,
-    active_athlete_total_sumo_force_2,  # todo change this for 3 trails
-)
-active_athlete_total_muscle_forces_conv_mean = get_mean_array_values(
-    active_athlete_total_conv_force_1,
-    active_athlete_total_conv_force_2,  # todo change this for 3 trails
-)
+try:
+    active_athlete_total_muscle_forces_sumo_mean = get_mean_array_values(
+        active_athlete_total_sumo_force_1,
+        active_athlete_total_sumo_force_2,  # todo change this for 3 trails
+    )
+    active_athlete_total_muscle_forces_conv_mean = get_mean_array_values(
+        active_athlete_total_conv_force_1,
+        active_athlete_total_conv_force_2,  # todo change this for 3 trails
+    )
+except Exception as e:
+    print("Error in TOTAL MUSCLE FORCES MEANS; src/imports.py")
+    print(e)
 
 ###########################################################################
 try:
