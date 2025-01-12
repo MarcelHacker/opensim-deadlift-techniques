@@ -82,132 +82,156 @@ try:
     active_athlete_ik_conv_emptybar_3 = None
     active_athlete_ik_conv_0 = None
     active_athlete_ik_conv_1 = pd.read_csv(
-        active_athlete_parsed["paths"]["ik"]["conv_dl_1"],
+        active_athlete["paths"]["ik"]["conv_dl_1"],
         sep="\t",
         skiprows=10,
     )
     active_athlete_ik_conv_2 = pd.read_csv(
-        active_athlete_parsed["paths"]["ik"]["conv_dl_2"],
+        active_athlete["paths"]["ik"]["conv_dl_2"],
         sep="\t",
         skiprows=10,
     )
     active_athlete_ik_conv_3 = None
 
 except Exception as e:
-    print("Error in set_active_athlete; src/imports.py")
+    print("Error in IK files; src/imports.py")
     print(e)
 # ID sumo
-active_athlete_id_sumo_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["id"]["sumo_dl_1"],
-    sep="\t",
-    skiprows=6,
-)
-active_athlete_id_sumo_2 = pd.read_csv(
-    active_athlete_parsed["paths"]["id"]["sumo_dl_2"],
-    sep="\t",
-    skiprows=6,
-)
-# ID conv
-active_athlete_id_conv_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["id"]["conv_dl_1"],
-    sep="\t",
-    skiprows=6,
-)
-active_athlete_id_conv_2 = pd.read_csv(
-    active_athlete_parsed["paths"]["id"]["conv_dl_2"],
-    sep="\t",
-    skiprows=6,
-)
+try:
+    active_athlete_id_sumo_0 = pd.read_csv(
+        active_athlete["paths"]["id"]["sumo_dl_0"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_id_sumo_1 = pd.read_csv(
+        active_athlete["paths"]["id"]["sumo_dl_1"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_id_sumo_2 = pd.read_csv(
+        active_athlete["paths"]["id"]["sumo_dl_2"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_id_sumo_3 = pd.read_csv(
+        active_athlete["paths"]["id"]["sumo_dl_3"],
+        sep="\t",
+        skiprows=6,
+    )
+    # ID conv
+    active_athlete_id_conv_0 = pd.read_csv(
+        active_athlete["paths"]["id"]["conv_dl_0"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_id_conv_1 = pd.read_csv(
+        active_athlete["paths"]["id"]["conv_dl_1"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_id_conv_2 = pd.read_csv(
+        active_athlete["paths"]["id"]["conv_dl_2"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_id_conv_3 = pd.read_csv(
+        active_athlete["paths"]["id"]["conv_dl_3"],
+        sep="\t",
+        skiprows=6,
+    )
+except Exception as e:
+    print("Error in ID files; src/imports.py")
+    print(e)
 
 # SO sumo
 active_athlete_muscleForces_sumo_emptybar_0 = pd.read_csv(
-    active_athlete_parsed["paths"]["so"]["forces"]["sumo_emptybar_0"],
+    active_athlete["paths"]["so"]["forces"]["sumo_emptybar_0"],
     sep="\t",
     skiprows=14,
 )
 active_athlete_muscleForces_sumo_0 = None
 
 active_athlete_muscleForces_sumo_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["so"]["forces"]["sumo_dl_1"],
+    active_athlete["paths"]["so"]["forces"]["sumo_dl_1"],
     sep="\t",
     skiprows=14,
 )
 active_athlete_muscleForces_sumo_2 = pd.read_csv(
-    active_athlete_parsed["paths"]["so"]["forces"]["sumo_dl_2"],
+    active_athlete["paths"]["so"]["forces"]["sumo_dl_2"],
     sep="\t",
     skiprows=14,
 )
 active_athlete_muscleForces_conv_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["so"]["forces"]["conv_dl_1"],
+    active_athlete["paths"]["so"]["forces"]["conv_dl_1"],
     sep="\t",
     skiprows=14,
 )
 active_athlete_muscleForces_conv_2 = pd.read_csv(
-    active_athlete_parsed["paths"]["so"]["forces"]["conv_dl_2"],
+    active_athlete["paths"]["so"]["forces"]["conv_dl_2"],
     sep="\t",
     skiprows=14,
 )
 #################### MOMENT ARMS ################################################################
 ## SUMO
 active_athlete_momentArms_hip_flexion_r_sumo_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["sumo_dl_1"],
+    active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["sumo_dl_1"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_hip_flexion_l_sumo_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["sumo_dl_1"],
+    active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["sumo_dl_1"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_hip_flexion_r_sumo_2 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["sumo_dl_2"],
+    active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["sumo_dl_2"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_hip_flexion_l_sumo_2 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["sumo_dl_2"],
+    active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["sumo_dl_2"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_knee_flexion_r_sumo_1 = pd.read_csv(  # renamed the original
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["knee_angle_r"]["sumo_dl_1"],
+    active_athlete["paths"]["ma"]["moment_arm"]["knee_angle_r"]["sumo_dl_1"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_ankle_flexion_r_sumo_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["ankle_angle_r"]["sumo_dl_1"],
+    active_athlete["paths"]["ma"]["moment_arm"]["ankle_angle_r"]["sumo_dl_1"],
     sep="\t",
     skiprows=11,
 )
 
 ## CONVENTIONAL
 active_athlete_momentArms_hip_flexion_r_conv_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_1"],
+    active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_1"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_hip_flexion_l_conv_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["conv_dl_1"],
+    active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["conv_dl_1"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_hip_flexion_r_conv_2 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_2"],
+    active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_2"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_hip_flexion_l_conv_2 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["conv_dl_2"],
+    active_athlete["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["conv_dl_2"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_knee_flexion_r_conv_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["knee_angle_r"]["conv_dl_1"],
+    active_athlete["paths"]["ma"]["moment_arm"]["knee_angle_r"]["conv_dl_1"],
     sep="\t",
     skiprows=11,
 )
 active_athlete_momentArms_ankle_flexion_r_conv_1 = pd.read_csv(
-    active_athlete_parsed["paths"]["ma"]["moment_arm"]["ankle_angle_r"]["conv_dl_1"],
+    active_athlete["paths"]["ma"]["moment_arm"]["ankle_angle_r"]["conv_dl_1"],
     sep="\t",
     skiprows=11,
 )
