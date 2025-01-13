@@ -8,6 +8,8 @@ import msk_modelling_python as msk
 current_directory = os.path.dirname(os.path.realpath(__file__))
 dir_name = os.path.dirname(os.path.dirname(current_directory))
 
+dir_name = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations"  # your dircetory
+
 
 def get_paths_athlete(athlete, model_name=None):
     # todos include moment arm paths in the emptybar trails, not only in the weighted trails

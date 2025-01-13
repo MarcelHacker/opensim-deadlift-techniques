@@ -45,6 +45,7 @@ class athlete:
 
 
 # set the current athlete
+# /Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_3/settings.json
 with open(dir_name + "/athlete_0_increased_force_3/settings.json") as f:
     athlete_0_parsed = json.load(f)
 
@@ -161,6 +162,21 @@ athlete_0_momentArms_hip_flexion_r_sumo_1 = pd.read_csv(
     sep="\t",
     skiprows=11,
 )
+athlete_0_momentArms_hip_flexion_l_sumo_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["sumo_dl_1"],
+    sep="\t",
+    skiprows=11,
+)
+athlete_0_momentArms_hip_flexion_r_sumo_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["sumo_dl_2"],
+    sep="\t",
+    skiprows=11,
+)
+athlete_0_momentArms_hip_flexion_l_sumo_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["sumo_dl_2"],
+    sep="\t",
+    skiprows=11,
+)
 athlete_0_momentArms_knee_flexion_r_sumo_1 = pd.read_csv(  # renamed the original
     athlete_0_parsed["paths"]["ma"]["moment_arm"]["knee_angle_r"]["sumo_dl_1"],
     sep="\t",
@@ -175,6 +191,21 @@ athlete_0_momentArms_ankle_flexion_r_sumo_1 = pd.read_csv(
 ## CONVENTIONAL
 athlete_0_momentArms_hip_flexion_r_conv_1 = pd.read_csv(
     athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_1"],
+    sep="\t",
+    skiprows=11,
+)
+athlete_0_momentArms_hip_flexion_l_conv_1 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["conv_dl_1"],
+    sep="\t",
+    skiprows=11,
+)
+athlete_0_momentArms_hip_flexion_r_conv_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_r"]["conv_dl_2"],
+    sep="\t",
+    skiprows=11,
+)
+athlete_0_momentArms_hip_flexion_l_conv_2 = pd.read_csv(
+    athlete_0_parsed["paths"]["ma"]["moment_arm"]["hip_flexion_l"]["conv_dl_2"],
     sep="\t",
     skiprows=11,
 )
@@ -205,8 +236,8 @@ athlete_0_ik_sumo_time_normalised_2 = time_normalise_df(athlete_0_ik_sumo_2)
 athlete_0_ik_conv_time_normalised_1 = time_normalise_df(athlete_0_ik_conv_1)
 athlete_0_ik_conv_time_normalised_2 = time_normalise_df(athlete_0_ik_conv_2)
 # id
-athlete_0_id_sumo_time_nomalised_1 = time_normalise_df(athlete_0_id_sumo_1)
-athlete_0_id_sumo_time_nomalised_2 = time_normalise_df(athlete_0_id_sumo_2)
+athlete_0_id_sumo_time_normalised_1 = time_normalise_df(athlete_0_id_sumo_1)
+athlete_0_id_sumo_time_normalised_2 = time_normalise_df(athlete_0_id_sumo_2)
 athlete_0_id_conv_time_normalised_1 = time_normalise_df(athlete_0_id_conv_1)
 athlete_0_id_conv_time_normalised_2 = time_normalise_df(athlete_0_id_conv_2)
 # muscle forces
@@ -233,6 +264,15 @@ athlete_0_muscleForces_sumo_emptybar_time_normalised_0 = time_normalise_df(
 athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1 = time_normalise_df(
     athlete_0_momentArms_hip_flexion_r_sumo_1
 )
+athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_1 = time_normalise_df(
+    athlete_0_momentArms_hip_flexion_l_sumo_1
+)
+athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_2 = time_normalise_df(
+    athlete_0_momentArms_hip_flexion_r_sumo_2
+)
+athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_2 = time_normalise_df(
+    athlete_0_momentArms_hip_flexion_l_sumo_2
+)
 athlete_0_momentArms_knee_flexion_r_sumo_time_normalised_1 = time_normalise_df(
     athlete_0_momentArms_knee_flexion_r_sumo_1
 )
@@ -242,6 +282,15 @@ athlete_0_momentArms_ankle_flexion_r_sumo_time_normalised_1 = time_normalise_df(
 # conv
 athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1 = time_normalise_df(
     athlete_0_momentArms_hip_flexion_r_conv_1
+)
+athlete_0_momentArms_hip_flexion_l_conv_time_normalised_1 = time_normalise_df(
+    athlete_0_momentArms_hip_flexion_l_conv_1
+)
+athlete_0_momentArms_hip_flexion_r_conv_time_normalised_2 = time_normalise_df(
+    athlete_0_momentArms_hip_flexion_r_conv_2
+)
+athlete_0_momentArms_hip_flexion_l_conv_time_normalised_2 = time_normalise_df(
+    athlete_0_momentArms_hip_flexion_l_conv_2
 )
 athlete_0_momentArms_knee_flexion_r_conv_time_normalised_1 = time_normalise_df(
     athlete_0_momentArms_knee_flexion_r_conv_1
@@ -478,8 +527,8 @@ athlete_0_ik_sumo_mean = get_mean_trail_values(
     ## todo add trail 3
 )
 athlete_0_id_sumo_mean = get_mean_trail_values(
-    athlete_0_id_sumo_time_nomalised_1,  # have to be time normalised
-    athlete_0_id_sumo_time_nomalised_2,  ##!!! to do change this, when having trail 2 ready
+    athlete_0_id_sumo_time_normalised_1,  # have to be time normalised
+    athlete_0_id_sumo_time_normalised_2,  ##!!! to do change this, when having trail 2 ready
     ## todo add trail 3
 )
 

@@ -5,29 +5,36 @@ Code to run OpenSim analysis Marcel's data BSc
 from msk_modelling_python import *
 import msk_modelling_python as msk
 
-run_setup = False
+run_setup = True
 run_scale_model = False
 run_increase_isom_force = False
 run_ik = False
 run_id = False
 run_so = False
 
-osim_model_path = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_0_increased_force_3/athlete_0_increased_force_3.osim"  # test
+current_dir = os.path.dirname(__file__)
+athlete_name = 'athlete_1_increased_force_3'
+osim_model_path = os.path.join(os.path.dirname(current_dir), athlete_name, "scaled_model.osim")
+
+if not os.path.exists(osim_model_path):
+    raise Exception("Model file not found: " + osim_model_path)
+
 static_trc_file_path = None
 max_isometric_force_scale_factor = 1
 
 # motion files
-c3d_file_path = None
+c3d_file_path = r"C:\Git\research_data\Projects\opensim-deadlift-techniques\athlete_1_increased_force_3\sumo_dl_0\c3dfile.c3d"
 motion_trc_file_path = None
 grf_mot_file_path = None
 grf_xml_file_path = None
 actuators_so_file_path = None
 
-trial_path = os.path.dirname(motion_trc_file_path)
-ik_results_path = os.path.join(trial_path, "ik.mot")
-id_results_path = os.path.join(trial_path, "id.sto")
+if motion_trc_file_path is not None:
+    trial_path = os.path.dirname(motion_trc_file_path)
+    ik_results_path = os.path.join(trial_path, "ik.mot")
+    id_results_path = os.path.join(trial_path, "id.sto")
 
-error_log_path = os.path.join(trial_path, "error_log.txt")
+    error_log_path = os.path.join(trial_path, "error_log.txt")
 
 
 # setup (to finish)
