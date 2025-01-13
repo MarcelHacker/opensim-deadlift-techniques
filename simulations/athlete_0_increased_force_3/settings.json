@@ -6,6 +6,7 @@
   "mass": 56.1,
   "height": 165,
   "load": 80,
+  "fmax": 100,
   "technique": "sumo",
   "paths": {
     "main": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_3",

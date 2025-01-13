@@ -1,13 +1,13 @@
 from src.imports import (
     plt,
-    athlete_0_parsed,
-    athlete_0_ik_sumo_time_normalised_1,
-    athlete_0_ik_sumo_time_normalised_2,
-    athlete_0_ik_conv_time_normalised_1,
-    athlete_0_ik_conv_time_normalised_2,
+    active_athlete,
+    active_athlete_ik_sumo_time_normalised_0,
+    active_athlete_ik_sumo_time_normalised_1,
+    active_athlete_ik_sumo_time_normalised_2,
+    active_athlete_ik_conv_time_normalised_0,
+    active_athlete_ik_conv_time_normalised_1,
+    active_athlete_ik_conv_time_normalised_2,
 )
-
-active_athlete_json = athlete_0_parsed
 
 
 def run_kinematics_plot(bool):
@@ -20,11 +20,11 @@ def run_kinematics_plot(bool):
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Kinematics Trails "
-                + active_athlete_json["name"]
+                + active_athlete["name"]
                 + "; Model: "
-                + active_athlete_json["model_name"]
+                + active_athlete["model"]
                 + "; Preferred: "
-                + active_athlete_json["technique"],
+                + active_athlete["technique"],
                 fontweight="bold",
             )
             fig.set_label("Muscle Forces R")
@@ -50,20 +50,28 @@ def run_kinematics_plot(bool):
                 plt.sca(axs[0, i])
                 plt.title("Sumo Deadlift")
                 plt.plot(
-                    athlete_0_ik_sumo_time_normalised_1[coordinates_r[i]],
+                    active_athlete_ik_sumo_time_normalised_0[coordinates_r[i]],
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_ik_sumo_time_normalised_1[coordinates_l[i]],
+                    active_athlete_ik_sumo_time_normalised_0[coordinates_l[i]],
                     label="Trail 1 l",
                 )
                 plt.plot(
-                    athlete_0_ik_sumo_time_normalised_2[coordinates_r[i]],
+                    active_athlete_ik_sumo_time_normalised_1[coordinates_r[i]],
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_ik_sumo_time_normalised_2[coordinates_l[i]],
+                    active_athlete_ik_sumo_time_normalised_1[coordinates_l[i]],
                     label="Trail 2 l",
+                )
+                plt.plot(
+                    active_athlete_ik_sumo_time_normalised_2[coordinates_r[i]],
+                    label="Trail 3 r",
+                )
+                plt.plot(
+                    active_athlete_ik_sumo_time_normalised_2[coordinates_l[i]],
+                    label="Trail 3 l",
                 )
                 #  add third trail
                 plt.legend()
@@ -74,20 +82,28 @@ def run_kinematics_plot(bool):
                 plt.sca(axs[1, i])
                 plt.title("Conventional Deadlift")
                 plt.plot(
-                    athlete_0_ik_conv_time_normalised_1[coordinates_r[i]],
+                    active_athlete_ik_conv_time_normalised_0[coordinates_r[i]],
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_ik_conv_time_normalised_1[coordinates_l[i]],
+                    active_athlete_ik_conv_time_normalised_0[coordinates_l[i]],
                     label="Trail 1 l",
                 )
                 plt.plot(
-                    athlete_0_ik_conv_time_normalised_2[coordinates_r[i]],
+                    active_athlete_ik_conv_time_normalised_1[coordinates_r[i]],
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_ik_conv_time_normalised_2[coordinates_l[i]],
+                    active_athlete_ik_conv_time_normalised_1[coordinates_l[i]],
                     label="Trail 2 l",
+                )
+                plt.plot(
+                    active_athlete_ik_conv_time_normalised_2[coordinates_r[i]],
+                    label="Trail 3 r",
+                )
+                plt.plot(
+                    active_athlete_ik_conv_time_normalised_2[coordinates_l[i]],
+                    label="Trail 3 l",
                 )
                 #  add third trail
                 plt.legend()

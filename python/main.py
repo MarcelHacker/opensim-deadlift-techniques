@@ -8,6 +8,7 @@ from src.kinematicsPlot import run_kinematics_plot
 from src.momentsPlot import run_moments_plot
 from src.forcesPlot import run_forces_plot
 from src.momentArmsHipPlot import run_moment_arms_hip_plot
+from src.muscleForceSum import run_muscle_force_sum_plot
 
 #####################################################################################
 class test(unittest.TestCase):
@@ -17,18 +18,9 @@ class test(unittest.TestCase):
         run_muscle_force_sum_plot(True)
         
 if __name__ == "__main__":
-    unittest.main()
-    # increase_max_isometric_force(
-    #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1_increased_force_4/athlete_1_scaled.osim",
-    #  3,
-    # )
-    # trc_filepath = "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1/static_00.trc"
-    # calculate_joint_centres_modified(
-    #   trc_filepath,
-    #  "/Users/marcelhacker/Documents/opensim-deadlift-techniques/athlete_1/static_00_hjc.trc",
-    # )
+    ## set athlete in imports.py    unittest.main()
     ########################## MUSCLE FORCES ##############################################
-    # run_muscle_force_sum_plot(False)
+    run_muscle_force_sum_plot(False)
 
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
@@ -49,4 +41,3 @@ if __name__ == "__main__":
     # run_forces_plot(False)  # angles and single muscles right leg, refactor when needed
     # run_muscle_force_total_additional_plot(False)
     #######################################################################################
-
