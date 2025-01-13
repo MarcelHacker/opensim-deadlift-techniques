@@ -304,11 +304,17 @@ try:
         active_athlete_ik_conv_2
     )
     # id
+    active_athlete_id_sumo_time_normalised_0 = time_normalise_df(
+        active_athlete_id_sumo_0
+    )
     active_athlete_id_sumo_time_normalised_1 = time_normalise_df(
         active_athlete_id_sumo_1
     )
     active_athlete_id_sumo_time_normalised_2 = time_normalise_df(
         active_athlete_id_sumo_2
+    )
+    active_athlete_id_conv_time_normalised_0 = time_normalise_df(
+        active_athlete_id_conv_0
     )
     active_athlete_id_conv_time_normalised_1 = time_normalise_df(
         active_athlete_id_conv_1
