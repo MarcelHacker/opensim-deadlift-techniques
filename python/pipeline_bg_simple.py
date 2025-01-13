@@ -14,7 +14,8 @@ run_so = False
 
 current_dir = os.path.dirname(__file__)
 athlete_name = 'athlete_1_increased_force_3'
-osim_model_path = os.path.join(os.path.dirname(current_dir), athlete_name, "scaled_model.osim")
+athlete_path = os.path.join(os.path.dirname(current_dir), 'simulations', athlete_name)
+osim_model_path = os.path.join(athlete_path, "scaled_model.osim")
 
 if not os.path.exists(osim_model_path):
     raise Exception("Model file not found: " + osim_model_path)
@@ -23,8 +24,9 @@ static_trc_file_path = None
 max_isometric_force_scale_factor = 1
 
 # motion files
-c3d_file_path = r"C:\Git\research_data\Projects\opensim-deadlift-techniques\athlete_1_increased_force_3\sumo_dl_0\c3dfile.c3d"
-motion_trc_file_path = None
+trial_name = "conv_dl_0"
+c3d_file_path = os.path.join(athlete_path, trial_name, 'c3dfile.c3d')
+motion_trc_file_path = os.path.join(athlete_path, trial_name, 'ik.mot')
 grf_mot_file_path = None
 grf_xml_file_path = None
 actuators_so_file_path = None
@@ -51,7 +53,7 @@ if run_setup:
             apply_force_body_name="calcn_r",
             force_expressed_in_body_name="ground",
         )
-        msk.log_error("Completed setup: " + str(e), error_log_path)
+        msk.log_error("Completed setup: c3d export", error_log_path)
     except Exception as e:
         print("Error in setup")
         print(e)
