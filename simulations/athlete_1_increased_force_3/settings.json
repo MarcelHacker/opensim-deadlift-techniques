@@ -101,18 +101,18 @@
     "iaa": {},
     "emg": {
       "channels_order": [
-        { "semiten_r": "EMG hannels_EMG1" },
-        { "glmax2_r": "EMG Channels_EMG2" },
-        { "recfem_r": "EMG Channels_EMG3" },
-        { "vaslat_r": "EMG Channels_EMG4" },
-        { "addmagIsch_r": "EMG Channels_EMG6" },
-        { "tban_r": "EMG Channels_EMG7" },
-        { "semiten_l": "EMG Channels_EMG8" },
-        { "glmax2_l": "EMG Channels_EMG9" },
+        { "semiten_r": "EMG Channels_EMG01" },
+        { "glmax2_r": "EMG Channels_EMG02" },
+        { "recfem_r": "EMG Channels_EMG03" },
+        { "vaslat_r": "EMG Channels_EMG04" },
+        { "addmagIsch_r": "EMG Channels_EMG06" },
+        { "tibant_r": "EMG Channels_EMG07" },
+        { "semiten_l": "EMG Channels_EMG08" },
+        { "glmax2_l": "EMG Channels_EMG09" },
         { "recfem_l": "EMG Channels_EMG10" },
         { "vaslat_l": "EMG Channels_EMG11" },
         { "addmagIsch_l": "EMG Channels_EMG12" },
-        { "tban_l": "EMG Channels_EMG13" }
+        { "tibant_l": "EMG Channels_EMG13" }
       ],
       "conv_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_0/c3dfile/analog.csv"
     }
