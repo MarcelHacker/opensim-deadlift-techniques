@@ -30,7 +30,7 @@ def run_kinematics_plot(bool):
                 + active_athlete["technique"],
                 fontweight="bold",
             )
-            fig.set_label("Muscle Forces R")
+            fig.set_label("Kinematics")
             x_label = "% concentric deadlift cycle"
 
             coordinates_r = [
@@ -61,6 +61,7 @@ def run_kinematics_plot(bool):
                     active_athlete_ik_sumo_time_normalised_0[coordinates_l[i]],
                     label="Trial 1 l",
                     color=trial_color_0,
+                    linestyle="dashed",
                 )
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_1[coordinates_r[i]],
@@ -71,6 +72,7 @@ def run_kinematics_plot(bool):
                     active_athlete_ik_sumo_time_normalised_1[coordinates_l[i]],
                     label="Trial 2 l",
                     color=trial_color_1,
+                    linestyle="dashed",
                 )
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_2[coordinates_r[i]],
@@ -81,6 +83,7 @@ def run_kinematics_plot(bool):
                     active_athlete_ik_sumo_time_normalised_2[coordinates_l[i]],
                     label="Trial 3 l",
                     color=trial_color_2,
+                    linestyle="dashed",
                 )
                 #  add third trail
                 plt.legend()
@@ -99,6 +102,7 @@ def run_kinematics_plot(bool):
                     active_athlete_ik_conv_time_normalised_0[coordinates_l[i]],
                     label="Trial 1 l",
                     color=trial_color_0,
+                    linestyle="dashed",
                 )
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_1[coordinates_r[i]],
@@ -109,6 +113,7 @@ def run_kinematics_plot(bool):
                     active_athlete_ik_conv_time_normalised_1[coordinates_l[i]],
                     label="Trial 2 l",
                     color=trial_color_1,
+                    linestyle="dashed",
                 )
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_2[coordinates_r[i]],
@@ -119,6 +124,7 @@ def run_kinematics_plot(bool):
                     active_athlete_ik_conv_time_normalised_2[coordinates_l[i]],
                     label="Trial 3 l",
                     color=trial_color_2,
+                    linestyle="dashed",
                 )
                 #  add third trail
                 plt.legend()
