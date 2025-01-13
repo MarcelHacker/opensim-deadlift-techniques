@@ -1,18 +1,10 @@
 from src.imports import (
     plt,
-    athletes,
-    mean_sumo_both_angles_and_moments,
-    mean_conv_both_angles_and_moments,
-    momentArms_hip_flexion_r_sumo_time_normalised_1,
-    momentArms_knee_flexion_r_sumo_time_normalised_1,
-    momentArms_ankle_flexion_r_sumo_time_normalised_1,
-    momentArms_hip_flexion_r_conv_time_normalised_1,
-    momentArms_knee_flexion_r_conv_time_normalised_1,
-    momentArms_ankle_flexion_r_conv_time_normalised_1,
+    active_athlete,
 )
 
 
-def run_activations_comparison(bool):
+def run_activations_comparison_from_emg(bool):
 
     if bool:
         try:
@@ -23,12 +15,12 @@ def run_activations_comparison(bool):
             x_label = "% concentric deadlift cycle"
             fig, axs = plt.subplots(4, 3)
             fig.suptitle(
-                "Moment Arms Analysis "
-                + athletes[0].name
+                "Activations Trials "
+                + active_athlete["name"]
                 + "; Model: "
-                + athletes[0].model
+                + active_athlete["model"]
                 + "; Preferred: "
-                + athletes[0].technique,
+                + active_athlete["technique"],
                 fontweight="bold",
             )
             fig.set_label("Moment arm [cm]")

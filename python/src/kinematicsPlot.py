@@ -22,7 +22,7 @@ def run_kinematics_plot(bool):
             trial_color_2 = "magenta"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Kinematics Trails "
+                "Kinematics Trials "
                 + active_athlete["name"]
                 + "; Model: "
                 + active_athlete["model"]
