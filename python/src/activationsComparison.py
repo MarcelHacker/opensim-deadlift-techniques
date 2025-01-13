@@ -1,9 +1,15 @@
 from src.imports import (
     plt,
     active_athlete,
+    active_athlete_emg_channels_order,
+    active_athlete_activations_conv_time_normalised_0,
     active_athlete_activations_emg_conv_time_normalised_0,
-    active_athlete_ik_sumo_time_normalised_1,
 )
+
+# channels_order
+print("CHANNEL ORDER:", active_athlete_emg_channels_order)
+
+def get_muscle_from_channel()
 
 
 def run_activations_comparison_from_emg(bool):
@@ -13,8 +19,8 @@ def run_activations_comparison_from_emg(bool):
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 3
             cols = 2
-            trial_color_0 = "red"
-            trial_color_1 = "blue"
+            color_emg = "red"
+            color_computed = "blue"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Activations Trials "
@@ -33,6 +39,8 @@ def run_activations_comparison_from_emg(bool):
                 "knee_angle_r",
                 "ankle_angle_r",
             ]
+
+
             ylabels = [
                 "Hip Flex [°]",
                 "Knee Flex [°]",
@@ -43,14 +51,16 @@ def run_activations_comparison_from_emg(bool):
                 plt.sca(axs[0, i])
                 plt.title("Sumo Deadlift")
                 plt.plot(
-                    active_athlete_ik_sumo_time_normalised_0[coordinates[i]],
+                    active_athlete_activations_conv_time_normalised_0[coordinates[i]],
                     label="Trial 1 r",
-                    color=trial_color_0,
+                    color=color_computed,
                 )
                 plt.plot(
-                    active_athlete_ik_sumo_time_normalised_0[coordinates[i]],
+                    active_athlete_activations_emg_conv_time_normalised_0[
+                        coordinates[i]
+                    ],
                     label="Trial 1 l",
-                    color=trial_color_0,
+                    color=color_emg,
                     linestyle="dashed",
                 )
                 plt.plot(

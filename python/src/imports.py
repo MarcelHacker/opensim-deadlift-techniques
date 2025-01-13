@@ -304,14 +304,14 @@ try:
     active_athlete_activations_conv_0 = pd.read_csv(
         active_athlete["paths"]["so"]["activations"]["conv_dl_0"],
         sep="\t",
-        skiprows=10,
+        skiprows=8,
     )
-    print("\nACTIVATIONS muscle conv 0:\n", active_athlete_activations_conv_0)
 except Exception as e:
     print("Error in muscle activations files; src/imports.py")
     print(e)
 ##################################################################################################
 try:
+    active_athlete_emg_channels_order = active_athlete["paths"]["emg"]["channels_order"]
     active_athlete_activations_emg_conv_0 = pd.read_csv(
         active_athlete["paths"]["emg"]["conv_dl_0"],
         sep=",",
@@ -438,6 +438,13 @@ try:
     )
     active_athlete_momentArms_ankle_flexion_r_conv_time_normalised_1 = (
         time_normalise_df(active_athlete_momentArms_ankle_flexion_r_conv_1)
+    )
+
+    active_athlete_activations_conv_time_normalised_0 = time_normalise_df(
+        active_athlete_activations_conv_0
+    )
+    active_athlete_activations_emg_conv_time_normalised_0 = time_normalise_df(
+        active_athlete_activations_emg_conv_0
     )
     ## normalized fiber lengths
     # sumo
