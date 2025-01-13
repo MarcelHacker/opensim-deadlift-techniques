@@ -1,17 +1,19 @@
 from .imports import (
     plt,
-    athlete_0_parsed,
-    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1,
-    athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_1,
-    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_2,
-    athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_2,
-    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1,
-    athlete_0_momentArms_hip_flexion_l_conv_time_normalised_1,
-    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_2,
-    athlete_0_momentArms_hip_flexion_l_conv_time_normalised_2,
+    active_athlete,
+    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_0,
+    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_0,
+    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_1,
+    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_1,
+    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_2,
+    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_2,
+    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_0,
+    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_0,
+    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_1,
+    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_1,
+    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_2,
+    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_2,
 )
-
-active_athlete_json = athlete_0_parsed
 
 
 def run_moment_arms_hip_plot(bool):
@@ -23,11 +25,11 @@ def run_moment_arms_hip_plot(bool):
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Moment Arms Hip Flexion Trails "
-                + active_athlete_json["name"]
+                + active_athlete["name"]
                 + "; Model: "
-                + active_athlete_json["model_name"]
+                + active_athlete["model"]
                 + "; Preferred: "
-                + active_athlete_json["technique"],
+                + active_athlete["technique"],
                 fontweight="bold",
             )
             fig.set_label("Muscle Forces")
@@ -61,28 +63,40 @@ def run_moment_arms_hip_plot(bool):
                 plt.sca(axs[0, i])
                 plt.title("Sumo Deadlift")
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_1[
+                    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_0[
                         coordinates_r[i]
                     ],
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_1[
+                    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_0[
                         coordinates_l[i]
                     ],
                     label="Trail 1 l",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_r_sumo_time_normalised_2[
+                    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_1[
                         coordinates_r[i]
                     ],
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_l_sumo_time_normalised_2[
+                    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_1[
                         coordinates_l[i]
                     ],
                     label="Trail 2 l",
+                )
+                plt.plot(
+                    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_2[
+                        coordinates_r[i]
+                    ],
+                    label="Trail 3 r",
+                )
+                plt.plot(
+                    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_2[
+                        coordinates_l[i]
+                    ],
+                    label="Trail 3 l",
                 )
                 #  add third trail
                 plt.legend()
@@ -93,28 +107,40 @@ def run_moment_arms_hip_plot(bool):
                 plt.sca(axs[1, x])
                 plt.title("Conventional Deadlift")
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_1[
+                    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_0[
                         coordinates_r[x]
                     ],
                     label="Trail 1 r",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_l_conv_time_normalised_1[
+                    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_0[
                         coordinates_l[x]
                     ],
                     label="Trail 1 l",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_r_conv_time_normalised_2[
+                    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_1[
                         coordinates_r[x]
                     ],
                     label="Trail 2 r",
                 )
                 plt.plot(
-                    athlete_0_momentArms_hip_flexion_l_conv_time_normalised_2[
+                    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_1[
                         coordinates_l[x]
                     ],
                     label="Trail 2 l",
+                )
+                plt.plot(
+                    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_2[
+                        coordinates_r[x]
+                    ],
+                    label="Trail 3 r",
+                )
+                plt.plot(
+                    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_2[
+                        coordinates_l[x]
+                    ],
+                    label="Trail 3 l",
                 )
                 #  add third trail
                 plt.legend()

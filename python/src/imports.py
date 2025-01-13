@@ -373,6 +373,12 @@ try:
         time_normalise_df(active_athlete_momentArms_ankle_flexion_r_sumo_1)
     )
     # conv
+    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_0 = time_normalise_df(
+        active_athlete_momentArms_hip_flexion_r_conv_0
+    )
+    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_0 = time_normalise_df(
+        active_athlete_momentArms_hip_flexion_l_conv_0
+    )
     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_1 = time_normalise_df(
         active_athlete_momentArms_hip_flexion_r_conv_1
     )
