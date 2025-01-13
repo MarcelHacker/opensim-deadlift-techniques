@@ -10,13 +10,15 @@ from src.forcesPlot import run_forces_plot
 from src.momentArmsHipPlot import run_moment_arms_hip_plot
 from src.muscleForceSum import run_muscle_force_sum_plot
 
+
 #####################################################################################
 class test(unittest.TestCase):
-    
+
     ##### TESTS WORKING ######
     def test_update_version(self):
-        run_muscle_force_sum_plot(True)
-        
+        run_muscle_force_sum_plot(True)x
+
+
 if __name__ == "__main__":
     ## set athlete in imports.py    unittest.main()
     ########################## MUSCLE FORCES ##############################################
