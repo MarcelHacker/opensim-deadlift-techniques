@@ -17,6 +17,9 @@ def run_kinematics_plot(bool):
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 3
             cols = 2
+            trial_color_0 = "red"
+            trial_color_1 = "blue"
+            trial_color_2 = "magenta"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Kinematics Trails "
@@ -51,27 +54,33 @@ def run_kinematics_plot(bool):
                 plt.title("Sumo Deadlift")
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_0[coordinates_r[i]],
-                    label="Trail 1 r",
+                    label="Trial 1 r",
+                    color=trial_color_0,
                 )
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_0[coordinates_l[i]],
-                    label="Trail 1 l",
+                    label="Trial 1 l",
+                    color=trial_color_0,
                 )
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_1[coordinates_r[i]],
-                    label="Trail 2 r",
+                    label="Trial 2 r",
+                    color=trial_color_1,
                 )
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_1[coordinates_l[i]],
-                    label="Trail 2 l",
+                    label="Trial 2 l",
+                    color=trial_color_1,
                 )
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_2[coordinates_r[i]],
-                    label="Trail 3 r",
+                    label="Trial 3 r",
+                    color=trial_color_2,
                 )
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_2[coordinates_l[i]],
-                    label="Trail 3 l",
+                    label="Trial 3 l",
+                    color=trial_color_2,
                 )
                 #  add third trail
                 plt.legend()
@@ -83,27 +92,33 @@ def run_kinematics_plot(bool):
                 plt.title("Conventional Deadlift")
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_0[coordinates_r[i]],
-                    label="Trail 1 r",
+                    label="Trial 1 r",
+                    color=trial_color_0,
                 )
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_0[coordinates_l[i]],
-                    label="Trail 1 l",
+                    label="Trial 1 l",
+                    color=trial_color_0,
                 )
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_1[coordinates_r[i]],
-                    label="Trail 2 r",
+                    label="Trial 2 r",
+                    color=trial_color_1,
                 )
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_1[coordinates_l[i]],
-                    label="Trail 2 l",
+                    label="Trial 2 l",
+                    color=trial_color_1,
                 )
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_2[coordinates_r[i]],
-                    label="Trail 3 r",
+                    label="Trial 3 r",
+                    color=trial_color_2,
                 )
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_2[coordinates_l[i]],
-                    label="Trail 3 l",
+                    label="Trial 3 l",
+                    color=trial_color_2,
                 )
                 #  add third trail
                 plt.legend()
