@@ -336,10 +336,17 @@ try:
         active_athlete_muscleForces_conv_2
     )
     active_athlete_muscleForces_sumo_emptybar_time_normalised_0 = None
+except Exception as e:
+    print("Error in time normalisation id,ik and muscle force files; src/imports.py")
+    print(e)
     ## moment arms
     # sumo
+try:
     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_0 = time_normalise_df(
         active_athlete_momentArms_hip_flexion_r_sumo_0
+    )
+    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_0 = time_normalise_df(
+        active_athlete_momentArms_hip_flexion_l_sumo_0
     )
     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_1 = time_normalise_df(
         active_athlete_momentArms_hip_flexion_r_sumo_1
@@ -385,7 +392,7 @@ try:
     active_athlete_normalized_fiber_lengths_sumo_time_normalised_2 = None
 
 except Exception as e:
-    print("Error in time normalisation files; src/imports.py")
+    print("Error in time normalisation ma files; src/imports.py")
     print(e)
 ##################################################################################################
 # MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
