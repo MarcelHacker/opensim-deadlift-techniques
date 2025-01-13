@@ -22,7 +22,7 @@ def run_kinematics_plot(bool):
                 "Kinematics Trails "
                 + active_athlete["name"]
                 + "; Model: "
-                + active_athlete["model_name"]
+                + active_athlete["model"]
                 + "; Preferred: "
                 + active_athlete["technique"],
                 fontweight="bold",

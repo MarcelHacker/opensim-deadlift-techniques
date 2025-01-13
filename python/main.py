@@ -13,7 +13,7 @@ from src.kinematicsPlot import run_kinematics_plot
 
 if __name__ == "__main__":
     # set athlete in imports.py
-    run_kinematics_plot(False)
+    run_kinematics_plot(True)
     # run_moments_plot(False)
     # run_forces_plot(False)
     # run_moment_arms_hip_plot(False)
