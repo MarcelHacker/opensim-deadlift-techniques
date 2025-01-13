@@ -9,7 +9,7 @@ from src.momentsPlot import run_moments_plot
 from src.forcesPlot import run_forces_plot
 from src.momentArmsHipPlot import run_moment_arms_hip_plot
 from src.muscleForceSum import run_muscle_force_sum_plot
-from src.activationsComparison import run_activations_comparison
+from src.activationsComparison import run_activations_comparison_from_emg
 
 
 #####################################################################################

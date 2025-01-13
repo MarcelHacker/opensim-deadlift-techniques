@@ -24,12 +24,12 @@ class athlete:
         self.mass = mass  # "57"
         self.model = model  # "athlete_x_scaled"
         self.technique = technique  # "sumo" or "conventional", preffered deadlift
-        
+
     def create_athlete_json(self, athlete_folder_path):
-        
+
         # warning not completed
         msk.ui.show_warning("Warning", "This function is not completed yet")
-        
+
         athlete_dict = {
             "paths": athlete_folder_path,
             "name": self.name,
@@ -37,11 +37,11 @@ class athlete:
             "model": self.model,
             "technique": self.technique,
         }
-        
+
         # save json file in the athlete folder
         with open(athlete_folder_path + "/settings.json", "w") as f:
             json.dump(athlete_dict, f)
-            
+
         return athlete_dict
 
 
@@ -299,6 +299,17 @@ except Exception as e:
     print("Error in MA normalized fiber lengths files; src/imports.py")
     print(e)
 ##################################################################################################
+try:
+    active_athlete_activations_emg_conv_0 = pd.read_csv(
+        active_athlete["paths"]["emg"]["conv_dl_0"],
+        sep=",",
+        skiprows=0,
+    )
+    print("\nACTIVATIONS EMG conv 0:\n", active_athlete_activations_emg_conv_0)
+except Exception as e:
+    print("Error in emg activations files; src/imports.py")
+    print(e)
+##################################################################################################
 
 ### time normalise everything to 101 values
 # ik
@@ -424,6 +435,14 @@ try:
 
 except Exception as e:
     print("Error in time normalisation ma files; src/imports.py")
+    print(e)
+
+try:
+    active_athlete_activations_emg_conv_time_normalised_0 = time_normalise_df(
+        active_athlete_activations_emg_conv_0
+    )
+except Exception as e:
+    print("Error in time normalisation emg activations files; src/imports.py")
     print(e)
 ##################################################################################################
 # MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
@@ -652,6 +671,7 @@ try:
 except Exception as e:
     print("Error in muscle force grouping files; src/imports.py")
     print(e)
+##################################################################################################
 ##################################################################################################
 ## MEAN VARIABLES, absolute mean values over all trails
 # IMPORTANT: only calculate the mean with the time normalised vars
