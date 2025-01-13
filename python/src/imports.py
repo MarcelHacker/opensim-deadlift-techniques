@@ -300,6 +300,18 @@ except Exception as e:
     print(e)
 ##################################################################################################
 try:
+    print("path: ", active_athlete["paths"]["so"]["activations"]["conv_dl_0"])
+    active_athlete_activations_conv_0 = pd.read_csv(
+        active_athlete["paths"]["so"]["activations"]["conv_dl_0"],
+        sep="\t",
+        skiprows=10,
+    )
+    print("\nACTIVATIONS muscle conv 0:\n", active_athlete_activations_conv_0)
+except Exception as e:
+    print("Error in muscle activations files; src/imports.py")
+    print(e)
+##################################################################################################
+try:
     active_athlete_activations_emg_conv_0 = pd.read_csv(
         active_athlete["paths"]["emg"]["conv_dl_0"],
         sep=",",

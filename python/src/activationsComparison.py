@@ -1,7 +1,7 @@
 from src.imports import (
     plt,
     active_athlete,
-    active_athlete_ik_sumo_time_normalised_0,
+    active_athlete_activations_emg_conv_time_normalised_0,
     active_athlete_ik_sumo_time_normalised_1,
 )
 
