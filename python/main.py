@@ -8,7 +8,8 @@ from src.kinematicsPlot import run_kinematics_plot
 from src.momentsPlot import run_moments_plot
 from src.forcesPlot import run_forces_plot
 from src.momentArmsHipPlot import run_moment_arms_hip_plot
-from src.muscleForceSum import run_muscle_force_sum_plot
+
+# from src.muscleForceSum import run_muscle_force_sum_plot
 from src.activationsComparison import run_activations_comparison_from_emg
 
 
@@ -24,6 +25,11 @@ class test(unittest.TestCase):
 if __name__ == "__main__":
     ## set athlete in imports.py    unittest.main()
     run_activations_comparison_from_emg(True)
+
+    run_kinematics_plot(False)
+    run_moments_plot(False)
+    run_forces_plot(False)
+    run_moment_arms_hip_plot(False)
     ########################## MUSCLE FORCES ##############################################
     # run_muscle_force_sum_plot(False)
 

@@ -9,15 +9,13 @@ from src.imports import (
 # channels_order
 print("CHANNEL ORDER:", active_athlete_emg_channels_order)
 
-def get_muscle_from_channel()
-
 
 def run_activations_comparison_from_emg(bool):
     # just for sumo currently avaiable
     if bool:
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
-            rows = 3
+            rows = 5
             cols = 2
             color_emg = "red"
             color_computed = "blue"
@@ -35,46 +33,49 @@ def run_activations_comparison_from_emg(bool):
             x_label = "% concentric deadlift cycle"
 
             coordinates = [
-                "hip_flexion_r",
-                "knee_angle_r",
-                "ankle_angle_r",
+                "semiten_r",
+                "glmax2_r",
+                "recfem_r",
+                "vaslat_r",
+                "addmagIsch_r",
             ]
-
 
             ylabels = [
                 "Hip Flex [°]",
                 "Knee Flex [°]",
                 "Ankle Flex [°]",
             ]
-
             for i in range(len(coordinates)):
+                current_muscle = coordinates[i]
+                print("currnt_muscle: ", coordinates[i])
                 plt.sca(axs[0, i])
-                plt.title("Sumo Deadlift")
+                plt.title("Conventional Deadlift")
                 plt.plot(
-                    active_athlete_activations_conv_time_normalised_0[coordinates[i]],
-                    label="Trial 1 r",
+                    active_athlete_activations_conv_time_normalised_0[current_muscle],
+                    label="COMPUTED",
                     color=color_computed,
+                )
+                print(active_athlete_activations_conv_time_normalised_0[current_muscle])
+                print(
+                    active_athlete_activations_emg_conv_time_normalised_0[
+                        "EMG Channels_EMG15"
+                    ]
+                )
+                print(type(active_athlete_activations_emg_conv_time_normalised_0))
+                current_channel = active_athlete_emg_channels_order[current_muscle]
+                print("Current channel: ", current_channel)
+                print(
+                    "EMG: ",
+                    active_athlete_activations_emg_conv_time_normalised_0[0],
                 )
                 plt.plot(
                     active_athlete_activations_emg_conv_time_normalised_0[
-                        coordinates[i]
+                        str(current_channel)
                     ],
-                    label="Trial 1 l",
+                    label="EMG",
                     color=color_emg,
                     linestyle="dashed",
                 )
-                plt.plot(
-                    active_athlete_ik_sumo_time_normalised_1[coordinates[i]],
-                    label="Trial 2 r",
-                    color=trial_color_1,
-                )
-                plt.plot(
-                    active_athlete_ik_sumo_time_normalised_1[coordinates[i]],
-                    label="Trial 2 l",
-                    color=trial_color_1,
-                    linestyle="dashed",
-                )
-
                 #  add third trail
                 plt.legend()
                 plt.ylabel(ylabels[i])
