@@ -1,0 +1,2 @@
+2025-01-13 11:41:47: Error in setup: [Errno 2] No such file or directory: 'C:\\Git\\research_data\\Projects\\opensim-deadlift-techniques\\athlete_1_increased_force_3\\sumo_dl_0\\c3dfile.c3d'
+2025-01-13 11:42:44: Error in setup: name 'e' is not defined
