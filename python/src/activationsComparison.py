@@ -9,24 +9,27 @@ from src.imports import (
     active_athlete_activations_emg_conv_time_normalised_0,
 )
 
-
 # channels_order
 # print("CHANNEL ORDER:", active_athlete_emg_channels_order)
 
 
 def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
+    # analog data rate
+    fs = 1000  # Hz
+    if fs < band_highcut * 2:
+        band_highcut = fs / 2
+        print(
+            "High pass frequency was too high. Using 1/2 *  sampling frequnecy instead"
+        )
+
     analog_df = active_athlete_activations_emg_conv_time_normalised_0
-    print(analog_df)
     max_emg_list = []
     for col in analog_df.columns:
-        print(col)
         max_rolling_average = np.max(
             pd.Series(analog_df[col]).rolling(200, min_periods=1).mean()
         )
         max_emg_list.append(max_rolling_average)
 
-    # analog data rate
-    fs = 1000  # Hz
     nyq = 0.5 * fs
     normal_cutoff = lowcut / nyq
     b_low, a_low = signal.butter(order, normal_cutoff, btype="low", analog=False)
@@ -36,12 +39,16 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
     b_band, a_band = signal.butter(order, [low, high], btype="band")
 
     for col in analog_df.columns:
+        top_3_values = analog_df[col].nlargest(3)  # get the 3 largest values
+        print("TOP 3:", top_3_values)
+        mean_maximum_signal = np.mean(top_3_values)  # cal mean of the 3 largest values
+        print("MEAN MAX:", mean_maximum_signal)
         raw_emg_signal = analog_df[col]
         bandpass_signal = signal.filtfilt(b_band, a_band, raw_emg_signal)
         detrend_signal = signal.detrend(bandpass_signal, type="linear")
         rectified_signal = np.abs(detrend_signal)
         linear_envelope = signal.filtfilt(b_low, a_low, rectified_signal)
-        analog_df[col] = linear_envelope
+        analog_df[col] = linear_envelope / mean_maximum_signal
 
     return analog_df
 
