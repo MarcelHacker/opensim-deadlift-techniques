@@ -56,7 +56,6 @@ filtered_emg.to_csv(
 filtered_emg_time_normalised_0 = time_normalise_df(filtered_emg)
 
 
-
 def run_activations_comparison_from_emg(bool):
     # just for sumo currently avaiable
     if bool:
@@ -76,6 +75,7 @@ def run_activations_comparison_from_emg(bool):
                 + active_athlete["technique"],
                 fontweight="bold",
             )
+            # plt.subplots_adjust(wspace=0.5, hspace=0.5)
             fig.set_label("Activations")
             x_label = "% concentric deadlift cycle"
 
