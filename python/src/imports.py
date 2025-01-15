@@ -41,7 +41,22 @@ class athlete:
             "technique": self.technique,
             "load": self.load,
             "fmax": self.fmax,
-            "paths": {},
+            "paths": {
+                "main": "",
+                "model_generic": "",
+                "model_scaled": "",
+                "static": "",
+                "ik": {
+                    "sumo_dl_0": "/sumo_dl_0/ik.mot",
+                    "sumo_dl_1": "/sumo_dl_1/ik.mot",
+                    "sumo_dl_2": "/sumo_dl_2/ik.mot",
+                    "sumo_dl_3": "/sumo_dl_3/ik.mot",
+                    "conv_dl_0": "/conv_dl_0/ik.mot",
+                    "conv_dl_1": "/conv_dl_1/ik.mot",
+                    "conv_dl_2": "/conv_dl_2/ik.mot",
+                    "conv_dl_3": "/conv_dl_3/ik.mot",
+                },
+            },
         }
 
         # save json file in the athlete folder

@@ -19,7 +19,9 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
             "High pass frequency was too high. Using 1/2 *  sampling frequnecy instead"
         )
 
-    import pdb; pdb.set_trace()
+    import pdb
+
+    pdb.set_trace()
     analog_df = active_athlete_activations_emg_conv_time_normalised_0
     print("Readed csv: ", analog_df)
     max_emg_list = []
@@ -47,7 +49,6 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
         print(col)
         print("\nMAX: \n", peak_maximum)
         analog_df[col] = linear_envelope / peak_maximum
-        
 
     return analog_df
 
