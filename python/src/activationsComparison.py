@@ -21,13 +21,7 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
             "High pass frequency was too high. Using 1/2 *  sampling frequnecy instead"
         )
 
-    analog_df = active_athlete_activations_emg_conv_0.copy()
-    max_emg_list = []
-    for col in analog_df.columns:
-        max_rolling_average = np.max(
-            pd.Series(analog_df[col]).rolling(200, min_periods=1).mean()
-        )
-        max_emg_list.append(max_rolling_average)
+    analog_df = active_athlete_activations_emg_conv_0
 
     nyq = 0.5 * fs
     normal_cutoff = lowcut / nyq
@@ -54,7 +48,11 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
 # band_lowcut=30, band_highcut=400, lowcut=6, order=4
 # filter emg data
 filtered_emg = emg_filter(30, 400, 6, 4)
+filtered_emg.to_csv(
+    "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_0/c3dfile/analog_filtered.csv"
+)
 filtered_emg_time_normalised_0 = time_normalise_df(filtered_emg)
+
 
 
 def run_activations_comparison_from_emg(bool):
