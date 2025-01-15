@@ -31,11 +31,22 @@ class athlete:
         msk.ui.show_warning("Warning", "This function is not completed yet")
 
         athlete_dict = {
-            "paths": athlete_folder_path,
             "name": self.name,
+            "age": self.age,
+            "gender": self.gender,
+            "height": self.height,
+            "model": self.model,
             "mass": self.mass,
             "model": self.model,
             "technique": self.technique,
+            "load": self.load,
+            "fmax": self.fmax,
+            "paths": {
+                "main": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3",
+                "model_generic": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/setup/rajagopal_generic.osim",
+                "model_scaled": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/athlete_1_scaled_increased_force_3.osim",
+                "static": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/static_00.trc",
+            },
         }
 
         # save json file in the athlete folder
