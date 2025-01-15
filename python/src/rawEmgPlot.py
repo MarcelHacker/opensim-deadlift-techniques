@@ -1,15 +1,11 @@
 import numpy as np
 from scipy import signal
+import matplotlib.pyplot as plt
 from src.imports import (
-    plt,
     active_athlete,
-    time_normalise_df,
     active_athlete_emg_channels_order,
-    active_athlete_activations_conv_time_normalised_0,
     active_athlete_activations_emg_conv_0,
 )
-
-print(active_athlete_activations_emg_conv_0)
 
 
 def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
@@ -46,26 +42,24 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
 
 
 # band_lowcut=30, band_highcut=400, lowcut=6, order=4
-# filter emg data
+# filter emg data without time normalisation. This comes only after the filtering not before.
 filtered_emg = emg_filter(30, 400, 6, 4)
-filtered_emg.to_csv(
-    "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_0/c3dfile/analog_filtered.csv"
-)
-filtered_emg_time_normalised_0 = time_normalise_df(filtered_emg)
+print("filtered:", filtered_emg)
+print("EMG: ", active_athlete_activations_emg_conv_0)
 
 
-def run_activations_comparison_from_emg(bool):
+def run_raw_emg_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 6
             cols = 2
-            color_emg = "red"
-            color_computed = "blue"
+            color_emg_filtered = "blue"
+            color_emg_raw = "red"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Activations Trial CONV 0; "
+                "EMG Raw & Filtered CONV 0; "
                 + active_athlete["name"]
                 + "; Model: "
                 + active_athlete["model"]
@@ -110,25 +104,24 @@ def run_activations_comparison_from_emg(bool):
                 "addmagIsch",
                 "tibant",
             ]
+
             for i in range(len(coordinates_r)):
                 current_muscle = coordinates_r[i]
-                plt.sca(axs[0, i])
                 plt.title("Conventional Deadlift R")
-                plt.plot(
-                    active_athlete_activations_conv_time_normalised_0[current_muscle],
-                    label="COMPUTED",
-                    color=color_computed,
-                )
-
                 # Durchlaufen der Liste und Abrufen der Werte
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
                         if key == current_muscle:
-                            # curve = filtered_emg[value]
+                            plt.sca(axs[0, i])
                             plt.plot(
-                                filtered_emg_time_normalised_0[value],
+                                active_athlete_activations_emg_conv_0[value],
+                                label="EMG raw",
+                                color=color_emg_raw,
+                            )
+                            plt.secondary_yaxis(
+                                filtered_emg[value],
                                 label="EMG filtered",
-                                color=color_emg,
+                                color=color_emg_filtered,
                             )
 
                 plt.legend()
@@ -139,29 +132,26 @@ def run_activations_comparison_from_emg(bool):
                 current_muscle = coordinates_l[j]
                 plt.sca(axs[1, j])
                 plt.title("Conventional Deadlift L")
-                plt.plot(
-                    active_athlete_activations_conv_time_normalised_0[current_muscle],
-                    label="COMPUTED",
-                    color=color_computed,
-                )
                 # Durchlaufen der Liste und Abrufen der Werte
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
                         if key == current_muscle:
-                            print(value)
-                            # curve = filtered_emg[value]
                             plt.plot(
-                                filtered_emg_time_normalised_0[value],
+                                active_athlete_activations_emg_conv_0[value],
+                                label="EMG raw",
+                                color=color_emg_raw,
+                            )
+                            plt.plot(
+                                filtered_emg[value] * 1000,
                                 label="EMG filtered",
-                                color=color_emg,
+                                color=color_emg_filtered,
                             )
 
                 plt.legend()
                 plt.ylabel(ylabels[j])
                 plt.xlabel(x_label)
-
             plt.show()
 
         except Exception as e:
-            print("Error in run_activations_comparison_from_emg")
+            print("Error in run_raw_emg_plot")
             print(e)

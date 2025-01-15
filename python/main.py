@@ -11,6 +11,7 @@ from src.momentArmsHipPlot import run_moment_arms_hip_plot
 
 # from src.muscleForceSum import run_muscle_force_sum_plot
 from src.activationsComparison import run_activations_comparison_from_emg
+from src.rawEmgPlot import run_raw_emg_plot
 
 
 #####################################################################################
@@ -24,7 +25,8 @@ class test(unittest.TestCase):
 
 if __name__ == "__main__":
     ## set athlete in imports.py    unittest.main()
-    run_activations_comparison_from_emg(True)
+    run_raw_emg_plot(True)
+    run_activations_comparison_from_emg(False)
 
     run_kinematics_plot(False)
     run_moments_plot(False)

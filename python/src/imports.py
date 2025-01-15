@@ -338,7 +338,7 @@ try:
         sep=",",
         skiprows=0,
     )
-    # print("\nACTIVATIONS EMG conv 0:\n", active_athlete_activations_emg_conv_0)
+    print("\nACTIVATIONS EMG conv 0:\n", active_athlete_activations_emg_conv_0)
 except Exception as e:
     print("Error in emg activations files; src/imports.py")
     print(e)
@@ -464,9 +464,7 @@ try:
     active_athlete_activations_conv_time_normalised_0 = time_normalise_df(
         active_athlete_activations_conv_0
     )
-    active_athlete_activations_emg_conv_time_normalised_0 = time_normalise_df(
-        active_athlete_activations_emg_conv_0
-    )
+
     ## normalized fiber lengths
     # sumo
     active_athlete_normalized_fiber_lengths_sumo_time_normalised_0 = None
