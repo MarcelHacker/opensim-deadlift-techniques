@@ -4,26 +4,24 @@ from scipy import signal
 from src.imports import (
     plt,
     active_athlete,
+    time_normalise_df,
     active_athlete_emg_channels_order,
     active_athlete_activations_conv_time_normalised_0,
     active_athlete_activations_emg_conv_time_normalised_0,
+    active_athlete_activations_emg_conv_0,
 )
 
 
 def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
     # analog data rate
-    fs = 1000  # Hz
+    fs = 2000  # Hz
     if fs < band_highcut * 2:
         band_highcut = fs / 2
         print(
             "High pass frequency was too high. Using 1/2 *  sampling frequnecy instead"
         )
 
-    import pdb
-
-    pdb.set_trace()
-    analog_df = active_athlete_activations_emg_conv_time_normalised_0
-    print("Readed csv: ", analog_df)
+    analog_df = active_athlete_activations_emg_conv_0.copy()
     max_emg_list = []
     for col in analog_df.columns:
         max_rolling_average = np.max(
@@ -55,8 +53,8 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
 
 # band_lowcut=30, band_highcut=400, lowcut=6, order=4
 # filter emg data
-filtered_emg = emg_filter(30, 200, 6, 4)
-print(filtered_emg)
+filtered_emg = emg_filter(30, 400, 6, 4)
+filtered_emg_time_normalised_0 = time_normalise_df(filtered_emg)
 
 
 def run_activations_comparison_from_emg(bool):
@@ -120,15 +118,12 @@ def run_activations_comparison_from_emg(bool):
                 # Durchlaufen der Liste und Abrufen der Werte
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
-                        # print(f"{key}: {value}")
                         if key == current_muscle:
-                            print(value)
-                            curve = filtered_emg[value]
+                            # curve = filtered_emg[value]
                             plt.plot(
-                                curve,
+                                filtered_emg_time_normalised_0[value],
                                 label="EMG filtered",
                                 color=color_emg,
-                                linestyle="dashed",
                             )
 
                 plt.legend()
@@ -144,22 +139,16 @@ def run_activations_comparison_from_emg(bool):
                     label="COMPUTED",
                     color=color_computed,
                 )
-                # plt.plot(
-                #   active_athlete_activations_emg_conv_0[current_muscle],
-                #  label="COMPUTED no time norm",
-                # color=color_computed,
-                # )
                 # Durchlaufen der Liste und Abrufen der Werte
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
                         if key == current_muscle:
                             print(value)
-                            curve = filtered_emg[value]
+                            # curve = filtered_emg[value]
                             plt.plot(
-                                curve,
-                                label="EMG",
+                                filtered_emg_time_normalised_0[value],
+                                label="EMG filtered",
                                 color=color_emg,
-                                linestyle="dashed",
                             )
 
                 plt.legend()
