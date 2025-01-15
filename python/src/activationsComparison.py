@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+from scipy import signal
 from src.imports import (
     plt,
     active_athlete,
@@ -6,8 +9,47 @@ from src.imports import (
     active_athlete_activations_emg_conv_time_normalised_0,
 )
 
+
 # channels_order
-print("CHANNEL ORDER:", active_athlete_emg_channels_order)
+# print("CHANNEL ORDER:", active_athlete_emg_channels_order)
+
+
+def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
+    analog_df = active_athlete_activations_emg_conv_time_normalised_0
+    print(analog_df)
+    max_emg_list = []
+    for col in analog_df.columns:
+        print(col)
+        max_rolling_average = np.max(
+            pd.Series(analog_df[col]).rolling(200, min_periods=1).mean()
+        )
+        max_emg_list.append(max_rolling_average)
+
+    # analog data rate
+    fs = 1000  # Hz
+    nyq = 0.5 * fs
+    normal_cutoff = lowcut / nyq
+    b_low, a_low = signal.butter(order, normal_cutoff, btype="low", analog=False)
+
+    low = band_lowcut / nyq
+    high = band_highcut / nyq
+    b_band, a_band = signal.butter(order, [low, high], btype="band")
+
+    for col in analog_df.columns:
+        raw_emg_signal = analog_df[col]
+        bandpass_signal = signal.filtfilt(b_band, a_band, raw_emg_signal)
+        detrend_signal = signal.detrend(bandpass_signal, type="linear")
+        rectified_signal = np.abs(detrend_signal)
+        linear_envelope = signal.filtfilt(b_low, a_low, rectified_signal)
+        analog_df[col] = linear_envelope
+
+    return analog_df
+
+
+# band_lowcut=30, band_highcut=400, lowcut=6, order=4
+# filter emg data
+filtered_emg = emg_filter(30, 400, 6, 4)
+print(filtered_emg)
 
 
 def run_activations_comparison_from_emg(bool):
@@ -72,12 +114,7 @@ def run_activations_comparison_from_emg(bool):
                     for key, value in item.items():
                         # print(f"{key}: {value}")
                         if key == current_muscle:
-                            curve = (
-                                active_athlete_activations_emg_conv_time_normalised_0[
-                                    value
-                                ]
-                                / 1000
-                            )
+                            curve = filtered_emg[value]
                             plt.plot(
                                 curve,
                                 label="EMG",
@@ -102,12 +139,7 @@ def run_activations_comparison_from_emg(bool):
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
                         if key == current_muscle:
-                            curve = (
-                                active_athlete_activations_emg_conv_time_normalised_0[
-                                    value
-                                ]
-                                / 1000
-                            )
+                            curve = filtered_emg[value]
                             plt.plot(
                                 curve,
                                 label="EMG",

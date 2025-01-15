@@ -41,12 +41,7 @@ class athlete:
             "technique": self.technique,
             "load": self.load,
             "fmax": self.fmax,
-            "paths": {
-                "main": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3",
-                "model_generic": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/setup/rajagopal_generic.osim",
-                "model_scaled": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/athlete_1_scaled_increased_force_3.osim",
-                "static": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/static_00.trc",
-            },
+            "paths": {},
         }
 
         # save json file in the athlete folder
@@ -69,7 +64,7 @@ try:
     dirname = os.path.dirname(__file__)  # not used
     with open(dir_name + "/" + str(active_athlete_folder) + "/settings.json") as f:
         active_athlete = json.load(f)
-        print("\nACTIVE ATHLETE:\n", active_athlete["name"])
+        # print("\nACTIVE ATHLETE:\n", active_athlete["name"])
 except Exception as e:
     print("\nError in setting active_athlete; src/imports.py\n")
     print(e)
@@ -328,7 +323,7 @@ try:
         sep=",",
         skiprows=0,
     )
-    print("\nACTIVATIONS EMG conv 0:\n", active_athlete_activations_emg_conv_0)
+    # print("\nACTIVATIONS EMG conv 0:\n", active_athlete_activations_emg_conv_0)
 except Exception as e:
     print("Error in emg activations files; src/imports.py")
     print(e)
