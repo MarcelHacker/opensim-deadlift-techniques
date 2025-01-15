@@ -32,6 +32,8 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
     b_band, a_band = signal.butter(order, [low, high], btype="band")
 
     for col in analog_df.columns:
+        if col == "time":
+            continue
         raw_emg_signal = analog_df[col]
         bandpass_signal = signal.filtfilt(b_band, a_band, raw_emg_signal)
         detrend_signal = signal.detrend(bandpass_signal, type="linear")

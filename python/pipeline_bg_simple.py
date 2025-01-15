@@ -4,7 +4,16 @@ Code to run OpenSim analysis Marcel's data BSc
 
 from msk_modelling_python import *
 import msk_modelling_python as msk
+file = r"C:\Git\research_data\Projects\opensim-deadlift-techniques\simulations\athlete_1_increased_force_3\conv_dl_0\c3dfile\analog_filtered.csv"
+df = msk.bops.import_file(file)
 
+print(df.head())
+
+df_time_normalised = msk.bops.time_normalise_df(df)
+new_file = file.replace(".csv", "_time_normalised.csv") 
+df_time_normalised.to_csv(new_file)
+
+exit()
 run_setup = True
 run_scale_model = False
 run_increase_isom_force = False
