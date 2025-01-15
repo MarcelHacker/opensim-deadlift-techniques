@@ -7,11 +7,7 @@ from src.imports import (
     active_athlete_emg_channels_order,
     active_athlete_activations_conv_time_normalised_0,
     active_athlete_activations_emg_conv_time_normalised_0,
-    active_athlete_activations_emg_conv_0,
 )
-
-# channels_order
-# print("CHANNEL ORDER:", active_athlete_emg_channels_order)
 
 
 def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
@@ -24,6 +20,7 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
         )
 
     analog_df = active_athlete_activations_emg_conv_time_normalised_0
+    print("Readed csv: ", analog_df)
     max_emg_list = []
     for col in analog_df.columns:
         max_rolling_average = np.max(
@@ -40,23 +37,22 @@ def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
     b_band, a_band = signal.butter(order, [low, high], btype="band")
 
     for col in analog_df.columns:
-        top_3_values = analog_df[col].nlargest(3)  # get the 3 largest values
-        print("TOP 3:", top_3_values)
-        mean_maximum_signal = np.mean(top_3_values)  # cal mean of the 3 largest values
-        print("MEAN MAX:", mean_maximum_signal)
         raw_emg_signal = analog_df[col]
         bandpass_signal = signal.filtfilt(b_band, a_band, raw_emg_signal)
         detrend_signal = signal.detrend(bandpass_signal, type="linear")
         rectified_signal = np.abs(detrend_signal)
         linear_envelope = signal.filtfilt(b_low, a_low, rectified_signal)
-        analog_df[col] = linear_envelope / mean_maximum_signal
+        peak_maximum = np.max(linear_envelope)
+        print(col)
+        print("\nMAX: \n", peak_maximum)
+        analog_df[col] = linear_envelope / peak_maximum
 
     return analog_df
 
 
 # band_lowcut=30, band_highcut=400, lowcut=6, order=4
 # filter emg data
-filtered_emg = emg_filter(30, 400, 6, 4)
+filtered_emg = emg_filter(30, 200, 6, 4)
 print(filtered_emg)
 
 
@@ -127,7 +123,7 @@ def run_activations_comparison_from_emg(bool):
                             curve = filtered_emg[value]
                             plt.plot(
                                 curve,
-                                label="EMG",
+                                label="EMG filtered",
                                 color=color_emg,
                                 linestyle="dashed",
                             )
