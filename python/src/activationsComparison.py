@@ -7,6 +7,7 @@ from src.imports import (
     active_athlete_emg_channels_order,
     active_athlete_activations_conv_time_normalised_0,
     active_athlete_activations_emg_conv_time_normalised_0,
+    active_athlete_activations_emg_conv_0,
 )
 
 # channels_order
@@ -116,11 +117,13 @@ def run_activations_comparison_from_emg(bool):
                     label="COMPUTED",
                     color=color_computed,
                 )
+
                 # Durchlaufen der Liste und Abrufen der Werte
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
                         # print(f"{key}: {value}")
                         if key == current_muscle:
+                            print(value)
                             curve = filtered_emg[value]
                             plt.plot(
                                 curve,
@@ -142,10 +145,16 @@ def run_activations_comparison_from_emg(bool):
                     label="COMPUTED",
                     color=color_computed,
                 )
+                # plt.plot(
+                #   active_athlete_activations_emg_conv_0[current_muscle],
+                #  label="COMPUTED no time norm",
+                # color=color_computed,
+                # )
                 # Durchlaufen der Liste und Abrufen der Werte
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
                         if key == current_muscle:
+                            print(value)
                             curve = filtered_emg[value]
                             plt.plot(
                                 curve,
