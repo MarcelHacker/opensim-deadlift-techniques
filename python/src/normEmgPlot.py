@@ -28,6 +28,7 @@ def run_norm_emg_plot(bool):
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 6
             cols = 2
+            color_opensim_activations = "black"
             color_emg_filtered = "blue"
             color_emg_raw = "red"
             # Create some mock data
@@ -75,15 +76,19 @@ def run_norm_emg_plot(bool):
                         if key == current_muscle:
                             plt.title(coordinates_r[i])
                             plt.xlabel(x_label)
+                            ax1[0, i].set_ylabel(
+                                "Activation", color=color_opensim_activations
+                            )
                             ax1[0, i].plot(
                                 active_athlete_activations_conv_time_normalised_0[
                                     coordinates_r[i]
                                 ],
-                                color=color_emg_raw,
+                                color=color_opensim_activations,
                             )
-                            ax1[0, i].tick_params(axis="y", labelcolor=color_emg_raw)
+                            ax1[0, i].tick_params(
+                                axis="y", labelcolor=color_opensim_activations
+                            )
                             ax1[0, i].set_xlabel(x_label)
-                            ax1[0, i].set_ylabel("COMPUTED", color=color_emg_raw)
 
                             ax2 = ax1[
                                 0, i
@@ -92,8 +97,9 @@ def run_norm_emg_plot(bool):
                                 active_athlete_activations_emg_conv_time_normalised_0[
                                     value
                                 ],
-                                color=color_emg_filtered,
+                                color=color_emg_raw,
                             )
+                            ax2.tick_params(axis="y", labelcolor=color_emg_raw)
                             ax3 = ax1[
                                 0, i
                             ].twinx()  # instantiate a second Axes that shares the same x-axis
@@ -101,10 +107,7 @@ def run_norm_emg_plot(bool):
                                 filtered_emg_conv_time_normalised_0[value],
                                 color=color_emg_filtered,
                             )
-                            ax2.tick_params(axis="y", labelcolor=color_emg_filtered)
-                            ax2.set_ylabel(
-                                "EMG filtered", color=color_emg_filtered
-                            )  # we already handled the x-label with ax1
+                            ax3.tick_params(axis="y", labelcolor=color_emg_filtered)
 
             for j in range(len(coordinates_l)):
                 current_muscle = coordinates_l[j]
@@ -113,17 +116,20 @@ def run_norm_emg_plot(bool):
                         if key == current_muscle:
                             plt.title(coordinates_l[j])
                             plt.xlabel(x_label)
+                            ax1[1, j].set_xlabel(x_label)
+                            ax1[1, j].set_ylabel(
+                                "Activation"
+                            )  # we already handled the x-label with ax1
                             ax1[1, j].plot(
                                 active_athlete_activations_conv_time_normalised_0[
                                     coordinates_l[j]
                                 ],
-                                color=color_emg_raw,
+                                color=color_opensim_activations,
                                 label="COMPUTED",
                             )
-                            ax1[1, j].tick_params(axis="y", labelcolor=color_emg_raw)
-                            ax1[1, j].set_xlabel(x_label)
-                            ax1[1, j].set_ylabel("COMPUTED", color=color_emg_raw)
-
+                            ax1[1, j].tick_params(
+                                axis="y", labelcolor=color_opensim_activations
+                            )
                             ax2 = ax1[
                                 1, j
                             ].twinx()  # instantiate a second Axes that shares the same x-axis
@@ -131,24 +137,20 @@ def run_norm_emg_plot(bool):
                                 active_athlete_activations_emg_conv_time_normalised_0[
                                     value
                                 ],
-                                color=color_emg_filtered,
-                                label="EMG filtered",
+                                color=color_emg_raw,
+                                label="EMG raw",
                             )
+                            ax2.tick_params(axis="y", labelcolor=color_emg_raw)
                             ax3 = ax1[
                                 1, j
                             ].twinx()  # instantiate a second Axes that shares the same x-axis
                             ax3.plot(
                                 filtered_emg_conv_time_normalised_0[value],
                                 color=color_emg_filtered,
-                                label="EMG raw",
+                                label="EMG filtered",
                             )
-                            ax2.tick_params(axis="y", labelcolor=color_emg_filtered)
-                            ax2.set_ylabel(
-                                "EMG filtered", color=color_emg_filtered
-                            )  # we already handled the x-label with ax1
+                            ax3.tick_params(axis="y", labelcolor=color_emg_filtered)
 
-            plt.legend()
-            fig.tight_layout()  # otherwise the right y-label is slightly clipped
             plt.show()
 
         except Exception as e:
