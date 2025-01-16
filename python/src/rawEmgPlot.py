@@ -34,6 +34,14 @@ def run_raw_emg_plot(bool):
                 + active_athlete["technique"],
                 fontweight="bold",
             )
+            plt.subplots_adjust(
+                wspace=0.386,
+                hspace=0.324,
+                top=0.901,
+                right=0.988,
+                left=0.04,
+                bottom=0.064,
+            )
             fig.set_label("EMG Data")  # backup label
             x_label = "Frame"
 
@@ -41,11 +49,17 @@ def run_raw_emg_plot(bool):
                 "semiten_r",
                 "glmax2_r",
                 "recfem_r",
+                "vaslat_r",
+                "addmagIsch_r",
+                "tibant_r",
             ]
             coordinates_l = [
                 "semiten_l",
                 "glmax2_l",
                 "recfem_l",
+                "vaslat_l",
+                "addmagIsch_l",
+                "tibant_l",
             ]
             for i in range(len(coordinates_r)):
                 current_muscle = coordinates_r[i]
