@@ -24,7 +24,7 @@ def run_raw_emg_plot(bool):
             color_emg_filtered = "blue"
             color_emg_raw = "red"
             # Create some mock data
-            fig, ax1 = plt.subplots()
+            fig, ax1 = plt.subplots(2)
             fig.suptitle(
                 "EMG Raw & Filtered CONV 0; "
                 + active_athlete["name"]
@@ -55,17 +55,17 @@ def run_raw_emg_plot(bool):
                     if key == current_muscle:
                         plt.title(coordinates_r[0])
                         plt.xlabel(x_label)
-                        ax1.plot(
+                        ax1[0].plot(
                             active_athlete_activations_emg_conv_0[value],
                             color=color_emg_raw,
                         )
-                        ax1.tick_params(axis="y", labelcolor=color_emg_raw)
-                        ax1.set_xlabel(x_label)
-                        ax1.set_ylabel("EMG raw", color=color_emg_raw)
+                        ax1[0].tick_params(axis="y", labelcolor=color_emg_raw)
+                        ax1[0].set_xlabel(x_label)
+                        ax1[0].set_ylabel("EMG raw", color=color_emg_raw)
 
-                        ax2 = (
-                            ax1.twinx()
-                        )  # instantiate a second Axes that shares the same x-axis
+                        ax2 = ax1[
+                            0
+                        ].twinx()  # instantiate a second Axes that shares the same x-axis
                         ax2.plot(
                             filtered_emg[value],
                             color=color_emg_filtered,
