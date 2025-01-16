@@ -35,12 +35,12 @@ def run_raw_emg_plot(bool):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.386,
-                hspace=0.324,
+                wspace=0.96,
+                hspace=0.282,
                 top=0.901,
-                right=0.988,
-                left=0.04,
-                bottom=0.064,
+                right=0.96,
+                left=0.06,
+                bottom=0.065,
             )
             fig.set_label("EMG Data")  # backup label
             x_label = "Frame"
