@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import msk_modelling_python as msk
+from scipy import signal
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
 dir_name = os.path.dirname(os.path.dirname(current_directory))
@@ -392,6 +393,41 @@ def get_paths_athlete(athlete, model_name=None):
             # print("\n", data["muscle_forces_conv_path_" + str(i)])
 
         return data
+
+
+def emg_filter(
+    df, measurement_frequency=2000, band_lowcut=30, band_highcut=400, lowcut=6, order=4
+):
+    # analog data rate
+    fs = measurement_frequency  # Hz
+    if fs < band_highcut * 2:
+        band_highcut = fs / 2
+        print(
+            "High pass frequency was too high. Using 1/2 *  sampling frequnecy instead"
+        )
+
+    analog_df = df.copy()
+
+    nyq = 0.5 * fs
+    normal_cutoff = lowcut / nyq
+    b_low, a_low = signal.butter(order, normal_cutoff, btype="low", analog=False)
+
+    low = band_lowcut / nyq
+    high = band_highcut / nyq
+    b_band, a_band = signal.butter(order, [low, high], btype="band")
+
+    for col in analog_df.columns:
+        if col == "time":
+            continue
+        raw_emg_signal = analog_df[col]
+        bandpass_signal = signal.filtfilt(b_band, a_band, raw_emg_signal)
+        detrend_signal = signal.detrend(bandpass_signal, type="linear")
+        rectified_signal = np.abs(detrend_signal)
+        linear_envelope = signal.filtfilt(b_low, a_low, rectified_signal)
+        peak_maximum = np.max(linear_envelope)
+        analog_df[col] = linear_envelope / peak_maximum
+
+    return analog_df
 
 
 def time_normalise_df(df, fs=""):
