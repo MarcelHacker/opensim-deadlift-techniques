@@ -20,11 +20,11 @@ def run_raw_emg_plot(bool):
         try:
             # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 6
-            cols = 3
+            cols = 2
             color_emg_filtered = "blue"
             color_emg_raw = "red"
             # Create some mock data
-            fig, ax1 = plt.subplots(rows, cols)
+            fig, ax1 = plt.subplots(cols, rows)
             fig.suptitle(
                 "EMG Raw & Filtered CONV 0; "
                 + active_athlete["name"]
@@ -79,18 +79,18 @@ def run_raw_emg_plot(bool):
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
                         if key == current_muscle:
-                            plt.title(coordinates_r[j])
+                            plt.title(coordinates_l[j])
                             plt.xlabel(x_label)
-                            ax1[1, i].plot(
+                            ax1[1, j].plot(
                                 active_athlete_activations_emg_conv_0[value],
                                 color=color_emg_raw,
                             )
-                            ax1[1, i].tick_params(axis="y", labelcolor=color_emg_raw)
-                            ax1[1, i].set_xlabel(x_label)
-                            ax1[1, i].set_ylabel("EMG raw", color=color_emg_raw)
+                            ax1[1, j].tick_params(axis="y", labelcolor=color_emg_raw)
+                            ax1[1, j].set_xlabel(x_label)
+                            ax1[1, j].set_ylabel("EMG raw", color=color_emg_raw)
 
                             ax2 = ax1[
-                                1, i
+                                1, j
                             ].twinx()  # instantiate a second Axes that shares the same x-axis
                             ax2.plot(
                                 filtered_emg[value],
