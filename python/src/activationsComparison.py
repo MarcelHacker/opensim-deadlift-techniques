@@ -1,53 +1,17 @@
 import numpy as np
-from scipy import signal
 from src.imports import (
     plt,
     active_athlete,
+    emg_filter,
     time_normalise_df,
     active_athlete_emg_channels_order,
     active_athlete_activations_conv_time_normalised_0,
     active_athlete_activations_emg_conv_0,
 )
 
-print(active_athlete_activations_emg_conv_0)
-
-
-def emg_filter(band_lowcut=30, band_highcut=400, lowcut=6, order=4):
-    # analog data rate
-    fs = 2000  # Hz
-    if fs < band_highcut * 2:
-        band_highcut = fs / 2
-        print(
-            "High pass frequency was too high. Using 1/2 *  sampling frequnecy instead"
-        )
-
-    analog_df = active_athlete_activations_emg_conv_0.copy()
-
-    nyq = 0.5 * fs
-    normal_cutoff = lowcut / nyq
-    b_low, a_low = signal.butter(order, normal_cutoff, btype="low", analog=False)
-
-    low = band_lowcut / nyq
-    high = band_highcut / nyq
-    b_band, a_band = signal.butter(order, [low, high], btype="band")
-
-    for col in analog_df.columns:
-        if col == "time":
-            continue
-        raw_emg_signal = analog_df[col]
-        bandpass_signal = signal.filtfilt(b_band, a_band, raw_emg_signal)
-        detrend_signal = signal.detrend(bandpass_signal, type="linear")
-        rectified_signal = np.abs(detrend_signal)
-        linear_envelope = signal.filtfilt(b_low, a_low, rectified_signal)
-        peak_maximum = np.max(linear_envelope)
-        analog_df[col] = linear_envelope / peak_maximum
-
-    return analog_df
-
-
-# band_lowcut=30, band_highcut=400, lowcut=6, order=4
+# emg_filter(df, measurement_frequency=2000, band_lowcut=30, band_highcut=400, lowcut=6, order=4)
 # filter emg data
-filtered_emg = emg_filter(30, 400, 6, 4)
+filtered_emg = emg_filter(active_athlete_activations_emg_conv_0, 2000, 30, 400, 6, 4)
 filtered_emg.to_csv(
     "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_0/c3dfile/analog_filtered.csv"
 )
