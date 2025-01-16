@@ -2,10 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from src.imports import (
     emg_filter,
+    time_normalise_df,
     active_athlete,
     active_athlete_emg_channels_order,
     active_athlete_activations_emg_conv_0,
-    active_athlete_activations_conv_0,
+    active_athlete_activations_conv_time_normalised_0,
 )
 
 # emg_filter(df, measurement_frequency=2000, band_lowcut=30, band_highcut=400, lowcut=6, order=4)
@@ -14,8 +15,13 @@ filtered_emg = emg_filter(active_athlete_activations_emg_conv_0, 2000, 30, 400, 
 print("filtered:", filtered_emg)
 print("EMG: ", active_athlete_activations_emg_conv_0)
 
+filtered_emg_conv_time_normalised_0 = time_normalise_df(filtered_emg)
+active_athlete_activations_emg_conv_time_normalised_0 = time_normalise_df(
+    active_athlete_activations_emg_conv_0
+)
 
-def run_raw_emg_plot(bool):
+
+def run_norm_emg_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
@@ -36,15 +42,15 @@ def run_raw_emg_plot(bool):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.96,
-                hspace=0.282,
+                wspace=0.98,
+                hspace=0.315,
                 top=0.901,
-                right=0.96,
-                left=0.06,
+                right=0.942,
+                left=0.049,
                 bottom=0.065,
             )
             fig.set_label("EMG Data")  # backup label
-            x_label = "Frame"
+            x_label = "% concentric deadlift cycle"
 
             coordinates_r = [
                 "semiten_r",
@@ -70,18 +76,29 @@ def run_raw_emg_plot(bool):
                             plt.title(coordinates_r[i])
                             plt.xlabel(x_label)
                             ax1[0, i].plot(
-                                active_athlete_activations_emg_conv_0[value],
+                                active_athlete_activations_conv_time_normalised_0[
+                                    coordinates_r[i]
+                                ],
                                 color=color_emg_raw,
                             )
                             ax1[0, i].tick_params(axis="y", labelcolor=color_emg_raw)
                             ax1[0, i].set_xlabel(x_label)
-                            ax1[0, i].set_ylabel("EMG raw", color=color_emg_raw)
+                            ax1[0, i].set_ylabel("COMPUTED", color=color_emg_raw)
 
                             ax2 = ax1[
                                 0, i
                             ].twinx()  # instantiate a second Axes that shares the same x-axis
                             ax2.plot(
-                                filtered_emg[value],
+                                active_athlete_activations_emg_conv_time_normalised_0[
+                                    value
+                                ],
+                                color=color_emg_filtered,
+                            )
+                            ax3 = ax1[
+                                0, i
+                            ].twinx()  # instantiate a second Axes that shares the same x-axis
+                            ax3.plot(
+                                filtered_emg_conv_time_normalised_0[value],
                                 color=color_emg_filtered,
                             )
                             ax2.tick_params(axis="y", labelcolor=color_emg_filtered)
@@ -97,79 +114,43 @@ def run_raw_emg_plot(bool):
                             plt.title(coordinates_l[j])
                             plt.xlabel(x_label)
                             ax1[1, j].plot(
-                                active_athlete_activations_emg_conv_0[value],
+                                active_athlete_activations_conv_time_normalised_0[
+                                    coordinates_l[j]
+                                ],
                                 color=color_emg_raw,
+                                label="COMPUTED",
                             )
                             ax1[1, j].tick_params(axis="y", labelcolor=color_emg_raw)
                             ax1[1, j].set_xlabel(x_label)
-                            ax1[1, j].set_ylabel("EMG raw", color=color_emg_raw)
+                            ax1[1, j].set_ylabel("COMPUTED", color=color_emg_raw)
 
                             ax2 = ax1[
                                 1, j
                             ].twinx()  # instantiate a second Axes that shares the same x-axis
                             ax2.plot(
-                                filtered_emg[value],
+                                active_athlete_activations_emg_conv_time_normalised_0[
+                                    value
+                                ],
                                 color=color_emg_filtered,
+                                label="EMG filtered",
+                            )
+                            ax3 = ax1[
+                                1, j
+                            ].twinx()  # instantiate a second Axes that shares the same x-axis
+                            ax3.plot(
+                                filtered_emg_conv_time_normalised_0[value],
+                                color=color_emg_filtered,
+                                label="EMG raw",
                             )
                             ax2.tick_params(axis="y", labelcolor=color_emg_filtered)
                             ax2.set_ylabel(
                                 "EMG filtered", color=color_emg_filtered
                             )  # we already handled the x-label with ax1
 
+            plt.legend()
             fig.tight_layout()  # otherwise the right y-label is slightly clipped
             plt.show()
 
         except Exception as e:
-            print("Error in run_raw_emg_plot")
+            print("Error in run_norm_emg_plot")
             print(e)
-
-
-"""
-backup
-coordinates_r = [
-                "semiten_r",
-                "glmax2_r",
-                "recfem_r",
-            ]
-
-            ylabels = [
-                "semiten",
-                "glmax2",
-                "recfem",
-            ]
-
-            for i in range(len(coordinates_r)):
-                current_muscle = coordinates_r[i]
-                # Durchlaufen der Liste und Abrufen der Werte
-                for item in active_athlete_emg_channels_order:
-                    for key, value in item.items():
-                        if key == current_muscle:
-                            # plt.sca(ax1[0, i])
-                            plt.title("Conventional Deadlift R")
-                            plt.xlabel(x_label)
-                            ax1[0, i].plot(
-                                active_athlete_activations_emg_conv_0[value],
-                                color=color_emg_raw,
-                            )
-                            ax1[0, i].tick_params(axis="y", labelcolor=color_emg_raw)
-                            ax1[0, i].set_xlabel(x_label)
-                            ax1[0, i].set_ylabel("EMG raw", color=color_emg_raw)
-
-                            ax2 = (
-                                ax1.twinx()
-                            )  # instantiate a second Axes that shares the same x-axis
-                            ax2[0, i].plot(
-                                filtered_emg[value],
-                                color=color_emg_filtered,
-                            )
-                            ax2[0, i].tick_params(
-                                axis="y", labelcolor=color_emg_filtered
-                            )
-                            ax2[0, i].set_ylabel(
-                                "EMG filtered", color=color_emg_filtered
-                            )  # we already handled the x-label with ax1
-                            plt.title(ylabels[i])
-
-            fig.tight_layout()  # otherwise the right y-label is slightly clipped
-            plt.show()
-"""
