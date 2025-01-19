@@ -47,18 +47,18 @@ def run_total_muscle_force_plot_trails(bool):
             )
             plt.plot(
                 active_athlete_total_sumo_force_0,
-                label="Trail 1",
+                label="Trial 1",
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_total_sumo_force_1,
-                label="Trail 2",
+                label="Trial 2",
                 color=color_sumo,
                 linestyle="dotted",
             )
             plt.plot(
                 active_athlete_total_sumo_force_2,
-                label="Trail 3",
+                label="Trial 3",
                 color=color_sumo,
                 linestyle="dashdot",
             )
@@ -76,18 +76,18 @@ def run_total_muscle_force_plot_trails(bool):
             )
             plt.plot(
                 active_athlete_total_conv_force_0,
-                label="Trail 1",
+                label="Trial 1",
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_total_conv_force_1,
-                label="Trail 2",
+                label="Trial 2",
                 color=color_conv,
                 linestyle="dotted",
             )
             plt.plot(
                 active_athlete_total_conv_force_2,
-                label="Trail 3",
+                label="Trial 3",
                 color=color_conv,
                 linestyle="dashdot",
             )
