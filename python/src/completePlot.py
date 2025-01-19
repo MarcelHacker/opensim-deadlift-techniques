@@ -1,4 +1,4 @@
-from src.imports import (
+from imports import (
     plt,
     athletes,
     mean_sumo_both_angles_and_moments,

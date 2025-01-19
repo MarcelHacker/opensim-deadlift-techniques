@@ -1,5 +1,5 @@
 import numpy as np
-from src.imports import (
+from imports import (
     plt,
     active_athlete,
     emg_filter,

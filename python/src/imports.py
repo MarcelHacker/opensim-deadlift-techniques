@@ -1,4 +1,4 @@
-from src.local_functions import *
+from local_functions import *
 import pandas as pd
 import json
 import os
