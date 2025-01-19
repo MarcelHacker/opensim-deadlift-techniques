@@ -19,11 +19,21 @@ structure:
 ################################ CLASSES ###########################################
 class Athlete:
     def __init__(
-        self, name, age, height, body_weight, technique, load, fmax, athlete_folder_path
+        self,
+        name,
+        age,
+        gender,
+        height,
+        body_weight,
+        technique,
+        load,
+        fmax,
+        athlete_folder_path,
     ):
         # informations
         self.name = name  # "athlete_x", used for reading files
         self.age = age
+        self.gender = gender
         self.height = height
         self.body_weight = body_weight  # "57"
         self.technique = technique  # "sumo" or "conventional", preffered deadlift

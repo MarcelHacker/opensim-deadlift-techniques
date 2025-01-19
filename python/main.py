@@ -38,6 +38,7 @@ if __name__ == "__main__":
     created_athlete = Athlete(
         "athlete_2",
         25,
+        "male",
         185,
         95,
         "conv",
