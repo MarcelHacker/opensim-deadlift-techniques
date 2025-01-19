@@ -34,7 +34,8 @@ print("DIR athletes: ", dir_athletes)
 
 
 if __name__ == "__main__":
-    ## set athlete in imports.py    unittest.main()
+    ## set athlete in imports.py
+    ## unittest.main()
     created_athlete = Athlete(
         "athlete_2",
         25,

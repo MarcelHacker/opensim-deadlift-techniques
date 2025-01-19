@@ -13,7 +13,6 @@ structure:
 6. Mean value definitions
 7. Angles and Moments
 """
-# file_paths func parameters say which athlete is active
 
 
 ################################ CLASSES ###########################################
