@@ -41,7 +41,10 @@ def run_total_muscle_force_plot_trails(bool):
             y_label = "Muscle force [N]"
 
             plt.sca(axs[0])
-            plt.title("Sumo Deadlift")
+            plt.title(
+                "Sumo Deadlift",
+                fontweight="bold",
+            )
             plt.plot(
                 active_athlete_total_sumo_force_0,
                 label="Trail 1",
@@ -67,7 +70,10 @@ def run_total_muscle_force_plot_trails(bool):
             plt.ylabel(y_label)
 
             plt.sca(axs[1])
-            plt.title("Conventional Deadlift")
+            plt.title(
+                "Conventional Deadlift",
+                fontweight="bold",
+            )
             plt.plot(
                 active_athlete_total_conv_force_0,
                 label="Trail 1",
