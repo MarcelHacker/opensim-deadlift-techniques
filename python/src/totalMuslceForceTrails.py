@@ -59,7 +59,7 @@ def run_total_muscle_force_plot_trails(bool):
             plt.plot(
                 active_athlete_total_conv_force_0,
                 label="Trail 1",
-                color=color_sumo,
+                color=color_conv,
             )
             plt.plot(
                 active_athlete_total_conv_force_1,

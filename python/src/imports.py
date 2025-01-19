@@ -30,8 +30,6 @@ class Athlete:
         self.load = load  # 275
         self.fmax = fmax  # 300
         self.athlete_folder_path = athlete_folder_path  # /Users/marcelhacker/Documents
-        print("NAME:", name)
-        print("PATH:", athlete_folder_path)
 
     def create_athlete_json(self, athlete_folder_path):
 
@@ -505,7 +503,7 @@ try:
         sep=",",
         skiprows=0,
     )
-    print("\nACTIVATIONS EMG conv 0:\n", active_athlete_activations_emg_conv_0)
+    # print("\nACTIVATIONS EMG conv 0:\n", active_athlete_activations_emg_conv_0)
 except Exception as e:
     print("Error in emg activations files; src/imports.py")
     print(e)
@@ -884,7 +882,7 @@ try:
         "All",  # All muscle groups
         "rl",
     )
-    active_athlete_total_conv_force_2 = None
+    active_athlete_total_conv_force_3 = None
 except Exception as e:
     print("Error in muscle force grouping files; src/imports.py")
     print(e)

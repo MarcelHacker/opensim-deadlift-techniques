@@ -4,16 +4,17 @@
 import unittest
 from src.imports import *  # file paths of the athlete
 
-# from src.local_functions import *  # local functions for the project
-from src.kinematicsPlot import run_kinematics_plot
-from src.momentsPlot import run_moments_plot
-from src.forcesPlot import run_forces_plot
-from src.momentArmsHipPlot import run_moment_arms_hip_plot
+from src.local_functions import *  # local functions for the project
+
+# from src.kinematicsPlot import run_kinematics_plot
+# from src.momentsPlot import run_moments_plot
+# from src.forcesPlot import run_forces_plot
+# from src.momentArmsHipPlot import run_moment_arms_hip_plot
 
 # from src.muscleForceSum import run_muscle_force_sum_plot
-from src.activationsComparison import run_activations_comparison_from_emg
-from src.rawEmgPlot import run_raw_emg_plot
-from src.normEmgPlot import run_norm_emg_plot
+# from src.activationsComparison import run_activations_comparison_from_emg
+# from src.rawEmgPlot import run_raw_emg_plot
+# from src.normEmgPlot import run_norm_emg_plot
 from src.totalMuslceForceTrails import run_total_muscle_force_plot_trails
 
 
@@ -29,7 +30,7 @@ class test(unittest.TestCase):
 current_directory = os.path.dirname(os.path.realpath(__file__))
 dir_name = os.path.dirname(os.path.dirname(current_directory))
 dir_athletes = os.path.dirname(current_directory)  # change this to simulations folder
-print(dir_athletes)
+print("DIR athletes: ", dir_athletes)
 
 
 if __name__ == "__main__":
@@ -44,9 +45,9 @@ if __name__ == "__main__":
         250,
         dir_athletes + "/simulations/athlete_2",
     )
-    Athlete.create_athlete_json(
-        created_athlete, dir_athletes + "/simulations/athlete_2"
-    )
+    # Athlete.create_athlete_json(
+    #   created_athlete, dir_athletes + "/simulations/athlete_2"
+    # )
 
     ################################## USED FUNCTIONS ###################################################
     run_total_muscle_force_plot_trails(True)
