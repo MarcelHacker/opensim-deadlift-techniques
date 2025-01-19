@@ -6,7 +6,7 @@
 		<!--Name of the .osim file used to construct a model.-->
 		<model_file>../athlete_1_scaled_increased_force_3.osim</model_file>
 		<!--Time range over which the inverse dynamics problem is solved.-->
-		<time_range> 7.7000000000000001776 9.3000000000000007105</time_range>
+		<time_range> 8 9.3000000000000007105</time_range>
 		<!--List of forces by individual or grouping name (e.g. All, actuators, muscles, ...) to be excluded when computing model dynamics. 'All' also excludes external loads added via 'external_loads_file'.-->
 		<forces_to_exclude> Muscles</forces_to_exclude>
 		<!--XML file (.xml) containing the external loads applied to the model as a set of ExternalForce(s).-->
