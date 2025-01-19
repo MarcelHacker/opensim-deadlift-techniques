@@ -236,9 +236,8 @@ class Athlete:
 # set this name for the active folder
 active_athlete_foldername = "athlete_1_increased_force_3"
 
-################################ CREATING ATHLETES ###########################################
+################################ CREATING ATHLETE ###########################################
 active_athlete = None  # define active_athlete
-athletes = []  # appending instances to athletes list
 ##################################################################################################
 
 ################################ GETTING ATHLETE JSON ###########################################
@@ -854,6 +853,11 @@ try:
         "rl",
     )
 
+    active_athlete_total_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,  # muscle force data
+        "All",  # All muscle groups
+        "rl",
+    )
     active_athlete_total_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,  # muscle force data
         "All",  # All muscle groups
@@ -861,6 +865,12 @@ try:
     )
     active_athlete_total_sumo_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,  # muscle force data
+        "All",  # All muscle groups
+        "rl",
+    )
+    active_athlete_total_sumo_force_3 = None
+    active_athlete_total_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,  # muscle force data
         "All",  # All muscle groups
         "rl",
     )
@@ -874,6 +884,7 @@ try:
         "All",  # All muscle groups
         "rl",
     )
+    active_athlete_total_conv_force_2 = None
 except Exception as e:
     print("Error in muscle force grouping files; src/imports.py")
     print(e)

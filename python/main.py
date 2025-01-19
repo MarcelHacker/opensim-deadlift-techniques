@@ -14,6 +14,7 @@ from src.momentArmsHipPlot import run_moment_arms_hip_plot
 from src.activationsComparison import run_activations_comparison_from_emg
 from src.rawEmgPlot import run_raw_emg_plot
 from src.normEmgPlot import run_norm_emg_plot
+from src.totalMuslceForceTrails import run_total_muscle_force_plot_trails
 
 
 #####################################################################################
@@ -48,6 +49,7 @@ if __name__ == "__main__":
     )
 
     ################################## USED FUNCTIONS ###################################################
+    run_total_muscle_force_plot_trails(True)
     # run_norm_emg_plot(False)
     # run_raw_emg_plot(False)
     # run_activations_comparison_from_emg(False)

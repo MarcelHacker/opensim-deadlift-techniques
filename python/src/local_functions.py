@@ -826,7 +826,7 @@ lower_body_muscles = [
 ]
 
 
-def normalize_Force(muscle_forces):
+def normalize_Force(muscle_forces, athlete_folder_path):
     """
     Normalize muscle force on maximum isometric force.
 
@@ -836,9 +836,7 @@ def normalize_Force(muscle_forces):
     Return:
     Time normalized and normalized muscle forces of all lower body muscles
     """
-    model_path = (
-        dir_name + "/athlete_0_increased_force_3/athlete_0_increased_force_3.osim"
-    )
+    model_path = athlete_folder_path + "/scaled_model.osim"
     normalized_forces = muscle_forces.copy()
 
     # Load the OpenSim model
