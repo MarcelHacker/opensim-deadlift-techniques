@@ -43,8 +43,9 @@ if __name__ == "__main__":
         250,
         dir_athletes + "/simulations/athlete_2",
     )
-    print(created_athlete["name"])
-    # Athlete.create_athlete_json()
+    Athlete.create_athlete_json(
+        created_athlete, dir_athletes + "/simulations/athlete_2"
+    )
 
     ################################## USED FUNCTIONS ###################################################
     # run_norm_emg_plot(False)
