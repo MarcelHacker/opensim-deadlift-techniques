@@ -167,6 +167,24 @@ class Athlete:
                             "conv_dl_3": self.athlete_folder_path
                             + "/conv_dl_3/_MuscleAnalysis_MomentArm_knee_angle_r.sto",
                         },
+                        "knee_angle_l": {
+                            "sumo_dl_0": self.athlete_folder_path
+                            + "/sumo_dl_0/_MuscleAnalysis_MomentArm_knee_angle_l.sto",
+                            "sumo_dl_1": self.athlete_folder_path
+                            + "/sumo_dl_1/_MuscleAnalysis_MomentArm_knee_angle_l.sto",
+                            "sumo_dl_2": self.athlete_folder_path
+                            + "/sumo_dl_2/_MuscleAnalysis_MomentArm_knee_angle_l.sto",
+                            "sumo_dl_3": self.athlete_folder_path
+                            + "/sumo_dl_3/_MuscleAnalysis_MomentArm_knee_angle_l.sto",
+                            "conv_dl_0": self.athlete_folder_path
+                            + "/conv_dl_0/_MuscleAnalysis_MomentArm_knee_angle_l.sto",
+                            "conv_dl_1": self.athlete_folder_path
+                            + "/conv_dl_1/_MuscleAnalysis_MomentArm_knee_angle_l.sto",
+                            "conv_dl_2": self.athlete_folder_path
+                            + "/conv_dl_2/_MuscleAnalysis_MomentArm_knee_angle_l.sto",
+                            "conv_dl_3": self.athlete_folder_path
+                            + "/conv_dl_3/_MuscleAnalysis_MomentArm_knee_angle_l.sto",
+                        },
                         "ankle_angle_r": {
                             "sumo_dl_0": self.athlete_folder_path
                             + "/sumo_dl_0/_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
@@ -184,6 +202,24 @@ class Athlete:
                             + "/conv_dl_2/_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
                             "conv_dl_3": self.athlete_folder_path
                             + "/conv_dl_3/_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
+                        },
+                        "ankle_angle_l": {
+                            "sumo_dl_0": self.athlete_folder_path
+                            + "/sumo_dl_0/_MuscleAnalysis_MomentArm_ankle_angle_l.sto",
+                            "sumo_dl_1": self.athlete_folder_path
+                            + "/sumo_dl_1/_MuscleAnalysis_MomentArm_ankle_angle_l.sto",
+                            "sumo_dl_2": self.athlete_folder_path
+                            + "/sumo_dl_2/_MuscleAnalysis_MomentArm_ankle_angle_l.sto",
+                            "sumo_dl_3": self.athlete_folder_path
+                            + "/sumo_dl_3/_MuscleAnalysis_MomentArm_ankle_angle_l.sto",
+                            "conv_dl_0": self.athlete_folder_path
+                            + "/conv_dl_0/_MuscleAnalysis_MomentArm_ankle_angle_l.sto",
+                            "conv_dl_1": self.athlete_folder_path
+                            + "/conv_dl_1/_MuscleAnalysis_MomentArm_ankle_angle_l.sto",
+                            "conv_dl_2": self.athlete_folder_path
+                            + "/conv_dl_2/_MuscleAnalysis_MomentArm_ankle_angle_l.sto",
+                            "conv_dl_3": self.athlete_folder_path
+                            + "/conv_dl_3/_MuscleAnalysis_MomentArm_ankle_angle_l.sto",
                         },
                     },
                 },
