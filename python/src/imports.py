@@ -1,4 +1,4 @@
-from local_functions import *
+from src.local_functions import *
 import pandas as pd
 import json
 import os
@@ -17,13 +17,21 @@ structure:
 
 
 ################################ CLASSES ###########################################
-class athlete:
-    def __init__(self, name, mass, model, technique):
+class Athlete:
+    def __init__(
+        self, name, age, height, body_weight, technique, load, fmax, athlete_folder_path
+    ):
         # informations
         self.name = name  # "athlete_x", used for reading files
-        self.mass = mass  # "57"
-        self.model = model  # "athlete_x_scaled"
+        self.age = age
+        self.height = height
+        self.body_weight = body_weight  # "57"
         self.technique = technique  # "sumo" or "conventional", preffered deadlift
+        self.load = load  # 275
+        self.fmax = fmax  # 300
+        self.athlete_folder_path = athlete_folder_path  # /Users/marcelhacker/Documents
+        print("NAME:", name)
+        print("PATH:", athlete_folder_path)
 
     def create_athlete_json(self, athlete_folder_path):
 
@@ -35,26 +43,133 @@ class athlete:
             "age": self.age,
             "gender": self.gender,
             "height": self.height,
-            "model": self.model,
             "mass": self.mass,
-            "model": self.model,
             "technique": self.technique,
             "load": self.load,
             "fmax": self.fmax,
             "paths": {
-                "main": "",
+                "main": self.athlete_folder_path,
                 "model_generic": "",
-                "model_scaled": "",
-                "static": "",
+                "model_scaled": self.athlete_folder_path + "scaled_model.osim",
+                "static": self.athlete_folder_path + "static_00.trc",
                 "ik": {
-                    "sumo_dl_0": "/sumo_dl_0/ik.mot",
-                    "sumo_dl_1": "/sumo_dl_1/ik.mot",
-                    "sumo_dl_2": "/sumo_dl_2/ik.mot",
-                    "sumo_dl_3": "/sumo_dl_3/ik.mot",
-                    "conv_dl_0": "/conv_dl_0/ik.mot",
-                    "conv_dl_1": "/conv_dl_1/ik.mot",
-                    "conv_dl_2": "/conv_dl_2/ik.mot",
-                    "conv_dl_3": "/conv_dl_3/ik.mot",
+                    "sumo_dl_0": self.athlete_folder_path + "/sumo_dl_0/ik.mot",
+                    "sumo_dl_1": self.athlete_folder_path + "/sumo_dl_1/ik.mot",
+                    "sumo_dl_2": self.athlete_folder_path + "/sumo_dl_2/ik.mot",
+                    "sumo_dl_3": self.athlete_folder_path + "/sumo_dl_3/ik.mot",
+                    "conv_dl_0": self.athlete_folder_path + "/conv_dl_0/ik.mot",
+                    "conv_dl_1": self.athlete_folder_path + "/conv_dl_1/ik.mot",
+                    "conv_dl_2": self.athlete_folder_path + "/conv_dl_2/ik.mot",
+                    "conv_dl_3": self.athlete_folder_path + "/conv_dl_3/ik.mot",
+                },
+                "id": {
+                    "sumo_dl_0": self.athlete_folder_path + "/sumo_dl_0/id.sto",
+                    "sumo_dl_1": self.athlete_folder_path + "/sumo_dl_1/id.sto",
+                    "sumo_dl_2": self.athlete_folder_path + "/sumo_dl_2/id.sto",
+                    "sumo_dl_3": self.athlete_folder_path + "/sumo_dl_3/id.sto",
+                    "conv_dl_0": self.athlete_folder_path + "/conv_dl_0/id.sto",
+                    "conv_dl_1": self.athlete_folder_path + "/conv_dl_1/id.sto",
+                    "conv_dl_2": self.athlete_folder_path + "/conv_dl_2/id.sto",
+                    "conv_dl_3": self.athlete_folder_path + "/conv_dl_3/id.sto",
+                },
+                "so": {
+                    "activations": {
+                        "sumo_dl_0": self.athlete_folder_path
+                        + "/sumo_dl_0/_StaticOptimization_activation.sto",
+                        "sumo_dl_1": self.athlete_folder_path
+                        + "/sumo_dl_1/_StaticOptimization_activation.sto",
+                        "sumo_dl_2": self.athlete_folder_path
+                        + "/sumo_dl_2/_StaticOptimization_activation.sto",
+                        "sumo_dl_3": self.athlete_folder_path
+                        + "/sumo_dl_3/_StaticOptimization_activation.sto",
+                        "conv_dl_0": self.athlete_folder_path
+                        + "/conv_dl_0/_StaticOptimization_activation.sto",
+                        "conv_dl_1": self.athlete_folder_path
+                        + "/conv_dl_1/_StaticOptimization_activation.sto",
+                        "conv_dl_2": self.athlete_folder_path
+                        + "/conv_dl_2/_StaticOptimization_activation.sto",
+                        "conv_dl_3": self.athlete_folder_path
+                        + "/conv_dl_3/_StaticOptimization_activation.sto",
+                    },
+                    "forces": {
+                        "sumo_dl_0": self.athlete_folder_path
+                        + "/sumo_dl_0/_StaticOptimization_force.sto",
+                        "sumo_dl_1": self.athlete_folder_path
+                        + "/sumo_dl_1/_StaticOptimization_force.sto",
+                        "sumo_dl_2": self.athlete_folder_path
+                        + "/sumo_dl_2/_StaticOptimization_force.sto",
+                        "sumo_dl_3": self.athlete_folder_path
+                        + "/sumo_dl_3/_StaticOptimization_force.sto",
+                        "conv_dl_0": self.athlete_folder_path
+                        + "/conv_dl_0/_StaticOptimization_force.sto",
+                        "conv_dl_1": self.athlete_folder_path
+                        + "/conv_dl_1/_StaticOptimization_force.sto",
+                        "conv_dl_2": self.athlete_folder_path
+                        + "/conv_dl_2/_StaticOptimization_force.sto",
+                        "conv_dl_3": self.athlete_folder_path
+                        + "/conv_dl_3/_StaticOptimization_force.sto",
+                    },
+                },
+                "ma": {
+                    "normalized_fiber_length": {},
+                    "moment_arm": {
+                        "hip_flexion_r": {
+                            "sumo_dl_0": self.athlete_folder_path
+                            + "/sumo_dl_0/_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+                            "sumo_dl_1": self.athlete_folder_path
+                            + "/sumo_dl_1/_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+                            "sumo_dl_2": self.athlete_folder_path
+                            + "/sumo_dl_2/_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+                            "sumo_dl_3": self.athlete_folder_path
+                            + "/sumo_dl_3/_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+                            "conv_dl_0": self.athlete_folder_path
+                            + "/conv_dl_0/_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+                            "conv_dl_1": self.athlete_folder_path
+                            + "/conv_dl_1/_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+                            "conv_dl_2": self.athlete_folder_path
+                            + "/conv_dl_2/_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+                            "conv_dl_3": self.athlete_folder_path
+                            + "/conv_dl_3/_MuscleAnalysis_MomentArm_hip_flexion_r.sto",
+                        },
+                        "hip_flexion_l": {
+                            "sumo_dl_0": self.athlete_folder_path
+                            + "/sumo_dl_0/_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+                            "sumo_dl_1": self.athlete_folder_path
+                            + "/sumo_dl_1/_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+                            "sumo_dl_2": self.athlete_folder_path
+                            + "/sumo_dl_2/_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+                            "sumo_dl_3": self.athlete_folder_path
+                            + "/sumo_dl_3/_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+                            "conv_dl_0": self.athlete_folder_path
+                            + "/conv_dl_0/_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+                            "conv_dl_1": self.athlete_folder_path
+                            + "/conv_dl_1/_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+                            "conv_dl_2": self.athlete_folder_path
+                            + "/conv_dl_2/_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+                            "conv_dl_3": self.athlete_folder_path
+                            + "/conv_dl_3/_MuscleAnalysis_MomentArm_hip_flexion_l.sto",
+                        },
+                        "knee_angle_r": {
+                            "sumo_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r.sto",
+                            "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r.sto",
+                            "sumo_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_2/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r.sto",
+                            "sumo_dl_3": "",
+                            "conv_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r.sto",
+                            "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r.sto",
+                            "conv_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_2/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_knee_angle_r.sto",
+                            "conv_dl_3": "",
+                        },
+                        "ankle_angle_r": {
+                            "sumo_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
+                            "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
+                            "sumo_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/sumo_dl_2/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
+                            "sumo_dl_3": "",
+                            "conv_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_0/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
+                            "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_1/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
+                            "conv_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_3/conv_dl_2/athlete_1_scaled_increased_force_3_MuscleAnalysis_MomentArm_ankle_angle_r.sto",
+                            "conv_dl_3": "",
+                        },
+                    },
                 },
             },
         }
@@ -66,10 +181,11 @@ class athlete:
         return athlete_dict
 
 
-active_athlete_folder = "athlete_1_increased_force_3"
+# set this name for the active folder
+active_athlete_foldername = "athlete_1_increased_force_3"
 
 ################################ CREATING ATHLETES ###########################################
-active_athlete = None
+active_athlete = None  # define active_athlete
 athletes = []  # appending instances to athletes list
 ##################################################################################################
 
@@ -77,11 +193,11 @@ athletes = []  # appending instances to athletes list
 try:
     # fix this
     dirname = os.path.dirname(__file__)  # not used
-    with open(dir_name + "/" + str(active_athlete_folder) + "/settings.json") as f:
+    with open(dir_name + "/" + str(active_athlete_foldername) + "/settings.json") as f:
         active_athlete = json.load(f)
-        # print("\nACTIVE ATHLETE:\n", active_athlete["name"])
+        print("\nACTIVE ATHLETE:\n", active_athlete["name"])
 except Exception as e:
-    print("\nError in setting active_athlete; src/imports.py\n")
+    print("\nError in getting active athlete json; src/imports.py\n")
     print(e)
 
 ##################################################################################################

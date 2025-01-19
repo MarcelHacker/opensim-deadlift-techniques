@@ -3,7 +3,8 @@
 ################################ IMPORTS ###########################################
 import unittest
 from src.imports import *  # file paths of the athlete
-from src.local_functions import *  # local functions for the project
+
+# from src.local_functions import *  # local functions for the project
 from src.kinematicsPlot import run_kinematics_plot
 from src.momentsPlot import run_moments_plot
 from src.forcesPlot import run_forces_plot
@@ -24,16 +25,36 @@ class test(unittest.TestCase):
         # run_muscle_force_sum_plot(False)
 
 
+current_directory = os.path.dirname(os.path.realpath(__file__))
+dir_name = os.path.dirname(os.path.dirname(current_directory))
+dir_athletes = os.path.dirname(current_directory)  # change this to simulations folder
+print(dir_athletes)
+
+
 if __name__ == "__main__":
     ## set athlete in imports.py    unittest.main()
-    run_norm_emg_plot(True)
-    run_raw_emg_plot(False)
-    run_activations_comparison_from_emg(False)
+    created_athlete = Athlete(
+        "athlete_2",
+        25,
+        185,
+        95,
+        "conv",
+        175,
+        250,
+        dir_athletes + "/simulations/athlete_2",
+    )
+    print(created_athlete["name"])
+    # Athlete.create_athlete_json()
 
-    run_kinematics_plot(False)
-    run_moments_plot(False)
-    run_forces_plot(False)
-    run_moment_arms_hip_plot(False)
+    ################################## USED FUNCTIONS ###################################################
+    # run_norm_emg_plot(False)
+    # run_raw_emg_plot(False)
+    # run_activations_comparison_from_emg(False)
+
+    # run_kinematics_plot(False)
+    # run_moments_plot(False)
+    # run_forces_plot(False)
+    # run_moment_arms_hip_plot(False)
     ########################## MUSCLE FORCES ##############################################
     # run_muscle_force_sum_plot(False)
 
