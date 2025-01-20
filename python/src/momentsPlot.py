@@ -11,10 +11,9 @@ from .imports import (
 
 
 def run_moments_plot(bool):
-    # just for sumo currently avaiable
     if bool:
         try:
-            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
+            figure_prefix = "moments_trials_"
             rows = 3
             cols = 2
             trial_color_0 = "red"
@@ -31,10 +30,10 @@ def run_moments_plot(bool):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.346,
+                wspace=0.285,
                 hspace=0.298,
                 top=0.904,
-                right=0.893,
+                right=0.91,
                 left=0.067,
                 bottom=0.067,
             )
@@ -138,7 +137,14 @@ def run_moments_plot(bool):
             handles, labels = axs[
                 0, 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig.legend(handles, labels, loc="lower right")
+            fig.legend(handles, labels, loc="center right")
+            fig.set_size_inches(13, 7.5)
+            plt.savefig(
+                "../results/id/" + figure_prefix + active_athlete["name"] + ".png",
+                transparent=None,
+                dpi=300,
+                format="png",
+            )
             plt.show()
 
         except Exception as e:

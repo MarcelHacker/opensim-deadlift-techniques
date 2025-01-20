@@ -59,8 +59,8 @@ if __name__ == "__main__":
     # run_raw_emg_plot(False)
     # run_activations_comparison_from_emg(False)
 
-    run_kinematics_plot(True)
-    run_moments_plot(False)
+    run_kinematics_plot(False)
+    run_moments_plot(True)
     run_forces_plot(False)
     run_moment_arms_hip_plot(False)
     ########################## MUSCLE FORCES ##############################################
