@@ -25,13 +25,12 @@ def run_norm_emg_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
-            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
+            figure_prefix = "emg_comparison_conv_0_"
             rows = 6
             cols = 2
             color_opensim_activations = "black"
             color_emg_filtered = "blue"
             color_emg_raw = "red"
-            # Create some mock data
             fig, ax1 = plt.subplots(cols, rows)
             fig.suptitle(
                 "EMG Raw & Filtered CONV 0; "
@@ -151,6 +150,13 @@ def run_norm_emg_plot(bool):
                             )
                             ax3.tick_params(axis="y", labelcolor=color_emg_filtered)
 
+            fig.set_size_inches(13, 7.5)
+            plt.savefig(
+                "../results/so/" + figure_prefix + active_athlete["name"] + ".png",
+                transparent=None,
+                dpi=300,
+                format="png",
+            )
             plt.show()
 
         except Exception as e:
