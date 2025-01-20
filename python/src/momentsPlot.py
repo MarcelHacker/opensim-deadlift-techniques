@@ -19,7 +19,7 @@ def run_moments_plot(bool):
             cols = 2
             trial_color_0 = "red"
             trial_color_1 = "blue"
-            trial_color_2 = "magenta"
+            trial_color_2 = "orange"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Joint Moments Trials "
@@ -30,7 +30,15 @@ def run_moments_plot(bool):
                 + active_athlete["technique"],
                 fontweight="bold",
             )
-            fig.set_label("Muscle Forces R")
+            plt.subplots_adjust(
+                wspace=0.346,
+                hspace=0.298,
+                top=0.904,
+                right=0.893,
+                left=0.067,
+                bottom=0.067,
+            )
+            fig.set_label("Joint Moments [Nm]")
             x_label = "% concentric deadlift cycle"
 
             coordinates_r = [
@@ -85,8 +93,6 @@ def run_moments_plot(bool):
                     color=trial_color_2,
                     linestyle="dashed",
                 )
-                #  add third trail
-                plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
@@ -126,11 +132,13 @@ def run_moments_plot(bool):
                     color=trial_color_2,
                     linestyle="dashed",
                 )
-                #  add third trail
-                plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
+            handles, labels = axs[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="lower right")
             plt.show()
 
         except Exception as e:
