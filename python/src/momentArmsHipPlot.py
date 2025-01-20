@@ -175,7 +175,7 @@ def run_moment_arms_hip_plot(bool):
             handles, labels = axs[
                 0, 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig.legend(handles, labels, loc="lower right")
+            fig.legend(handles, labels, loc="center right")
             plt.show()
 
         except Exception as e:
