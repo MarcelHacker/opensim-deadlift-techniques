@@ -22,6 +22,9 @@ def run_moment_arms_hip_plot(bool):
         try:
             rows = 6
             cols = 2
+            color_trial_0 = "red"
+            color_trial_1 = "blue"
+            color_trial_2 = "orange"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Moment Arms Hip Flexion Trails "
@@ -32,7 +35,15 @@ def run_moment_arms_hip_plot(bool):
                 + active_athlete["technique"],
                 fontweight="bold",
             )
-            fig.set_label("Muscle Forces")
+            plt.subplots_adjust(
+                wspace=0.743,
+                hspace=0.324,
+                top=0.904,
+                right=0.91,
+                left=0.067,
+                bottom=0.073,
+            )
+            fig.set_label("Moment arms [m]")
             x_label = "% concentric deadlift cycle"
 
             coordinates_r = [
@@ -67,39 +78,46 @@ def run_moment_arms_hip_plot(bool):
                         coordinates_r[i]
                     ],
                     label="Trail 1 r",
+                    color=color_trial_0,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_0[
                         coordinates_l[i]
                     ],
                     label="Trail 1 l",
+                    color=color_trial_0,
+                    linestyle="dotted",
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_1[
                         coordinates_r[i]
                     ],
                     label="Trail 2 r",
+                    color=color_trial_1,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_1[
                         coordinates_l[i]
                     ],
                     label="Trail 2 l",
+                    color=color_trial_1,
+                    linestyle="dotted",
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_2[
                         coordinates_r[i]
                     ],
                     label="Trail 3 r",
+                    color=color_trial_2,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_2[
                         coordinates_l[i]
                     ],
                     label="Trail 3 l",
+                    color=color_trial_2,
+                    linestyle="dotted",
                 )
-                #  add third trail
-                plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
@@ -111,41 +129,53 @@ def run_moment_arms_hip_plot(bool):
                         coordinates_r[x]
                     ],
                     label="Trail 1 r",
+                    color=color_trial_0,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_0[
                         coordinates_l[x]
                     ],
                     label="Trail 1 l",
+                    color=color_trial_0,
+                    linestyle="dotted",
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_1[
                         coordinates_r[x]
                     ],
                     label="Trail 2 r",
+                    color=color_trial_1,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_1[
                         coordinates_l[x]
                     ],
                     label="Trail 2 l",
+                    color=color_trial_1,
+                    linestyle="dotted",
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_2[
                         coordinates_r[x]
                     ],
                     label="Trail 3 r",
+                    color=color_trial_2,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_2[
                         coordinates_l[x]
                     ],
                     label="Trail 3 l",
+                    color=color_trial_2,
+                    linestyle="dotted",
                 )
-                #  add third trail
-                plt.legend()
                 plt.ylabel(ylabels[x])
                 plt.xlabel(x_label)
+
+            handles, labels = axs[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="lower right")
             plt.show()
 
         except Exception as e:

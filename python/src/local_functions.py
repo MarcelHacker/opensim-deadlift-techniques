@@ -395,6 +395,15 @@ def get_paths_athlete(athlete, model_name=None):
         return data
 
 
+def calculateMuscleMoment(
+    muscle_forces_so_file_time_normalised, moment_arms_ma_time_normalised
+):
+    muscle_moment_in_plane_time_normalised = (
+        muscle_forces_so_file_time_normalised * moment_arms_ma_time_normalised
+    )
+    return muscle_moment_in_plane_time_normalised
+
+
 def emg_filter(
     df, measurement_frequency=2000, band_lowcut=30, band_highcut=400, lowcut=6, order=4
 ):

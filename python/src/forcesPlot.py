@@ -16,6 +16,9 @@ def run_forces_plot(bool):
         try:
             rows = 6
             cols = 2
+            color_trial_0 = "red"
+            color_trial_1 = "blue"
+            color_trial_2 = "orange"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Muscle Forces Trails "
@@ -25,6 +28,14 @@ def run_forces_plot(bool):
                 + "; Preferred: "
                 + active_athlete["technique"],
                 fontweight="bold",
+            )
+            plt.subplots_adjust(
+                wspace=0.514,
+                hspace=0.314,
+                top=0.904,
+                right=0.91,
+                left=0.042,
+                bottom=0.073,
             )
             fig.set_label("Muscle Forces")
             x_label = "% concentric deadlift cycle"
@@ -60,40 +71,47 @@ def run_forces_plot(bool):
                     active_athlete_muscleForces_sumo_time_normalised_0[
                         coordinates_r[i]
                     ],
-                    label="Trail 1 r",
+                    label="Trial 1 r",
+                    color=color_trial_0,
                 )
                 plt.plot(
                     active_athlete_muscleForces_sumo_time_normalised_0[
                         coordinates_l[i]
                     ],
-                    label="Trail 1 l",
+                    label="Trial 1 l",
+                    color=color_trial_0,
+                    linestyle="dotted",
                 )
                 plt.plot(
                     active_athlete_muscleForces_sumo_time_normalised_1[
                         coordinates_r[i]
                     ],
-                    label="Trail 2 r",
+                    label="Trial 2 r",
+                    color=color_trial_1,
                 )
                 plt.plot(
                     active_athlete_muscleForces_sumo_time_normalised_1[
                         coordinates_l[i]
                     ],
-                    label="Trail 2 l",
+                    label="Trial 2 l",
+                    color=color_trial_1,
+                    linestyle="dotted",
                 )
                 plt.plot(
                     active_athlete_muscleForces_sumo_time_normalised_2[
                         coordinates_r[i]
                     ],
-                    label="Trail 3 r",
+                    label="Trial 3 r",
+                    color=color_trial_2,
                 )
                 plt.plot(
                     active_athlete_muscleForces_sumo_time_normalised_2[
                         coordinates_l[i]
                     ],
-                    label="Trail 3 l",
+                    label="Trial 3 l",
+                    color=color_trial_2,
+                    linestyle="dotted",
                 )
-                #  add third trail
-                plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
@@ -104,42 +122,54 @@ def run_forces_plot(bool):
                     active_athlete_muscleForces_conv_time_normalised_0[
                         coordinates_r[x]
                     ],
-                    label="Trail 1 r",
+                    color=color_trial_0,
+                    label="Trial 1 r",
                 )
                 plt.plot(
                     active_athlete_muscleForces_conv_time_normalised_0[
                         coordinates_l[x]
                     ],
-                    label="Trail 1 l",
+                    label="Trial 1 l",
+                    color=color_trial_0,
+                    linestyle="dotted",
                 )
                 plt.plot(
                     active_athlete_muscleForces_conv_time_normalised_1[
                         coordinates_r[x]
                     ],
-                    label="Trail 2 r",
+                    label="Trial 2 r",
+                    color=color_trial_1,
                 )
                 plt.plot(
                     active_athlete_muscleForces_conv_time_normalised_1[
                         coordinates_l[x]
                     ],
-                    label="Trail 2 l",
+                    label="Trial 2 l",
+                    color=color_trial_1,
+                    linestyle="dotted",
                 )
                 plt.plot(
                     active_athlete_muscleForces_conv_time_normalised_2[
                         coordinates_r[x]
                     ],
-                    label="Trail 3 r",
+                    label="Trial 3 r",
+                    color=color_trial_2,
                 )
                 plt.plot(
                     active_athlete_muscleForces_conv_time_normalised_2[
                         coordinates_l[x]
                     ],
-                    label="Trail 3 l",
+                    label="Trial 3 l",
+                    color=color_trial_2,
+                    linestyle="dotted",
                 )
-                #  add third trail
-                plt.legend()
                 plt.ylabel(ylabels[x])
                 plt.xlabel(x_label)
+
+            handles, labels = axs[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="lower right")
             plt.show()
 
         except Exception as e:

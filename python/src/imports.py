@@ -470,6 +470,11 @@ try:
         sep="\t",
         skiprows=11,
     )
+    active_athlete_momentArms_knee_flexion_r_conv_0 = pd.read_csv(
+        active_athlete["paths"]["ma"]["moment_arm"]["knee_angle_r"]["conv_dl_0"],
+        sep="\t",
+        skiprows=11,
+    )
     active_athlete_momentArms_knee_flexion_r_conv_1 = pd.read_csv(
         active_athlete["paths"]["ma"]["moment_arm"]["knee_angle_r"]["conv_dl_1"],
         sep="\t",
@@ -603,6 +608,9 @@ try:
     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_2 = time_normalise_df(
         active_athlete_momentArms_hip_flexion_l_sumo_2
     )
+    active_athlete_momentArms_knee_flexion_r_sumo_time_normalised_0 = time_normalise_df(
+        active_athlete_momentArms_knee_flexion_r_sumo_0
+    )
     active_athlete_momentArms_knee_flexion_r_sumo_time_normalised_1 = time_normalise_df(
         active_athlete_momentArms_knee_flexion_r_sumo_1
     )
@@ -627,6 +635,9 @@ try:
     )
     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_2 = time_normalise_df(
         active_athlete_momentArms_hip_flexion_l_conv_2
+    )
+    active_athlete_momentArms_knee_flexion_r_conv_time_normalised_0 = time_normalise_df(
+        active_athlete_momentArms_knee_flexion_r_conv_0
     )
     active_athlete_momentArms_knee_flexion_r_conv_time_normalised_1 = time_normalise_df(
         active_athlete_momentArms_knee_flexion_r_conv_1
@@ -1043,4 +1054,30 @@ try:
 
 except Exception as e:
     print("Error in ANGLES & MOMENTS of both limbs; src/imports.py")
+    print(e)
+
+
+try:
+    hip_flexion_r_muscle_moments_sumo_time_normalised_0 = calculateMuscleMoment(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_0,
+    )
+
+    hip_flexion_r_muscle_moments_conv_time_normalised_0 = calculateMuscleMoment(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        active_athlete_momentArms_hip_flexion_r_conv_time_normalised_0,
+    )
+
+    knee_flexion_r_muscle_moments_sumo_time_normalised_0 = calculateMuscleMoment(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        active_athlete_momentArms_knee_flexion_r_sumo_time_normalised_0,
+    )
+
+    knee_flexion_r_muscle_moments_conv_time_normalised_0 = calculateMuscleMoment(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        active_athlete_momentArms_knee_flexion_r_conv_time_normalised_0,
+    )
+
+except Exception as e:
+    print("Error in muscle moments; src/imports.py")
     print(e)
