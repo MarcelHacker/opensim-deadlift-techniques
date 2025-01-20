@@ -19,12 +19,11 @@ def run_raw_emg_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
-            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
+            figure_prefix = "emg_raw_conv_0_"
             rows = 6
             cols = 2
             color_emg_filtered = "blue"
             color_emg_raw = "red"
-            # Create some mock data
             fig, ax1 = plt.subplots(cols, rows)
             fig.suptitle(
                 "EMG Raw & Filtered CONV 0; "
@@ -116,60 +115,15 @@ def run_raw_emg_plot(bool):
                                 "EMG filtered", color=color_emg_filtered
                             )  # we already handled the x-label with ax1
 
-            fig.tight_layout()  # otherwise the right y-label is slightly clipped
+            fig.set_size_inches(13, 7.5)
+            plt.savefig(
+                "../results/so/" + figure_prefix + active_athlete["name"] + ".png",
+                transparent=None,
+                dpi=300,
+                format="png",
+            )
             plt.show()
 
         except Exception as e:
             print("Error in run_raw_emg_plot")
             print(e)
-
-
-"""
-backup
-coordinates_r = [
-                "semiten_r",
-                "glmax2_r",
-                "recfem_r",
-            ]
-
-            ylabels = [
-                "semiten",
-                "glmax2",
-                "recfem",
-            ]
-
-            for i in range(len(coordinates_r)):
-                current_muscle = coordinates_r[i]
-                # Durchlaufen der Liste und Abrufen der Werte
-                for item in active_athlete_emg_channels_order:
-                    for key, value in item.items():
-                        if key == current_muscle:
-                            # plt.sca(ax1[0, i])
-                            plt.title("Conventional Deadlift R")
-                            plt.xlabel(x_label)
-                            ax1[0, i].plot(
-                                active_athlete_activations_emg_conv_0[value],
-                                color=color_emg_raw,
-                            )
-                            ax1[0, i].tick_params(axis="y", labelcolor=color_emg_raw)
-                            ax1[0, i].set_xlabel(x_label)
-                            ax1[0, i].set_ylabel("EMG raw", color=color_emg_raw)
-
-                            ax2 = (
-                                ax1.twinx()
-                            )  # instantiate a second Axes that shares the same x-axis
-                            ax2[0, i].plot(
-                                filtered_emg[value],
-                                color=color_emg_filtered,
-                            )
-                            ax2[0, i].tick_params(
-                                axis="y", labelcolor=color_emg_filtered
-                            )
-                            ax2[0, i].set_ylabel(
-                                "EMG filtered", color=color_emg_filtered
-                            )  # we already handled the x-label with ax1
-                            plt.title(ylabels[i])
-
-            fig.tight_layout()  # otherwise the right y-label is slightly clipped
-            plt.show()
-"""

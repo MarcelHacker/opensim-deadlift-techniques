@@ -12,8 +12,6 @@ from src.imports import (
 # emg_filter(df, measurement_frequency=2000, band_lowcut=30, band_highcut=400, lowcut=6, order=4)
 # filter emg data without time normalisation. This comes only after the filtering not before.
 filtered_emg = emg_filter(active_athlete_activations_emg_conv_0, 2000, 30, 400, 6, 4)
-print("filtered:", filtered_emg)
-print("EMG: ", active_athlete_activations_emg_conv_0)
 
 filtered_emg_conv_time_normalised_0 = time_normalise_df(filtered_emg)
 active_athlete_activations_emg_conv_time_normalised_0 = time_normalise_df(

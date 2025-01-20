@@ -22,14 +22,14 @@ def run_activations_comparison_from_emg(bool):
     # just for sumo currently avaiable
     if bool:
         try:
-            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
+            figure_prefix = "activations_comparison_conv_0_"
             rows = 6
             cols = 2
             color_emg = "red"
             color_computed = "blue"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Activations Trial CONV 0; "
+                "Activations Trial CONV 0 "
                 + active_athlete["name"]
                 + "; Model: "
                 + active_athlete["model"]
@@ -38,11 +38,11 @@ def run_activations_comparison_from_emg(bool):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.386,
+                wspace=0.44,
                 hspace=0.324,
                 top=0.901,
-                right=0.988,
-                left=0.04,
+                right=0.967,
+                left=0.046,
                 bottom=0.064,
             )
             fig.set_label("Activations")
@@ -95,7 +95,6 @@ def run_activations_comparison_from_emg(bool):
                                 color=color_emg,
                             )
 
-                plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
@@ -112,18 +111,26 @@ def run_activations_comparison_from_emg(bool):
                 for item in active_athlete_emg_channels_order:
                     for key, value in item.items():
                         if key == current_muscle:
-                            print(value)
-                            # curve = filtered_emg[value]
                             plt.plot(
                                 filtered_emg_time_normalised_0[value],
                                 label="EMG filtered",
                                 color=color_emg,
                             )
 
-                plt.legend()
                 plt.ylabel(ylabels[j])
                 plt.xlabel(x_label)
 
+            handles, labels = axs[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="center right")
+            fig.set_size_inches(13, 7.5)
+            plt.savefig(
+                "../results/so/" + figure_prefix + active_athlete["name"] + ".png",
+                transparent=None,
+                dpi=300,
+                format="png",
+            )
             plt.show()
 
         except Exception as e:
