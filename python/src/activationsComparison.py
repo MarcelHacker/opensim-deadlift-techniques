@@ -66,18 +66,10 @@ def run_activations_comparison_from_emg(bool):
                 "tibant_l",
             ]
 
-            ylabels = [
-                "semiten",
-                "glmax2",
-                "recfem",
-                "vaslat",
-                "addmagIsch",
-                "tibant",
-            ]
             for i in range(len(coordinates_r)):
                 current_muscle = coordinates_r[i]
                 plt.sca(axs[0, i])
-                plt.title("Conventional Deadlift R")
+                plt.title("Conventional Deadlift")
                 plt.plot(
                     active_athlete_activations_conv_time_normalised_0[current_muscle],
                     label="COMPUTED",
@@ -95,13 +87,13 @@ def run_activations_comparison_from_emg(bool):
                                 color=color_emg,
                             )
 
-                plt.ylabel(ylabels[i])
+                plt.ylabel(current_muscle)
                 plt.xlabel(x_label)
 
             for j in range(len(coordinates_l)):
                 current_muscle = coordinates_l[j]
                 plt.sca(axs[1, j])
-                plt.title("Conventional Deadlift L")
+                plt.title("Conventional Deadlift")
                 plt.plot(
                     active_athlete_activations_conv_time_normalised_0[current_muscle],
                     label="COMPUTED",
@@ -117,7 +109,7 @@ def run_activations_comparison_from_emg(bool):
                                 color=color_emg,
                             )
 
-                plt.ylabel(ylabels[j])
+                plt.ylabel(current_muscle)
                 plt.xlabel(x_label)
 
             handles, labels = axs[
