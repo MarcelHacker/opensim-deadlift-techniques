@@ -14,12 +14,11 @@ def run_kinematics_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
-            # create figure with 6x3 subplots (1 for sumo and 1 for conventional)
             rows = 3
             cols = 2
             trial_color_0 = "red"
             trial_color_1 = "blue"
-            trial_color_2 = "magenta"
+            trial_color_2 = "orange"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Kinematics Trials "
@@ -29,6 +28,14 @@ def run_kinematics_plot(bool):
                 + "; Preferred: "
                 + active_athlete["technique"],
                 fontweight="bold",
+            )
+            plt.subplots_adjust(
+                wspace=0.2,
+                hspace=0.285,
+                top=0.893,
+                right=0.912,
+                left=0.05,
+                bottom=0.07,
             )
             fig.set_label("Kinematics")
             x_label = "% concentric deadlift cycle"
@@ -85,8 +92,6 @@ def run_kinematics_plot(bool):
                     color=trial_color_2,
                     linestyle="dashed",
                 )
-                #  add third trail
-                plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
@@ -126,11 +131,13 @@ def run_kinematics_plot(bool):
                     color=trial_color_2,
                     linestyle="dashed",
                 )
-                #  add third trail
-                plt.legend()
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
+            handles, labels = axs[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="lower right")
             plt.show()
 
         except Exception as e:
