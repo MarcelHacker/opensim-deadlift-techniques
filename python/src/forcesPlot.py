@@ -22,7 +22,7 @@ def run_forces_plot(bool):
             color_trial_2 = "orange"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Muscle Forces Trails "
+                "Muscle Forces Trials "
                 + active_athlete["name"]
                 + "; Model: "
                 + active_athlete["model"]
