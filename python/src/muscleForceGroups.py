@@ -68,8 +68,12 @@ def run_muscle_force_groups(bool):
             figure_prefix = "muscle_force_groups_"
             color_sumo = "red"
             color_conv = "blue"
-            label_sumo = "SUMO"
-            label_conv = "CONV"
+            label_sumo_trial_0 = "SUMO Trial 1"
+            label_sumo_trial_1 = "SUMO Trial 2"
+            label_sumo_trial_2 = "SUMO Trial 3"
+            label_conv_trial_0 = "CONV Trial 1"
+            label_conv_trial_1 = "CONV Trial 2"
+            label_conv_trial_2 = "CONV Trial 3"
             linestyle_trial_1 = "dashed"
             linestyle_trial_2 = "dotted"
             x_label = "% concentric deadlift cycle"
@@ -97,35 +101,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[0, 0])
             plt.plot(
                 active_athlete_hamstrings_medial_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_hamstrings_medial_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle="dashed",
             )
             plt.plot(
                 active_athlete_hamstrings_medial_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle="dotted",
             )
             plt.plot(
                 active_athlete_hamstrings_medial_conv_force_0,  # mean of all trails
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_hamstrings_medial_conv_force_1,  # mean of all trails
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle="dashed",
             )
             plt.plot(
                 active_athlete_hamstrings_medial_conv_force_2,  # mean of all trails
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle="dotted",
             )
@@ -135,35 +139,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[0, 1])
             plt.plot(
                 active_athlete_hamstrings_lateral_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_hamstrings_lateral_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle="dashed",
             )
             plt.plot(
                 active_athlete_hamstrings_lateral_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle="dotted",
             )
             plt.plot(
                 active_athlete_hamstrings_lateral_conv_force_0,
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_hamstrings_lateral_conv_force_1,
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle="dashed",
             )
             plt.plot(
                 active_athlete_hamstrings_lateral_conv_force_2,
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle="dotted",
             )
@@ -174,35 +178,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[0, 2])
             plt.plot(
                 active_athlete_vasti_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_vasti_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle="dashed",
             )
             plt.plot(
                 active_athlete_vasti_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle="dotted",
             )
             plt.plot(
                 active_athlete_vasti_conv_force_0,
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_vasti_conv_force_1,
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle="dashed",
             )
             plt.plot(
                 active_athlete_vasti_conv_force_2,
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle="dotted",
             )
@@ -213,35 +217,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[1, 0])
             plt.plot(
                 active_athlete_gluteusmax_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_gluteusmax_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_gluteusmax_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_gluteusmax_conv_force_0,
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_gluteusmax_conv_force_1,
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_gluteusmax_conv_force_2,
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
             )
@@ -252,35 +256,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[1, 1])
             plt.plot(
                 active_athlete_adductors_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_adductors_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_adductors_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_adductors_conv_force_0,
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_adductors_conv_force_1,
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_adductors_conv_force_2,
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
             )
@@ -291,35 +295,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[1, 2])
             plt.plot(
                 active_athlete_gluteusmed_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_gluteusmed_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_gluteusmed_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_gluteusmed_conv_force_0,
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_gluteusmed_conv_force_1,
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_gluteusmed_conv_force_2,
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
             )
@@ -330,35 +334,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[2, 0])
             plt.plot(
                 active_athlete_triceps_surae_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_triceps_surae_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_triceps_surae_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_triceps_surae_conv_force_0,
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_triceps_surae_conv_force_1,
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_triceps_surae_conv_force_2,
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
             )
@@ -369,35 +373,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[2, 1])
             plt.plot(
                 active_athlete_hip_flexors_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_hip_flexors_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_hip_flexors_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_hip_flexors_conv_force_0,
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_hip_flexors_conv_force_1,
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_hip_flexors_conv_force_2,
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
             )
@@ -408,35 +412,35 @@ def run_muscle_force_groups(bool):
             plt.sca(axs[2, 2])
             plt.plot(
                 active_athlete_gluteusmin_sumo_force_0,
-                label="Trial 1",
+                label=label_sumo_trial_0,
                 color=color_sumo,
             )
             plt.plot(
                 active_athlete_gluteusmin_sumo_force_1,
-                label="Trial 2",
+                label=label_sumo_trial_1,
                 color=color_sumo,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_gluteusmin_sumo_force_2,
-                label="Trial 3",
+                label=label_sumo_trial_2,
                 color=color_sumo,
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_gluteusmin_conv_force_0,
-                label="Trial 1",
+                label=label_conv_trial_0,
                 color=color_conv,
             )
             plt.plot(
                 active_athlete_gluteusmin_conv_force_1,
-                label="Trial 2",
+                label=label_conv_trial_1,
                 color=color_conv,
                 linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_gluteusmin_conv_force_2,
-                label="Trial 3",
+                label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
             )
