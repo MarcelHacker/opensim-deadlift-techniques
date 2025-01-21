@@ -702,6 +702,11 @@ try:
         "rl",
     )
     # Hamstrings lateral (biceps long and short heads)
+    active_athlete_hamstrings_lateral_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,  # muscle force data
+        "Hamstrings lateral",  # Hamstrings lateral
+        "rl",
+    )
     active_athlete_hamstrings_lateral_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,  # muscle force data
         "Hamstrings lateral",  # Hamstrings lateral
@@ -710,6 +715,11 @@ try:
     active_athlete_hamstrings_lateral_sumo_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,  # muscle force data
         "Hamstrings lateral",  # Hamstrings lateral
+        "rl",
+    )
+    active_athlete_hamstrings_lateral_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,  # muscle force data
+        "Hamstrings lateral",
         "rl",
     )
     active_athlete_hamstrings_lateral_conv_force_1 = sum_muscle_forces(
@@ -722,7 +732,11 @@ try:
         "Hamstrings lateral",
         "rl",
     )
-
+    active_athlete_vasti_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "Vasti",  # Quadriceps
+        "rl",
+    )
     active_athlete_vasti_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,
         "Vasti",  # Quadriceps
@@ -730,6 +744,11 @@ try:
     )
     active_athlete_vasti_sumo_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,
+        "Vasti",  # Quadriceps
+        "rl",
+    )
+    active_athlete_vasti_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
         "Vasti",  # Quadriceps
         "rl",
     )
@@ -743,7 +762,11 @@ try:
         "Vasti",  # Quadriceps
         "rl",
     )
-
+    active_athlete_gluteusmax_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "Gluteus maximus",  # Gluteus Maximus
+        "rl",
+    )
     active_athlete_gluteusmax_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,
         "Gluteus maximus",  # Gluteus Maximus
@@ -751,6 +774,11 @@ try:
     )
     active_athlete_gluteusmax_sumo_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,
+        "Gluteus maximus",  # Gluteus Maximus
+        "rl",
+    )
+    active_athlete_gluteusmax_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
         "Gluteus maximus",  # Gluteus Maximus
         "rl",
     )
@@ -765,6 +793,11 @@ try:
         "rl",
     )
     # Gluteus Medius
+    active_athlete_gluteusmed_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "Gluteus medius",
+        "rl",
+    )
     active_athlete_gluteusmed_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,
         "Gluteus medius",
@@ -772,6 +805,11 @@ try:
     )
     active_athlete_gluteusmed_sumo_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,
+        "Gluteus medius",
+        "rl",
+    )
+    active_athlete_gluteusmed_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
         "Gluteus medius",
         "rl",
     )
@@ -806,7 +844,11 @@ try:
         "Gluteus minimus",
         "rl",
     )
-
+    active_athlete_adductors_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "Adductors",  # Adductors
+        "rl",
+    )
     active_athlete_adductors_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,
         "Adductors",  # Adductors
@@ -814,6 +856,11 @@ try:
     )
     active_athlete_adductors_sumo_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,
+        "Adductors",  # Adductors
+        "rl",
+    )
+    active_athlete_adductors_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
         "Adductors",  # Adductors
         "rl",
     )
@@ -850,6 +897,11 @@ try:
     )
 
     # Triceps Surae
+    active_athlete_triceps_surae_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "Triceps surae",  # Adductors
+        "rl",
+    )
     active_athlete_triceps_surae_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,
         "Triceps surae",  # Adductors
@@ -966,51 +1018,67 @@ except Exception as e:
 ###########################################################################
 try:
     active_athlete_hamstrings_medial_sumo_force_mean = get_mean_array_values(
+        active_athlete_hamstrings_medial_sumo_force_0,
         active_athlete_hamstrings_medial_sumo_force_1,
-        active_athlete_hamstrings_medial_sumo_force_2,  # todo change this for 3 trails
+        active_athlete_hamstrings_medial_sumo_force_2,  # todo change this for 4 trails
     )
     active_athlete_hamstrings_medial_conv_force_mean = get_mean_array_values(
+        active_athlete_hamstrings_medial_conv_force_0,
         active_athlete_hamstrings_medial_conv_force_1,
-        active_athlete_hamstrings_medial_conv_force_2,  ## todo add 3 trail
+        active_athlete_hamstrings_medial_conv_force_2,  ## todo add 4 trail
     )
     active_athlete_hamstrings_lateral_sumo_force_mean = get_mean_array_values(
+        active_athlete_hamstrings_lateral_sumo_force_0,
         active_athlete_hamstrings_lateral_sumo_force_1,
-        active_athlete_hamstrings_lateral_sumo_force_2,  # todo change this for 3 trails
+        active_athlete_hamstrings_lateral_sumo_force_2,  # todo change this for 4 trails
     )
     active_athlete_hamstrings_lateral_conv_force_mean = get_mean_array_values(
+        active_athlete_hamstrings_lateral_conv_force_0,
         active_athlete_hamstrings_lateral_conv_force_1,
-        active_athlete_hamstrings_lateral_conv_force_2,  ## todo add 3 trail
+        active_athlete_hamstrings_lateral_conv_force_2,  ## todo add 4 trail
     )
     active_athlete_vasti_sumo_force_mean = get_mean_array_values(
-        active_athlete_vasti_sumo_force_1, active_athlete_vasti_sumo_force_2
-    )  ## todo add 3 trail
+        active_athlete_vasti_sumo_force_0,
+        active_athlete_vasti_sumo_force_1,
+        active_athlete_vasti_sumo_force_2,
+    )  ## todo add 4 trail
     active_athlete_vasti_conv_force_mean = get_mean_array_values(
-        active_athlete_vasti_sumo_force_1,  ## todo add 3 trail
+        active_athlete_vasti_conv_force_0,
+        active_athlete_vasti_conv_force_1,  ## todo add 4 trail
         active_athlete_vasti_conv_force_2,
     )
     active_athlete_gluteusmax_sumo_force_mean = get_mean_array_values(
+        active_athlete_gluteusmax_sumo_force_0,
         active_athlete_gluteusmax_sumo_force_1,
         active_athlete_gluteusmax_sumo_force_2,  # todo add 3 trail
     )
     active_athlete_gluteusmax_conv_force_mean = get_mean_array_values(
+        active_athlete_gluteusmax_conv_force_0,
         active_athlete_gluteusmax_conv_force_1,
         active_athlete_gluteusmax_conv_force_2,  ## todo add 3 trail
     )
     active_athlete_adductors_sumo_force_mean = get_mean_array_values(
-        active_athlete_adductors_sumo_force_1, active_athlete_adductors_sumo_force_2
+        active_athlete_adductors_sumo_force_0,
+        active_athlete_adductors_sumo_force_1,
+        active_athlete_adductors_sumo_force_2,
     )  # todo add 3 trail
     active_athlete_adductors_conv_force_mean = get_mean_array_values(
+        active_athlete_adductors_conv_force_0,
         active_athlete_adductors_conv_force_1,
         active_athlete_adductors_conv_force_2,  ## todo add 3 trail
     )
     active_athlete_gluteusmed_sumo_force_mean = get_mean_array_values(
-        active_athlete_gluteusmed_sumo_force_1, active_athlete_gluteusmed_sumo_force_2
+        active_athlete_gluteusmed_sumo_force_0,
+        active_athlete_gluteusmed_sumo_force_1,
+        active_athlete_gluteusmed_sumo_force_2,
     )  # todo add 3 trail
     active_athlete_gluteusmed_conv_force_mean = get_mean_array_values(
+        active_athlete_gluteusmed_conv_force_0,
         active_athlete_gluteusmed_conv_force_1,
         active_athlete_gluteusmed_conv_force_2,  ## todo add 3 trail
     )
     active_athlete_triceps_surae_sumo_force_mean = get_mean_array_values(
+        active_athlete_triceps_surae_sumo_force_0,
         active_athlete_triceps_surae_sumo_force_1,
         active_athlete_triceps_surae_sumo_force_2,
     )  # todo add 3 trail

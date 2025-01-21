@@ -11,12 +11,13 @@ from src.momentsPlot import run_moments_plot
 from src.forcesPlot import run_forces_plot
 from src.momentArmsHipPlot import run_moment_arms_hip_plot
 
-# from src.muscleForceSum import run_muscle_force_sum_plot
 from src.activationsComparison import run_activations_comparison_from_emg
 from src.rawEmgPlot import run_raw_emg_plot
 from src.normEmgPlot import run_norm_emg_plot
 from src.totalMuslceForceTrails import run_total_muscle_force_plot_trails
 from src.muslceMomentsPlot import run_muscle_moments_plot
+
+from src.muscleForceGroups import run_muscle_force_groups
 
 
 #####################################################################################
@@ -64,7 +65,7 @@ if __name__ == "__main__":
     run_forces_plot(False)
     run_moment_arms_hip_plot(False)
     ########################## MUSCLE FORCES ##############################################
-    # run_muscle_force_sum_plot(False)
+    run_muscle_force_groups(True)
 
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
