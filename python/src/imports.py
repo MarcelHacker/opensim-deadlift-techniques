@@ -932,6 +932,11 @@ try:
         "Triceps surae",  # Adductors
         "rl",
     )
+    active_athlete_triceps_surae_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "Triceps surae",  # Adductors
+        "rl",
+    )
     active_athlete_triceps_surae_conv_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_1,
         "Triceps surae",  # Adductors
@@ -1103,6 +1108,7 @@ try:
         active_athlete_triceps_surae_sumo_force_2,
     )  # todo add 3 trail
     active_athlete_triceps_surae_conv_force_mean = get_mean_array_values(
+        active_athlete_triceps_surae_conv_force_0,
         active_athlete_triceps_surae_conv_force_1,
         active_athlete_triceps_surae_conv_force_2,  ## todo add 3 trail
     )
