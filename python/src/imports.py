@@ -824,6 +824,11 @@ try:
         "rl",
     )
     # Gluteus Minimus
+    active_athlete_gluteusmin_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "Gluteus minimus",
+        "rl",
+    )
     active_athlete_gluteusmin_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,
         "Gluteus minimus",
@@ -831,6 +836,11 @@ try:
     )
     active_athlete_gluteusmin_sumo_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,
+        "Gluteus minimus",
+        "rl",
+    )
+    active_athlete_gluteusmin_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
         "Gluteus minimus",
         "rl",
     )
@@ -875,6 +885,11 @@ try:
         "rl",
     )
     # Hip flexors
+    active_athlete_hip_flexors_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "Hip flexors",  # Adductors
+        "rl",
+    )
     active_athlete_hip_flexors_sumo_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,
         "Hip flexors",  # Adductors
@@ -882,6 +897,11 @@ try:
     )
     active_athlete_hip_flexors_sumo_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,
+        "Hip flexors",  # Adductors
+        "rl",
+    )
+    active_athlete_hip_flexors_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
         "Hip flexors",  # Adductors
         "rl",
     )
@@ -1087,16 +1107,22 @@ try:
         active_athlete_triceps_surae_conv_force_2,  ## todo add 3 trail
     )
     active_athlete_hip_flexors_sumo_force_mean = get_mean_array_values(
-        active_athlete_hip_flexors_sumo_force_1, active_athlete_hip_flexors_sumo_force_2
+        active_athlete_hip_flexors_sumo_force_0,
+        active_athlete_hip_flexors_sumo_force_1,
+        active_athlete_hip_flexors_sumo_force_2,
     )  # todo add 3 trail
     active_athlete_hip_flexors_conv_force_mean = get_mean_array_values(
+        active_athlete_hip_flexors_conv_force_0,
         active_athlete_hip_flexors_conv_force_1,
         active_athlete_hip_flexors_conv_force_2,  ## todo add 3 trail
     )
     active_athlete_gluteusmin_sumo_force_mean = get_mean_array_values(
-        active_athlete_gluteusmin_sumo_force_1, active_athlete_gluteusmin_sumo_force_2
+        active_athlete_gluteusmin_sumo_force_0,
+        active_athlete_gluteusmin_sumo_force_1,
+        active_athlete_gluteusmin_sumo_force_2,
     )  # todo add 3 trail
     active_athlete_gluteusmin_conv_force_mean = get_mean_array_values(
+        active_athlete_gluteusmin_conv_force_0,
         active_athlete_gluteusmin_conv_force_1,
         active_athlete_gluteusmin_conv_force_2,  ## todo add 3 trail
     )

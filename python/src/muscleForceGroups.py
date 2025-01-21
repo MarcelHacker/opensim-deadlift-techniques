@@ -1,86 +1,98 @@
 from .imports import (
     plt,
-    athletes,
-    mean_sumo_both_angles_and_moments,
-    mean_conv_both_angles_and_moments,
-    hamstrings_medial_sumo_force_mean,
-    hamstrings_medial_conv_force_mean,
-    hamstrings_lateral_sumo_force_mean,
-    hamstrings_lateral_conv_force_mean,
-    vasti_sumo_force_mean,
-    vasti_conv_force_mean,
-    gluteusmax_sumo_force_mean,
-    gluteusmax_conv_force_mean,
-    adductors_sumo_force_mean,
-    adductors_conv_force_mean,
-    gluteusmed_sumo_force_mean,
-    gluteusmed_conv_force_mean,
-    triceps_surae_sumo_force_mean,
-    triceps_surae_conv_force_mean,
-    hip_flexors_sumo_force_mean,
-    hip_flexors_conv_force_mean,
-    gluteusmin_sumo_force_mean,
-    gluteusmin_conv_force_mean,
+    active_athlete,
+    active_athlete_hamstrings_medial_sumo_force_0,
+    active_athlete_hamstrings_medial_sumo_force_1,
+    active_athlete_hamstrings_medial_sumo_force_2,
+    active_athlete_hamstrings_medial_conv_force_0,
+    active_athlete_hamstrings_medial_conv_force_1,
+    active_athlete_hamstrings_medial_conv_force_2,
+    active_athlete_hamstrings_lateral_sumo_force_0,
+    active_athlete_hamstrings_lateral_sumo_force_1,
+    active_athlete_hamstrings_lateral_sumo_force_2,
+    active_athlete_hamstrings_lateral_conv_force_0,
+    active_athlete_hamstrings_lateral_conv_force_1,
+    active_athlete_hamstrings_lateral_conv_force_2,
+    active_athlete_vasti_sumo_force_0,
+    active_athlete_vasti_sumo_force_1,
+    active_athlete_vasti_sumo_force_2,
+    active_athlete_vasti_conv_force_0,
+    active_athlete_vasti_conv_force_1,
+    active_athlete_vasti_conv_force_2,
+    active_athlete_gluteusmax_sumo_force_0,
+    active_athlete_gluteusmax_sumo_force_1,
+    active_athlete_gluteusmax_sumo_force_2,
+    active_athlete_gluteusmax_conv_force_0,
+    active_athlete_gluteusmax_conv_force_1,
+    active_athlete_gluteusmax_conv_force_2,
+    active_athlete_adductors_sumo_force_0,
+    active_athlete_adductors_sumo_force_1,
+    active_athlete_adductors_sumo_force_2,
+    active_athlete_adductors_conv_force_0,
+    active_athlete_adductors_conv_force_1,
+    active_athlete_adductors_conv_force_2,
+    active_athlete_gluteusmed_sumo_force_0,
+    active_athlete_gluteusmed_sumo_force_1,
+    active_athlete_gluteusmed_sumo_force_2,
+    active_athlete_gluteusmed_conv_force_0,
+    active_athlete_gluteusmed_conv_force_1,
+    active_athlete_gluteusmed_conv_force_2,
+    active_athlete_triceps_surae_sumo_force_0,
+    active_athlete_triceps_surae_sumo_force_1,
+    active_athlete_triceps_surae_sumo_force_2,
+    active_athlete_triceps_surae_conv_force_0,
+    active_athlete_triceps_surae_conv_force_1,
+    active_athlete_triceps_surae_conv_force_2,
+    active_athlete_hip_flexors_sumo_force_0,
+    active_athlete_hip_flexors_sumo_force_1,
+    active_athlete_hip_flexors_sumo_force_2,
+    active_athlete_hip_flexors_conv_force_0,
+    active_athlete_hip_flexors_conv_force_1,
+    active_athlete_hip_flexors_conv_force_2,
+    active_athlete_gluteusmin_sumo_force_0,
+    active_athlete_gluteusmin_sumo_force_1,
+    active_athlete_gluteusmin_sumo_force_2,
+    active_athlete_gluteusmin_conv_force_0,
+    active_athlete_gluteusmin_conv_force_1,
+    active_athlete_gluteusmin_conv_force_2,
 )
 
 """
-For the angles the mean of all right and left leg of the trails was used.
-The joint moments are the sum of right and leg divided and then the mean of all trails
+For the muscle forces sum of right and left leg of the trails was used.
 """
 
 
 def run_muscle_force_groups(bool):
     if bool:
-        # For the next plot:
-        # muscle forces are from one single limb
-        # moments from both limbs
-        """
-        1.⁠ ⁠Add a row below angles with the 3 joint moments
-        2.⁠ ⁠Make them all same colors in all plots
-        3.⁠ ⁠Split hams by medial (Semitend and Semimem) and lateral (biceps long and short heads)
-        4.⁠ ⁠Add hip flexors as a muscle group (TFL, iliacus, psoas, and rectfem)
-        5.⁠ ⁠Don't include rect fem on quads
-        """
         try:
+            figure_prefix = "muscle_force_groups_"
             color_sumo = "red"
             color_conv = "blue"
-            label_sumo = "Sumo"
-            label_conv = "Conventional 80%"
+            label_sumo = "SUMO"
+            label_conv = "CONV"
+            linestyle_trial_1 = "dashed"
+            linestyle_trial_2 = "dotted"
             x_label = "% concentric deadlift cycle"
             fig, axs = plt.subplots(5, 3)
             fig.suptitle(
-                "Kinematics, Kinetics & Muscle Force Comparison "
-                + athletes[0].name
+                "Muscle Force Groups "
+                + active_athlete["name"]
                 + "; Model: "
-                + athletes[0].model
+                + active_athlete["model"]
                 + "; Preferred: "
-                + athletes[0].technique,
+                + active_athlete["technique"],
                 fontweight="bold",
             )
-            fig.set_label("Muscle Forces R")
-
-            ## kinematics of hip, knee and ankle, and muscle forces
-            # angles from both and mean value
-
-            coordinated_to_plot = ["hip_angle", "knee_angle", "ankle_angle"]
-            ylabels_plot = ["Hip Flex [°]", "Knee Flex [°]", "Ankle Flex [°]"]
-
-            for i, coordinated in enumerate(coordinated_to_plot):
-                plt.sca(axs[0, i])
-                plt.plot(
-                    mean_sumo_both_angles_and_moments[coordinated],
-                    color=color_sumo,
-                    label=label_sumo,
-                )
-                plt.plot(
-                    mean_conv_both_angles_and_moments[coordinated],
-                    color=color_conv,
-                    label=label_conv,
-                )
-                plt.legend()
-                plt.ylabel(ylabels_plot[i])
-                plt.xlabel(x_label)
-
+            fig.set_label("Muscle Force Groups")
+            plt.subplots_adjust(
+                wspace=0.285,
+                hspace=0.298,
+                top=0.904,
+                right=0.91,
+                left=0.067,
+                bottom=0.067,
+            )
+            """
             ## moments, both legs
             # hip
             plt.sca(axs[1, 0])
@@ -127,18 +139,42 @@ def run_muscle_force_groups(bool):
             plt.ylabel("Ankle moment [Nm]")
             plt.legend()
             plt.xlabel(x_label)
-
+            """
             # hamstrings medial
             plt.sca(axs[2, 0])
             plt.plot(
-                hamstrings_medial_sumo_force_mean,  # mean of all trails
-                label=label_sumo,
+                active_athlete_hamstrings_medial_sumo_force_0,
+                label="Trial 1",
                 color=color_sumo,
             )
             plt.plot(
-                hamstrings_medial_conv_force_mean,
-                label=label_conv,
+                active_athlete_hamstrings_medial_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle="dashed",
+            )
+            plt.plot(
+                active_athlete_hamstrings_medial_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle="dotted",
+            )
+            plt.plot(
+                active_athlete_hamstrings_medial_conv_force_0,  # mean of all trails
+                label="Trial 1",
                 color=color_conv,
+            )
+            plt.plot(
+                active_athlete_hamstrings_medial_conv_force_1,  # mean of all trails
+                label="Trial 2",
+                color=color_conv,
+                linestyle="dashed",
+            )
+            plt.plot(
+                active_athlete_hamstrings_medial_conv_force_2,  # mean of all trails
+                label="Trial 3",
+                color=color_conv,
+                linestyle="dotted",
             )
             plt.ylabel("Hamstrings medial [N]")
             plt.legend()
@@ -146,14 +182,38 @@ def run_muscle_force_groups(bool):
             # hamstrings lateral
             plt.sca(axs[2, 1])
             plt.plot(
-                hamstrings_lateral_sumo_force_mean,
-                label=label_sumo,
+                active_athlete_hamstrings_lateral_sumo_force_0,
+                label="Trial 1",
                 color=color_sumo,
             )
             plt.plot(
-                hamstrings_lateral_conv_force_mean,
-                label=label_conv,
+                active_athlete_hamstrings_lateral_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle="dashed",
+            )
+            plt.plot(
+                active_athlete_hamstrings_lateral_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle="dotted",
+            )
+            plt.plot(
+                active_athlete_hamstrings_lateral_conv_force_0,
+                label="Trial 1",
                 color=color_conv,
+            )
+            plt.plot(
+                active_athlete_hamstrings_lateral_conv_force_1,
+                label="Trial 2",
+                color=color_conv,
+                linestyle="dashed",
+            )
+            plt.plot(
+                active_athlete_hamstrings_lateral_conv_force_2,
+                label="Trial 3",
+                color=color_conv,
+                linestyle="dotted",
             )
             plt.ylabel("Hamstrings lateral [N]")
             plt.legend()
@@ -161,60 +221,295 @@ def run_muscle_force_groups(bool):
 
             # vasti
             plt.sca(axs[2, 2])
-            plt.plot(vasti_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(vasti_conv_force_mean, label=label_conv, color=color_conv)
+            plt.plot(
+                active_athlete_vasti_sumo_force_0,
+                label="Trial 1",
+                color=color_sumo,
+            )
+            plt.plot(
+                active_athlete_vasti_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle="dashed",
+            )
+            plt.plot(
+                active_athlete_vasti_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle="dotted",
+            )
+            plt.plot(
+                active_athlete_vasti_conv_force_0,
+                label="Trial 1",
+                color=color_conv,
+            )
+            plt.plot(
+                active_athlete_vasti_conv_force_1,
+                label="Trial 2",
+                color=color_conv,
+                linestyle="dashed",
+            )
+            plt.plot(
+                active_athlete_vasti_conv_force_2,
+                label="Trial 3",
+                color=color_conv,
+                linestyle="dotted",
+            )
             plt.ylabel("Vasti [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # gluteus maximus
             plt.sca(axs[3, 0])
-            plt.plot(gluteusmax_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(gluteusmax_conv_force_mean, label=label_conv, color=color_conv)
+            plt.plot(
+                active_athlete_gluteusmax_sumo_force_0,
+                label="Trial 1",
+                color=color_sumo,
+            )
+            plt.plot(
+                active_athlete_gluteusmax_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_gluteusmax_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_gluteusmax_conv_force_0,
+                label="Trial 1",
+                color=color_conv,
+            )
+            plt.plot(
+                active_athlete_gluteusmax_conv_force_1,
+                label="Trial 2",
+                color=color_conv,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_gluteusmax_conv_force_2,
+                label="Trial 3",
+                color=color_conv,
+                linestyle=linestyle_trial_2,
+            )
             plt.ylabel("Gluteus maximus [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # adductors
             plt.sca(axs[3, 1])
-            plt.plot(adductors_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(adductors_conv_force_mean, label=label_conv, color=color_conv)
+            plt.plot(
+                active_athlete_adductors_sumo_force_0,
+                label="Trial 1",
+                color=color_sumo,
+            )
+            plt.plot(
+                active_athlete_adductors_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_adductors_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_adductors_conv_force_0,
+                label="Trial 1",
+                color=color_conv,
+            )
+            plt.plot(
+                active_athlete_adductors_conv_force_1,
+                label="Trial 2",
+                color=color_conv,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_adductors_conv_force_2,
+                label="Trial 3",
+                color=color_conv,
+                linestyle=linestyle_trial_2,
+            )
             plt.ylabel("Adductors [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # gluteus medius
             plt.sca(axs[3, 2])
-            plt.plot(gluteusmed_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(gluteusmed_conv_force_mean, label=label_conv, color=color_conv)
+            plt.plot(
+                active_athlete_gluteusmed_sumo_force_0,
+                label="Trial 1",
+                color=color_sumo,
+            )
+            plt.plot(
+                active_athlete_gluteusmed_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_gluteusmed_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_gluteusmed_conv_force_0,
+                label="Trial 1",
+                color=color_conv,
+            )
+            plt.plot(
+                active_athlete_gluteusmed_conv_force_1,
+                label="Trial 2",
+                color=color_conv,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_gluteusmed_conv_force_2,
+                label="Trial 3",
+                color=color_conv,
+                linestyle=linestyle_trial_2,
+            )
             plt.ylabel("Gluteus medius [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # Triceps surae
             plt.sca(axs[4, 0])
-            plt.plot(triceps_surae_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(triceps_surae_conv_force_mean, label=label_conv, color=color_conv)
+            plt.plot(
+                active_athlete_triceps_surae_sumo_force_0,
+                label="Trial 1",
+                color=color_sumo,
+            )
+            plt.plot(
+                active_athlete_triceps_surae_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_triceps_surae_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_triceps_surae_conv_force_0,
+                label="Trial 1",
+                color=color_conv,
+            )
+            plt.plot(
+                active_athlete_triceps_surae_conv_force_1,
+                label="Trial 2",
+                color=color_conv,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_triceps_surae_conv_force_2,
+                label="Trial 3",
+                color=color_conv,
+                linestyle=linestyle_trial_2,
+            )
             plt.ylabel("Triceps surae [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # hip flexors
             plt.sca(axs[4, 1])
-            plt.plot(hip_flexors_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(hip_flexors_conv_force_mean, label=label_conv, color=color_conv)
+            plt.plot(
+                active_athlete_hip_flexors_sumo_force_0,
+                label="Trial 1",
+                color=color_sumo,
+            )
+            plt.plot(
+                active_athlete_hip_flexors_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_hip_flexors_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_hip_flexors_conv_force_0,
+                label="Trial 1",
+                color=color_conv,
+            )
+            plt.plot(
+                active_athlete_hip_flexors_conv_force_1,
+                label="Trial 2",
+                color=color_conv,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_hip_flexors_conv_force_2,
+                label="Trial 3",
+                color=color_conv,
+                linestyle=linestyle_trial_2,
+            )
             plt.ylabel("Hip flexors [N]")
             plt.legend()
             plt.xlabel(x_label)
 
             # Gluteus minimus
             plt.sca(axs[4, 2])
-            plt.plot(gluteusmin_sumo_force_mean, label=label_sumo, color=color_sumo)
-            plt.plot(gluteusmin_conv_force_mean, label=label_conv, color=color_conv)
+            plt.plot(
+                active_athlete_gluteusmin_sumo_force_0,
+                label="Trial 1",
+                color=color_sumo,
+            )
+            plt.plot(
+                active_athlete_gluteusmin_sumo_force_1,
+                label="Trial 2",
+                color=color_sumo,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_gluteusmin_sumo_force_2,
+                label="Trial 3",
+                color=color_sumo,
+                linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_gluteusmin_conv_force_0,
+                label="Trial 1",
+                color=color_conv,
+            )
+            plt.plot(
+                active_athlete_gluteusmin_conv_force_1,
+                label="Trial 2",
+                color=color_conv,
+                linestyle=linestyle_trial_1,
+            )
+            plt.plot(
+                active_athlete_gluteusmin_conv_force_2,
+                label="Trial 3",
+                color=color_conv,
+                linestyle=linestyle_trial_2,
+            )
             plt.ylabel("Gluteus minimus [N]")
             plt.legend()
             plt.xlabel(x_label)
 
+            handles, labels = axs[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="center right")
+            fig.set_size_inches(13, 7.5)
+            plt.savefig(
+                "../results/so/" + figure_prefix + active_athlete["name"] + ".png",
+                transparent=None,
+                dpi=300,
+                format="png",
+            )
             plt.show()
         except Exception as e:
             print("Error in run_muscle_force_groups")
