@@ -18,6 +18,7 @@ from src.totalMuslceForceTrails import run_total_muscle_force_plot_trails
 from src.muslceMomentsPlot import run_muscle_moments_plot
 
 from src.muscleForceGroups import run_muscle_force_groups
+from src.increaseForce import increase_max_isometric_force
 
 
 #####################################################################################
@@ -49,6 +50,10 @@ if __name__ == "__main__":
         250,
         dir_athletes + "/simulations/athlete_2",
     )
+    increase_max_isometric_force(
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_3/scaled_model.osim",
+        3,
+    )
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
@@ -65,7 +70,7 @@ if __name__ == "__main__":
     run_forces_plot(False)
     run_moment_arms_hip_plot(False)
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_groups(True)
+    run_muscle_force_groups(False)
 
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
