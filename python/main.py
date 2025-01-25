@@ -51,8 +51,8 @@ if __name__ == "__main__":
         dir_athletes + "/simulations/athlete_2",
     )
     # increase_max_isometric_force(
-    #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_3/scaled_model.osim",
-    #  3,
+    #   "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_3/scaled_model_no_force_increased.osim",
+    #  4,
     # )
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
