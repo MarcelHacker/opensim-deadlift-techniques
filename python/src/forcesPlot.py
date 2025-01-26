@@ -4,9 +4,11 @@ from .imports import (
     active_athlete_muscleForces_sumo_time_normalised_0,
     active_athlete_muscleForces_sumo_time_normalised_1,
     active_athlete_muscleForces_sumo_time_normalised_2,
+    active_athlete_muscleForces_sumo_time_normalised_3,
     active_athlete_muscleForces_conv_time_normalised_0,
     active_athlete_muscleForces_conv_time_normalised_1,
     active_athlete_muscleForces_conv_time_normalised_2,
+    active_athlete_muscleForces_conv_time_normalised_3,
 )
 
 
@@ -14,12 +16,13 @@ def run_forces_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
-            figure_prefix = "muscle_forces_trials_"
+            figure_postfix = "_muscle_forces_trials"
             rows = 6
             cols = 2
             color_trial_0 = "red"
             color_trial_1 = "blue"
             color_trial_2 = "orange"
+            color_trial_3 = "darkgreen"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Muscle Forces Trials "
@@ -35,7 +38,7 @@ def run_forces_plot(bool):
                 hspace=0.314,
                 top=0.904,
                 right=0.91,
-                left=0.042,
+                left=0.05,
                 bottom=0.073,
             )
             fig.set_label("Muscle Forces")
@@ -59,7 +62,7 @@ def run_forces_plot(bool):
             ]
             ylabels = [
                 "Rectus femoris [N]",
-                "Vastus laterlis [N]",
+                "Vastus lateralis [N]",
                 "Vastus medialis [N]",
                 "Gluteus maximus 1 [N]",
                 "Gluteus maximus 2 [N]",
@@ -113,6 +116,21 @@ def run_forces_plot(bool):
                     color=color_trial_2,
                     linestyle="dotted",
                 )
+                plt.plot(
+                    active_athlete_muscleForces_sumo_time_normalised_3[
+                        coordinates_r[i]
+                    ],
+                    label="Trial 4 r",
+                    color=color_trial_3,
+                )
+                plt.plot(
+                    active_athlete_muscleForces_sumo_time_normalised_3[
+                        coordinates_l[i]
+                    ],
+                    label="Trial 4 l",
+                    color=color_trial_3,
+                    linestyle="dotted",
+                )
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
@@ -164,6 +182,21 @@ def run_forces_plot(bool):
                     color=color_trial_2,
                     linestyle="dotted",
                 )
+                plt.plot(
+                    active_athlete_muscleForces_conv_time_normalised_3[
+                        coordinates_r[x]
+                    ],
+                    label="Trial 4 r",
+                    color=color_trial_3,
+                )
+                plt.plot(
+                    active_athlete_muscleForces_conv_time_normalised_3[
+                        coordinates_l[x]
+                    ],
+                    label="Trial 4 l",
+                    color=color_trial_3,
+                    linestyle="dotted",
+                )
                 plt.ylabel(ylabels[x])
                 plt.xlabel(x_label)
 
@@ -173,7 +206,7 @@ def run_forces_plot(bool):
             fig.legend(handles, labels, loc="center right")
             fig.set_size_inches(13, 7.5)
             plt.savefig(
-                "../results/so/" + figure_prefix + active_athlete["name"] + ".png",
+                "../results/so/" + active_athlete["name"] + figure_postfix + ".png",
                 transparent=None,
                 dpi=300,
                 format="png",
