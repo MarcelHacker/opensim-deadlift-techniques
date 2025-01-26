@@ -23,7 +23,7 @@ def run_total_muscle_force_plot_trails(bool):
             color_conv = "blue"
             fig, axs = plt.subplots(cols)
             fig.suptitle(
-                "Total Muscle Force Trials; "
+                "Total Muscle Force Trials "
                 + active_athlete["name"]
                 + "; Model: "
                 + active_athlete["model"]
