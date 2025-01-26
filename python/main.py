@@ -19,6 +19,7 @@ from src.muslceMomentsPlot import run_muscle_moments_plot
 
 from src.muscleForceGroups import run_muscle_force_groups
 from src.increaseForce import increase_max_isometric_force
+from src.pdfExport import create_pdf_report
 
 
 #####################################################################################
@@ -39,6 +40,7 @@ print("DIR athletes: ", dir_athletes)
 if __name__ == "__main__":
     ## set athlete in imports.py
     ## unittest.main()
+    create_pdf_report(True)
     created_athlete = Athlete(
         "athlete_2",
         25,
@@ -70,7 +72,7 @@ if __name__ == "__main__":
     run_forces_plot(False)
     run_moment_arms_hip_plot(False)
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_groups(True)
+    run_muscle_force_groups(False)
 
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
