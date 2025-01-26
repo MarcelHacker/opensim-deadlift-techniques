@@ -371,7 +371,11 @@ try:
         sep="\t",
         skiprows=14,
     )
-    active_athlete_muscleForces_sumo_3 = None
+    active_athlete_muscleForces_sumo_3 = pd.read_csv(
+        active_athlete["paths"]["so"]["forces"]["sumo_dl_3"],
+        sep="\t",
+        skiprows=14,
+    )
     active_athlete_muscleForces_conv_0 = pd.read_csv(
         active_athlete["paths"]["so"]["forces"]["conv_dl_0"],
         sep="\t",
@@ -387,7 +391,11 @@ try:
         sep="\t",
         skiprows=14,
     )
-    active_athlete_muscleForces_conv_3 = None
+    active_athlete_muscleForces_conv_3 = pd.read_csv(
+        active_athlete["paths"]["so"]["forces"]["conv_dl_3"],
+        sep="\t",
+        skiprows=14,
+    )
 except Exception as e:
     print("Error in SO muscle forces files; src/imports.py")
     print(e)
@@ -589,6 +597,9 @@ try:
     active_athlete_muscleForces_sumo_time_normalised_2 = time_normalise_df(
         active_athlete_muscleForces_sumo_2
     )
+    active_athlete_muscleForces_sumo_time_normalised_3 = time_normalise_df(
+        active_athlete_muscleForces_sumo_3
+    )
     active_athlete_muscleForces_conv_time_normalised_0 = time_normalise_df(
         active_athlete_muscleForces_conv_0
     )
@@ -598,6 +609,10 @@ try:
     active_athlete_muscleForces_conv_time_normalised_2 = time_normalise_df(
         active_athlete_muscleForces_conv_2
     )
+    active_athlete_muscleForces_conv_time_normalised_3 = time_normalise_df(
+        active_athlete_muscleForces_conv_3
+    )
+
     active_athlete_muscleForces_sumo_emptybar_time_normalised_0 = None
 except Exception as e:
     print("Error in time normalisation id,ik and muscle force files; src/imports.py")
@@ -980,7 +995,11 @@ try:
         "All",  # All muscle groups
         "rl",
     )
-    active_athlete_total_sumo_force_3 = None
+    active_athlete_total_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,  # muscle force data
+        "All",  # All muscle groups
+        "rl",
+    )
     active_athlete_total_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,  # muscle force data
         "All",  # All muscle groups
@@ -996,7 +1015,11 @@ try:
         "All",  # All muscle groups
         "rl",
     )
-    active_athlete_total_conv_force_3 = None
+    active_athlete_total_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,  # muscle force data
+        "All",  # All muscle groups
+        "rl",
+    )
 except Exception as e:
     print("Error in muscle force grouping files; src/imports.py")
     print(e)

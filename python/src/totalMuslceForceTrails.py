@@ -5,9 +5,11 @@ from .imports import (
     active_athlete_total_sumo_force_0,
     active_athlete_total_sumo_force_1,
     active_athlete_total_sumo_force_2,
+    active_athlete_total_sumo_force_3,
     active_athlete_total_conv_force_0,
     active_athlete_total_conv_force_1,
     active_athlete_total_conv_force_2,
+    active_athlete_total_conv_force_3,
 )
 
 
@@ -63,6 +65,12 @@ def run_total_muscle_force_plot_trails(bool):
                 color=color_sumo,
                 linestyle="dashdot",
             )
+            plt.plot(
+                active_athlete_total_sumo_force_3,
+                label="Trial 4",
+                color=color_sumo,
+                linestyle="dashdot",
+            )
             # axs[0].set_yticks(np.arange(10000, 38000, 3000))
             axs[0].set_xticks(np.arange(0, 101, 5))
             axs[0].set_xlim(left=0, right=100)
@@ -89,6 +97,12 @@ def run_total_muscle_force_plot_trails(bool):
             plt.plot(
                 active_athlete_total_conv_force_2,
                 label="Trial 3",
+                color=color_conv,
+                linestyle="dashdot",
+            )
+            plt.plot(
+                active_athlete_total_conv_force_3,
+                label="Trial 4",
                 color=color_conv,
                 linestyle="dashdot",
             )

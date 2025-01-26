@@ -8,6 +8,7 @@ from src.imports import (
     active_athlete_ik_conv_time_normalised_0,
     active_athlete_ik_conv_time_normalised_1,
     active_athlete_ik_conv_time_normalised_2,
+    active_athlete_ik_conv_time_normalised_3,
 )
 
 
@@ -143,6 +144,17 @@ def run_kinematics_plot(bool):
                     active_athlete_ik_conv_time_normalised_2[coordinates_l[i]],
                     label="Trial 3 l",
                     color=trial_color_2,
+                    linestyle="dashed",
+                )
+                plt.plot(
+                    active_athlete_ik_conv_time_normalised_3[coordinates_r[i]],
+                    label="Trial 4 r",
+                    color=trial_color_3,
+                )
+                plt.plot(
+                    active_athlete_ik_conv_time_normalised_3[coordinates_l[i]],
+                    label="Trial 4 l",
+                    color=trial_color_3,
                     linestyle="dashed",
                 )
                 plt.ylabel(ylabels[i])
