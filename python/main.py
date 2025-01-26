@@ -70,7 +70,7 @@ if __name__ == "__main__":
     run_forces_plot(False)
     run_moment_arms_hip_plot(False)
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_groups(False)
+    run_muscle_force_groups(True)
 
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)

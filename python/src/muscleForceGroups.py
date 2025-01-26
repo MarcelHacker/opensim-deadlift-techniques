@@ -96,7 +96,7 @@ def run_muscle_force_groups(bool):
             label_conv_trial_3 = "CONV Trial 4"
             linestyle_trial_1 = "dashed"
             linestyle_trial_2 = "dotted"
-            linestyle_trial_3 = "dotted"
+            linestyle_trial_3 = "dashdot"
             x_label = "% concentric deadlift cycle"
             fig, axs = plt.subplots(3, 3)
             fig.suptitle(
@@ -129,19 +129,19 @@ def run_muscle_force_groups(bool):
                 active_athlete_hamstrings_medial_sumo_force_1,
                 label=label_sumo_trial_1,
                 color=color_sumo,
-                linestyle="dashed",
+                linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_hamstrings_medial_sumo_force_2,
                 label=label_sumo_trial_2,
                 color=color_sumo,
-                linestyle="dotted",
+                linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_hamstrings_medial_sumo_force_3,
                 label=label_sumo_trial_3,
                 color=color_sumo,
-                linestyle="dotted",
+                linestyle=linestyle_trial_3,
             )
             plt.plot(
                 active_athlete_hamstrings_medial_conv_force_0,  # mean of all trails
@@ -179,13 +179,13 @@ def run_muscle_force_groups(bool):
                 active_athlete_hamstrings_lateral_sumo_force_1,
                 label=label_sumo_trial_1,
                 color=color_sumo,
-                linestyle="dashed",
+                linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_hamstrings_lateral_sumo_force_2,
                 label=label_sumo_trial_2,
                 color=color_sumo,
-                linestyle="dotted",
+                linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_hamstrings_lateral_sumo_force_3,
@@ -230,13 +230,13 @@ def run_muscle_force_groups(bool):
                 active_athlete_vasti_sumo_force_1,
                 label=label_sumo_trial_1,
                 color=color_sumo,
-                linestyle="dashed",
+                linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_vasti_sumo_force_2,
                 label=label_sumo_trial_2,
                 color=color_sumo,
-                linestyle="dotted",
+                linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_vasti_sumo_force_3,
@@ -253,13 +253,13 @@ def run_muscle_force_groups(bool):
                 active_athlete_vasti_conv_force_1,
                 label=label_conv_trial_1,
                 color=color_conv,
-                linestyle="dashed",
+                linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_vasti_conv_force_2,
                 label=label_conv_trial_2,
                 color=color_conv,
-                linestyle="dotted",
+                linestyle=linestyle_trial_2,
             )
             plt.plot(
                 active_athlete_vasti_conv_force_3,
