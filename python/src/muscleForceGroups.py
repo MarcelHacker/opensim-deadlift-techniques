@@ -89,11 +89,14 @@ def run_muscle_force_groups(bool):
             label_sumo_trial_0 = "SUMO Trial 1"
             label_sumo_trial_1 = "SUMO Trial 2"
             label_sumo_trial_2 = "SUMO Trial 3"
+            label_sumo_trial_3 = "SUMO Trial 4"
             label_conv_trial_0 = "CONV Trial 1"
             label_conv_trial_1 = "CONV Trial 2"
             label_conv_trial_2 = "CONV Trial 3"
+            label_conv_trial_3 = "CONV Trial 4"
             linestyle_trial_1 = "dashed"
             linestyle_trial_2 = "dotted"
+            linestyle_trial_3 = "dotted"
             x_label = "% concentric deadlift cycle"
             fig, axs = plt.subplots(3, 3)
             fig.suptitle(
@@ -135,6 +138,12 @@ def run_muscle_force_groups(bool):
                 linestyle="dotted",
             )
             plt.plot(
+                active_athlete_hamstrings_medial_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle="dotted",
+            )
+            plt.plot(
                 active_athlete_hamstrings_medial_conv_force_0,  # mean of all trails
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -143,13 +152,19 @@ def run_muscle_force_groups(bool):
                 active_athlete_hamstrings_medial_conv_force_1,  # mean of all trails
                 label=label_conv_trial_1,
                 color=color_conv,
-                linestyle="dashed",
+                linestyle=linestyle_trial_1,
             )
             plt.plot(
                 active_athlete_hamstrings_medial_conv_force_2,  # mean of all trails
                 label=label_conv_trial_2,
                 color=color_conv,
-                linestyle="dotted",
+                linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_hamstrings_medial_conv_force_3,  # mean of all trails
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Hamstrings medial [N]")
             plt.xlabel(x_label)
@@ -173,6 +188,12 @@ def run_muscle_force_groups(bool):
                 linestyle="dotted",
             )
             plt.plot(
+                active_athlete_hamstrings_lateral_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle=linestyle_trial_3,
+            )
+            plt.plot(
                 active_athlete_hamstrings_lateral_conv_force_0,
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -188,6 +209,12 @@ def run_muscle_force_groups(bool):
                 label=label_conv_trial_2,
                 color=color_conv,
                 linestyle="dotted",
+            )
+            plt.plot(
+                active_athlete_hamstrings_lateral_conv_force_3,
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Hamstrings lateral [N]")
             plt.xlabel(x_label)
@@ -212,6 +239,12 @@ def run_muscle_force_groups(bool):
                 linestyle="dotted",
             )
             plt.plot(
+                active_athlete_vasti_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle=linestyle_trial_3,
+            )
+            plt.plot(
                 active_athlete_vasti_conv_force_0,
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -227,6 +260,12 @@ def run_muscle_force_groups(bool):
                 label=label_conv_trial_2,
                 color=color_conv,
                 linestyle="dotted",
+            )
+            plt.plot(
+                active_athlete_vasti_conv_force_3,
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Vasti [N]")
             plt.xlabel(x_label)
@@ -251,6 +290,12 @@ def run_muscle_force_groups(bool):
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
+                active_athlete_gluteusmax_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle=linestyle_trial_3,
+            )
+            plt.plot(
                 active_athlete_gluteusmax_conv_force_0,
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -266,6 +311,12 @@ def run_muscle_force_groups(bool):
                 label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_gluteusmax_conv_force_3,
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Gluteus maximus [N]")
             plt.xlabel(x_label)
@@ -290,6 +341,12 @@ def run_muscle_force_groups(bool):
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
+                active_athlete_adductors_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle=linestyle_trial_3,
+            )
+            plt.plot(
                 active_athlete_adductors_conv_force_0,
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -305,6 +362,12 @@ def run_muscle_force_groups(bool):
                 label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_adductors_conv_force_3,
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Adductors [N]")
             plt.xlabel(x_label)
@@ -329,6 +392,12 @@ def run_muscle_force_groups(bool):
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
+                active_athlete_gluteusmed_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle=linestyle_trial_3,
+            )
+            plt.plot(
                 active_athlete_gluteusmed_conv_force_0,
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -344,6 +413,12 @@ def run_muscle_force_groups(bool):
                 label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_gluteusmed_conv_force_3,
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Gluteus medius [N]")
             plt.xlabel(x_label)
@@ -368,6 +443,12 @@ def run_muscle_force_groups(bool):
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
+                active_athlete_triceps_surae_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle=linestyle_trial_3,
+            )
+            plt.plot(
                 active_athlete_triceps_surae_conv_force_0,
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -383,6 +464,12 @@ def run_muscle_force_groups(bool):
                 label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_triceps_surae_conv_force_3,
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Triceps surae [N]")
             plt.xlabel(x_label)
@@ -407,6 +494,12 @@ def run_muscle_force_groups(bool):
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
+                active_athlete_hip_flexors_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle=linestyle_trial_3,
+            )
+            plt.plot(
                 active_athlete_hip_flexors_conv_force_0,
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -422,6 +515,12 @@ def run_muscle_force_groups(bool):
                 label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_hip_flexors_conv_force_3,
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Hip flexors [N]")
             plt.xlabel(x_label)
@@ -446,6 +545,12 @@ def run_muscle_force_groups(bool):
                 linestyle=linestyle_trial_2,
             )
             plt.plot(
+                active_athlete_gluteusmin_sumo_force_3,
+                label=label_sumo_trial_3,
+                color=color_sumo,
+                linestyle=linestyle_trial_3,
+            )
+            plt.plot(
                 active_athlete_gluteusmin_conv_force_0,
                 label=label_conv_trial_0,
                 color=color_conv,
@@ -461,6 +566,12 @@ def run_muscle_force_groups(bool):
                 label=label_conv_trial_2,
                 color=color_conv,
                 linestyle=linestyle_trial_2,
+            )
+            plt.plot(
+                active_athlete_gluteusmin_conv_force_3,
+                label=label_conv_trial_3,
+                color=color_conv,
+                linestyle=linestyle_trial_3,
             )
             plt.ylabel("Gluteus minimus [N]")
             plt.xlabel(x_label)
