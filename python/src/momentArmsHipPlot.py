@@ -7,12 +7,16 @@ from .imports import (
     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_1,
     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_2,
     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_2,
+    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_3,
+    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_3,
     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_0,
     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_0,
     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_1,
     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_1,
     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_2,
     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_2,
+    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_3,
+    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_3,
 )
 
 
@@ -20,15 +24,16 @@ def run_moment_arms_hip_plot(bool):
     # just for sumo currently avaiable
     if bool:
         try:
-            figure_prefix = "moment_arms_hip_flexion_"
+            figure_postfix = "_moment_arms_hip_flexion"
             rows = 6
             cols = 2
             color_trial_0 = "red"
             color_trial_1 = "blue"
             color_trial_2 = "orange"
+            color_trial_3 = "darkgreen"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Moment Arms Hip Flexion Trails "
+                "Moment Arms Hip Flexion Trials "
                 + active_athlete["name"]
                 + "; Model: "
                 + active_athlete["model"]
@@ -78,14 +83,14 @@ def run_moment_arms_hip_plot(bool):
                     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_0[
                         coordinates_r[i]
                     ],
-                    label="Trail 1 r",
+                    label="Trial 1 r",
                     color=color_trial_0,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_0[
                         coordinates_l[i]
                     ],
-                    label="Trail 1 l",
+                    label="Trial 1 l",
                     color=color_trial_0,
                     linestyle="dotted",
                 )
@@ -93,14 +98,14 @@ def run_moment_arms_hip_plot(bool):
                     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_1[
                         coordinates_r[i]
                     ],
-                    label="Trail 2 r",
+                    label="Trial 2 r",
                     color=color_trial_1,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_1[
                         coordinates_l[i]
                     ],
-                    label="Trail 2 l",
+                    label="Trial 2 l",
                     color=color_trial_1,
                     linestyle="dotted",
                 )
@@ -108,15 +113,30 @@ def run_moment_arms_hip_plot(bool):
                     active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_2[
                         coordinates_r[i]
                     ],
-                    label="Trail 3 r",
+                    label="Trial 3 r",
                     color=color_trial_2,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_2[
                         coordinates_l[i]
                     ],
-                    label="Trail 3 l",
+                    label="Trial 3 l",
                     color=color_trial_2,
+                    linestyle="dotted",
+                )
+                plt.plot(
+                    active_athlete_momentArms_hip_flexion_r_sumo_time_normalised_3[
+                        coordinates_r[i]
+                    ],
+                    label="Trial 4 r",
+                    color=color_trial_3,
+                )
+                plt.plot(
+                    active_athlete_momentArms_hip_flexion_l_sumo_time_normalised_3[
+                        coordinates_l[i]
+                    ],
+                    label="Trial 4 l",
+                    color=color_trial_3,
                     linestyle="dotted",
                 )
                 plt.ylabel(ylabels[i])
@@ -129,14 +149,14 @@ def run_moment_arms_hip_plot(bool):
                     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_0[
                         coordinates_r[x]
                     ],
-                    label="Trail 1 r",
+                    label="Trial 1 r",
                     color=color_trial_0,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_0[
                         coordinates_l[x]
                     ],
-                    label="Trail 1 l",
+                    label="Trial 1 l",
                     color=color_trial_0,
                     linestyle="dotted",
                 )
@@ -144,14 +164,14 @@ def run_moment_arms_hip_plot(bool):
                     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_1[
                         coordinates_r[x]
                     ],
-                    label="Trail 2 r",
+                    label="Trial 2 r",
                     color=color_trial_1,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_1[
                         coordinates_l[x]
                     ],
-                    label="Trail 2 l",
+                    label="Trial 2 l",
                     color=color_trial_1,
                     linestyle="dotted",
                 )
@@ -159,15 +179,30 @@ def run_moment_arms_hip_plot(bool):
                     active_athlete_momentArms_hip_flexion_r_conv_time_normalised_2[
                         coordinates_r[x]
                     ],
-                    label="Trail 3 r",
+                    label="Trial 3 r",
                     color=color_trial_2,
                 )
                 plt.plot(
                     active_athlete_momentArms_hip_flexion_l_conv_time_normalised_2[
                         coordinates_l[x]
                     ],
-                    label="Trail 3 l",
+                    label="Trial 3 l",
                     color=color_trial_2,
+                    linestyle="dotted",
+                )
+                plt.plot(
+                    active_athlete_momentArms_hip_flexion_r_conv_time_normalised_3[
+                        coordinates_r[x]
+                    ],
+                    label="Trial 4 r",
+                    color=color_trial_3,
+                )
+                plt.plot(
+                    active_athlete_momentArms_hip_flexion_l_conv_time_normalised_3[
+                        coordinates_l[x]
+                    ],
+                    label="Trial 4 l",
+                    color=color_trial_3,
                     linestyle="dotted",
                 )
                 plt.ylabel(ylabels[x])
@@ -179,7 +214,7 @@ def run_moment_arms_hip_plot(bool):
             fig.legend(handles, labels, loc="center right")
             fig.set_size_inches(13, 7.5)
             plt.savefig(
-                "../results/ma/" + figure_prefix + active_athlete["name"] + ".png",
+                "../results/ma/" + active_athlete["name"] + figure_postfix + ".png",
                 transparent=None,
                 dpi=300,
                 format="png",
