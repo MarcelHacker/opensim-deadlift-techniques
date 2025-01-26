@@ -4,21 +4,24 @@ from .imports import (
     active_athlete_id_sumo_time_normalised_0,
     active_athlete_id_sumo_time_normalised_1,
     active_athlete_id_sumo_time_normalised_2,
+    active_athlete_id_sumo_time_normalised_3,
     active_athlete_id_conv_time_normalised_0,
     active_athlete_id_conv_time_normalised_1,
     active_athlete_id_conv_time_normalised_2,
+    active_athlete_id_conv_time_normalised_3,
 )
 
 
 def run_moments_plot(bool):
     if bool:
         try:
-            figure_prefix = "moments_trials_"
+            figure_postfix = "_moments_trials"
             rows = 3
             cols = 2
             trial_color_0 = "red"
             trial_color_1 = "blue"
             trial_color_2 = "orange"
+            trial_color_3 = "magenta"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Joint Moments Trials "
@@ -92,6 +95,17 @@ def run_moments_plot(bool):
                     color=trial_color_2,
                     linestyle="dashed",
                 )
+                plt.plot(
+                    active_athlete_id_sumo_time_normalised_3[coordinates_r[i]],
+                    label="Trial 4 r",
+                    color=trial_color_3,
+                )
+                plt.plot(
+                    active_athlete_id_sumo_time_normalised_3[coordinates_l[i]],
+                    label="Trial 4 l",
+                    color=trial_color_3,
+                    linestyle="dashed",
+                )
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
@@ -131,6 +145,17 @@ def run_moments_plot(bool):
                     color=trial_color_2,
                     linestyle="dashed",
                 )
+                plt.plot(
+                    active_athlete_id_conv_time_normalised_3[coordinates_r[i]],
+                    label="Trial 4 r",
+                    color=trial_color_3,
+                )
+                plt.plot(
+                    active_athlete_id_conv_time_normalised_3[coordinates_l[i]],
+                    label="Trial 4 l",
+                    color=trial_color_3,
+                    linestyle="dashed",
+                )
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
@@ -140,7 +165,7 @@ def run_moments_plot(bool):
             fig.legend(handles, labels, loc="center right")
             fig.set_size_inches(13, 7.5)
             plt.savefig(
-                "../results/id/" + figure_prefix + active_athlete["name"] + ".png",
+                "../results/id/" + active_athlete["name"] + figure_postfix + ".png",
                 transparent=None,
                 dpi=300,
                 format="png",

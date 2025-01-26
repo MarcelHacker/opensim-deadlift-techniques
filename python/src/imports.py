@@ -331,7 +331,11 @@ try:
         sep="\t",
         skiprows=6,
     )
-    active_athlete_id_sumo_3 = None
+    active_athlete_id_sumo_3 = pd.read_csv(
+        active_athlete["paths"]["id"]["sumo_dl_3"],
+        sep="\t",
+        skiprows=6,
+    )
     # ID conv
     active_athlete_id_conv_0 = pd.read_csv(
         active_athlete["paths"]["id"]["conv_dl_0"],
@@ -348,7 +352,11 @@ try:
         sep="\t",
         skiprows=6,
     )
-    active_athlete_id_conv_3 = None
+    active_athlete_id_conv_3 = pd.read_csv(
+        active_athlete["paths"]["id"]["conv_dl_3"],
+        sep="\t",
+        skiprows=6,
+    )
 except Exception as e:
     print("Error in ID files; src/imports.py")
     print(e)
@@ -578,6 +586,9 @@ try:
     active_athlete_id_sumo_time_normalised_2 = time_normalise_df(
         active_athlete_id_sumo_2
     )
+    active_athlete_id_sumo_time_normalised_3 = time_normalise_df(
+        active_athlete_id_sumo_3
+    )
     active_athlete_id_conv_time_normalised_0 = time_normalise_df(
         active_athlete_id_conv_0
     )
@@ -586,6 +597,9 @@ try:
     )
     active_athlete_id_conv_time_normalised_2 = time_normalise_df(
         active_athlete_id_conv_2
+    )
+    active_athlete_id_conv_time_normalised_3 = time_normalise_df(
+        active_athlete_id_conv_3
     )
     # muscle forces
     active_athlete_muscleForces_sumo_time_normalised_0 = time_normalise_df(
