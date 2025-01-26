@@ -15,7 +15,7 @@ def run_total_muscle_force_plot_trails(bool):
     # just for sumo currently avaiable
     if bool:
         try:
-            figure_prefix = "total_muscle_forces_trials_"
+            figure_postfix = "_total_muscle_forces_trials_"
             cols = 2
             color_sumo = "red"
             color_conv = "blue"
@@ -100,7 +100,7 @@ def run_total_muscle_force_plot_trails(bool):
             plt.ylabel(y_label)
             fig.set_size_inches(13, 7.5)
             plt.savefig(
-                "../results/so/" + figure_prefix + active_athlete["name"] + ".png",
+                "../results/so/" + active_athlete["name"] + figure_postfix + ".png",
                 transparent=None,
                 dpi=300,
                 format="png",

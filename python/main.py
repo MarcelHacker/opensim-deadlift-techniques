@@ -59,7 +59,7 @@ if __name__ == "__main__":
     # )
 
     ################################## USED FUNCTIONS ###################################################
-    run_total_muscle_force_plot_trails(False)
+    run_total_muscle_force_plot_trails(True)
     run_muscle_moments_plot(False)
     run_norm_emg_plot(False)
     run_raw_emg_plot(False)
