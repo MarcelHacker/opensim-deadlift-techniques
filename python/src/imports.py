@@ -764,6 +764,11 @@ try:
         "Hamstrings medial",  # Hamstrings medial
         "rl",
     )
+    active_athlete_hamstrings_medial_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,  # muscle force data
+        "Hamstrings medial",  # Hamstrings medial
+        "rl",
+    )
     active_athlete_hamstrings_medial_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Hamstrings medial",
@@ -776,6 +781,11 @@ try:
     )
     active_athlete_hamstrings_medial_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
+        "Hamstrings medial",
+        "rl",
+    )
+    active_athlete_hamstrings_medial_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
         "Hamstrings medial",
         "rl",
     )
@@ -795,6 +805,11 @@ try:
         "Hamstrings lateral",  # Hamstrings lateral
         "rl",
     )
+    active_athlete_hamstrings_lateral_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,  # muscle force data
+        "Hamstrings lateral",  # Hamstrings lateral
+        "rl",
+    )
     active_athlete_hamstrings_lateral_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,  # muscle force data
         "Hamstrings lateral",
@@ -807,6 +822,11 @@ try:
     )
     active_athlete_hamstrings_lateral_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,  # muscle force data
+        "Hamstrings lateral",
+        "rl",
+    )
+    active_athlete_hamstrings_lateral_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,  # muscle force data
         "Hamstrings lateral",
         "rl",
     )
@@ -825,6 +845,11 @@ try:
         "Vasti",  # Quadriceps
         "rl",
     )
+    active_athlete_vasti_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "Vasti",  # Quadriceps
+        "rl",
+    )
     active_athlete_vasti_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Vasti",  # Quadriceps
@@ -837,6 +862,11 @@ try:
     )
     active_athlete_vasti_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
+        "Vasti",  # Quadriceps
+        "rl",
+    )
+    active_athlete_vasti_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
         "Vasti",  # Quadriceps
         "rl",
     )
@@ -855,6 +885,11 @@ try:
         "Gluteus maximus",  # Gluteus Maximus
         "rl",
     )
+    active_athlete_gluteusmax_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "Gluteus maximus",  # Gluteus Maximus
+        "rl",
+    )
     active_athlete_gluteusmax_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Gluteus maximus",  # Gluteus Maximus
@@ -867,6 +902,11 @@ try:
     )
     active_athlete_gluteusmax_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
+        "Gluteus maximus",  # Gluteus Maximus
+        "rl",
+    )
+    active_athlete_gluteusmax_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
         "Gluteus maximus",  # Gluteus Maximus
         "rl",
     )
@@ -886,6 +926,11 @@ try:
         "Gluteus medius",
         "rl",
     )
+    active_athlete_gluteusmed_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "Gluteus medius",
+        "rl",
+    )
     active_athlete_gluteusmed_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Gluteus medius",
@@ -898,6 +943,11 @@ try:
     )
     active_athlete_gluteusmed_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
+        "Gluteus medius",
+        "rl",
+    )
+    active_athlete_gluteusmed_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
         "Gluteus medius",
         "rl",
     )
@@ -917,6 +967,11 @@ try:
         "Gluteus minimus",
         "rl",
     )
+    active_athlete_gluteusmin_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "Gluteus minimus",
+        "rl",
+    )
     active_athlete_gluteusmin_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Gluteus minimus",
@@ -929,6 +984,11 @@ try:
     )
     active_athlete_gluteusmin_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
+        "Gluteus minimus",
+        "rl",
+    )
+    active_athlete_gluteusmin_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
         "Gluteus minimus",
         "rl",
     )
@@ -947,6 +1007,11 @@ try:
         "Adductors",  # Adductors
         "rl",
     )
+    active_athlete_adductors_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "Adductors",  # Adductors
+        "rl",
+    )
     active_athlete_adductors_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Adductors",  # Adductors
@@ -959,6 +1024,11 @@ try:
     )
     active_athlete_adductors_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
+        "Adductors",  # Adductors
+        "rl",
+    )
+    active_athlete_adductors_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
         "Adductors",  # Adductors
         "rl",
     )
@@ -978,6 +1048,11 @@ try:
         "Hip flexors",  # Adductors
         "rl",
     )
+    active_athlete_hip_flexors_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "Hip flexors",  # Adductors
+        "rl",
+    )
     active_athlete_hip_flexors_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Hip flexors",  # Adductors
@@ -990,6 +1065,11 @@ try:
     )
     active_athlete_hip_flexors_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
+        "Hip flexors",  # Adductors
+        "rl",
+    )
+    active_athlete_hip_flexors_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
         "Hip flexors",  # Adductors
         "rl",
     )
@@ -1010,6 +1090,11 @@ try:
         "Triceps surae",  # Adductors
         "rl",
     )
+    active_athlete_triceps_surae_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "Triceps surae",  # Adductors
+        "rl",
+    )
     active_athlete_triceps_surae_conv_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Triceps surae",  # Adductors
@@ -1022,6 +1107,11 @@ try:
     )
     active_athlete_triceps_surae_conv_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
+        "Triceps surae",  # Adductors
+        "rl",
+    )
+    active_athlete_triceps_surae_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
         "Triceps surae",  # Adductors
         "rl",
     )

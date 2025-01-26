@@ -68,7 +68,7 @@ if __name__ == "__main__":
     run_kinematics_plot(False)
     run_moments_plot(False)
     run_forces_plot(False)
-    run_moment_arms_hip_plot(True)
+    run_moment_arms_hip_plot(False)
     ########################## MUSCLE FORCES ##############################################
     run_muscle_force_groups(False)
 
