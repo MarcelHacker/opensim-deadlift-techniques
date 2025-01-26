@@ -280,7 +280,11 @@ try:
         sep="\t",
         skiprows=10,
     )
-    active_athlete_ik_sumo_3 = None
+    active_athlete_ik_sumo_3 = pd.read_csv(
+        active_athlete["paths"]["ik"]["sumo_dl_3"],
+        sep="\t",
+        skiprows=10,
+    )
     # IK conv
     active_athlete_ik_conv_emptybar_0 = None
     active_athlete_ik_conv_emptybar_1 = None
@@ -301,7 +305,11 @@ try:
         sep="\t",
         skiprows=10,
     )
-    active_athlete_ik_conv_3 = None
+    active_athlete_ik_conv_3 = pd.read_csv(
+        active_athlete["paths"]["ik"]["conv_dl_3"],
+        sep="\t",
+        skiprows=10,
+    )
 
 except Exception as e:
     print("Error in IK files; src/imports.py")
@@ -511,12 +519,13 @@ except Exception as e:
     print(e)
 ##################################################################################################
 try:
-    active_athlete_emg_channels_order = active_athlete["paths"]["emg"]["channels_order"]
-    active_athlete_activations_emg_conv_0 = pd.read_csv(
-        active_athlete["paths"]["emg"]["conv_dl_0"],
-        sep=",",
-        skiprows=0,
-    )
+    # active_athlete_emg_channels_order = active_athlete["paths"]["emg"]["channels_order"]
+    # active_athlete_activations_emg_conv_0 = pd.read_csv(
+    #   active_athlete["paths"]["emg"]["conv_dl_0"],
+    #  sep=",",
+    # skiprows=0,
+    # )
+    print("no emg data")
     # print("\nACTIVATIONS EMG conv 0:\n", active_athlete_activations_emg_conv_0)
 except Exception as e:
     print("Error in emg activations files; src/imports.py")
@@ -536,6 +545,9 @@ try:
     active_athlete_ik_sumo_time_normalised_2 = time_normalise_df(
         active_athlete_ik_sumo_2
     )
+    active_athlete_ik_sumo_time_normalised_3 = time_normalise_df(
+        active_athlete_ik_sumo_3
+    )
     active_athlete_ik_conv_time_normalised_0 = time_normalise_df(
         active_athlete_ik_conv_0
     )
@@ -544,6 +556,9 @@ try:
     )
     active_athlete_ik_conv_time_normalised_2 = time_normalise_df(
         active_athlete_ik_conv_2
+    )
+    active_athlete_ik_conv_time_normalised_3 = time_normalise_df(
+        active_athlete_ik_conv_3
     )
     # id
     active_athlete_id_sumo_time_normalised_0 = time_normalise_df(
@@ -661,9 +676,11 @@ except Exception as e:
     print(e)
 
 try:
-    active_athlete_activations_emg_conv_time_normalised_0 = time_normalise_df(
-        active_athlete_activations_emg_conv_0
-    )
+
+    # active_athlete_activations_emg_conv_time_normalised_0 = time_normalise_df(
+    #   active_athlete_activations_emg_conv_0
+    # )
+    print("no emg normalisation")
 except Exception as e:
     print("Error in time normalisation emg activations files; src/imports.py")
     print(e)

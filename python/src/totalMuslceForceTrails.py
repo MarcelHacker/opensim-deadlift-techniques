@@ -15,7 +15,7 @@ def run_total_muscle_force_plot_trails(bool):
     # just for sumo currently avaiable
     if bool:
         try:
-            figure_postfix = "_total_muscle_forces_trials_"
+            figure_postfix = "_total_muscle_forces_trials"
             cols = 2
             color_sumo = "red"
             color_conv = "blue"
@@ -63,7 +63,7 @@ def run_total_muscle_force_plot_trails(bool):
                 color=color_sumo,
                 linestyle="dashdot",
             )
-            axs[0].set_yticks(np.arange(10000, 38000, 3000))
+            # axs[0].set_yticks(np.arange(10000, 38000, 3000))
             axs[0].set_xticks(np.arange(0, 101, 5))
             axs[0].set_xlim(left=0, right=100)
             plt.legend()
@@ -92,7 +92,7 @@ def run_total_muscle_force_plot_trails(bool):
                 color=color_conv,
                 linestyle="dashdot",
             )
-            axs[1].set_yticks(np.arange(10000, 38000, 3000))
+            # axs[1].set_yticks(np.arange(10000, 38000, 3000))
             axs[1].set_xticks(np.arange(0, 101, 5))
             axs[1].set_xlim(left=0, right=100)
             plt.legend()
