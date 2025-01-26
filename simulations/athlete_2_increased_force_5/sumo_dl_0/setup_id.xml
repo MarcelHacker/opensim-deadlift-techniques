@@ -6,7 +6,7 @@
 		<!--Name of the .osim file used to construct a model.-->
 		<model_file>None</model_file>
 		<!--Time range over which the inverse dynamics problem is solved.-->
-		<time_range> 11.300000000000000711 12.800000000000000711</time_range>
+		<time_range> 13.099999999999999645 15.099999999999999645</time_range>
 		<!--List of forces by individual or grouping name (e.g. All, actuators, muscles, ...) to be excluded when computing model dynamics. 'All' also excludes external loads added via 'external_loads_file'.-->
 		<forces_to_exclude> Muscles</forces_to_exclude>
 		<!--XML file (.xml) containing the external loads applied to the model as a set of ExternalForce(s).-->
