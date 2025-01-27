@@ -561,7 +561,7 @@
 			<!--Name of OpenSim model file (.osim) to write when done scaling.-->
 			<output_model_file>Unassigned</output_model_file>
 			<!--Name of file to write containing the scale factors that were applied to the unscaled model (optional).-->
-			<output_scale_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_3/output_scale.xml</output_scale_file>
+			<output_scale_file>output_scale.xml</output_scale_file>
 		</ModelScaler>
 		<!--Specifies parameters for placing markers on the model once a model is scaled. -->
 		<MarkerPlacer>
@@ -819,11 +819,11 @@
 			<!--Time range over which the marker positions are averaged.-->
 			<time_range> 0.10000000000000000555 0.11000000000000000056</time_range>
 			<!--Name of the motion file (.mot) written after marker relocation (optional).-->
-			<output_motion_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_3/./static_output.mot</output_motion_file>
+			<output_motion_file>static_output.mot</output_motion_file>
 			<!--Output OpenSim model file (.osim) after scaling and maker placement.-->
-			<output_model_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_3/./scaled_model.osim</output_model_file>
+			<output_model_file>scaled_model.osim</output_model_file>
 			<!--Output marker set containing the new marker locations after markers have been placed.-->
-			<output_marker_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_3/./static_output.trc</output_marker_file>
+			<output_marker_file>static_output.trc</output_marker_file>
 			<!--Maximum amount of movement allowed in marker data when averaging frames of the static trial. A negative value means there is not limit.-->
 			<max_marker_movement>-1</max_marker_movement>
 		</MarkerPlacer>
