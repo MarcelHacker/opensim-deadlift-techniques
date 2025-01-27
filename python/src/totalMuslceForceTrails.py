@@ -21,6 +21,9 @@ def run_total_muscle_force_plot_trails(bool):
             cols = 2
             color_sumo = "red"
             color_conv = "blue"
+            linestyle_trail_1 = "dotted"
+            linestyle_trail_2 = "dashed"
+            linestyle_trail_3 = "dashdot"
             fig, axs = plt.subplots(cols)
             fig.suptitle(
                 "Total Muscle Force Trials "
@@ -57,19 +60,19 @@ def run_total_muscle_force_plot_trails(bool):
                 active_athlete_total_sumo_force_1,
                 label="Trial 2",
                 color=color_sumo,
-                linestyle="dotted",
+                linestyle=linestyle_trail_1,
             )
             plt.plot(
                 active_athlete_total_sumo_force_2,
                 label="Trial 3",
                 color=color_sumo,
-                linestyle="dashdot",
+                linestyle=linestyle_trail_2,
             )
             plt.plot(
                 active_athlete_total_sumo_force_3,
                 label="Trial 4",
                 color=color_sumo,
-                linestyle="dashdot",
+                linestyle=linestyle_trail_3,
             )
             # axs[0].set_yticks(np.arange(10000, 38000, 3000))
             axs[0].set_xticks(np.arange(0, 101, 5))
@@ -92,19 +95,19 @@ def run_total_muscle_force_plot_trails(bool):
                 active_athlete_total_conv_force_1,
                 label="Trial 2",
                 color=color_conv,
-                linestyle="dotted",
+                linestyle=linestyle_trail_1,
             )
             plt.plot(
                 active_athlete_total_conv_force_2,
                 label="Trial 3",
                 color=color_conv,
-                linestyle="dashdot",
+                linestyle=linestyle_trail_2,
             )
             plt.plot(
                 active_athlete_total_conv_force_3,
                 label="Trial 4",
                 color=color_conv,
-                linestyle="dashdot",
+                linestyle=linestyle_trail_3,
             )
             # axs[1].set_yticks(np.arange(10000, 38000, 3000))
             axs[1].set_xticks(np.arange(0, 101, 5))
