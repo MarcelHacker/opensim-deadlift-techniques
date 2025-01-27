@@ -61,18 +61,18 @@ if __name__ == "__main__":
     # )
 
     ################################## USED FUNCTIONS ###################################################
-    run_total_muscle_force_plot_trails(True)
-    run_muscle_moments_plot(False)
+    run_total_muscle_force_plot_trails(False)
+    run_muscle_moments_plot(True)
     # run_norm_emg_plot(False)
     # run_raw_emg_plot(False)
     # run_activations_comparison_from_emg(False)
 
-    run_kinematics_plot(False)
-    run_moments_plot(False)
-    run_forces_plot(False)
-    run_moment_arms_hip_plot(False)
+    run_kinematics_plot(True)
+    run_moments_plot(True)
+    run_forces_plot(True)
+    run_moment_arms_hip_plot(True)
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_groups(False)
+    run_muscle_force_groups(True)
 
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
