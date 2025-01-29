@@ -148,19 +148,19 @@
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>0.5</weight>
+					<weight>1</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="RUL">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>0.5</weight>
+					<weight>1</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="RUFIN">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>0.5</weight>
+					<weight>1</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="LASI">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
