@@ -21,7 +21,7 @@ def run_moments_plot(bool, save_figures):
             trial_color_0 = "red"
             trial_color_1 = "blue"
             trial_color_2 = "orange"
-            trial_color_3 = "magenta"
+            trial_color_3 = "darkgreen"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Joint Moments Trials "
