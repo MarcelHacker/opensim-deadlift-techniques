@@ -14270,7 +14270,7 @@
 					<!--The fixed location of the station expressed in its parent frame.-->
 					<location>-0.14627899999999999 0.079882099999999998 0.0020466600000000001</location>
 					<!--Flag (true or false) specifying whether the marker is fixed in its parent frame during the marker placement step of scaling.  If false, the marker is free to move within its parent Frame to match its experimental counterpart.-->
-					<fixed>true</fixed>
+					<fixed>false</fixed>
 				</Marker>
 				<Marker name="LSACR">
 					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame to which this station is fixed.).-->
@@ -14278,7 +14278,7 @@
 					<!--The fixed location of the station expressed in its parent frame.-->
 					<location>-0.15575700000000001 0.054971100000000002 -0.020278399999999999</location>
 					<!--Flag (true or false) specifying whether the marker is fixed in its parent frame during the marker placement step of scaling.  If false, the marker is free to move within its parent Frame to match its experimental counterpart.-->
-					<fixed>true</fixed>
+					<fixed>false</fixed>
 				</Marker>
 				<Marker name="RSACR">
 					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame to which this station is fixed.).-->
@@ -14286,7 +14286,7 @@
 					<!--The fixed location of the station expressed in its parent frame.-->
 					<location>-0.15182399999999999 0.050950099999999998 0.020566500000000001</location>
 					<!--Flag (true or false) specifying whether the marker is fixed in its parent frame during the marker placement step of scaling.  If false, the marker is free to move within its parent Frame to match its experimental counterpart.-->
-					<fixed>true</fixed>
+					<fixed>false</fixed>
 				</Marker>
 				<Marker name="LHJC">
 					<!--Path to a Component that satisfies the Socket 'parent_frame' of type PhysicalFrame (description: The frame to which this station is fixed.).-->
