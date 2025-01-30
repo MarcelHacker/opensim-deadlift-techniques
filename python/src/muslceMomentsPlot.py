@@ -9,7 +9,7 @@ from .imports import (
 )
 
 
-def run_muscle_moments_plot(bool):
+def run_muscle_moments_plot(bool, save_figures):
 
     if bool:
         try:

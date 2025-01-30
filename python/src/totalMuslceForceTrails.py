@@ -13,7 +13,7 @@ from .imports import (
 )
 
 
-def run_total_muscle_force_plot_trails(bool):
+def run_total_muscle_force_plot_trails(bool, save_figures):
     # just for sumo currently avaiable
     if bool:
         try:
@@ -116,12 +116,13 @@ def run_total_muscle_force_plot_trails(bool):
             plt.xlabel(x_label)
             plt.ylabel(y_label)
             fig.set_size_inches(13, 7.5)
-            plt.savefig(
-                "../results/so/" + active_athlete["name"] + figure_postfix + ".png",
-                transparent=None,
-                dpi=300,
-                format="png",
-            )
+            if save_figures:
+                plt.savefig(
+                    "../results/so/" + active_athlete["name"] + figure_postfix + ".png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
             plt.show()
 
         except Exception as e:

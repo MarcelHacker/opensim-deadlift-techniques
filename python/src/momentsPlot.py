@@ -12,7 +12,7 @@ from .imports import (
 )
 
 
-def run_moments_plot(bool):
+def run_moments_plot(bool, save_figures):
     if bool:
         try:
             figure_postfix = "_moments_trials"
@@ -164,12 +164,13 @@ def run_moments_plot(bool):
             ].get_legend_handles_labels()  # get legend from first plot
             fig.legend(handles, labels, loc="center right")
             fig.set_size_inches(13, 7.5)
-            plt.savefig(
-                "../results/id/" + active_athlete["name"] + figure_postfix + ".png",
-                transparent=None,
-                dpi=300,
-                format="png",
-            )
+            if save_figures:
+                plt.savefig(
+                    "../results/id/" + active_athlete["name"] + figure_postfix + ".png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
             plt.show()
 
         except Exception as e:

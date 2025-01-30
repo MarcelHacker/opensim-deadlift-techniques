@@ -80,7 +80,7 @@ For the muscle forces sum of right and left leg of the trails was used.
 """
 
 
-def run_muscle_force_groups(bool):
+def run_muscle_force_groups(bool, save_figures):
     if bool:
         try:
             figure_postfix = "_muscle_force_groups"
@@ -581,12 +581,13 @@ def run_muscle_force_groups(bool):
             ].get_legend_handles_labels()  # get legend from first plot
             fig.legend(handles, labels, loc="center right")
             fig.set_size_inches(13, 7.5)
-            plt.savefig(
-                "../results/so/" + active_athlete["name"] + figure_postfix + ".png",
-                transparent=None,
-                dpi=300,
-                format="png",
-            )
+            if save_figures:
+                plt.savefig(
+                    "../results/so/" + active_athlete["name"] + figure_postfix + ".png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
             plt.show()
         except Exception as e:
             print("Error in run_muscle_force_groups")

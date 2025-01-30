@@ -12,7 +12,7 @@ from src.imports import (
 )
 
 
-def run_kinematics_plot(bool):
+def run_kinematics_plot(bool, save_figures):
     # just for sumo currently avaiable
     if bool:
         try:
@@ -165,12 +165,13 @@ def run_kinematics_plot(bool):
             ].get_legend_handles_labels()  # get legend from first plot
             fig.legend(handles, labels, loc="center right")
             fig.set_size_inches(13, 7.5)
-            plt.savefig(
-                "../results/ik/" + active_athlete["name"] + figure_postfix + ".png",
-                transparent=None,
-                dpi=300,
-                format="png",
-            )
+            if save_figures:
+                plt.savefig(
+                    "../results/ik/" + active_athlete["name"] + figure_postfix + ".png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
             plt.show()
 
         except Exception as e:
