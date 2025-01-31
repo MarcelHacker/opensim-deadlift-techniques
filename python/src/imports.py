@@ -241,7 +241,7 @@ class Athlete:
 
 
 # set this name for the active folder
-active_athlete_foldername = "athlete_2_increased_force_5"
+active_athlete_foldername = "athlete_0_increased_force_3"
 
 ################################ CREATING ATHLETE ###########################################
 active_athlete = None  # define active_athlete
@@ -870,6 +870,167 @@ try:
         "Vasti",  # Quadriceps
         "rl",
     )
+    active_athlete_vastus_lateralis_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "vastus lateralis",
+        "rl",
+    )
+    active_athlete_vastus_lateralis_sumo_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,
+        "vastus lateralis",
+        "rl",
+    )
+    active_athlete_vastus_lateralis_sumo_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,
+        "vastus lateralis",
+        "rl",
+    )
+    active_athlete_vastus_lateralis_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "vastus lateralis",
+        "rl",
+    )
+    active_athlete_vastus_lateralis_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "vastus lateralis",
+        "rl",
+    )
+    active_athlete_vastus_lateralis_conv_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "vastus lateralis",
+        "rl",
+    )
+    active_athlete_vastus_lateralis_conv_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "vastus lateralis",
+        "rl",
+    )
+    active_athlete_vastus_lateralis_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "vastus lateralis",
+        "rl",
+    )
+    active_athlete_vastus_medialis_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "vastus medialis",
+        "rl",
+    )
+    active_athlete_vastus_medialis_sumo_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,
+        "vastus medialis",
+        "rl",
+    )
+    active_athlete_vastus_medialis_sumo_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,
+        "vastus medialis",
+        "rl",
+    )
+    active_athlete_vastus_medialis_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "vastus medialis",
+        "rl",
+    )
+    active_athlete_vastus_medialis_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "vastus medialis",
+        "rl",
+    )
+    active_athlete_vastus_medialis_conv_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "vastus medialis",
+        "rl",
+    )
+    active_athlete_vastus_medialis_conv_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "vastus medialis",
+        "rl",
+    )
+    active_athlete_vastus_medialis_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "vastus medialis",
+        "rl",
+    )
+    active_athlete_vastus_intermedius_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "vastus intermedius",
+        "rl",
+    )
+    active_athlete_vastus_intermedius_sumo_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,
+        "vastus intermedius",
+        "rl",
+    )
+    active_athlete_vastus_intermedius_sumo_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,
+        "vastus intermedius",
+        "rl",
+    )
+    active_athlete_vastus_intermedius_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "vastus intermedius",
+        "rl",
+    )
+    active_athlete_vastus_intermedius_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "vastus intermedius",
+        "rl",
+    )
+    active_athlete_vastus_intermedius_conv_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "vastus intermedius",
+        "rl",
+    )
+    active_athlete_vastus_intermedius_conv_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "vastus intermedius",
+        "rl",
+    )
+    active_athlete_vastus_intermedius_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "vastus intermedius",
+        "rl",
+    )
+    active_athlete_rectus_femoris_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "rectus femoris",
+        "rl",
+    )
+    active_athlete_rectus_femoris_sumo_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,
+        "rectus femoris",
+        "rl",
+    )
+    active_athlete_rectus_femoris_sumo_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,
+        "rectus femoris",
+        "rl",
+    )
+    active_athlete_rectus_femoris_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "rectus femoris",
+        "rl",
+    )
+    active_athlete_rectus_femoris_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "rectus femoris",
+        "rl",
+    )
+    active_athlete_rectus_femoris_conv_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "rectus femoris",
+        "rl",
+    )
+    active_athlete_rectus_femoris_conv_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "rectus femoris",
+        "rl",
+    )
+    active_athlete_rectus_femoris_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "rectus femoris",
+        "rl",
+    )
+
     active_athlete_gluteusmax_sumo_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_0,
         "Gluteus maximus",  # Gluteus Maximus

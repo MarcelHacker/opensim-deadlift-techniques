@@ -636,6 +636,27 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "vasint_l",
         ]
 
+    if muscle_group == "vastus lateralis" and limbs == "rl":
+        muscles_of_interest = [
+            "vaslat_r",
+            "vaslat_l",
+        ]
+    if muscle_group == "vastus medialis" and limbs == "rl":
+        muscles_of_interest = [
+            "vasmed_r",
+            "vasmed_l",
+        ]
+    if muscle_group == "vastus intermedius" and limbs == "rl":
+        muscles_of_interest = [
+            "vasint_r",
+            "vasint_l",
+        ]
+    if muscle_group == "rectus femoris" and limbs == "rl":
+        muscles_of_interest = [
+            "recfem_r",
+            "recfem_l",
+        ]
+
     if muscle_group == "Quadriceps" and limbs == "rl":
         muscles_of_interest = [
             "recfem_r",
