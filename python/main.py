@@ -60,10 +60,10 @@ if __name__ == "__main__":
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
-    save_figures = True
+    save_figures = False
     run_total_muscle_force_plot_spm(True, save_figures)
     ################################## USED FUNCTIONS ###################################################
-    run_total_muscle_force_plot_trails(False, save_figures)
+    run_total_muscle_force_plot_trails(True, save_figures)
     run_muscle_moments_plot(False, save_figures)
     # run_norm_emg_plot(False)
     # run_raw_emg_plot(False)
