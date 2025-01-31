@@ -61,16 +61,16 @@ if __name__ == "__main__":
     # )
     save_figures = False
     ################################## USED FUNCTIONS ###################################################
-    run_total_muscle_force_plot_trails(True, save_figures)
-    run_muscle_moments_plot(True, save_figures)
+    run_total_muscle_force_plot_trails(False, save_figures)
+    run_muscle_moments_plot(False, save_figures)
     # run_norm_emg_plot(False)
     # run_raw_emg_plot(False)
     # run_activations_comparison_from_emg(False)
 
-    run_kinematics_plot(True, save_figures)
-    run_moments_plot(True, save_figures)
-    run_forces_plot(True, save_figures)
-    run_moment_arms_hip_plot(True, save_figures)
+    run_kinematics_plot(False, save_figures)
+    run_moments_plot(False, save_figures)
+    run_forces_plot(False, save_figures)
+    run_moment_arms_hip_plot(False, save_figures)
     ########################## MUSCLE FORCES ##############################################
     run_muscle_force_groups(True, save_figures)
 

@@ -9,6 +9,8 @@ source activate
 cd "/Users/marcelhacker/Documents/opensim-deadlift-techniques"
 cd python
 
+# 
+
 FOR WINDOWS PC
 
 # 1. Activate env
