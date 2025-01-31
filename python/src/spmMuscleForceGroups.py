@@ -85,7 +85,7 @@ For the muscle forces sum of right and left leg of the trails was used.
 def run_muscle_force_groups_spm(bool, save_figures):
     if bool:
         try:
-            figure_postfix = "_spm_muscle_force_groups"
+            figure_0_postfix = "_spm_hip_extensors_muscle_force"
             color_sumo = "red"
             color_conv = "blue"
             label_sumo = "SUMO"
@@ -108,7 +108,7 @@ def run_muscle_force_groups_spm(bool, save_figures):
                 hspace=0.293,
                 top=0.917,
                 right=0.921,
-                left=0.054,
+                left=0.067,
                 bottom=0.06,
             )
 
@@ -356,7 +356,10 @@ def run_muscle_force_groups_spm(bool, save_figures):
             fig_0.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
-                    "../results/so/" + active_athlete["name"] + figure_postfix + ".png",
+                    "../results/so/mean/"
+                    + active_athlete["name"]
+                    + figure_0_postfix
+                    + ".png",
                     transparent=None,
                     dpi=300,
                     format="png",
