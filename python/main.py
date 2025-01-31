@@ -20,6 +20,7 @@ from src.muslceMomentsPlot import run_muscle_moments_plot
 from src.muscleForceGroups import run_muscle_force_groups
 from src.increaseForce import increase_max_isometric_force
 from src.pdfExport import create_pdf_report
+from src.spmTotalMuscleForces import run_total_muscle_force_plot_spm
 
 
 #####################################################################################
@@ -59,7 +60,8 @@ if __name__ == "__main__":
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
-    save_figures = False
+    save_figures = True
+    run_total_muscle_force_plot_spm(True, save_figures)
     ################################## USED FUNCTIONS ###################################################
     run_total_muscle_force_plot_trails(False, save_figures)
     run_muscle_moments_plot(False, save_figures)
@@ -72,7 +74,7 @@ if __name__ == "__main__":
     run_forces_plot(False, save_figures)
     run_moment_arms_hip_plot(False, save_figures)
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_groups(True, save_figures)
+    run_muscle_force_groups(False, save_figures)
 
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
