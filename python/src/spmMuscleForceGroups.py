@@ -3,6 +3,7 @@ import spm1d
 from .imports import (
     plt,
     active_athlete,
+    active_athlete_bodymass,
     active_athlete_hamstrings_medial_sumo_force_0,
     active_athlete_hamstrings_medial_sumo_force_1,
     active_athlete_hamstrings_medial_sumo_force_2,
@@ -70,6 +71,13 @@ from .imports import (
 )
 
 
+def normalize_forces(array):
+    normalized_array = []
+    for value in array:
+        normalized_array.append(value / active_athlete_bodymass)
+    return normalized_array
+
+
 def plot_means(array, color_letter, label):
     spm1d.plot.plot_mean_sd(
         array,
@@ -105,7 +113,7 @@ def run_muscle_force_groups_spm(bool, save_figures):
             color_conv = "blue"
             label_sumo = "SUMO"
             label_conv = "CONV"
-            y_label = "Muscle force [N]"
+            y_label = "Normalized muscle force [N/kg]"
             x_label = "% concentric deadlift cycle"
 
             fig_0, axs_0 = plt.subplots(2, 4)
@@ -128,17 +136,17 @@ def run_muscle_force_groups_spm(bool, save_figures):
             )
 
             hamstrings_medial_sumo = [
-                active_athlete_hamstrings_medial_sumo_force_0,
-                active_athlete_hamstrings_medial_sumo_force_1,
-                active_athlete_hamstrings_medial_sumo_force_2,
-                active_athlete_hamstrings_medial_sumo_force_3,
+                normalize_forces(active_athlete_hamstrings_medial_sumo_force_0),
+                normalize_forces(active_athlete_hamstrings_medial_sumo_force_1),
+                normalize_forces(active_athlete_hamstrings_medial_sumo_force_2),
+                normalize_forces(active_athlete_hamstrings_medial_sumo_force_3),
             ]
 
             hamstrings_medial_conv = [
-                active_athlete_hamstrings_medial_conv_force_0,
-                active_athlete_hamstrings_medial_conv_force_1,
-                active_athlete_hamstrings_medial_conv_force_2,
-                active_athlete_hamstrings_medial_conv_force_3,
+                normalize_forces(active_athlete_hamstrings_medial_conv_force_0),
+                normalize_forces(active_athlete_hamstrings_medial_conv_force_1),
+                normalize_forces(active_athlete_hamstrings_medial_conv_force_2),
+                normalize_forces(active_athlete_hamstrings_medial_conv_force_3),
             ]
             hamstrings_medial_sumo = np.array(hamstrings_medial_sumo)
             hamstrings_medial_conv = np.array(hamstrings_medial_conv)
@@ -186,17 +194,17 @@ def run_muscle_force_groups_spm(bool, save_figures):
             ti.plot_p_values()
 
             hamstrings_lateral_sumo = [
-                active_athlete_hamstrings_lateral_sumo_force_0,
-                active_athlete_hamstrings_lateral_sumo_force_1,
-                active_athlete_hamstrings_lateral_sumo_force_2,
-                active_athlete_hamstrings_lateral_sumo_force_3,
+                normalize_forces(active_athlete_hamstrings_lateral_sumo_force_0),
+                normalize_forces(active_athlete_hamstrings_lateral_sumo_force_1),
+                normalize_forces(active_athlete_hamstrings_lateral_sumo_force_2),
+                normalize_forces(active_athlete_hamstrings_lateral_sumo_force_3),
             ]
 
             hamstrings_lateral_conv = [
-                active_athlete_hamstrings_lateral_conv_force_0,
-                active_athlete_hamstrings_lateral_conv_force_1,
-                active_athlete_hamstrings_lateral_conv_force_2,
-                active_athlete_hamstrings_lateral_conv_force_3,
+                normalize_forces(active_athlete_hamstrings_lateral_conv_force_0),
+                normalize_forces(active_athlete_hamstrings_lateral_conv_force_1),
+                normalize_forces(active_athlete_hamstrings_lateral_conv_force_2),
+                normalize_forces(active_athlete_hamstrings_lateral_conv_force_3),
             ]
             hamstrings_lateral_sumo = np.array(hamstrings_lateral_sumo)
             hamstrings_lateral_conv = np.array(hamstrings_lateral_conv)
@@ -246,17 +254,17 @@ def run_muscle_force_groups_spm(bool, save_figures):
             ti.plot_p_values()
 
             adductors_sumo = [
-                active_athlete_adductors_sumo_force_0,
-                active_athlete_adductors_sumo_force_1,
-                active_athlete_adductors_sumo_force_2,
-                active_athlete_adductors_sumo_force_3,
+                normalize_forces(active_athlete_adductors_sumo_force_0),
+                normalize_forces(active_athlete_adductors_sumo_force_1),
+                normalize_forces(active_athlete_adductors_sumo_force_2),
+                normalize_forces(active_athlete_adductors_sumo_force_3),
             ]
 
             adductors_conv = [
-                active_athlete_adductors_conv_force_0,
-                active_athlete_adductors_conv_force_1,
-                active_athlete_adductors_conv_force_2,
-                active_athlete_adductors_conv_force_3,
+                normalize_forces(active_athlete_adductors_conv_force_0),
+                normalize_forces(active_athlete_adductors_conv_force_1),
+                normalize_forces(active_athlete_adductors_conv_force_2),
+                normalize_forces(active_athlete_adductors_conv_force_3),
             ]
             adductors_sumo = np.array(adductors_sumo)
             adductors_conv = np.array(adductors_conv)
@@ -306,17 +314,17 @@ def run_muscle_force_groups_spm(bool, save_figures):
             # active_athlete_gluteusmax_sumo_force_0
 
             gluteusmax_sumo = [
-                active_athlete_gluteusmax_sumo_force_0,
-                active_athlete_gluteusmax_sumo_force_1,
-                active_athlete_gluteusmax_sumo_force_2,
-                active_athlete_gluteusmax_sumo_force_3,
+                normalize_forces(active_athlete_gluteusmax_sumo_force_0),
+                normalize_forces(active_athlete_gluteusmax_sumo_force_1),
+                normalize_forces(active_athlete_gluteusmax_sumo_force_2),
+                normalize_forces(active_athlete_gluteusmax_sumo_force_3),
             ]
 
             gluteusmax_conv = [
-                active_athlete_gluteusmax_conv_force_0,
-                active_athlete_gluteusmax_conv_force_1,
-                active_athlete_gluteusmax_conv_force_2,
-                active_athlete_gluteusmax_conv_force_3,
+                normalize_forces(active_athlete_gluteusmax_conv_force_0),
+                normalize_forces(active_athlete_gluteusmax_conv_force_1),
+                normalize_forces(active_athlete_gluteusmax_conv_force_2),
+                normalize_forces(active_athlete_gluteusmax_conv_force_3),
             ]
             gluteusmax_sumo = np.array(gluteusmax_sumo)
             gluteusmax_conv = np.array(gluteusmax_conv)
@@ -403,17 +411,17 @@ def run_muscle_force_groups_spm(bool, save_figures):
             )
 
             vastus_lateralis_sumo = [
-                active_athlete_vastus_lateralis_sumo_force_0,
-                active_athlete_vastus_lateralis_sumo_force_1,
-                active_athlete_vastus_lateralis_sumo_force_2,
-                active_athlete_vastus_lateralis_sumo_force_3,
+                normalize_forces(active_athlete_vastus_lateralis_sumo_force_0),
+                normalize_forces(active_athlete_vastus_lateralis_sumo_force_1),
+                normalize_forces(active_athlete_vastus_lateralis_sumo_force_2),
+                normalize_forces(active_athlete_vastus_lateralis_sumo_force_3),
             ]
 
             vastus_lateralis_conv = [
-                active_athlete_vastus_lateralis_conv_force_0,
-                active_athlete_vastus_lateralis_conv_force_1,
-                active_athlete_vastus_lateralis_conv_force_2,
-                active_athlete_vastus_lateralis_conv_force_3,
+                normalize_forces(active_athlete_vastus_lateralis_conv_force_0),
+                normalize_forces(active_athlete_vastus_lateralis_conv_force_1),
+                normalize_forces(active_athlete_vastus_lateralis_conv_force_2),
+                normalize_forces(active_athlete_vastus_lateralis_conv_force_3),
             ]
             vastus_lateralis_sumo = np.array(vastus_lateralis_sumo)
             vastus_lateralis_conv = np.array(vastus_lateralis_conv)
@@ -437,16 +445,16 @@ def run_muscle_force_groups_spm(bool, save_figures):
             paired_ttest(vastus_lateralis_sumo, vastus_lateralis_conv)
 
             vastus_medialis_sumo = [
-                active_athlete_vastus_medialis_sumo_force_0,
-                active_athlete_vastus_medialis_sumo_force_1,
-                active_athlete_vastus_medialis_sumo_force_2,
-                active_athlete_vastus_medialis_sumo_force_3,
+                normalize_forces(active_athlete_vastus_medialis_sumo_force_0),
+                normalize_forces(active_athlete_vastus_medialis_sumo_force_1),
+                normalize_forces(active_athlete_vastus_medialis_sumo_force_2),
+                normalize_forces(active_athlete_vastus_medialis_sumo_force_3),
             ]
             vastus_medialis_conv = [
-                active_athlete_vastus_medialis_conv_force_0,
-                active_athlete_vastus_medialis_conv_force_1,
-                active_athlete_vastus_medialis_conv_force_2,
-                active_athlete_vastus_medialis_conv_force_3,
+                normalize_forces(active_athlete_vastus_medialis_conv_force_0),
+                normalize_forces(active_athlete_vastus_medialis_conv_force_1),
+                normalize_forces(active_athlete_vastus_medialis_conv_force_2),
+                normalize_forces(active_athlete_vastus_medialis_conv_force_3),
             ]
             vastus_medialis_sumo = np.array(vastus_medialis_sumo)
             vastus_medialis_conv = np.array(vastus_medialis_conv)
@@ -470,16 +478,16 @@ def run_muscle_force_groups_spm(bool, save_figures):
             paired_ttest(vastus_medialis_sumo, vastus_medialis_conv)
 
             vastus_intermedius_sumo = [
-                active_athlete_vastus_intermedius_sumo_force_0,
-                active_athlete_vastus_intermedius_sumo_force_1,
-                active_athlete_vastus_intermedius_sumo_force_2,
-                active_athlete_vastus_intermedius_sumo_force_3,
+                normalize_forces(active_athlete_vastus_intermedius_sumo_force_0),
+                normalize_forces(active_athlete_vastus_intermedius_sumo_force_1),
+                normalize_forces(active_athlete_vastus_intermedius_sumo_force_2),
+                normalize_forces(active_athlete_vastus_intermedius_sumo_force_3),
             ]
             vastus_intermedius_conv = [
-                active_athlete_vastus_intermedius_conv_force_0,
-                active_athlete_vastus_intermedius_conv_force_1,
-                active_athlete_vastus_intermedius_conv_force_2,
-                active_athlete_vastus_intermedius_conv_force_3,
+                normalize_forces(active_athlete_vastus_intermedius_conv_force_0),
+                normalize_forces(active_athlete_vastus_intermedius_conv_force_1),
+                normalize_forces(active_athlete_vastus_intermedius_conv_force_2),
+                normalize_forces(active_athlete_vastus_intermedius_conv_force_3),
             ]
             vastus_intermedius_sumo = np.array(vastus_intermedius_sumo)
             vastus_intermedius_conv = np.array(vastus_intermedius_conv)
@@ -503,16 +511,16 @@ def run_muscle_force_groups_spm(bool, save_figures):
             paired_ttest(vastus_intermedius_sumo, vastus_intermedius_conv)
 
             rectus_femoris_sumo = [
-                active_athlete_rectus_femoris_sumo_force_0,
-                active_athlete_rectus_femoris_sumo_force_1,
-                active_athlete_rectus_femoris_sumo_force_2,
-                active_athlete_rectus_femoris_sumo_force_3,
+                normalize_forces(active_athlete_rectus_femoris_sumo_force_0),
+                normalize_forces(active_athlete_rectus_femoris_sumo_force_1),
+                normalize_forces(active_athlete_rectus_femoris_sumo_force_2),
+                normalize_forces(active_athlete_rectus_femoris_sumo_force_3),
             ]
             rectus_femoris_conv = [
-                active_athlete_rectus_femoris_conv_force_0,
-                active_athlete_rectus_femoris_conv_force_1,
-                active_athlete_rectus_femoris_conv_force_2,
-                active_athlete_rectus_femoris_conv_force_3,
+                normalize_forces(active_athlete_rectus_femoris_conv_force_0),
+                normalize_forces(active_athlete_rectus_femoris_conv_force_1),
+                normalize_forces(active_athlete_rectus_femoris_conv_force_2),
+                normalize_forces(active_athlete_rectus_femoris_conv_force_3),
             ]
             rectus_femoris_sumo = np.array(rectus_femoris_sumo)
             rectus_femoris_conv = np.array(rectus_femoris_conv)

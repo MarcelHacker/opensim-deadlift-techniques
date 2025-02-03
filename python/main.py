@@ -61,7 +61,7 @@ if __name__ == "__main__":
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
-    save_figures = True
+    save_figures = False
     ################################## USED FUNCTIONS ###################################################
     run_total_muscle_force_plot_spm(False, save_figures)
     run_total_muscle_force_plot_trails(False, save_figures)

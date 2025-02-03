@@ -241,7 +241,7 @@ class Athlete:
 
 
 # set this name for the active folder
-active_athlete_foldername = "athlete_0_increased_force_3"
+active_athlete_foldername = "athlete_2_increased_force_5"
 
 ################################ CREATING ATHLETE ###########################################
 active_athlete = None  # define active_athlete
@@ -261,6 +261,7 @@ except Exception as e:
 ##################################################################################################
 # IK sumo
 try:
+    active_athlete_bodymass = active_athlete["bodymass"]
     active_athlete_ik_sumo_emptybar_0 = None
     active_athlete_ik_sumo_emptybar_1 = None
     active_athlete_ik_sumo_emptybar_2 = None

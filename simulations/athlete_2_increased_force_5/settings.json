@@ -3,7 +3,7 @@
   "model": "athlete_2_scaled_increased_force_5",
   "age": 27,
   "gender": "male",
-  "mass": 98,
+  "bodymass": 98,
   "height": 178,
   "load": 232.5,
   "fmax": 290,
