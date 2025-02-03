@@ -68,6 +68,7 @@ from .imports import (
     active_athlete_rectus_femoris_conv_force_1,
     active_athlete_rectus_femoris_conv_force_2,
     active_athlete_rectus_femoris_conv_force_3,
+    create_overall_csv,
 )
 
 
@@ -98,6 +99,39 @@ def paired_ttest(varA, varB):
     ti.plot()
     ti.plot_threshold_label()
     ti.plot_p_values()
+
+
+def isSumoPreffered():
+    if active_athlete["technique"] == "sumo":
+        return True
+    else:
+        return False
+
+
+def create_muscle_force_csv(
+    array_sumo_time_normalized, array_conv_time_normalized, muscle_group
+):
+    create_overall_csv(
+        (
+            ("preferred" if isSumoPreffered() else "non-preferred")
+            + "/"
+            + str(muscle_group)
+            + ".csv"
+        ),
+        array_sumo_time_normalized,
+        active_athlete["name"],
+    )
+
+    create_overall_csv(
+        (
+            ("preferred" if isSumoPreffered() == False else "non-preferred")
+            + "/"
+            + str(muscle_group)
+            + ".csv"
+        ),
+        array_conv_time_normalized,
+        active_athlete["name"],
+    )
 
 
 """
@@ -559,6 +593,10 @@ def run_muscle_force_groups_spm(bool, save_figures):
                     format="png",
                 )
             plt.show()
+
+            create_muscle_force_csv(
+                hamstrings_lateral_sumo, hamstrings_lateral_conv, "hamstrings_lateral"
+            )
         except Exception as e:
             print("Error in run_muscle_force_groups_spm")
             print(e)

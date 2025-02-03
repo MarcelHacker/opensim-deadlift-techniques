@@ -956,6 +956,48 @@ def plot_data(
     plt.xlabel(x_label)
 
 
+def create_overall_csv(file_name, array_time_normalized, athlete):
+    trial_postfix = "no_athlete_selected"
+    if athlete == "athlete_0":
+        trial_postfix = "A0"
+    elif athlete == "athlete_1":
+        trial_postfix = "A1"
+    elif athlete == "athlete_2":
+        trial_postfix = "A2"
+    elif athlete == "athlete_3":
+        trial_postfix = "A3"
+
+    print(file_name)
+    print(array_time_normalized)
+    print(athlete)
+    df = pd.DataFrame({})
+    try:
+        stored_csv = pd.read_csv(
+            "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
+            + file_name,
+            sep="\t",
+            skiprows=0,
+        )
+        print("STORED:", stored_csv.columns)
+        print(type(stored_csv))
+        df = stored_csv.copy()
+    except Exception as e:
+        print(f"Error reading: {e}")
+
+    df["Trial1_" + str(trial_postfix)] = array_time_normalized[0]
+    df["Trial2_" + str(trial_postfix)] = array_time_normalized[1]
+    df["Trial3_" + str(trial_postfix)] = array_time_normalized[2]
+    df["Trial4_" + str(trial_postfix)] = array_time_normalized[3]
+
+    df.to_csv(
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
+        + file_name,
+        sep="\t",
+        encoding="utf-8",
+        index=False,
+    )
+
+
 def calculate_joint_centres_modified(
     trc_filepath, new_filepath=None
 ):  # modified from lib
