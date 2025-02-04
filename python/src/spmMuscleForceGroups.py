@@ -421,6 +421,15 @@ def run_muscle_force_groups_spm(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
+            create_muscle_force_csv(
+                hamstrings_medial_sumo, hamstrings_medial_conv, "hamstrings_medial"
+            )
+            create_muscle_force_csv(
+                hamstrings_lateral_sumo, hamstrings_lateral_conv, "hamstrings_lateral"
+            )
+            create_muscle_force_csv(adductors_sumo, adductors_conv, "adductors")
+            create_muscle_force_csv(gluteusmax_sumo, gluteusmax_conv, "gluteus_maximus")
+
             plt.show()
             ###############################################################################################################
 
@@ -592,11 +601,20 @@ def run_muscle_force_groups_spm(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
+            create_muscle_force_csv(
+                vastus_lateralis_sumo, vastus_lateralis_conv, "vastus_lateralis"
+            )
+            create_muscle_force_csv(
+                vastus_medialis_sumo, vastus_medialis_conv, "vastus_medialis"
+            )
+            create_muscle_force_csv(
+                vastus_intermedius_sumo, vastus_intermedius_conv, "vastus_intermedius"
+            )
+            create_muscle_force_csv(
+                rectus_femoris_sumo, rectus_femoris_conv, "rectus_femoris"
+            )
             plt.show()
 
-            create_muscle_force_csv(
-                hamstrings_lateral_sumo, hamstrings_lateral_conv, "hamstrings_lateral"
-            )
         except Exception as e:
             print("Error in run_muscle_force_groups_spm")
             print(e)
