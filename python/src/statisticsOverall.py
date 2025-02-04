@@ -66,12 +66,18 @@ def run_muscle_force_groups_overall(bool, save_figures):
             non_preferred_hamstrings_medial = getNormalizedForces(
                 "hamstrings_medial", False
             )
-
             preferred_hamstrings_lateral = getNormalizedForces(
                 "hamstrings_lateral", True
             )
             non_preferred_hamstrings_lateral = getNormalizedForces(
                 "hamstrings_lateral", False
+            )
+            preferred_adductors = getNormalizedForces("adductors", True)
+            non_preferred_adductors = getNormalizedForces("adductors", False)
+
+            preferred_gluteus_maximus = getNormalizedForces("gluteus_maximus", True)
+            non_preferred_gluteus_maximus = getNormalizedForces(
+                "gluteus_maximus", False
             )
 
             fig_0, axs_0 = plt.subplots(2, 4)
@@ -126,7 +132,9 @@ def run_muscle_force_groups_overall(bool, save_figures):
             )
             plt.xlabel(x_label)
 
-            t = spm1d.stats.ttest_paired(hamstrings_medial_sumo, hamstrings_medial_conv)
+            t = spm1d.stats.ttest_paired(
+                preferred_hamstrings_medial, non_preferred_hamstrings_medial
+            )
             ti = t.inference(alpha=0.05, two_tailed=True)
             ti.plot()
             ti.plot_threshold_label()
@@ -176,46 +184,30 @@ def run_muscle_force_groups_overall(bool, save_figures):
             ti.plot_threshold_label()
             ti.plot_p_values()
 
-            adductors_sumo = [
-                normalize_forces(active_athlete_adductors_sumo_force_0),
-                normalize_forces(active_athlete_adductors_sumo_force_1),
-                normalize_forces(active_athlete_adductors_sumo_force_2),
-                normalize_forces(active_athlete_adductors_sumo_force_3),
-            ]
-
-            adductors_conv = [
-                normalize_forces(active_athlete_adductors_conv_force_0),
-                normalize_forces(active_athlete_adductors_conv_force_1),
-                normalize_forces(active_athlete_adductors_conv_force_2),
-                normalize_forces(active_athlete_adductors_conv_force_3),
-            ]
-            adductors_sumo = np.array(adductors_sumo)
-            adductors_conv = np.array(adductors_conv)
-
             # hamstrings lateral
             plt.sca(axs_0[0, 2])
             axs_0[0, 2].set_title(
                 "Adductors",
             )
             spm1d.plot.plot_mean_sd(
-                adductors_sumo,
+                preferred_adductors,
                 linecolor="r",
                 linestyle="-",
                 facecolor="0.8",
                 edgecolor="0.8",
                 alpha=0.5,
-                label=label_sumo,
+                label=label_preferred,
                 autoset_ylim=True,
                 roi=None,
             )
             spm1d.plot.plot_mean_sd(
-                adductors_conv,
+                non_preferred_adductors,
                 linecolor="b",
                 linestyle="-",
                 facecolor="0.8",
                 edgecolor="0.8",
                 alpha=0.5,
-                label=label_conv,
+                label=label_non_preferred,
                 autoset_ylim=True,
                 roi=None,
             )
@@ -228,7 +220,7 @@ def run_muscle_force_groups_overall(bool, save_figures):
             )
             plt.xlabel(x_label)
 
-            t = spm1d.stats.ttest_paired(adductors_sumo, adductors_conv)
+            t = spm1d.stats.ttest_paired(preferred_adductors, non_preferred_adductors)
             ti = t.inference(alpha=0.05, two_tailed=True)
             ti.plot()
             ti.plot_threshold_label()
