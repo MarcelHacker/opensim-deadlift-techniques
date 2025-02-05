@@ -168,10 +168,17 @@ def run_muscle_force_groups_summary(bool, save_figures):
             t = spm1d.stats.ttest_paired(
                 sumo_hip_extensors_athlete_0, conv_hip_extensors_athlete_0
             )
-            print(t)
-            print(t.df)
-            print("paired test z: ", t.z)
             ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        200,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[0, 0].add_patch(rec)
             ti.plot()
             ti.plot_threshold_label()
             ti.plot_p_values()
@@ -191,6 +198,23 @@ def run_muscle_force_groups_summary(bool, save_figures):
             axs_0[1, 1].set_title(
                 "Paired t-Test",
             )
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_flexors_athlete_0, conv_hip_flexors_athlete_0
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        100,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[0, 1].add_patch(rec)
+            ti.plot()
+            ti.plot_threshold_label()
+            ti.plot_p_values()
             plt.xlabel(x_label)
 
             # Hip adductors
@@ -200,6 +224,7 @@ def run_muscle_force_groups_summary(bool, save_figures):
             )
             plot_means(sumo_hip_adductors_athlete_0, "r", label_sumo)
             plot_means(conv_hip_adductors_athlete_0, "b", label_conv)
+            axs_0[0, 2].set_ylim(ymin=0)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -207,6 +232,23 @@ def run_muscle_force_groups_summary(bool, save_figures):
             axs_0[1, 2].set_title(
                 "Paired t-Test",
             )
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_adductors_athlete_0, conv_hip_adductors_athlete_0
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        100,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[0, 2].add_patch(rec)
+            ti.plot()
+            ti.plot_threshold_label()
+            ti.plot_p_values()
             plt.xlabel(x_label)
 
             # row 0, column 3
@@ -216,7 +258,7 @@ def run_muscle_force_groups_summary(bool, save_figures):
             )
             plot_means(sumo_knee_extensors_athlete_0, "r", label_sumo)
             plot_means(conv_knee_extensors_athlete_0, "b", label_conv)
-
+            axs_0[0, 3].set_ylim(ymin=0)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -224,6 +266,23 @@ def run_muscle_force_groups_summary(bool, save_figures):
             axs_0[1, 3].set_title(
                 "Paired t-Test",
             )
+            t = spm1d.stats.ttest_paired(
+                sumo_knee_extensors_athlete_0, conv_knee_extensors_athlete_0
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        200,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[0, 3].add_patch(rec)
+            ti.plot()
+            ti.plot_threshold_label()
+            ti.plot_p_values()
             plt.xlabel(x_label)
 
             handles, labels = axs_0[
