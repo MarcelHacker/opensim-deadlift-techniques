@@ -589,6 +589,34 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
     if limbs == "r" or limbs == "l":
         print("limb configuration not programmed, in sum_muscle_forces")
 
+    if muscle_group == "Hip extensors" and limbs == "rl":
+        muscles_of_interest = [
+            "bflh_r",
+            "bfsh_r",
+            "semimem_r",
+            "semiten_r",
+            "bflh_l",
+            "bfsh_l",
+            "semimem_l",
+            "semiten_l",
+            "glmax1_r",
+            "glmax2_r",
+            "glmax3_r",
+            "glmax1_l",
+            "glmax2_l",
+            "glmax3_l",
+        ]
+
+    if muscle_group == "Knee extensors" and limbs == "rl":
+        muscles_of_interest = [
+            "vaslat_r",
+            "vasmed_r",
+            "vasint_r",
+            "vaslat_l",
+            "vasmed_l",
+            "vasint_l",
+        ]
+
     if muscle_group == "Hamstrings" and limbs == "rl":
         muscles_of_interest = [
             "bflh_r",

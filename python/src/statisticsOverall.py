@@ -56,7 +56,7 @@ For the muscle forces sum of right and left leg of the trails was used.
 def run_muscle_force_groups_overall(bool, save_figures):
     if bool:
         try:
-            figure_0_prefix = "overall_hip_extensors"
+            figure_0_postfix = "overall_muscle_forces_groups"
             label_preferred = "PREFERRED"
             label_non_preferred = "NON-PREFERRED"
             y_label = "Normalized muscle force [N/kg]"
@@ -192,7 +192,7 @@ def run_muscle_force_groups_overall(bool, save_figures):
             fig_0.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
-                    "../results/muscle_forces/" + figure_0_prefix + ".png",
+                    "../results/muscle_forces/" + figure_0_postfix + ".png",
                     transparent=None,
                     dpi=300,
                     format="png",
@@ -294,7 +294,7 @@ def run_muscle_force_groups_overall(bool, save_figures):
             fig_1.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
-                    "../results/muscle_forces/" + figure_1_prefix + ".png",
+                    "../results/muscle_forces/" + figure_0_postfix + ".png",
                     transparent=None,
                     dpi=300,
                     format="png",

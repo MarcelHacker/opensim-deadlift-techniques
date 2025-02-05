@@ -747,9 +747,90 @@ except Exception as e:
     print("Error in time normalisation emg activations files; src/imports.py")
     print(e)
 ##################################################################################################
-# MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trails
-# Hamstrings medial (Semitend and Semimem)
+# MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trials
 try:
+    active_athlete_hip_extensors_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,  # muscle force data
+        "Hip extensors",
+        "rl",
+    )
+    active_athlete_hip_extensors_sumo_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,  # muscle force data
+        "Hip extensors",
+        "rl",
+    )
+    active_athlete_hip_extensors_sumo_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,  # muscle force data
+        "Hip extensors",
+        "rl",
+    )
+    active_athlete_hip_extensors_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,  # muscle force data
+        "Hip extensors",
+        "rl",
+    )
+    active_athlete_hip_extensors_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "Hip extensors",
+        "rl",
+    )
+    active_athlete_hip_extensors_conv_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "Hip extensors",
+        "rl",
+    )
+    active_athlete_hip_extensors_conv_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "Hip extensors",
+        "rl",
+    )
+    active_athlete_hip_extensors_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "Hip extensors",
+        "rl",
+    )
+    active_athlete_knee_extensors_sumo_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,
+        "Knee extensors",
+        "rl",
+    )
+    active_athlete_knee_extensors_sumo_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,
+        "Knee extensors",
+        "rl",
+    )
+    active_athlete_knee_extensors_sumo_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,
+        "Knee extensors",
+        "rl",
+    )
+    active_athlete_knee_extensors_sumo_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,
+        "Knee extensors",
+        "rl",
+    )
+    active_athlete_knee_extensors_conv_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "Knee extensors",
+        "rl",
+    )
+    active_athlete_knee_extensors_conv_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "Knee extensors",
+        "rl",
+    )
+    active_athlete_knee_extensors_conv_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "Knee extensors",
+        "rl",
+    )
+    active_athlete_knee_extensors_conv_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "Knee extensors",
+        "rl",
+    )
+    #####################################################################
+    # Hamstrings medial (Semitend and Semimem)
     active_athlete_hamstrings_medial_sumo_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_0,  # muscle force data
         "Hamstrings medial",  # Hamstrings medial

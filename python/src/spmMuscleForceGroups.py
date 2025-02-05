@@ -69,6 +69,30 @@ from .imports import (
     active_athlete_rectus_femoris_conv_force_2,
     active_athlete_rectus_femoris_conv_force_3,
     create_overall_csv,
+    active_athlete_hip_extensors_sumo_force_0,
+    active_athlete_hip_extensors_sumo_force_1,
+    active_athlete_hip_extensors_sumo_force_2,
+    active_athlete_hip_extensors_sumo_force_3,
+    active_athlete_hip_extensors_conv_force_0,
+    active_athlete_hip_extensors_conv_force_1,
+    active_athlete_hip_extensors_conv_force_2,
+    active_athlete_hip_extensors_conv_force_3,
+    active_athlete_hip_flexors_sumo_force_0,
+    active_athlete_hip_flexors_sumo_force_1,
+    active_athlete_hip_flexors_sumo_force_2,
+    active_athlete_hip_flexors_sumo_force_3,
+    active_athlete_hip_flexors_conv_force_0,
+    active_athlete_hip_flexors_conv_force_1,
+    active_athlete_hip_flexors_conv_force_2,
+    active_athlete_hip_flexors_conv_force_3,
+    active_athlete_knee_extensors_sumo_force_0,
+    active_athlete_knee_extensors_sumo_force_1,
+    active_athlete_knee_extensors_sumo_force_2,
+    active_athlete_knee_extensors_sumo_force_3,
+    active_athlete_knee_extensors_conv_force_0,
+    active_athlete_knee_extensors_conv_force_1,
+    active_athlete_knee_extensors_conv_force_2,
+    active_athlete_knee_extensors_conv_force_3,
 )
 
 
@@ -601,6 +625,90 @@ def run_muscle_force_groups_spm(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
+
+            hip_extensors_sumo = [
+                normalize_forces(active_athlete_hip_extensors_sumo_force_0),
+                normalize_forces(active_athlete_hip_extensors_sumo_force_1),
+                normalize_forces(active_athlete_hip_extensors_sumo_force_2),
+                normalize_forces(active_athlete_hip_extensors_sumo_force_3),
+            ]
+            hip_extensors_conv = [
+                normalize_forces(active_athlete_hip_extensors_conv_force_0),
+                normalize_forces(active_athlete_hip_extensors_conv_force_1),
+                normalize_forces(active_athlete_hip_extensors_conv_force_2),
+                normalize_forces(active_athlete_hip_extensors_conv_force_3),
+            ]
+            hip_extensors_sumo = np.array(hip_extensors_sumo)
+            hip_extensors_conv = np.array(hip_extensors_conv)
+
+            hip_extensors_sumo = [
+                normalize_forces(active_athlete_hip_extensors_sumo_force_0),
+                normalize_forces(active_athlete_hip_extensors_sumo_force_1),
+                normalize_forces(active_athlete_hip_extensors_sumo_force_2),
+                normalize_forces(active_athlete_hip_extensors_sumo_force_3),
+            ]
+            hip_extensors_conv = [
+                normalize_forces(active_athlete_hip_extensors_conv_force_0),
+                normalize_forces(active_athlete_hip_extensors_conv_force_1),
+                normalize_forces(active_athlete_hip_extensors_conv_force_2),
+                normalize_forces(active_athlete_hip_extensors_conv_force_3),
+            ]
+            hip_extensors_sumo = np.array(hip_extensors_sumo)
+            hip_extensors_conv = np.array(hip_extensors_conv)
+
+            hip_adductors_sumo = [
+                normalize_forces(active_athlete_adductors_sumo_force_0),
+                normalize_forces(active_athlete_adductors_sumo_force_0),
+                normalize_forces(active_athlete_adductors_sumo_force_0),
+                normalize_forces(active_athlete_adductors_sumo_force_0),
+            ]
+
+            hip_adductors_conv = [
+                normalize_forces(active_athlete_adductors_conv_force_0),
+                normalize_forces(active_athlete_adductors_conv_force_0),
+                normalize_forces(active_athlete_adductors_conv_force_0),
+                normalize_forces(active_athlete_adductors_conv_force_0),
+            ]
+
+            hip_adductors_sumo = np.array(hip_adductors_sumo)
+            hip_adductors_conv = np.array(hip_adductors_conv)
+
+            active_athlete_hip_flexors_sumo_force_0
+
+            hip_flexors_sumo = [
+                normalize_forces(active_athlete_hip_flexors_sumo_force_0),
+                normalize_forces(active_athlete_hip_flexors_sumo_force_1),
+                normalize_forces(active_athlete_hip_flexors_sumo_force_2),
+                normalize_forces(active_athlete_hip_flexors_sumo_force_3),
+            ]
+
+            hip_flexors_conv = [
+                normalize_forces(active_athlete_hip_flexors_conv_force_0),
+                normalize_forces(active_athlete_hip_flexors_conv_force_1),
+                normalize_forces(active_athlete_hip_flexors_conv_force_2),
+                normalize_forces(active_athlete_hip_flexors_conv_force_3),
+            ]
+
+            hip_flexors_sumo = np.array(hip_flexors_sumo)
+            hip_flexors_conv = np.array(hip_flexors_conv)
+
+            knee_extensors_sumo = [
+                normalize_forces(active_athlete_knee_extensors_sumo_force_0),
+                normalize_forces(active_athlete_knee_extensors_sumo_force_1),
+                normalize_forces(active_athlete_knee_extensors_sumo_force_2),
+                normalize_forces(active_athlete_knee_extensors_sumo_force_3),
+            ]
+
+            knee_extensors_conv = [
+                normalize_forces(active_athlete_knee_extensors_conv_force_0),
+                normalize_forces(active_athlete_knee_extensors_conv_force_1),
+                normalize_forces(active_athlete_knee_extensors_conv_force_2),
+                normalize_forces(active_athlete_knee_extensors_conv_force_3),
+            ]
+
+            knee_extensors_sumo = np.array(knee_extensors_sumo)
+            knee_extensors_conv = np.array(knee_extensors_conv)
+
             create_muscle_force_csv(
                 vastus_lateralis_sumo, vastus_lateralis_conv, "vastus_lateralis"
             )
@@ -612,6 +720,17 @@ def run_muscle_force_groups_spm(bool, save_figures):
             )
             create_muscle_force_csv(
                 rectus_femoris_sumo, rectus_femoris_conv, "rectus_femoris"
+            )
+            #############################################################
+            create_muscle_force_csv(
+                hip_extensors_sumo, hip_extensors_conv, "hip_extensors"
+            )
+            create_muscle_force_csv(hip_flexors_sumo, hip_flexors_conv, "hip_flexors")
+            create_muscle_force_csv(
+                hip_adductors_sumo, hip_adductors_conv, "hip_adductors"
+            )
+            create_muscle_force_csv(
+                knee_extensors_sumo, knee_extensors_conv, "knee_extensors"
             )
             plt.show()
 

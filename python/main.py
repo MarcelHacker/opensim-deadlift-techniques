@@ -1,4 +1,4 @@
-# Copyright (c) 2024 Basilio Gonçalves & Marcel Hacker
+# Copyright (c) 2025 Basilio Gonçalves & Marcel Hacker
 
 ################################ IMPORTS ###########################################
 import unittest
@@ -23,6 +23,7 @@ from src.pdfExport import create_pdf_report
 from src.spmTotalMuscleForces import run_total_muscle_force_plot_spm
 from src.spmMuscleForceGroups import run_muscle_force_groups_spm
 from src.statisticsOverall import run_muscle_force_groups_overall
+from src.statisticsSummary import run_muscle_force_groups_summary
 
 
 #####################################################################################
@@ -43,18 +44,7 @@ print("DIR athletes: ", dir_athletes)
 if __name__ == "__main__":
     ## set athlete in imports.py
     ## unittest.main()
-    create_pdf_report(True)
-    created_athlete = Athlete(
-        "athlete_2",
-        25,
-        "male",
-        185,
-        95,
-        "conv",
-        175,
-        250,
-        dir_athletes + "/simulations/athlete_2",
-    )
+    # create_pdf_report(False)
     # increase_max_isometric_force(
     #    "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_3/scaled_model_no_increased_force.osim",
     #   3,
@@ -64,22 +54,23 @@ if __name__ == "__main__":
     # )
     save_figures = False
     ################################## USED FUNCTIONS ###################################################
-    run_total_muscle_force_plot_spm(False, save_figures)
-    run_total_muscle_force_plot_trails(False, save_figures)
-    run_muscle_moments_plot(False, save_figures)
+    # run_total_muscle_force_plot_spm(False, save_figures)
+    # run_total_muscle_force_plot_trails(False, save_figures)
+    # run_muscle_moments_plot(False, save_figures)
     # run_norm_emg_plot(False)
     # run_raw_emg_plot(False)
     # run_activations_comparison_from_emg(False)
 
-    run_kinematics_plot(False, save_figures)
-    run_moments_plot(False, save_figures)
-    run_forces_plot(False, save_figures)
-    run_moment_arms_hip_plot(False, save_figures)
+    # run_kinematics_plot(False, save_figures)
+    # run_moments_plot(False, save_figures)
+    # run_forces_plot(False, save_figures)
+    # run_moment_arms_hip_plot(False, save_figures)
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_groups_spm(True, save_figures)
-    run_muscle_force_groups(False, save_figures)
+    run_muscle_force_groups_spm(False, save_figures)
+    # run_muscle_force_groups(False, save_figures)
 
     run_muscle_force_groups_overall(False, save_figures)
+    run_muscle_force_groups_summary(True, save_figures)
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
 
