@@ -1059,9 +1059,6 @@ def create_overall_csv(file_name, array_time_normalized, athlete):
     elif athlete == "athlete_3":
         trial_postfix = "A3"
 
-    print(file_name)
-    print(array_time_normalized)
-    print(athlete)
     df = pd.DataFrame({})
     try:
         stored_csv = pd.read_csv(
@@ -1070,8 +1067,6 @@ def create_overall_csv(file_name, array_time_normalized, athlete):
             sep="\t",
             skiprows=0,
         )
-        print("STORED:", stored_csv.columns)
-        print(type(stored_csv))
         df = stored_csv.copy()
     except Exception as e:
         print(f"Error reading: {e}")

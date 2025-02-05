@@ -28,7 +28,7 @@ def paired_ttest(varA, varB):
     ti.plot_p_values()
 
 
-def getNormalizedForces(athlete_number, muscle_group, isPreferred):
+def getNormalizedForces(athlete_number, muscle_group, technique):
     # read muscle group csv
     try:
         reduced_csv = []
@@ -40,61 +40,101 @@ def getNormalizedForces(athlete_number, muscle_group, isPreferred):
         ]
         muscle_group_csv = pd.read_csv(
             "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
-            + ("preferred" if isPreferred else "non-preferred")
+            + technique
             + "/"
             + muscle_group
             + ".csv",
             sep="\t",
             skiprows=0,
         )
-        print("STORED cols:", muscle_group_csv.columns)
-
         for trial in trial_names:
-            reduced_csv[trial.index()] = muscle_group_csv[trial]
+            reduced_csv.append(muscle_group_csv[trial])
 
-        print("returned: ", muscle_group, reduced_csv)
         return reduced_csv
     except Exception as e:
         print(f"Error reading csv: {muscle_group},{e}")
-
-
-"""
-For the muscle forces sum of right and left leg of the trials was used.
-"""
 
 
 def run_muscle_force_groups_summary(bool, save_figures):
     if bool:
         try:
             figure_0_postfix = "_summary"
-            label_preferred = "PREFERRED"
-            label_non_preferred = "NON-PREFERRED"
+            label_sumo = "SUMO"
+            label_conv = "CONV"
             y_label = "Normalized muscle force [N/kg]"
             x_label = "% concentric deadlift cycle"
 
-            preferred_hip_extensors_athlete_0 = getNormalizedForces(
-                0, "hip_extensors", True
+            sumo_hip_extensors_r_athlete_0 = getNormalizedForces(
+                0, "hip_extensors_r", "sumo"
             )
-            non_preferred_hip_extensors_athlete_0 = getNormalizedForces(
-                0, "hip_extensors", False
+            sumo_hip_extensors_l_athlete_0 = getNormalizedForces(
+                0, "hip_extensors_l", "sumo"
             )
-            preferred_hip_flexors_athlete_0 = getNormalizedForces(
-                0, "hip_flexors", True
+            conv_hip_extensors_r_athlete_0 = getNormalizedForces(
+                0, "hip_extensors_r", "conv"
             )
-            non_preferred_hip_flexors_athlete_0 = getNormalizedForces(
-                0, "hip_flexors", False
+            conv_hip_extensors_l_athlete_0 = getNormalizedForces(
+                0, "hip_extensors_l", "conv"
             )
-            preferred_hip_adductors_athlete_0 = getNormalizedForces(
-                0, "hip_adductors", True
+            sumo_hip_flexors_r_athlete_0 = getNormalizedForces(
+                0, "hip_flexors_r", "sumo"
             )
-            non_preferred_hip_adductors_athlete_0 = getNormalizedForces(
-                0, "hip_adductors", False
+            sumo_hip_flexors_l_athlete_0 = getNormalizedForces(
+                0, "hip_flexors_l", "sumo"
             )
-            preferred_knee_extensors_athlete_0 = getNormalizedForces(
-                0, "knee_extensors", True
+            conv_hip_flexors_r_athlete_0 = getNormalizedForces(
+                0, "hip_flexors_r", "conv"
             )
-            non_preferred_knee_extensors_athlete_0 = getNormalizedForces(
-                0, "knee_extensors", False
+            conv_hip_flexors_l_athlete_0 = getNormalizedForces(
+                0, "hip_flexors_l", "conv"
+            )
+            sumo_hip_adductors_r_athlete_0 = getNormalizedForces(
+                0, "hip_adductors_r", "sumo"
+            )
+            sumo_hip_adductors_l_athlete_0 = getNormalizedForces(
+                0, "hip_adductors_l", "sumo"
+            )
+            conv_hip_adductors_r_athlete_0 = getNormalizedForces(
+                0, "hip_adductors_r", "conv"
+            )
+            conv_hip_adductors_l_athlete_0 = getNormalizedForces(
+                0, "hip_adductors_l", "conv"
+            )
+            sumo_knee_extensors_r_athlete_0 = getNormalizedForces(
+                0, "knee_extensors_r", "sumo"
+            )
+            sumo_knee_extensors_l_athlete_0 = getNormalizedForces(
+                0, "knee_extensors_l", "sumo"
+            )
+            conv_knee_extensors_r_athlete_0 = getNormalizedForces(
+                0, "knee_extensors_r", "conv"
+            )
+            conv_knee_extensors_l_athlete_0 = getNormalizedForces(
+                0, "knee_extensors_l", "conv"
+            )
+            sumo_hip_extensors_athlete_0 = np.concatenate(
+                (sumo_hip_extensors_r_athlete_0, sumo_hip_extensors_l_athlete_0)
+            )
+            conv_hip_extensors_athlete_0 = np.concatenate(
+                (conv_hip_extensors_r_athlete_0, conv_hip_extensors_l_athlete_0)
+            )
+            sumo_hip_flexors_athlete_0 = np.concatenate(
+                (sumo_hip_flexors_r_athlete_0, sumo_hip_flexors_l_athlete_0)
+            )
+            conv_hip_flexors_athlete_0 = np.concatenate(
+                (conv_hip_flexors_r_athlete_0, conv_hip_flexors_l_athlete_0)
+            )
+            sumo_hip_adductors_athlete_0 = np.concatenate(
+                (sumo_hip_adductors_r_athlete_0, sumo_hip_adductors_l_athlete_0)
+            )
+            conv_hip_adductors_athlete_0 = np.concatenate(
+                (conv_hip_adductors_r_athlete_0, conv_hip_adductors_l_athlete_0)
+            )
+            sumo_knee_extensors_athlete_0 = np.concatenate(
+                (sumo_knee_extensors_r_athlete_0, sumo_knee_extensors_l_athlete_0)
+            )
+            conv_knee_extensors_athlete_0 = np.concatenate(
+                (conv_knee_extensors_r_athlete_0, conv_knee_extensors_l_athlete_0)
             )
 
             fig_0, axs_0 = plt.subplots(2, 4)
@@ -116,8 +156,8 @@ def run_muscle_force_groups_summary(bool, save_figures):
             axs_0[0, 0].set_title(
                 "Hip extensors",
             )
-            plot_means(preferred_hip_extensors_athlete_0, "r", label_preferred)
-            plot_means(non_preferred_hip_extensors_athlete_0, "b", label_non_preferred)
+            plot_means(sumo_hip_extensors_athlete_0, "r", label_sumo)
+            plot_means(conv_hip_extensors_athlete_0, "b", label_conv)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -125,6 +165,16 @@ def run_muscle_force_groups_summary(bool, save_figures):
             axs_0[1, 0].set_title(
                 "Paired t-Test",
             )
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_extensors_athlete_0, conv_hip_extensors_athlete_0
+            )
+            print(t)
+            print(t.df)
+            print("paired test z: ", t.z)
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            ti.plot()
+            ti.plot_threshold_label()
+            ti.plot_p_values()
             plt.xlabel(x_label)
 
             # Hip flexors
@@ -132,8 +182,8 @@ def run_muscle_force_groups_summary(bool, save_figures):
             axs_0[0, 1].set_title(
                 "Hip flexors",
             )
-            plot_means(preferred_hip_flexors_athlete_0, "r", label_preferred)
-            plot_means(non_preferred_hip_flexors_athlete_0, "b", label_non_preferred)
+            plot_means(sumo_hip_flexors_athlete_0, "r", label_sumo)
+            plot_means(conv_hip_flexors_athlete_0, "b", label_conv)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -148,8 +198,8 @@ def run_muscle_force_groups_summary(bool, save_figures):
             axs_0[0, 2].set_title(
                 "Hip adductors",
             )
-            plot_means(preferred_hip_adductors_athlete_0, "r", label_preferred)
-            plot_means(non_preferred_hip_adductors_athlete_0, "b", label_non_preferred)
+            plot_means(sumo_hip_adductors_athlete_0, "r", label_sumo)
+            plot_means(conv_hip_adductors_athlete_0, "b", label_conv)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -164,8 +214,8 @@ def run_muscle_force_groups_summary(bool, save_figures):
             axs_0[0, 3].set_title(
                 "Knee extensors",
             )
-            plot_means(preferred_knee_extensors_athlete_0, "r", label_preferred)
-            plot_means(non_preferred_knee_extensors_athlete_0, "b", label_non_preferred)
+            plot_means(sumo_knee_extensors_athlete_0, "r", label_sumo)
+            plot_means(conv_knee_extensors_athlete_0, "b", label_conv)
 
             plt.ylabel(y_label)
             plt.xlabel(x_label)

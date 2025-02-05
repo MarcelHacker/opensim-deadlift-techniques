@@ -66,11 +66,11 @@ if __name__ == "__main__":
     # run_forces_plot(False, save_figures)
     # run_moment_arms_hip_plot(False, save_figures)
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_groups_spm(True, save_figures)
+    run_muscle_force_groups_spm(False, save_figures)
     # run_muscle_force_groups(False, save_figures)
 
     # run_muscle_force_groups_overall(False, save_figures)
-    run_muscle_force_groups_summary(False, save_figures)
+    run_muscle_force_groups_summary(True, save_figures)
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
 

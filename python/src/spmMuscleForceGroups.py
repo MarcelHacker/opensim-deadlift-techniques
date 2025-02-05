@@ -37,6 +37,38 @@ from .imports import (
     active_athlete_hip_flexors_conv_l_force_1,
     active_athlete_hip_flexors_conv_l_force_2,
     active_athlete_hip_flexors_conv_l_force_3,
+    active_athlete_hip_adductors_sumo_r_force_0,
+    active_athlete_hip_adductors_sumo_r_force_1,
+    active_athlete_hip_adductors_sumo_r_force_2,
+    active_athlete_hip_adductors_sumo_r_force_3,
+    active_athlete_hip_adductors_sumo_l_force_0,
+    active_athlete_hip_adductors_sumo_l_force_1,
+    active_athlete_hip_adductors_sumo_l_force_2,
+    active_athlete_hip_adductors_sumo_l_force_3,
+    active_athlete_hip_adductors_conv_r_force_0,
+    active_athlete_hip_adductors_conv_r_force_1,
+    active_athlete_hip_adductors_conv_r_force_2,
+    active_athlete_hip_adductors_conv_r_force_3,
+    active_athlete_hip_adductors_conv_l_force_0,
+    active_athlete_hip_adductors_conv_l_force_1,
+    active_athlete_hip_adductors_conv_l_force_2,
+    active_athlete_hip_adductors_conv_l_force_3,
+    active_athlete_knee_extensors_sumo_r_force_0,
+    active_athlete_knee_extensors_sumo_r_force_1,
+    active_athlete_knee_extensors_sumo_r_force_2,
+    active_athlete_knee_extensors_sumo_r_force_3,
+    active_athlete_knee_extensors_sumo_l_force_0,
+    active_athlete_knee_extensors_sumo_l_force_1,
+    active_athlete_knee_extensors_sumo_l_force_2,
+    active_athlete_knee_extensors_sumo_l_force_3,
+    active_athlete_knee_extensors_conv_r_force_0,
+    active_athlete_knee_extensors_conv_r_force_1,
+    active_athlete_knee_extensors_conv_r_force_2,
+    active_athlete_knee_extensors_conv_r_force_3,
+    active_athlete_knee_extensors_conv_l_force_0,
+    active_athlete_knee_extensors_conv_l_force_1,
+    active_athlete_knee_extensors_conv_l_force_2,
+    active_athlete_knee_extensors_conv_l_force_3,
 )
 
 
@@ -158,7 +190,9 @@ def run_muscle_force_groups_spm(bool, save_figures):
             )
             #  hip extensors
             hip_extensors_sumo_r = createForceArray("sumo", "r", "hip_extensors")
+            print("\nHIP ex r\n", hip_extensors_sumo_r)
             hip_extensors_sumo_l = createForceArray("sumo", "l", "hip_extensors")
+            print("\nHIP ex l\n", hip_extensors_sumo_l)
             hip_extensors_conv_r = createForceArray("conv", "r", "hip_extensors")
             hip_extensors_conv_l = createForceArray("conv", "l", "hip_extensors")
 
@@ -181,29 +215,24 @@ def run_muscle_force_groups_spm(bool, save_figures):
             knee_extensors_conv_l = createForceArray("conv", "l", "knee_extensors")
 
             hip_extensors_sumo = np.concatenate(
-                (hip_extensors_sumo_r, hip_extensors_sumo_l), axis=None
+                (hip_extensors_sumo_r, hip_extensors_sumo_l)
             )
             hip_extensors_conv = np.concatenate(
-                (hip_extensors_conv_r, hip_extensors_conv_l), axis=None
+                (hip_extensors_conv_r, hip_extensors_conv_l)
             )
-            hip_flexors_sumo = np.concatenate(
-                (hip_flexors_sumo_r, hip_flexors_sumo_l), axis=None
-            )
-            hip_flexors_conv = np.concatenate(
-                (hip_flexors_conv_r, hip_flexors_conv_l), axis=None
-            )
+            hip_flexors_sumo = np.concatenate((hip_flexors_sumo_r, hip_flexors_sumo_l))
+            hip_flexors_conv = np.concatenate((hip_flexors_conv_r, hip_flexors_conv_l))
             hip_adductors_sumo = np.concatenate(
-                (hip_adductors_sumo_r, hip_adductors_sumo_l), axis=None
+                (hip_adductors_sumo_r, hip_adductors_sumo_l)
             )
             hip_adductors_conv = np.concatenate(
-                (hip_adductors_conv_r, hip_adductors_conv_l), axis=None
+                (hip_adductors_conv_r, hip_adductors_conv_l)
             )
             knee_extensors_sumo = np.concatenate(
-                (knee_extensors_sumo_r, knee_extensors_sumo_l), axis=None
+                (knee_extensors_sumo_r, knee_extensors_sumo_l)
             )
-
             knee_extensors_conv = np.concatenate(
-                (knee_extensors_conv_r, knee_extensors_conv_l), axis=None
+                (knee_extensors_conv_r, knee_extensors_conv_l)
             )
             create_muscle_force_csv(
                 hip_extensors_sumo_r,
