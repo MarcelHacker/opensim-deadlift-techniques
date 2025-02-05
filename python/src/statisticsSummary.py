@@ -31,6 +31,13 @@ def paired_ttest(varA, varB):
 def getNormalizedForces(athlete_number, muscle_group, isPreferred):
     # read muscle group csv
     try:
+        reduced_csv = []
+        trial_names = [
+            "Trial1_A" + str(athlete_number),
+            "Trial2_A" + str(athlete_number),
+            "Trial3_A" + str(athlete_number),
+            "Trial4_A" + str(athlete_number),
+        ]
         muscle_group_csv = pd.read_csv(
             "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
             + ("preferred" if isPreferred else "non-preferred")
@@ -41,14 +48,10 @@ def getNormalizedForces(athlete_number, muscle_group, isPreferred):
             skiprows=0,
         )
         print("STORED cols:", muscle_group_csv.columns)
-        reduced_csv = muscle_group_csv[
-            [
-                "Trial1_A" + str(athlete_number),
-                "Trial2_A" + str(athlete_number),
-                "Trial3_A" + str(athlete_number),
-                "Trial4_A" + str(athlete_number),
-            ]
-        ]
+
+        for trial in trial_names:
+            reduced_csv[trial.index()] = muscle_group_csv[trial]
+
         print("returned: ", muscle_group, reduced_csv)
         return reduced_csv
     except Exception as e:
@@ -124,10 +127,6 @@ def run_muscle_force_groups_summary(bool, save_figures):
             )
             plt.xlabel(x_label)
 
-            paired_ttest(
-                preferred_hip_extensors_athlete_0, non_preferred_hip_extensors_athlete_0
-            )
-
             # Hip flexors
             plt.sca(axs_0[0, 1])
             axs_0[0, 1].set_title(
@@ -143,10 +142,6 @@ def run_muscle_force_groups_summary(bool, save_figures):
                 "Paired t-Test",
             )
             plt.xlabel(x_label)
-
-            paired_ttest(
-                preferred_hip_flexors_athlete_0, non_preferred_hip_flexors_athlete_0
-            )
 
             # Hip adductors
             plt.sca(axs_0[0, 2])
@@ -164,10 +159,6 @@ def run_muscle_force_groups_summary(bool, save_figures):
             )
             plt.xlabel(x_label)
 
-            paired_ttest(
-                preferred_hip_adductors_athlete_0, non_preferred_hip_adductors_athlete_0
-            )
-
             # row 0, column 3
             plt.sca(axs_0[0, 3])
             axs_0[0, 3].set_title(
@@ -184,11 +175,6 @@ def run_muscle_force_groups_summary(bool, save_figures):
                 "Paired t-Test",
             )
             plt.xlabel(x_label)
-
-            paired_ttest(
-                preferred_knee_extensors_athlete_0,
-                non_preferred_knee_extensors_athlete_0,
-            )
 
             handles, labels = axs_0[
                 0, 0

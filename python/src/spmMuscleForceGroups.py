@@ -4,95 +4,39 @@ from .imports import (
     plt,
     active_athlete,
     active_athlete_bodymass,
-    active_athlete_hamstrings_medial_sumo_force_0,
-    active_athlete_hamstrings_medial_sumo_force_1,
-    active_athlete_hamstrings_medial_sumo_force_2,
-    active_athlete_hamstrings_medial_sumo_force_3,
-    active_athlete_hamstrings_medial_conv_force_0,
-    active_athlete_hamstrings_medial_conv_force_1,
-    active_athlete_hamstrings_medial_conv_force_2,
-    active_athlete_hamstrings_medial_conv_force_3,
-    active_athlete_hamstrings_lateral_sumo_force_0,
-    active_athlete_hamstrings_lateral_sumo_force_1,
-    active_athlete_hamstrings_lateral_sumo_force_2,
-    active_athlete_hamstrings_lateral_sumo_force_3,
-    active_athlete_hamstrings_lateral_conv_force_0,
-    active_athlete_hamstrings_lateral_conv_force_1,
-    active_athlete_hamstrings_lateral_conv_force_2,
-    active_athlete_hamstrings_lateral_conv_force_3,
-    active_athlete_gluteusmax_sumo_force_0,
-    active_athlete_gluteusmax_sumo_force_1,
-    active_athlete_gluteusmax_sumo_force_2,
-    active_athlete_gluteusmax_sumo_force_3,
-    active_athlete_gluteusmax_conv_force_0,
-    active_athlete_gluteusmax_conv_force_1,
-    active_athlete_gluteusmax_conv_force_2,
-    active_athlete_gluteusmax_conv_force_3,
-    active_athlete_adductors_sumo_force_0,
-    active_athlete_adductors_sumo_force_1,
-    active_athlete_adductors_sumo_force_2,
-    active_athlete_adductors_sumo_force_3,
-    active_athlete_adductors_conv_force_0,
-    active_athlete_adductors_conv_force_1,
-    active_athlete_adductors_conv_force_2,
-    active_athlete_adductors_conv_force_3,
-    active_athlete_vastus_lateralis_sumo_force_0,
-    active_athlete_vastus_lateralis_sumo_force_1,
-    active_athlete_vastus_lateralis_sumo_force_2,
-    active_athlete_vastus_lateralis_sumo_force_3,
-    active_athlete_vastus_lateralis_conv_force_0,
-    active_athlete_vastus_lateralis_conv_force_1,
-    active_athlete_vastus_lateralis_conv_force_2,
-    active_athlete_vastus_lateralis_conv_force_3,
-    active_athlete_vastus_medialis_sumo_force_0,
-    active_athlete_vastus_medialis_sumo_force_1,
-    active_athlete_vastus_medialis_sumo_force_2,
-    active_athlete_vastus_medialis_sumo_force_3,
-    active_athlete_vastus_medialis_conv_force_0,
-    active_athlete_vastus_medialis_conv_force_1,
-    active_athlete_vastus_medialis_conv_force_2,
-    active_athlete_vastus_medialis_conv_force_3,
-    active_athlete_vastus_intermedius_sumo_force_0,
-    active_athlete_vastus_intermedius_sumo_force_1,
-    active_athlete_vastus_intermedius_sumo_force_2,
-    active_athlete_vastus_intermedius_sumo_force_3,
-    active_athlete_vastus_intermedius_conv_force_0,
-    active_athlete_vastus_intermedius_conv_force_1,
-    active_athlete_vastus_intermedius_conv_force_2,
-    active_athlete_vastus_intermedius_conv_force_3,
-    active_athlete_rectus_femoris_sumo_force_0,
-    active_athlete_rectus_femoris_sumo_force_1,
-    active_athlete_rectus_femoris_sumo_force_2,
-    active_athlete_rectus_femoris_sumo_force_3,
-    active_athlete_rectus_femoris_conv_force_0,
-    active_athlete_rectus_femoris_conv_force_1,
-    active_athlete_rectus_femoris_conv_force_2,
-    active_athlete_rectus_femoris_conv_force_3,
     create_overall_csv,
-    active_athlete_hip_extensors_sumo_force_0,
-    active_athlete_hip_extensors_sumo_force_1,
-    active_athlete_hip_extensors_sumo_force_2,
-    active_athlete_hip_extensors_sumo_force_3,
-    active_athlete_hip_extensors_conv_force_0,
-    active_athlete_hip_extensors_conv_force_1,
-    active_athlete_hip_extensors_conv_force_2,
-    active_athlete_hip_extensors_conv_force_3,
-    active_athlete_hip_flexors_sumo_force_0,
-    active_athlete_hip_flexors_sumo_force_1,
-    active_athlete_hip_flexors_sumo_force_2,
-    active_athlete_hip_flexors_sumo_force_3,
-    active_athlete_hip_flexors_conv_force_0,
-    active_athlete_hip_flexors_conv_force_1,
-    active_athlete_hip_flexors_conv_force_2,
-    active_athlete_hip_flexors_conv_force_3,
-    active_athlete_knee_extensors_sumo_force_0,
-    active_athlete_knee_extensors_sumo_force_1,
-    active_athlete_knee_extensors_sumo_force_2,
-    active_athlete_knee_extensors_sumo_force_3,
-    active_athlete_knee_extensors_conv_force_0,
-    active_athlete_knee_extensors_conv_force_1,
-    active_athlete_knee_extensors_conv_force_2,
-    active_athlete_knee_extensors_conv_force_3,
+    active_athlete_hip_extensors_sumo_r_force_0,
+    active_athlete_hip_extensors_sumo_r_force_1,
+    active_athlete_hip_extensors_sumo_r_force_2,
+    active_athlete_hip_extensors_sumo_r_force_3,
+    active_athlete_hip_extensors_sumo_l_force_0,
+    active_athlete_hip_extensors_sumo_l_force_1,
+    active_athlete_hip_extensors_sumo_l_force_2,
+    active_athlete_hip_extensors_sumo_l_force_3,
+    active_athlete_hip_extensors_conv_r_force_0,
+    active_athlete_hip_extensors_conv_r_force_1,
+    active_athlete_hip_extensors_conv_r_force_2,
+    active_athlete_hip_extensors_conv_r_force_3,
+    active_athlete_hip_extensors_conv_l_force_0,
+    active_athlete_hip_extensors_conv_l_force_1,
+    active_athlete_hip_extensors_conv_l_force_2,
+    active_athlete_hip_extensors_conv_l_force_3,
+    active_athlete_hip_flexors_sumo_r_force_0,
+    active_athlete_hip_flexors_sumo_r_force_1,
+    active_athlete_hip_flexors_sumo_r_force_2,
+    active_athlete_hip_flexors_sumo_r_force_3,
+    active_athlete_hip_flexors_sumo_l_force_0,
+    active_athlete_hip_flexors_sumo_l_force_1,
+    active_athlete_hip_flexors_sumo_l_force_2,
+    active_athlete_hip_flexors_sumo_l_force_3,
+    active_athlete_hip_flexors_conv_r_force_0,
+    active_athlete_hip_flexors_conv_r_force_1,
+    active_athlete_hip_flexors_conv_r_force_2,
+    active_athlete_hip_flexors_conv_r_force_3,
+    active_athlete_hip_flexors_conv_l_force_0,
+    active_athlete_hip_flexors_conv_l_force_1,
+    active_athlete_hip_flexors_conv_l_force_2,
+    active_athlete_hip_flexors_conv_l_force_3,
 )
 
 
@@ -133,29 +77,51 @@ def isSumoPreffered():
 
 
 def create_muscle_force_csv(
-    array_sumo_time_normalized, array_conv_time_normalized, muscle_group
+    array_sumo_time_normalized_r,
+    array_sumo_time_normalized_l,
+    array_conv_time_normalized_r,
+    array_conv_time_normalized_l,
+    muscle_group,
 ):
     create_overall_csv(
-        (
-            ("preferred" if isSumoPreffered() else "non-preferred")
-            + "/"
-            + str(muscle_group)
-            + ".csv"
-        ),
-        array_sumo_time_normalized,
+        ("sumo/" + str(muscle_group) + "_r.csv"),
+        array_sumo_time_normalized_r,
+        active_athlete["name"],
+    )
+    create_overall_csv(
+        ("sumo/" + str(muscle_group) + "_l.csv"),
+        array_sumo_time_normalized_l,
+        active_athlete["name"],
+    )
+    create_overall_csv(
+        ("conv/" + str(muscle_group) + "_r.csv"),
+        array_conv_time_normalized_r,
+        active_athlete["name"],
+    )
+    create_overall_csv(
+        ("conv/" + str(muscle_group) + "_l.csv"),
+        array_conv_time_normalized_l,
         active_athlete["name"],
     )
 
-    create_overall_csv(
-        (
-            ("preferred" if isSumoPreffered() == False else "non-preferred")
-            + "/"
-            + str(muscle_group)
-            + ".csv"
+
+def createForceArray(technique, limb, muscle_group):
+    array = [
+        normalize_forces(
+            eval(f"active_athlete_{muscle_group}_{technique}_{limb}_force_0")
         ),
-        array_conv_time_normalized,
-        active_athlete["name"],
-    )
+        normalize_forces(
+            eval(f"active_athlete_{muscle_group}_{technique}_{limb}_force_1")
+        ),
+        normalize_forces(
+            eval(f"active_athlete_{muscle_group}_{technique}_{limb}_force_2")
+        ),
+        normalize_forces(
+            eval(f"active_athlete_{muscle_group}_{technique}_{limb}_force_3")
+        ),
+    ]
+    array = np.array(array)
+    return array
 
 
 """
@@ -166,9 +132,7 @@ For the muscle forces sum of right and left leg of the trails was used.
 def run_muscle_force_groups_spm(bool, save_figures):
     if bool:
         try:
-            figure_0_postfix = "_spm_hip_extensors_muscle_force"
-            color_sumo = "red"
-            color_conv = "blue"
+            figure_0_postfix = "_spm_muscle_group_summary"
             label_sumo = "SUMO"
             label_conv = "CONV"
             y_label = "Normalized muscle force [N/kg]"
@@ -176,7 +140,7 @@ def run_muscle_force_groups_spm(bool, save_figures):
 
             fig_0, axs_0 = plt.subplots(2, 4)
             fig_0.suptitle(
-                "Muscle Force Hip Extensors Means "
+                "Muscle Force Means "
                 + active_athlete["name"]
                 + "; Model: "
                 + active_athlete["model"]
@@ -192,50 +156,91 @@ def run_muscle_force_groups_spm(bool, save_figures):
                 left=0.067,
                 bottom=0.06,
             )
+            #  hip extensors
+            hip_extensors_sumo_r = createForceArray("sumo", "r", "hip_extensors")
+            hip_extensors_sumo_l = createForceArray("sumo", "l", "hip_extensors")
+            hip_extensors_conv_r = createForceArray("conv", "r", "hip_extensors")
+            hip_extensors_conv_l = createForceArray("conv", "l", "hip_extensors")
 
-            hamstrings_medial_sumo = [
-                normalize_forces(active_athlete_hamstrings_medial_sumo_force_0),
-                normalize_forces(active_athlete_hamstrings_medial_sumo_force_1),
-                normalize_forces(active_athlete_hamstrings_medial_sumo_force_2),
-                normalize_forces(active_athlete_hamstrings_medial_sumo_force_3),
-            ]
+            # flexors
+            hip_flexors_sumo_r = createForceArray("sumo", "r", "hip_flexors")
+            hip_flexors_sumo_l = createForceArray("sumo", "l", "hip_flexors")
+            hip_flexors_conv_r = createForceArray("conv", "r", "hip_flexors")
+            hip_flexors_conv_l = createForceArray("conv", "l", "hip_flexors")
 
-            hamstrings_medial_conv = [
-                normalize_forces(active_athlete_hamstrings_medial_conv_force_0),
-                normalize_forces(active_athlete_hamstrings_medial_conv_force_1),
-                normalize_forces(active_athlete_hamstrings_medial_conv_force_2),
-                normalize_forces(active_athlete_hamstrings_medial_conv_force_3),
-            ]
-            hamstrings_medial_sumo = np.array(hamstrings_medial_sumo)
-            hamstrings_medial_conv = np.array(hamstrings_medial_conv)
+            # adductors
+            hip_adductors_sumo_r = createForceArray("sumo", "r", "hip_adductors")
+            hip_adductors_sumo_l = createForceArray("sumo", "l", "hip_adductors")
+            hip_adductors_conv_r = createForceArray("conv", "r", "hip_adductors")
+            hip_adductors_conv_l = createForceArray("conv", "l", "hip_adductors")
+
+            # knee extensors
+            knee_extensors_sumo_r = createForceArray("sumo", "r", "knee_extensors")
+            knee_extensors_sumo_l = createForceArray("sumo", "l", "knee_extensors")
+            knee_extensors_conv_r = createForceArray("conv", "r", "knee_extensors")
+            knee_extensors_conv_l = createForceArray("conv", "l", "knee_extensors")
+
+            hip_extensors_sumo = np.concatenate(
+                (hip_extensors_sumo_r, hip_extensors_sumo_l), axis=None
+            )
+            hip_extensors_conv = np.concatenate(
+                (hip_extensors_conv_r, hip_extensors_conv_l), axis=None
+            )
+            hip_flexors_sumo = np.concatenate(
+                (hip_flexors_sumo_r, hip_flexors_sumo_l), axis=None
+            )
+            hip_flexors_conv = np.concatenate(
+                (hip_flexors_conv_r, hip_flexors_conv_l), axis=None
+            )
+            hip_adductors_sumo = np.concatenate(
+                (hip_adductors_sumo_r, hip_adductors_sumo_l), axis=None
+            )
+            hip_adductors_conv = np.concatenate(
+                (hip_adductors_conv_r, hip_adductors_conv_l), axis=None
+            )
+            knee_extensors_sumo = np.concatenate(
+                (knee_extensors_sumo_r, knee_extensors_sumo_l), axis=None
+            )
+
+            knee_extensors_conv = np.concatenate(
+                (knee_extensors_conv_r, knee_extensors_conv_l), axis=None
+            )
+            create_muscle_force_csv(
+                hip_extensors_sumo_r,
+                hip_extensors_conv_l,
+                hip_extensors_conv_r,
+                hip_extensors_conv_l,
+                "hip_extensors",
+            )
+            create_muscle_force_csv(
+                hip_flexors_sumo_r,
+                hip_flexors_sumo_l,
+                hip_flexors_conv_r,
+                hip_flexors_conv_l,
+                "hip_flexors",
+            )
+            create_muscle_force_csv(
+                hip_adductors_sumo_r,
+                hip_adductors_sumo_l,
+                hip_adductors_conv_r,
+                hip_adductors_conv_l,
+                "hip_adductors",
+            )
+            create_muscle_force_csv(
+                knee_extensors_sumo_r,
+                knee_extensors_sumo_l,
+                knee_extensors_conv_r,
+                knee_extensors_conv_l,
+                "knee_extensors",
+            )
 
             # hamstrings medial
             plt.sca(axs_0[0, 0])
             axs_0[0, 0].set_title(
-                "Hamstrings medial",
+                "Hip Extensors",
             )
-            spm1d.plot.plot_mean_sd(
-                hamstrings_medial_sumo,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label=label_sumo,
-                autoset_ylim=True,
-                roi=None,
-            )
-            spm1d.plot.plot_mean_sd(
-                hamstrings_medial_conv,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label=label_conv,
-                autoset_ylim=True,
-                roi=None,
-            )
+            plot_means(hip_extensors_sumo, "r", label_sumo)
+            plot_means(hip_extensors_conv, "b", label_conv)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -244,56 +249,15 @@ def run_muscle_force_groups_spm(bool, save_figures):
                 "Paired t-Test",
             )
             plt.xlabel(x_label)
-
-            t = spm1d.stats.ttest_paired(hamstrings_medial_sumo, hamstrings_medial_conv)
-            ti = t.inference(alpha=0.05, two_tailed=True)
-            ti.plot()
-            ti.plot_threshold_label()
-            ti.plot_p_values()
-
-            hamstrings_lateral_sumo = [
-                normalize_forces(active_athlete_hamstrings_lateral_sumo_force_0),
-                normalize_forces(active_athlete_hamstrings_lateral_sumo_force_1),
-                normalize_forces(active_athlete_hamstrings_lateral_sumo_force_2),
-                normalize_forces(active_athlete_hamstrings_lateral_sumo_force_3),
-            ]
-
-            hamstrings_lateral_conv = [
-                normalize_forces(active_athlete_hamstrings_lateral_conv_force_0),
-                normalize_forces(active_athlete_hamstrings_lateral_conv_force_1),
-                normalize_forces(active_athlete_hamstrings_lateral_conv_force_2),
-                normalize_forces(active_athlete_hamstrings_lateral_conv_force_3),
-            ]
-            hamstrings_lateral_sumo = np.array(hamstrings_lateral_sumo)
-            hamstrings_lateral_conv = np.array(hamstrings_lateral_conv)
+            paired_ttest(hip_extensors_sumo, hip_extensors_conv)
 
             # hamstrings lateral
             plt.sca(axs_0[0, 1])
             axs_0[0, 1].set_title(
-                "Hamstrings lateral",
+                "Hip Flexors",
             )
-            spm1d.plot.plot_mean_sd(
-                hamstrings_lateral_sumo,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label=label_sumo,
-                autoset_ylim=True,
-                roi=None,
-            )
-            spm1d.plot.plot_mean_sd(
-                hamstrings_lateral_conv,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label=label_conv,
-                autoset_ylim=True,
-                roi=None,
-            )
+            plot_means(hip_flexors_sumo, "r", label_sumo)
+            plot_means(hip_flexors_conv, "b", label_conv)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -302,58 +266,15 @@ def run_muscle_force_groups_spm(bool, save_figures):
                 "Paired t-Test",
             )
             plt.xlabel(x_label)
-
-            t = spm1d.stats.ttest_paired(
-                hamstrings_lateral_sumo, hamstrings_lateral_conv
-            )
-            ti = t.inference(alpha=0.05, two_tailed=True)
-            ti.plot()
-            ti.plot_threshold_label()
-            ti.plot_p_values()
-
-            adductors_sumo = [
-                normalize_forces(active_athlete_adductors_sumo_force_0),
-                normalize_forces(active_athlete_adductors_sumo_force_1),
-                normalize_forces(active_athlete_adductors_sumo_force_2),
-                normalize_forces(active_athlete_adductors_sumo_force_3),
-            ]
-
-            adductors_conv = [
-                normalize_forces(active_athlete_adductors_conv_force_0),
-                normalize_forces(active_athlete_adductors_conv_force_1),
-                normalize_forces(active_athlete_adductors_conv_force_2),
-                normalize_forces(active_athlete_adductors_conv_force_3),
-            ]
-            adductors_sumo = np.array(adductors_sumo)
-            adductors_conv = np.array(adductors_conv)
+            paired_ttest(hip_flexors_sumo, hip_flexors_conv)
 
             # hamstrings lateral
             plt.sca(axs_0[0, 2])
             axs_0[0, 2].set_title(
-                "Adductors",
+                "Hip Adductors",
             )
-            spm1d.plot.plot_mean_sd(
-                adductors_sumo,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label=label_sumo,
-                autoset_ylim=True,
-                roi=None,
-            )
-            spm1d.plot.plot_mean_sd(
-                adductors_conv,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label=label_conv,
-                autoset_ylim=True,
-                roi=None,
-            )
+            plot_means(hip_adductors_sumo, "r", label_sumo)
+            plot_means(hip_adductors_conv, "b", label_conv)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -363,58 +284,16 @@ def run_muscle_force_groups_spm(bool, save_figures):
             )
             plt.xlabel(x_label)
 
-            t = spm1d.stats.ttest_paired(adductors_sumo, adductors_conv)
-            ti = t.inference(alpha=0.05, two_tailed=True)
-            ti.plot()
-            ti.plot_threshold_label()
-            ti.plot_p_values()
-
-            # active_athlete_gluteusmax_sumo_force_0
-
-            gluteusmax_sumo = [
-                normalize_forces(active_athlete_gluteusmax_sumo_force_0),
-                normalize_forces(active_athlete_gluteusmax_sumo_force_1),
-                normalize_forces(active_athlete_gluteusmax_sumo_force_2),
-                normalize_forces(active_athlete_gluteusmax_sumo_force_3),
-            ]
-
-            gluteusmax_conv = [
-                normalize_forces(active_athlete_gluteusmax_conv_force_0),
-                normalize_forces(active_athlete_gluteusmax_conv_force_1),
-                normalize_forces(active_athlete_gluteusmax_conv_force_2),
-                normalize_forces(active_athlete_gluteusmax_conv_force_3),
-            ]
-            gluteusmax_sumo = np.array(gluteusmax_sumo)
-            gluteusmax_conv = np.array(gluteusmax_conv)
+            paired_ttest(hip_adductors_sumo, hip_adductors_conv)
 
             # gluteus maximus
             # row 0, column 3
             plt.sca(axs_0[0, 3])
             axs_0[0, 3].set_title(
-                "Gluteus maximus",
+                "Knee Extensors",
             )
-            spm1d.plot.plot_mean_sd(
-                gluteusmax_sumo,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label=label_sumo,
-                autoset_ylim=True,
-                roi=None,
-            )
-            spm1d.plot.plot_mean_sd(
-                gluteusmax_conv,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label=label_conv,
-                autoset_ylim=True,
-                roi=None,
-            )
+            plot_means(knee_extensors_sumo, "r", label_sumo)
+            plot_means(knee_extensors_conv, "b", label_conv)
             plt.ylabel(y_label)
             plt.xlabel(x_label)
 
@@ -423,12 +302,7 @@ def run_muscle_force_groups_spm(bool, save_figures):
                 "Paired t-Test",
             )
             plt.xlabel(x_label)
-
-            t = spm1d.stats.ttest_paired(gluteusmax_sumo, gluteusmax_conv)
-            ti = t.inference(alpha=0.05, two_tailed=True)
-            ti.plot()
-            ti.plot_threshold_label()
-            ti.plot_p_values()
+            paired_ttest(knee_extensors_sumo, knee_extensors_conv)
 
             handles, labels = axs_0[
                 0, 0
@@ -445,293 +319,6 @@ def run_muscle_force_groups_spm(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            create_muscle_force_csv(
-                hamstrings_medial_sumo, hamstrings_medial_conv, "hamstrings_medial"
-            )
-            create_muscle_force_csv(
-                hamstrings_lateral_sumo, hamstrings_lateral_conv, "hamstrings_lateral"
-            )
-            create_muscle_force_csv(adductors_sumo, adductors_conv, "adductors")
-            create_muscle_force_csv(gluteusmax_sumo, gluteusmax_conv, "gluteus_maximus")
-
-            plt.show()
-            ###############################################################################################################
-
-            figure_1_postfix = "_spm_knee_extensors_force"
-            fig_1, axs_1 = plt.subplots(2, 4)
-            fig_1.suptitle(
-                "Muscle Force Knee Extensors Means "
-                + active_athlete["name"]
-                + "; Model: "
-                + active_athlete["model"]
-                + "; Preferred: "
-                + active_athlete["technique"],
-                fontweight="bold",
-            )
-            plt.subplots_adjust(
-                wspace=0.33,
-                hspace=0.293,
-                top=0.917,
-                right=0.921,
-                left=0.067,
-                bottom=0.06,
-            )
-
-            vastus_lateralis_sumo = [
-                normalize_forces(active_athlete_vastus_lateralis_sumo_force_0),
-                normalize_forces(active_athlete_vastus_lateralis_sumo_force_1),
-                normalize_forces(active_athlete_vastus_lateralis_sumo_force_2),
-                normalize_forces(active_athlete_vastus_lateralis_sumo_force_3),
-            ]
-
-            vastus_lateralis_conv = [
-                normalize_forces(active_athlete_vastus_lateralis_conv_force_0),
-                normalize_forces(active_athlete_vastus_lateralis_conv_force_1),
-                normalize_forces(active_athlete_vastus_lateralis_conv_force_2),
-                normalize_forces(active_athlete_vastus_lateralis_conv_force_3),
-            ]
-            vastus_lateralis_sumo = np.array(vastus_lateralis_sumo)
-            vastus_lateralis_conv = np.array(vastus_lateralis_conv)
-
-            # vastus lateralis
-            # row 0, column 0
-            plt.sca(axs_1[0, 0])
-            axs_1[0, 0].set_title(
-                "Vastus lateralis",
-            )
-            plot_means(vastus_lateralis_sumo, "r", label_sumo)
-            plot_means(vastus_lateralis_conv, "b", label_conv)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
-
-            plt.sca(axs_1[1, 0])
-            axs_1[1, 0].set_title(
-                "Paired t-Test",
-            )
-            plt.xlabel(x_label)
-            paired_ttest(vastus_lateralis_sumo, vastus_lateralis_conv)
-
-            vastus_medialis_sumo = [
-                normalize_forces(active_athlete_vastus_medialis_sumo_force_0),
-                normalize_forces(active_athlete_vastus_medialis_sumo_force_1),
-                normalize_forces(active_athlete_vastus_medialis_sumo_force_2),
-                normalize_forces(active_athlete_vastus_medialis_sumo_force_3),
-            ]
-            vastus_medialis_conv = [
-                normalize_forces(active_athlete_vastus_medialis_conv_force_0),
-                normalize_forces(active_athlete_vastus_medialis_conv_force_1),
-                normalize_forces(active_athlete_vastus_medialis_conv_force_2),
-                normalize_forces(active_athlete_vastus_medialis_conv_force_3),
-            ]
-            vastus_medialis_sumo = np.array(vastus_medialis_sumo)
-            vastus_medialis_conv = np.array(vastus_medialis_conv)
-
-            # vastus medialis
-            # row 0, column 1
-            plt.sca(axs_1[0, 1])
-            axs_1[0, 1].set_title(
-                "Vastus medialis",
-            )
-            plot_means(vastus_medialis_sumo, "r", label_sumo)
-            plot_means(vastus_medialis_conv, "b", label_conv)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
-
-            plt.sca(axs_1[1, 1])
-            axs_1[1, 1].set_title(
-                "Paired t-Test",
-            )
-            plt.xlabel(x_label)
-            paired_ttest(vastus_medialis_sumo, vastus_medialis_conv)
-
-            vastus_intermedius_sumo = [
-                normalize_forces(active_athlete_vastus_intermedius_sumo_force_0),
-                normalize_forces(active_athlete_vastus_intermedius_sumo_force_1),
-                normalize_forces(active_athlete_vastus_intermedius_sumo_force_2),
-                normalize_forces(active_athlete_vastus_intermedius_sumo_force_3),
-            ]
-            vastus_intermedius_conv = [
-                normalize_forces(active_athlete_vastus_intermedius_conv_force_0),
-                normalize_forces(active_athlete_vastus_intermedius_conv_force_1),
-                normalize_forces(active_athlete_vastus_intermedius_conv_force_2),
-                normalize_forces(active_athlete_vastus_intermedius_conv_force_3),
-            ]
-            vastus_intermedius_sumo = np.array(vastus_intermedius_sumo)
-            vastus_intermedius_conv = np.array(vastus_intermedius_conv)
-
-            # vastus intermedius
-            # row 0, column 2
-            plt.sca(axs_1[0, 2])
-            axs_1[0, 2].set_title(
-                "Vastus intermedius",
-            )
-            plot_means(vastus_intermedius_sumo, "r", label_sumo)
-            plot_means(vastus_intermedius_conv, "b", label_conv)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
-
-            plt.sca(axs_1[1, 2])
-            axs_1[1, 2].set_title(
-                "Paired t-Test",
-            )
-            plt.xlabel(x_label)
-            paired_ttest(vastus_intermedius_sumo, vastus_intermedius_conv)
-
-            rectus_femoris_sumo = [
-                normalize_forces(active_athlete_rectus_femoris_sumo_force_0),
-                normalize_forces(active_athlete_rectus_femoris_sumo_force_1),
-                normalize_forces(active_athlete_rectus_femoris_sumo_force_2),
-                normalize_forces(active_athlete_rectus_femoris_sumo_force_3),
-            ]
-            rectus_femoris_conv = [
-                normalize_forces(active_athlete_rectus_femoris_conv_force_0),
-                normalize_forces(active_athlete_rectus_femoris_conv_force_1),
-                normalize_forces(active_athlete_rectus_femoris_conv_force_2),
-                normalize_forces(active_athlete_rectus_femoris_conv_force_3),
-            ]
-            rectus_femoris_sumo = np.array(rectus_femoris_sumo)
-            rectus_femoris_conv = np.array(rectus_femoris_conv)
-
-            # rectus femoris
-            # row 0, column 3
-            plt.sca(axs_1[0, 3])
-            axs_1[0, 3].set_title(
-                "Rectus femoris",
-            )
-            plot_means(rectus_femoris_sumo, "r", label_sumo)
-            plot_means(rectus_femoris_conv, "b", label_conv)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
-
-            plt.sca(axs_1[1, 3])
-            axs_1[1, 3].set_title(
-                "Paired t-Test",
-            )
-            plt.xlabel(x_label)
-            paired_ttest(rectus_femoris_sumo, rectus_femoris_conv)
-
-            handles, labels = axs_1[
-                0, 0
-            ].get_legend_handles_labels()  # get legend from first plot
-            fig_1.legend(handles, labels, loc="center right")
-            fig_1.set_size_inches(13, 7.5)
-            if save_figures:
-                plt.savefig(
-                    "../results/so/mean/"
-                    + active_athlete["name"]
-                    + figure_1_postfix
-                    + ".png",
-                    transparent=None,
-                    dpi=300,
-                    format="png",
-                )
-
-            hip_extensors_sumo = [
-                normalize_forces(active_athlete_hip_extensors_sumo_force_0),
-                normalize_forces(active_athlete_hip_extensors_sumo_force_1),
-                normalize_forces(active_athlete_hip_extensors_sumo_force_2),
-                normalize_forces(active_athlete_hip_extensors_sumo_force_3),
-            ]
-            hip_extensors_conv = [
-                normalize_forces(active_athlete_hip_extensors_conv_force_0),
-                normalize_forces(active_athlete_hip_extensors_conv_force_1),
-                normalize_forces(active_athlete_hip_extensors_conv_force_2),
-                normalize_forces(active_athlete_hip_extensors_conv_force_3),
-            ]
-            hip_extensors_sumo = np.array(hip_extensors_sumo)
-            hip_extensors_conv = np.array(hip_extensors_conv)
-
-            hip_extensors_sumo = [
-                normalize_forces(active_athlete_hip_extensors_sumo_force_0),
-                normalize_forces(active_athlete_hip_extensors_sumo_force_1),
-                normalize_forces(active_athlete_hip_extensors_sumo_force_2),
-                normalize_forces(active_athlete_hip_extensors_sumo_force_3),
-            ]
-            hip_extensors_conv = [
-                normalize_forces(active_athlete_hip_extensors_conv_force_0),
-                normalize_forces(active_athlete_hip_extensors_conv_force_1),
-                normalize_forces(active_athlete_hip_extensors_conv_force_2),
-                normalize_forces(active_athlete_hip_extensors_conv_force_3),
-            ]
-            hip_extensors_sumo = np.array(hip_extensors_sumo)
-            hip_extensors_conv = np.array(hip_extensors_conv)
-
-            hip_adductors_sumo = [
-                normalize_forces(active_athlete_adductors_sumo_force_0),
-                normalize_forces(active_athlete_adductors_sumo_force_0),
-                normalize_forces(active_athlete_adductors_sumo_force_0),
-                normalize_forces(active_athlete_adductors_sumo_force_0),
-            ]
-
-            hip_adductors_conv = [
-                normalize_forces(active_athlete_adductors_conv_force_0),
-                normalize_forces(active_athlete_adductors_conv_force_0),
-                normalize_forces(active_athlete_adductors_conv_force_0),
-                normalize_forces(active_athlete_adductors_conv_force_0),
-            ]
-
-            hip_adductors_sumo = np.array(hip_adductors_sumo)
-            hip_adductors_conv = np.array(hip_adductors_conv)
-
-            active_athlete_hip_flexors_sumo_force_0
-
-            hip_flexors_sumo = [
-                normalize_forces(active_athlete_hip_flexors_sumo_force_0),
-                normalize_forces(active_athlete_hip_flexors_sumo_force_1),
-                normalize_forces(active_athlete_hip_flexors_sumo_force_2),
-                normalize_forces(active_athlete_hip_flexors_sumo_force_3),
-            ]
-
-            hip_flexors_conv = [
-                normalize_forces(active_athlete_hip_flexors_conv_force_0),
-                normalize_forces(active_athlete_hip_flexors_conv_force_1),
-                normalize_forces(active_athlete_hip_flexors_conv_force_2),
-                normalize_forces(active_athlete_hip_flexors_conv_force_3),
-            ]
-
-            hip_flexors_sumo = np.array(hip_flexors_sumo)
-            hip_flexors_conv = np.array(hip_flexors_conv)
-
-            knee_extensors_sumo = [
-                normalize_forces(active_athlete_knee_extensors_sumo_force_0),
-                normalize_forces(active_athlete_knee_extensors_sumo_force_1),
-                normalize_forces(active_athlete_knee_extensors_sumo_force_2),
-                normalize_forces(active_athlete_knee_extensors_sumo_force_3),
-            ]
-
-            knee_extensors_conv = [
-                normalize_forces(active_athlete_knee_extensors_conv_force_0),
-                normalize_forces(active_athlete_knee_extensors_conv_force_1),
-                normalize_forces(active_athlete_knee_extensors_conv_force_2),
-                normalize_forces(active_athlete_knee_extensors_conv_force_3),
-            ]
-
-            knee_extensors_sumo = np.array(knee_extensors_sumo)
-            knee_extensors_conv = np.array(knee_extensors_conv)
-
-            create_muscle_force_csv(
-                vastus_lateralis_sumo, vastus_lateralis_conv, "vastus_lateralis"
-            )
-            create_muscle_force_csv(
-                vastus_medialis_sumo, vastus_medialis_conv, "vastus_medialis"
-            )
-            create_muscle_force_csv(
-                vastus_intermedius_sumo, vastus_intermedius_conv, "vastus_intermedius"
-            )
-            create_muscle_force_csv(
-                rectus_femoris_sumo, rectus_femoris_conv, "rectus_femoris"
-            )
-            #############################################################
-            create_muscle_force_csv(
-                hip_extensors_sumo, hip_extensors_conv, "hip_extensors"
-            )
-            create_muscle_force_csv(hip_flexors_sumo, hip_flexors_conv, "hip_flexors")
-            create_muscle_force_csv(
-                hip_adductors_sumo, hip_adductors_conv, "hip_adductors"
-            )
-            create_muscle_force_csv(
-                knee_extensors_sumo, knee_extensors_conv, "knee_extensors"
-            )
             plt.show()
 
         except Exception as e:

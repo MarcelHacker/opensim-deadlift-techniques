@@ -606,12 +606,44 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "glmax2_l",
             "glmax3_l",
         ]
+    if muscle_group == "Hip extensors" and limbs == "r":
+        muscles_of_interest = [
+            "bflh_r",
+            "bfsh_r",
+            "semimem_r",
+            "semiten_r",
+            "glmax1_r",
+            "glmax2_r",
+            "glmax3_r",
+        ]
+    if muscle_group == "Hip extensors" and limbs == "l":
+        muscles_of_interest = [
+            "bflh_l",
+            "bfsh_l",
+            "semimem_l",
+            "semiten_l",
+            "glmax1_l",
+            "glmax2_l",
+            "glmax3_l",
+        ]
 
     if muscle_group == "Knee extensors" and limbs == "rl":
         muscles_of_interest = [
             "vaslat_r",
             "vasmed_r",
             "vasint_r",
+            "vaslat_l",
+            "vasmed_l",
+            "vasint_l",
+        ]
+    if muscle_group == "Knee extensors" and limbs == "r":
+        muscles_of_interest = [
+            "vaslat_r",
+            "vasmed_r",
+            "vasint_r",
+        ]
+    if muscle_group == "Knee extensors" and limbs == "l":
+        muscles_of_interest = [
             "vaslat_l",
             "vasmed_l",
             "vasint_l",
@@ -652,6 +684,20 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "psoas_r",
             "psoas_l",
             "tfl_r",
+            "tfl_l",
+        ]
+    if muscle_group == "Hip flexors" and limbs == "r":  # rec fem added
+        muscles_of_interest = [
+            "recfem_r",
+            "iliacus_r",
+            "psoas_r",
+            "tfl_r",
+        ]
+    if muscle_group == "Hip flexors" and limbs == "l":  # rec fem added
+        muscles_of_interest = [
+            "recfem_l",
+            "iliacus_l",
+            "psoas_l",
             "tfl_l",
         ]
     if muscle_group == "Vasti" and limbs == "rl":
@@ -740,6 +786,24 @@ def sum_muscle_forces(muscleForces, muscle_group="Hamstrings", limbs="rl"):  #
             "addmagIsch_r",
             "addmagMid_r",
             "addmagProx_r",
+            "addbrev_l",
+            "addlong_l",
+            "addmagDist_l",
+            "addmagIsch_l",
+            "addmagMid_l",
+            "addmagProx_l",
+        ]
+    if muscle_group == "Hip adductors" and limbs == "r":
+        muscles_of_interest = [
+            "addbrev_r",
+            "addlong_r",
+            "addmagDist_r",
+            "addmagIsch_r",
+            "addmagMid_r",
+            "addmagProx_r",
+        ]
+    if muscle_group == "Hip adductors" and limbs == "l":
+        muscles_of_interest = [
             "addbrev_l",
             "addlong_l",
             "addmagDist_l",

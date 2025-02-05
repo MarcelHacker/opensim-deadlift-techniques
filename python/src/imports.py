@@ -749,46 +749,171 @@ except Exception as e:
 ##################################################################################################
 # MUSCLE FORCES MUSCLE GROUPS, sum of both limbs, single trials
 try:
-    active_athlete_hip_extensors_sumo_force_0 = sum_muscle_forces(
+    active_athlete_hip_extensors_sumo_r_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_0,  # muscle force data
         "Hip extensors",
-        "rl",
+        "r",
     )
-    active_athlete_hip_extensors_sumo_force_1 = sum_muscle_forces(
+    active_athlete_hip_extensors_sumo_l_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,  # muscle force data
+        "Hip extensors",
+        "l",
+    )
+    active_athlete_hip_extensors_sumo_r_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_1,  # muscle force data
         "Hip extensors",
-        "rl",
+        "r",
     )
-    active_athlete_hip_extensors_sumo_force_2 = sum_muscle_forces(
+    active_athlete_hip_extensors_sumo_l_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,  # muscle force data
+        "Hip extensors",
+        "l",
+    )
+    active_athlete_hip_extensors_sumo_r_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_2,  # muscle force data
         "Hip extensors",
-        "rl",
+        "r",
     )
-    active_athlete_hip_extensors_sumo_force_3 = sum_muscle_forces(
+    active_athlete_hip_extensors_sumo_l_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,  # muscle force data
+        "Hip extensors",
+        "l",
+    )
+    active_athlete_hip_extensors_sumo_r_force_3 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_3,  # muscle force data
         "Hip extensors",
-        "rl",
+        "r",
     )
-    active_athlete_hip_extensors_conv_force_0 = sum_muscle_forces(
+    active_athlete_hip_extensors_sumo_l_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,  # muscle force data
+        "Hip extensors",
+        "l",
+    )
+    active_athlete_hip_extensors_conv_r_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_0,
         "Hip extensors",
-        "rl",
+        "r",
     )
-    active_athlete_hip_extensors_conv_force_1 = sum_muscle_forces(
+    active_athlete_hip_extensors_conv_l_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "Hip extensors",
+        "l",
+    )
+    active_athlete_hip_extensors_conv_r_force_1 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_1,
         "Hip extensors",
-        "rl",
+        "r",
     )
-    active_athlete_hip_extensors_conv_force_2 = sum_muscle_forces(
+    active_athlete_hip_extensors_conv_l_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "Hip extensors",
+        "l",
+    )
+    active_athlete_hip_extensors_conv_r_force_2 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_2,
         "Hip extensors",
-        "rl",
+        "r",
     )
-    active_athlete_hip_extensors_conv_force_3 = sum_muscle_forces(
+    active_athlete_hip_extensors_conv_l_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "Hip extensors",
+        "l",
+    )
+    active_athlete_hip_extensors_conv_r_force_3 = sum_muscle_forces(
         active_athlete_muscleForces_conv_time_normalised_3,
         "Hip extensors",
-        "rl",
+        "r",
     )
+    active_athlete_hip_extensors_conv_l_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "Hip extensors",
+        "l",
+    )
+    ###############################
+    active_athlete_hip_flexors_sumo_r_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,  # muscle force data
+        "Hip flexors",
+        "r",
+    )
+    active_athlete_hip_flexors_sumo_l_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_0,  # muscle force data
+        "Hip flexors",
+        "l",
+    )
+    active_athlete_hip_flexors_sumo_r_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,  # muscle force data
+        "Hip flexors",
+        "r",
+    )
+    active_athlete_hip_flexors_sumo_l_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_1,  # muscle force data
+        "Hip flexors",
+        "l",
+    )
+    active_athlete_hip_flexors_sumo_r_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,  # muscle force data
+        "Hip flexors",
+        "r",
+    )
+    active_athlete_hip_flexors_sumo_l_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_2,  # muscle force data
+        "Hip flexors",
+        "l",
+    )
+    active_athlete_hip_flexors_sumo_r_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,  # muscle force data
+        "Hip flexors",
+        "r",
+    )
+    active_athlete_hip_flexors_sumo_l_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_sumo_time_normalised_3,  # muscle force data
+        "Hip flexors",
+        "l",
+    )
+    active_athlete_hip_flexors_conv_r_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "Hip flexors",
+        "r",
+    )
+    active_athlete_hip_flexors_conv_l_force_0 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_0,
+        "Hip flexors",
+        "l",
+    )
+    active_athlete_hip_flexors_conv_r_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "Hip flexors",
+        "r",
+    )
+    active_athlete_hip_flexors_conv_l_force_1 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_1,
+        "Hip flexors",
+        "l",
+    )
+    active_athlete_hip_flexors_conv_r_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "Hip flexors",
+        "r",
+    )
+    active_athlete_hip_flexors_conv_l_force_2 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_2,
+        "Hip flexors",
+        "l",
+    )
+    active_athlete_hip_flexors_conv_r_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "Hip flexors",
+        "r",
+    )
+    active_athlete_hip_flexors_conv_l_force_3 = sum_muscle_forces(
+        active_athlete_muscleForces_conv_time_normalised_3,
+        "Hip flexors",
+        "l",
+    )
+    ###############################
+    # todo insert hip_adductors
+
+    ###############################
     active_athlete_knee_extensors_sumo_force_0 = sum_muscle_forces(
         active_athlete_muscleForces_sumo_time_normalised_0,
         "Knee extensors",
