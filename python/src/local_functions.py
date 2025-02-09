@@ -1085,6 +1085,46 @@ def create_overall_csv(file_name, array_time_normalized, athlete):
     )
 
 
+def create_peak_forces_csv(
+    file_name, array_peak_r_time_normalized, array_peak_l_time_normalized, athlete
+):
+    print("PEAKs: ", array_peak_r_time_normalized)
+    trial_postfix = "no_athlete_selected"
+    if athlete == "athlete_0":
+        trial_postfix = "A0"
+    elif athlete == "athlete_1":
+        trial_postfix = "A1"
+    elif athlete == "athlete_2":
+        trial_postfix = "A2"
+    elif athlete == "athlete_3":
+        trial_postfix = "A3"
+
+    df = pd.DataFrame({})
+    print(file_name)
+    try:
+        stored_csv = pd.read_csv(
+            "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
+            + file_name,
+            sep="\t",
+            skiprows=0,
+        )
+        if stored_csv.empty == False:
+            df = stored_csv.copy()
+    except Exception as e:
+        print(f"Error reading: {e}")
+
+    df["R_" + str(trial_postfix)] = array_peak_r_time_normalized
+    df["L_" + str(trial_postfix)] = array_peak_l_time_normalized
+
+    df.to_csv(
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
+        + file_name,
+        sep="\t",
+        encoding="utf-8",
+        index=False,
+    )
+
+
 def calculate_joint_centres_modified(
     trc_filepath, new_filepath=None
 ):  # modified from lib
