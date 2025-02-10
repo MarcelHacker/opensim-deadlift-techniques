@@ -25,6 +25,7 @@ from src.spmMuscleForceGroups import run_muscle_force_groups_spm
 from src.statisticsOverall import run_muscle_force_groups_overall
 from src.statisticsSummary import run_muscle_force_groups_summary
 from src.summaryPreferences import run_muscle_group_preferences
+from src.peakForceBars import run_peak_muscle_force_bars
 
 
 #####################################################################################
@@ -53,7 +54,7 @@ if __name__ == "__main__":
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
-    save_figures = True
+    save_figures = False
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
     # run_total_muscle_force_plot_trails(False, save_figures)
@@ -67,12 +68,13 @@ if __name__ == "__main__":
     # run_forces_plot(False, save_figures)
     # run_moment_arms_hip_plot(False, save_figures)
     ########################## MUSCLE FORCES ##############################################
-    run_muscle_force_groups_spm(True, save_figures)
+    run_muscle_force_groups_spm(False, save_figures)
     # run_muscle_force_groups(False, save_figures)
 
     # run_muscle_force_groups_overall(False, save_figures)
     run_muscle_force_groups_summary(False, save_figures)
     run_muscle_group_preferences(False, save_figures)
+    run_peak_muscle_force_bars(True, save_figures)
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
 
