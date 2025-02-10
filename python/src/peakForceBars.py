@@ -62,7 +62,7 @@ def run_peak_muscle_force_bars(bool, save_figures):
             figure_0_postfix = "peak_force_summary"
             fig_0, axs_0 = plt.subplots()
             fig_0.suptitle(
-                "Peak Muscle Force Means ",
+                "Peak Muscle Forces; n = 2 (Athlete 0, 2) ",
                 fontweight="bold",
             )
             plt.subplots_adjust(
@@ -99,10 +99,19 @@ def run_peak_muscle_force_bars(bool, save_figures):
                 np.mean(preferred_hip_extensors_athlete_2),
                 np.mean(non_preferred_hip_extensors_athlete_0),
             ]
+            yerr = [
+                np.std(preferred_hip_extensors_athlete_0),
+                np.std(non_preferred_hip_extensors_athlete_2),
+                np.std(preferred_hip_extensors_athlete_2),
+                np.std(non_preferred_hip_extensors_athlete_0),
+            ]
             bar_labels = ["Preferred", "Non-preferred", "Preferred", "Non-preferred"]
             bar_colors = ["tab:red", "tab:blue", "tab:red", "tab:blue"]
 
             axs_0.bar(xlabels, peak_forces, label=bar_labels, color=bar_colors)
+            axs_0.errorbar(
+                xlabels, peak_forces, yerr=yerr, fmt="o", color="black", elinewidth=3
+            )
             axs_0.set_ylabel(y_label)
             axs_0.set_title("Hip Extensors")
 
