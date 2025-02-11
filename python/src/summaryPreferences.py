@@ -212,11 +212,11 @@ def run_muscle_group_preferences(bool, save_figures):
             #  fontweight="bold",
             # )
             plt.subplots_adjust(
-                wspace=0.33,
+                wspace=0.244,
                 hspace=0.293,
-                top=0.917,
-                right=0.921,
-                left=0.067,
+                top=0.962,
+                right=0.94,
+                left=0.05,
                 bottom=0.06,
             )
 
@@ -373,9 +373,6 @@ def run_muscle_group_preferences(bool, save_figures):
             plot_means(sumo_knee_extensors_athlete_0, "r", "preferred")
             plot_means(sumo_knee_extensors_athlete_2, "b", "non-preferred")
             axs_0[0, 3].set_ylim(ymin=0)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
-
             t = spm1d.stats.ttest_paired(
                 sumo_knee_extensors_athlete_0, sumo_knee_extensors_athlete_2
             )
