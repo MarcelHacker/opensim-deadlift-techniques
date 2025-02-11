@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
-    save_figures = True
+    save_figures = False
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
     # run_total_muscle_force_plot_trails(False, save_figures)
@@ -72,8 +72,8 @@ if __name__ == "__main__":
     # run_muscle_force_groups(False, save_figures)
 
     # run_muscle_force_groups_overall(False, save_figures)
-    run_muscle_force_groups_summary(False, save_figures)
-    run_muscle_group_preferences(True, save_figures)
+    run_muscle_force_groups_summary(True, save_figures)
+    run_muscle_group_preferences(False, save_figures)
     run_peak_muscle_force_bars(False, save_figures)
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)

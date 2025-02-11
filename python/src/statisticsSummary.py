@@ -58,7 +58,7 @@ def getNormalizedForces(athlete_number, muscle_group, technique):
 def run_muscle_force_groups_summary(bool, save_figures):
     if bool:
         try:
-            figure_0_postfix = "spm_check_athlete_0"
+            figure_0_postfix = "spm_summary"
             label_sumo = "SUMO"
             label_conv = "CONV"
             y_label = "Normalized muscle force [N/kg]"
@@ -209,28 +209,27 @@ def run_muscle_force_groups_summary(bool, save_figures):
                 (conv_knee_extensors_r_athlete_2, conv_knee_extensors_l_athlete_2)
             )
             fig_0, axs_0 = plt.subplots(2, 4)
-            fig_0.suptitle(
-                "Muscle Force Means " + "Athlete 0" + "; preferred: SUMO",
-                fontweight="bold",
-            )
+            # fig_0.suptitle(
+            #   "Muscle Force Means " + "Athlete 0" + "; preferred: SUMO",
+            #  fontweight="bold",
+            # )
             plt.subplots_adjust(
-                wspace=0.33,
-                hspace=0.293,
-                top=0.917,
-                right=0.921,
-                left=0.067,
+                wspace=0.271,
+                hspace=0.271,
+                top=0.958,
+                right=0.983,
+                left=0.05,
                 bottom=0.06,
             )
 
             # Hip extensors
             plt.sca(axs_0[0, 0])
             axs_0[0, 0].set_title(
-                "Hip extensors",
+                "Hip Extensors",
             )
             plot_means(sumo_hip_extensors_athlete_0, "r", label_sumo)
             plot_means(conv_hip_extensors_athlete_0, "b", label_conv)
             plt.ylabel(y_label)
-            plt.xlabel(x_label)
             t = spm1d.stats.ttest_paired(
                 sumo_hip_extensors_athlete_0, conv_hip_extensors_athlete_0
             )
@@ -249,12 +248,10 @@ def run_muscle_force_groups_summary(bool, save_figures):
             # Hip flexors
             plt.sca(axs_0[0, 1])
             axs_0[0, 1].set_title(
-                "Hip flexors",
+                "Hip Flexors",
             )
             plot_means(sumo_hip_flexors_athlete_0, "r", label_sumo)
             plot_means(conv_hip_flexors_athlete_0, "b", label_conv)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
 
             t = spm1d.stats.ttest_paired(
                 sumo_hip_flexors_athlete_0, conv_hip_flexors_athlete_0
@@ -274,13 +271,11 @@ def run_muscle_force_groups_summary(bool, save_figures):
             # Hip adductors
             plt.sca(axs_0[0, 2])
             axs_0[0, 2].set_title(
-                "Hip adductors",
+                "Hip Adductors",
             )
             plot_means(sumo_hip_adductors_athlete_0, "r", label_sumo)
             plot_means(conv_hip_adductors_athlete_0, "b", label_conv)
             axs_0[0, 2].set_ylim(ymin=0)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
 
             t = spm1d.stats.ttest_paired(
                 sumo_hip_adductors_athlete_0, conv_hip_adductors_athlete_0
@@ -300,13 +295,11 @@ def run_muscle_force_groups_summary(bool, save_figures):
             # row 0, column 3
             plt.sca(axs_0[0, 3])
             axs_0[0, 3].set_title(
-                "Knee extensors",
+                "Knee Extensors",
             )
             plot_means(sumo_knee_extensors_athlete_0, "r", label_sumo)
             plot_means(conv_knee_extensors_athlete_0, "b", label_conv)
             axs_0[0, 3].set_ylim(ymin=0)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
 
             t = spm1d.stats.ttest_paired(
                 sumo_knee_extensors_athlete_0, conv_knee_extensors_athlete_0
@@ -322,6 +315,95 @@ def run_muscle_force_groups_summary(bool, save_figures):
                         alpha=0.3,
                     )
                     axs_0[0, 3].add_patch(rec)
+
+            # Hip extensors
+            plt.sca(axs_0[1, 0])
+            plot_means(sumo_hip_extensors_athlete_2, "r", label_sumo)
+            plot_means(conv_hip_extensors_athlete_2, "b", label_conv)
+            plt.ylabel(y_label)
+            plt.xlabel(x_label)
+
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_extensors_athlete_2, conv_hip_extensors_athlete_2
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        200,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[1, 0].add_patch(rec)
+            plt.xlabel(x_label)
+
+            plt.sca(axs_0[1, 1])
+            plot_means(sumo_hip_flexors_athlete_2, "r", label_sumo)
+            plot_means(conv_hip_flexors_athlete_2, "b", label_conv)
+            plt.xlabel(x_label)
+
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_flexors_athlete_2, conv_hip_flexors_athlete_2
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        100,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[1, 1].add_patch(rec)
+            plt.xlabel(x_label)
+
+            # Hip adductors
+            plt.sca(axs_0[1, 2])
+            plot_means(sumo_hip_adductors_athlete_2, "r", label_sumo)
+            plot_means(conv_hip_adductors_athlete_2, "b", label_conv)
+            axs_0[1, 2].set_ylim(ymin=0)
+            plt.xlabel(x_label)
+
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_adductors_athlete_2, conv_hip_adductors_athlete_2
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        100,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[1, 2].add_patch(rec)
+            plt.xlabel(x_label)
+
+            plt.sca(axs_0[1, 3])
+            plot_means(sumo_knee_extensors_athlete_2, "r", label_sumo)
+            plot_means(conv_knee_extensors_athlete_2, "b", label_conv)
+            axs_0[1, 3].set_ylim(ymin=0)
+            plt.xlabel(x_label)
+
+            t = spm1d.stats.ttest_paired(
+                sumo_knee_extensors_athlete_2, conv_knee_extensors_athlete_2
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        300,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[1, 3].add_patch(rec)
+            plt.xlabel(x_label)
 
             handles, labels = axs_0[
                 0, 0
