@@ -73,8 +73,8 @@ if __name__ == "__main__":
 
     # run_muscle_force_groups_overall(False, save_figures)
     run_muscle_force_groups_summary(False, save_figures)
-    run_muscle_group_preferences(False, save_figures)
-    run_peak_muscle_force_bars(True, save_figures)
+    run_muscle_group_preferences(True, save_figures)
+    run_peak_muscle_force_bars(False, save_figures)
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
 

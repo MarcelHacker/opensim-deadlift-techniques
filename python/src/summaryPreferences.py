@@ -207,10 +207,10 @@ def run_muscle_group_preferences(bool, save_figures):
                 (conv_knee_extensors_r_athlete_2, conv_knee_extensors_l_athlete_2)
             )
             fig_0, axs_0 = plt.subplots(2, 4)
-            fig_0.suptitle(
-                "Muscle Force Means Sumo; " + "n = 2 (Athlete 0, 2)",
-                fontweight="bold",
-            )
+            # fig_0.suptitle(
+            #   "Muscle Force Means Sumo; " + "n = 2 (Athlete 0, 2)",
+            #  fontweight="bold",
+            # )
             plt.subplots_adjust(
                 wspace=0.33,
                 hspace=0.293,
@@ -223,12 +223,11 @@ def run_muscle_group_preferences(bool, save_figures):
             # Hip extensors sumo
             plt.sca(axs_0[0, 0])
             axs_0[0, 0].set_title(
-                "Hip extensors, sumo",
+                "Hip Extensors, SDL",
             )
             plot_means(sumo_hip_extensors_athlete_0, "r", "preferred")
             plot_means(sumo_hip_extensors_athlete_2, "b", "non-preferred")
             plt.ylabel(y_label)
-            plt.xlabel(x_label)
             t = spm1d.stats.ttest_paired(
                 sumo_hip_extensors_athlete_0, sumo_hip_extensors_athlete_2
             )
@@ -247,7 +246,7 @@ def run_muscle_group_preferences(bool, save_figures):
             # Hip extensors conv
             plt.sca(axs_0[1, 0])
             axs_0[1, 0].set_title(
-                "Hip extensors, conv",
+                "CDL",
             )
             plot_means(conv_hip_extensors_athlete_2, "r", "preferred")
             plot_means(conv_hip_extensors_athlete_0, "b", "non-preferred")
@@ -273,12 +272,10 @@ def run_muscle_group_preferences(bool, save_figures):
             # Hip flexors sumo
             plt.sca(axs_0[0, 1])
             axs_0[0, 1].set_title(
-                "Hip flexors, sumo",
+                "Hip Flexors, SDL",
             )
             plot_means(sumo_hip_flexors_athlete_0, "r", "preferred")
             plot_means(sumo_hip_flexors_athlete_2, "b", "non-preferred")
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
 
             t = spm1d.stats.ttest_paired(
                 sumo_hip_flexors_athlete_0, sumo_hip_flexors_athlete_2
@@ -298,11 +295,10 @@ def run_muscle_group_preferences(bool, save_figures):
             # Hip flexors conv
             plt.sca(axs_0[1, 1])
             axs_0[1, 1].set_title(
-                "Hip flexors, conv",
+                "CDL",
             )
             plot_means(conv_hip_flexors_athlete_2, "r", "preferred")
             plot_means(conv_hip_flexors_athlete_0, "b", "non-preferred")
-            plt.ylabel(y_label)
             plt.xlabel(x_label)
             axs_0[1, 1].set_ylim(ymin=0)
 
@@ -324,13 +320,11 @@ def run_muscle_group_preferences(bool, save_figures):
             # Hip adductors sumo
             plt.sca(axs_0[0, 2])
             axs_0[0, 2].set_title(
-                "Hip adductors, sumo",
+                "Hip Adductors, SDL",
             )
             plot_means(sumo_hip_adductors_athlete_0, "r", "preferred")
             plot_means(sumo_hip_adductors_athlete_2, "b", "non-preferred")
             axs_0[0, 2].set_ylim(ymin=0)
-            plt.ylabel(y_label)
-            plt.xlabel(x_label)
 
             t = spm1d.stats.ttest_paired(
                 sumo_hip_adductors_athlete_0, sumo_hip_adductors_athlete_2
@@ -350,12 +344,11 @@ def run_muscle_group_preferences(bool, save_figures):
             # Hip adductors conv
             plt.sca(axs_0[1, 2])
             axs_0[1, 2].set_title(
-                "Hip adductors, conv",
+                "CDL",
             )
             plot_means(conv_hip_adductors_athlete_2, "r", "preferred")
             plot_means(conv_hip_adductors_athlete_0, "b", "non-preferred")
             axs_0[1, 2].set_ylim(ymin=0)
-            plt.ylabel(y_label)
             plt.xlabel(x_label)
             t = spm1d.stats.ttest_paired(
                 conv_hip_adductors_athlete_2, conv_hip_adductors_athlete_0
@@ -375,7 +368,7 @@ def run_muscle_group_preferences(bool, save_figures):
             # row 0, column 3
             plt.sca(axs_0[0, 3])
             axs_0[0, 3].set_title(
-                "Knee extensors, sumo",
+                "Knee Extensors, SDL",
             )
             plot_means(sumo_knee_extensors_athlete_0, "r", "preferred")
             plot_means(sumo_knee_extensors_athlete_2, "b", "non-preferred")
@@ -401,12 +394,11 @@ def run_muscle_group_preferences(bool, save_figures):
             # knee extensors, conv
             plt.sca(axs_0[1, 3])
             axs_0[1, 3].set_title(
-                "Knee extensors, conv",
+                "CDL",
             )
             plot_means(conv_knee_extensors_athlete_2, "r", "preferred")
             plot_means(conv_knee_extensors_athlete_0, "b", "non-preferred")
             axs_0[1, 3].set_ylim(ymin=0)
-            plt.ylabel(y_label)
             plt.xlabel(x_label)
             t = spm1d.stats.ttest_paired(
                 conv_knee_extensors_athlete_2, conv_knee_extensors_athlete_0
