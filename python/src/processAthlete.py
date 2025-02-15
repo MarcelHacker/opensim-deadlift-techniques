@@ -13,7 +13,7 @@ def run_process_athlete(bool, save_figures):
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Kinematics Trials Athlete "
-                + active_athlete["number"]
+                + str(active_athlete["number"])
                 + "; Model: "
                 + active_athlete["model"]
                 + "; Preferred: "
@@ -176,7 +176,7 @@ def run_process_athlete(bool, save_figures):
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
                 "Joint Moments Trials Athlete "
-                + active_athlete["number"]
+                + str(active_athlete["number"])
                 + "; Model: "
                 + active_athlete["model"]
                 + "; Preferred: "
@@ -347,7 +347,7 @@ def run_process_athlete(bool, save_figures):
             fig, axs = plt.subplots(3, 3)
             fig.suptitle(
                 "Muscle Force Groups Athlete "
-                + active_athlete["number"]
+                + str(active_athlete["number"])
                 + "; Model: "
                 + active_athlete["model"]
                 + "; Preferred: "
@@ -858,7 +858,7 @@ def run_process_athlete(bool, save_figures):
             fig, axs = plt.subplots(cols)
             fig.suptitle(
                 "Total Muscle Force Athlete "
-                + active_athlete["number"]
+                + str(active_athlete["number"])
                 + "; Model: "
                 + active_athlete["model"]
                 + "; Preferred: "
@@ -1057,7 +1057,7 @@ def run_process_athlete(bool, save_figures):
             )
             fig_0, axs_0 = plt.subplots(1, 4)
             fig_0.suptitle(
-                "Muscle Force Means Athlete " + active_athlete["number"],
+                "Muscle Force Means Athlete " + str(active_athlete["number"]),
                 fontweight="bold",
             )
             plt.subplots_adjust(
@@ -1192,7 +1192,7 @@ def run_process_athlete(bool, save_figures):
 
             fig_0, axs_0 = plt.subplots(1, 4)
             fig_0.suptitle(
-                "Peak Muscle Forces Athlete " + active_athlete["number"],
+                "Peak Muscle Forces Athlete " + str(active_athlete["number"]),
                 fontweight="bold",
             )
             plt.subplots_adjust(
