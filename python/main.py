@@ -46,7 +46,7 @@ if __name__ == "__main__":
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
-    save_figures = False
+    save_figures = True
     export_csv(True)  # export force data to csv
     run_process_athlete(True, save_figures)
     ################################## USED FUNCTIONS ###################################################
