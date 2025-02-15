@@ -958,3 +958,225 @@ def run_process_athlete(bool, save_figures):
         except Exception as e:
             print("Error in process athlete total muscle force")
             print(e)
+
+        try:
+            label_sumo = "SDL"
+            label_conv = "CDL"
+            y_label = "Normalized muscle force [N/kg]"
+            x_label = "% concentric deadlift cycle"
+
+            sumo_hip_extensors_r_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_extensors_r", "sumo"
+            )
+            sumo_hip_extensors_l_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_extensors_l", "sumo"
+            )
+            conv_hip_extensors_r_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_extensors_r", "conv"
+            )
+            conv_hip_extensors_l_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_extensors_l", "conv"
+            )
+            sumo_hip_flexors_r_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_flexors_r", "sumo"
+            )
+            sumo_hip_flexors_l_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_flexors_l", "sumo"
+            )
+            conv_hip_flexors_r_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_flexors_r", "conv"
+            )
+            conv_hip_flexors_l_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_flexors_l", "conv"
+            )
+            sumo_hip_adductors_r_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_adductors_r", "sumo"
+            )
+            sumo_hip_adductors_l_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_adductors_l", "sumo"
+            )
+            conv_hip_adductors_r_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_adductors_r", "conv"
+            )
+            conv_hip_adductors_l_active_athlete = getNormalizedForces(
+                active_athlete["number"], "hip_adductors_l", "conv"
+            )
+            sumo_knee_extensors_r_active_athlete = getNormalizedForces(
+                active_athlete["number"], "knee_extensors_r", "sumo"
+            )
+            sumo_knee_extensors_l_active_athlete = getNormalizedForces(
+                active_athlete["number"], "knee_extensors_l", "sumo"
+            )
+            conv_knee_extensors_r_active_athlete = getNormalizedForces(
+                active_athlete["number"], "knee_extensors_r", "conv"
+            )
+            conv_knee_extensors_l_active_athlete = getNormalizedForces(
+                active_athlete["number"], "knee_extensors_l", "conv"
+            )
+            sumo_hip_extensors_active_athlete = np.concatenate(
+                (
+                    sumo_hip_extensors_r_active_athlete,
+                    sumo_hip_extensors_l_active_athlete,
+                )
+            )
+            conv_hip_extensors_active_athlete = np.concatenate(
+                (
+                    conv_hip_extensors_r_active_athlete,
+                    conv_hip_extensors_l_active_athlete,
+                )
+            )
+            sumo_hip_flexors_active_athlete = np.concatenate(
+                (sumo_hip_flexors_r_active_athlete, sumo_hip_flexors_l_active_athlete)
+            )
+            conv_hip_flexors_active_athlete = np.concatenate(
+                (conv_hip_flexors_r_active_athlete, conv_hip_flexors_l_active_athlete)
+            )
+            sumo_hip_adductors_active_athlete = np.concatenate(
+                (
+                    sumo_hip_adductors_r_active_athlete,
+                    sumo_hip_adductors_l_active_athlete,
+                )
+            )
+            conv_hip_adductors_active_athlete = np.concatenate(
+                (
+                    conv_hip_adductors_r_active_athlete,
+                    conv_hip_adductors_l_active_athlete,
+                )
+            )
+            sumo_knee_extensors_active_athlete = np.concatenate(
+                (
+                    sumo_knee_extensors_r_active_athlete,
+                    sumo_knee_extensors_l_active_athlete,
+                )
+            )
+            conv_knee_extensors_active_athlete = np.concatenate(
+                (
+                    conv_knee_extensors_r_active_athlete,
+                    conv_knee_extensors_l_active_athlete,
+                )
+            )
+            fig_0, axs_0 = plt.subplots(1, 4)
+            fig_0.suptitle(
+                "Muscle Force Means " + active_athlete["name"] + "; preferred: SUMO",
+                fontweight="bold",
+            )
+            plt.subplots_adjust(
+                wspace=0.271,
+                hspace=0.271,
+                top=0.958,
+                right=0.983,
+                left=0.05,
+                bottom=0.06,
+            )
+
+            # Hip extensors
+            plt.sca(axs_0[0, 0])
+            axs_0[0, 0].set_title(
+                "Hip Extensors",
+            )
+            plot_means(sumo_hip_extensors_active_athlete, "r", label_sumo)
+            plot_means(conv_hip_extensors_active_athlete, "b", label_conv)
+            plt.ylabel(y_label)
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_extensors_active_athlete, conv_hip_extensors_active_athlete
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        200,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[0, 0].add_patch(rec)
+
+            # Hip flexors
+            plt.sca(axs_0[0, 1])
+            axs_0[0, 1].set_title(
+                "Hip Flexors",
+            )
+            plot_means(sumo_hip_flexors_active_athlete, "r", label_sumo)
+            plot_means(conv_hip_flexors_active_athlete, "b", label_conv)
+
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_flexors_active_athlete, conv_hip_flexors_active_athlete
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        100,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[0, 1].add_patch(rec)
+
+            # Hip adductors
+            plt.sca(axs_0[0, 2])
+            axs_0[0, 2].set_title(
+                "Hip Adductors",
+            )
+            plot_means(sumo_hip_adductors_active_athlete, "r", label_sumo)
+            plot_means(conv_hip_adductors_active_athlete, "b", label_conv)
+            axs_0[0, 2].set_ylim(ymin=0)
+
+            t = spm1d.stats.ttest_paired(
+                sumo_hip_adductors_active_athlete, conv_hip_adductors_active_athlete
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        100,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[0, 2].add_patch(rec)
+
+            # row 0, column 3
+            plt.sca(axs_0[0, 3])
+            axs_0[0, 3].set_title(
+                "Knee Extensors",
+            )
+            plot_means(sumo_knee_extensors_active_athlete, "r", label_sumo)
+            plot_means(conv_knee_extensors_active_athlete, "b", label_conv)
+            axs_0[0, 3].set_ylim(ymin=0)
+
+            t = spm1d.stats.ttest_paired(
+                sumo_knee_extensors_active_athlete, conv_knee_extensors_active_athlete
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        300,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0[0, 3].add_patch(rec)
+
+            handles, labels = axs_0[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig_0.legend(handles, labels, loc="center right")
+            fig_0.set_size_inches(13, 7.5)
+            if save_figures:
+                plt.savefig(
+                    "../results/muscle_forces/" + ".png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
+            plt.show()
+            ###############################################################################################################
+        except Exception as e:
+            print("Error in technique summary active athlete")
+            print(e)

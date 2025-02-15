@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import msk_modelling_python as msk
 from scipy import signal
+import spm1d
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
 dir_name = os.path.dirname(os.path.dirname(current_directory))
@@ -465,6 +466,55 @@ def time_normalise_df(df, fs=""):
         normalised_df[column] = np.interp(Tnorm, timeTrial, currentData)
 
     return normalised_df
+
+
+def plot_means(array, color_letter, label):
+    spm1d.plot.plot_mean_sd(
+        array,
+        linecolor=color_letter,
+        linestyle="-",
+        facecolor="0.8",
+        edgecolor="0.8",
+        alpha=0.5,
+        label=label,
+        autoset_ylim=True,
+        roi=None,
+    )
+
+
+def paired_ttest(varA, varB):
+    t = spm1d.stats.ttest_paired(varA, varB)
+    ti = t.inference(alpha=0.05, two_tailed=True)
+    ti.plot()
+    ti.plot_threshold_label()
+    ti.plot_p_values()
+
+
+def getNormalizedForces(athlete_number, muscle_group, technique):
+    # read muscle group csv
+    try:
+        reduced_csv = []
+        trial_names = [
+            "T1_A" + str(athlete_number),
+            "T2_A" + str(athlete_number),
+            "T3_A" + str(athlete_number),
+            "T4_A" + str(athlete_number),
+        ]
+        muscle_group_csv = pd.read_csv(
+            "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
+            + technique
+            + "/"
+            + muscle_group
+            + ".csv",
+            sep="\t",
+            skiprows=0,
+        )
+        for trial in trial_names:
+            reduced_csv.append(muscle_group_csv[trial])
+
+        return reduced_csv
+    except Exception as e:
+        print(f"\nError reading csv in getNormalizedForces func: {muscle_group},{e}")
 
 
 def get_mean_trail_values(
@@ -992,33 +1042,6 @@ lower_body_muscles = [
 ]
 
 
-def normalize_Force(muscle_forces, athlete_folder_path):
-    """
-    Normalize muscle force on maximum isometric force.
-
-    Parameter:
-    muscle_forces: time normalized data frame with muscle forces
-
-    Return:
-    Time normalized and normalized muscle forces of all lower body muscles
-    """
-    model_path = athlete_folder_path + "/scaled_model.osim"
-    normalized_forces = muscle_forces.copy()
-
-    # Load the OpenSim model
-    model = osim.Model(model_path)
-
-    # Loop through muscles and update their maximum isometric force
-    for muscle in lower_body_muscles:
-        target = model.getMuscles().get(muscle)
-        current_max_force = target.getMaxIsometricForce()
-        # time normalized muscle forces
-        normalized_forces[lower_body_muscles] = (
-            muscle_forces[lower_body_muscles] / current_max_force
-        )
-    return normalized_forces
-
-
 def plot_data(
     axs,
     data_1,
@@ -1071,10 +1094,10 @@ def create_overall_csv(file_name, array_time_normalized, athlete):
     except Exception as e:
         print(f"Error reading: {e}")
 
-    df["Trial1_" + str(trial_postfix)] = array_time_normalized[0]
-    df["Trial2_" + str(trial_postfix)] = array_time_normalized[1]
-    df["Trial3_" + str(trial_postfix)] = array_time_normalized[2]
-    df["Trial4_" + str(trial_postfix)] = array_time_normalized[3]
+    df["T1_" + str(trial_postfix)] = array_time_normalized[0]
+    df["T2_" + str(trial_postfix)] = array_time_normalized[1]
+    df["T3_" + str(trial_postfix)] = array_time_normalized[2]
+    df["T4_" + str(trial_postfix)] = array_time_normalized[3]
 
     df.to_csv(
         "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
