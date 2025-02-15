@@ -96,7 +96,6 @@ def run_process_athlete(bool, save_figures):
                     linestyle="dashed",
                 )
                 plt.ylabel(ylabels[i])
-                plt.xlabel(x_label)
 
             for i in range(len(coordinates_r)):
                 plt.sca(axs[1, i])
@@ -260,7 +259,6 @@ def run_process_athlete(bool, save_figures):
                     linestyle="dashed",
                 )
                 plt.ylabel(ylabels[i])
-                plt.xlabel(x_label)
 
             for i in range(len(coordinates_r)):
                 plt.sca(axs[1, i])
@@ -416,7 +414,6 @@ def run_process_athlete(bool, save_figures):
                 linestyle=linestyle_trial_3,
             )
             plt.ylabel("Hamstrings medial [N]")
-            plt.xlabel(x_label)
             # hamstrings lateral
             plt.sca(axs[0, 1])
             axs[0, 1].set_xlim(left=0, right=100)
@@ -467,7 +464,6 @@ def run_process_athlete(bool, save_figures):
                 linestyle=linestyle_trial_3,
             )
             plt.ylabel("Hamstrings lateral [N]")
-            plt.xlabel(x_label)
 
             # vasti
             plt.sca(axs[0, 2])
@@ -519,7 +515,6 @@ def run_process_athlete(bool, save_figures):
                 linestyle=linestyle_trial_3,
             )
             plt.ylabel("Vasti [N]")
-            plt.xlabel(x_label)
 
             # gluteus maximus
             plt.sca(axs[1, 0])
@@ -572,7 +567,6 @@ def run_process_athlete(bool, save_figures):
                 linestyle=linestyle_trial_3,
             )
             plt.ylabel("Gluteus maximus [N]")
-            plt.xlabel(x_label)
 
             # adductors
             plt.sca(axs[1, 1])
@@ -625,7 +619,6 @@ def run_process_athlete(bool, save_figures):
                 linestyle=linestyle_trial_3,
             )
             plt.ylabel("Adductors [N]")
-            plt.xlabel(x_label)
 
             # gluteus medius
             plt.sca(axs[1, 2])
@@ -678,7 +671,6 @@ def run_process_athlete(bool, save_figures):
                 linestyle=linestyle_trial_3,
             )
             plt.ylabel("Gluteus medius [N]")
-            plt.xlabel(x_label)
 
             # Triceps surae
             plt.sca(axs[2, 0])
@@ -853,7 +845,7 @@ def run_process_athlete(bool, save_figures):
                 )
             plt.show()
         except Exception as e:
-            print("Error in run_muscle_force_groups")
+            print("Error in process athlete muscle force groups")
             print(e)
 
         try:
@@ -874,12 +866,12 @@ def run_process_athlete(bool, save_figures):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.386,
-                hspace=0.324,
+                wspace=0.385,
+                hspace=0.213,
                 top=0.902,
                 right=0.988,
-                left=0.076,
-                bottom=0.07,
+                left=0.064,
+                bottom=0.06,
             )
             fig.set_label("Total Muscle Force [N]")
             x_label = "% concentric deadlift cycle"
@@ -917,7 +909,6 @@ def run_process_athlete(bool, save_figures):
             axs[0].set_xticks(np.arange(0, 101, 5))
             axs[0].set_xlim(left=0, right=100)
             plt.legend()
-            plt.xlabel(x_label)
             plt.ylabel(y_label)
 
             plt.sca(axs[1])
