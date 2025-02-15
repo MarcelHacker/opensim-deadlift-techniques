@@ -14,7 +14,6 @@ from src.momentArmsHipPlot import run_moment_arms_hip_plot
 # from src.rawEmgPlot import run_raw_emg_plot
 # from src.normEmgPlot import run_norm_emg_plot
 
-from src.muscleForceGroups import run_muscle_force_groups
 from src.increaseForce import increase_max_isometric_force
 from src.pdfExport import create_pdf_report
 from src.spmTotalMuscleForces import run_total_muscle_force_plot_spm
@@ -31,7 +30,6 @@ class test(unittest.TestCase):
     ##### TESTS WORKING ######
     def test_update_version(self):
         print("Test")
-        # run_muscle_force_sum_plot(False)
 
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
