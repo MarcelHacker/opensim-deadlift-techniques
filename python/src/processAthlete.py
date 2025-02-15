@@ -1293,7 +1293,7 @@ def run_process_athlete(bool, save_figures):
                 plt.savefig(
                     "../results/muscle_forces/groups/"
                     + active_athlete["name"]
-                    + "_trials.png",
+                    + "_mean.png",
                     transparent=None,
                     dpi=300,
                     format="png",
