@@ -22,9 +22,9 @@ def run_process_athlete(bool, save_figures):
             )
             plt.subplots_adjust(
                 wspace=0.2,
-                hspace=0.285,
-                top=0.893,
-                right=0.912,
+                hspace=0.208,
+                top=0.91,
+                right=0.904,
                 left=0.05,
                 bottom=0.07,
             )
@@ -184,10 +184,10 @@ def run_process_athlete(bool, save_figures):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.285,
-                hspace=0.298,
+                wspace=0.249,
+                hspace=0.19,
                 top=0.904,
-                right=0.91,
+                right=0.905,
                 left=0.067,
                 bottom=0.067,
             )
@@ -357,7 +357,7 @@ def run_process_athlete(bool, save_figures):
             fig.set_label("Muscle Force Groups")
             plt.subplots_adjust(
                 wspace=0.275,
-                hspace=0.293,
+                hspace=0.198,
                 top=0.935,
                 right=0.921,
                 left=0.06,
