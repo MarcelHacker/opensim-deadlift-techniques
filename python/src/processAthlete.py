@@ -1180,3 +1180,172 @@ def run_process_athlete(bool, save_figures):
         except Exception as e:
             print("Error in technique summary active athlete")
             print(e)
+
+        try:
+            y_label = "Normalized Peak Muscle Force [N/kg]"
+
+            fig_0, axs_0 = plt.subplots(1, 4)
+            fig_0.suptitle(
+                "Peak Muscle Forces; " + active_athlete["name"],
+                fontweight="bold",
+            )
+            plt.subplots_adjust(
+                wspace=0.33,
+                hspace=0.293,
+                top=0.915,
+                right=0.896,
+                left=0.051,
+                bottom=0.04,
+            )
+            xlabel = [
+                "Athlete " + active_athlete["number"],
+            ]
+            # Hip extensors
+            preferred_sumo_hip_extensors_active_athlete = getNormalizedPeakForces(
+                active_athlete["number"], "hip_extensors", True
+            )
+            non_preferred_sumo_hip_extensors_active_athlete = getNormalizedPeakForces(
+                active_athlete["number"], "hip_extensors", False
+            )
+            peak_forces_sumo_hip_extensors = [
+                np.mean(preferred_sumo_hip_extensors_active_athlete),
+                np.mean(non_preferred_sumo_hip_extensors_active_athlete),
+            ]
+            yerr_sumo_hip_extensors = [
+                np.std(preferred_sumo_hip_extensors_active_athlete),
+                np.std(non_preferred_sumo_hip_extensors_active_athlete),
+            ]
+            bar_labels = ["Preferred", "Non-preferred"]
+            bar_colors = ["tab:red", "tab:blue"]
+            rects = axs_0[0, 0].bar(
+                xlabel,
+                peak_forces_sumo_hip_extensors,
+                label=bar_labels,
+                color=bar_colors,
+            )
+            axs_0[0, 0].bar_label(rects, label_type="center", color="white")
+            axs_0[0, 0].errorbar(
+                xlabel,
+                peak_forces_sumo_hip_extensors,
+                yerr=yerr_sumo_hip_extensors,
+                fmt="o",
+                color="black",
+                elinewidth=3,
+            )
+            axs_0[0, 0].set_ylabel(y_label)
+            axs_0[0, 0].set_title("Hip Extensors, SDL")
+
+            # Hip flexors
+            preferred_sumo_hip_flexors_athlete_0 = getNormalizedPeakForces(
+                0, "hip_flexors", True
+            )
+            non_preferred_sumo_hip_flexors_athlete_2 = getNormalizedPeakForces(
+                2, "hip_flexors", False
+            )
+            peak_forces_sumo_hip_flexors = [
+                np.mean(preferred_sumo_hip_flexors_athlete_0),
+                np.mean(non_preferred_sumo_hip_flexors_athlete_2),
+            ]
+            yerr_sumo_hip_flexors = [
+                np.std(preferred_sumo_hip_flexors_athlete_0),
+                np.std(non_preferred_sumo_hip_flexors_athlete_2),
+            ]
+            rects = axs_0[0, 1].bar(
+                xlabel,
+                peak_forces_sumo_hip_flexors,
+                label=bar_labels,
+                color=bar_colors,
+            )
+            axs_0[0, 1].bar_label(rects, label_type="center", color="white")
+            axs_0[0, 1].errorbar(
+                xlabel,
+                peak_forces_sumo_hip_flexors,
+                yerr=yerr_sumo_hip_flexors,
+                fmt="o",
+                color="black",
+                elinewidth=3,
+            )
+            axs_0[0, 1].set_ylabel(y_label)
+            axs_0[0, 1].set_title("Hip Flexors, SDL")
+
+            preferred_sumo_hip_adductors_athlete_0 = getNormalizedPeakForces(
+                0, "hip_adductors", True
+            )
+            non_preferred_sumo_hip_adductors_athlete_2 = getNormalizedPeakForces(
+                2, "hip_adductors", False
+            )
+            peak_forces_sumo_hip_adductors = [
+                np.mean(preferred_sumo_hip_adductors_athlete_0),
+                np.mean(non_preferred_sumo_hip_adductors_athlete_2),
+            ]
+            yerr_sumo_hip_adductors = [
+                np.std(preferred_sumo_hip_adductors_athlete_0),
+                np.std(non_preferred_sumo_hip_adductors_athlete_2),
+            ]
+            rects = axs_0[0, 2].bar(
+                xlabel,
+                peak_forces_sumo_hip_adductors,
+                label=bar_labels,
+                color=bar_colors,
+            )
+            axs_0[0, 2].bar_label(rects, label_type="center", color="white")
+            axs_0[0, 2].errorbar(
+                xlabel,
+                peak_forces_sumo_hip_adductors,
+                yerr=yerr_sumo_hip_adductors,
+                fmt="o",
+                color="black",
+                elinewidth=3,
+            )
+            axs_0[0, 2].set_ylabel(y_label)
+            axs_0[0, 2].set_title("Hip Adductors, SDL")
+
+            preferred_sumo_knee_extensors_athlete_0 = getNormalizedPeakForces(
+                0, "knee_extensors", True
+            )
+            non_preferred_sumo_knee_extensors_athlete_2 = getNormalizedPeakForces(
+                2, "knee_extensors", False
+            )
+            peak_forces_sumo_knee_extensors = [
+                np.mean(preferred_sumo_knee_extensors_athlete_0),
+                np.mean(non_preferred_sumo_knee_extensors_athlete_2),
+            ]
+            yerr_sumo_knee_extensors = [
+                np.std(preferred_sumo_knee_extensors_athlete_0),
+                np.std(non_preferred_sumo_knee_extensors_athlete_2),
+            ]
+            rects = axs_0[0, 3].bar(
+                xlabel,
+                peak_forces_sumo_knee_extensors,
+                label=bar_labels,
+                color=bar_colors,
+            )
+            axs_0[0, 3].bar_label(rects, label_type="center", color="white")
+            axs_0[0, 3].errorbar(
+                xlabel,
+                peak_forces_sumo_knee_extensors,
+                yerr=yerr_sumo_knee_extensors,
+                fmt="o",
+                color="black",
+                elinewidth=3,
+            )
+            axs_0[0, 3].set_ylabel(y_label)
+            axs_0[0, 3].set_title("Knee Extensors, SDL")
+
+            handles, labels = axs_0[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig_0.legend(handles, labels, loc="center right")
+            fig_0.set_size_inches(13, 7.5)
+            if save_figures:
+                plt.savefig(
+                    "../results/muscle_forces/peak/" + active_athlete["name"] + ".png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
+            plt.show()
+            ###############################################################################################################
+        except Exception as e:
+            print("Error in process athlete peak muscle forces")
+            print(e)

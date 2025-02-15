@@ -3,19 +3,16 @@
 ################################ IMPORTS ###########################################
 import unittest
 from src.imports import *  # file paths of the athlete
-
 from src.modules import *  # local modules for the project
+from src.exportCSV import export_csv
 from src.processAthlete import run_process_athlete
 
-from src.momentsPlot import run_moments_plot
-from src.forcesPlot import run_forces_plot
+
 from src.momentArmsHipPlot import run_moment_arms_hip_plot
 
 # from src.activationsComparison import run_activations_comparison_from_emg
 # from src.rawEmgPlot import run_raw_emg_plot
 # from src.normEmgPlot import run_norm_emg_plot
-from src.totalMuslceForceTrails import run_total_muscle_force_plot_trails
-from src.muslceMomentsPlot import run_muscle_moments_plot
 
 from src.muscleForceGroups import run_muscle_force_groups
 from src.increaseForce import increase_max_isometric_force
@@ -42,7 +39,6 @@ dir_name = os.path.dirname(os.path.dirname(current_directory))
 dir_athletes = os.path.dirname(current_directory)  # change this to simulations folder
 print("DIR athletes: ", dir_athletes)
 
-
 if __name__ == "__main__":
     ## set athlete in imports.py
     ## unittest.main()
@@ -55,6 +51,7 @@ if __name__ == "__main__":
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
     save_figures = False
+    export_csv(True)  # export force data to csv
     run_process_athlete(True, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)

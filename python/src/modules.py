@@ -517,6 +517,31 @@ def getNormalizedForces(athlete_number, muscle_group, technique):
         print(f"\nError reading csv in getNormalizedForces func: {muscle_group},{e}")
 
 
+def getNormalizedPeakForces(athlete_number, muscle_group, isPreferred):
+    # read muscle group csv
+    try:
+        reduced_csv = []
+        trial_names = [
+            "R_A" + str(athlete_number),
+            "L_A" + str(athlete_number),
+        ]
+        muscle_group_csv = pd.read_csv(
+            "/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/muscle_forces/"
+            + ("preferred" if isPreferred else "non-preferred")
+            + "/"
+            + muscle_group
+            + ".csv",
+            sep="\t",
+            skiprows=0,
+        )
+        for trial in trial_names:
+            reduced_csv.append(muscle_group_csv[trial])
+
+        return reduced_csv
+    except Exception as e:
+        print(f"Error reading peak force csv: {muscle_group},{e}")
+
+
 def get_mean_trail_values(
     data_1_time_normalised,
     data_2_time_normalised,
@@ -1071,6 +1096,13 @@ def plot_data(
     plt.xlabel(x_label)
 
 
+def normalize_forces(array, bodymass):
+    normalized_array = []
+    for value in array:
+        normalized_array.append(value / bodymass)
+    return normalized_array
+
+
 def create_overall_csv(file_name, array_time_normalized, athlete):
     trial_postfix = "no_athlete_selected"
     if athlete == "athlete_0":
@@ -1111,7 +1143,6 @@ def create_overall_csv(file_name, array_time_normalized, athlete):
 def create_peak_forces_csv(
     file_name, array_peak_r_time_normalized, array_peak_l_time_normalized, athlete
 ):
-    print("PEAKs: ", array_peak_r_time_normalized)
     trial_postfix = "no_athlete_selected"
     if athlete == "athlete_0":
         trial_postfix = "A0"
