@@ -155,12 +155,12 @@ def run_process_athlete(bool, save_figures):
             fig.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
-                    "../results/ik/" + active_athlete["name"] + ".png",
+                    "../results/ik/" + active_athlete["name"] + "_trials.png",
                     transparent=None,
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in process athlete kinematics")
@@ -318,12 +318,12 @@ def run_process_athlete(bool, save_figures):
             fig.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
-                    "../results/id/" + active_athlete["name"] + ".png",
+                    "../results/id/" + active_athlete["name"] + "_trials.png",
                     transparent=None,
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in process athletes joint moments")
@@ -838,12 +838,14 @@ def run_process_athlete(bool, save_figures):
             fig.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
-                    "../results/so/" + active_athlete["name"] + ".png",
+                    "../results/muscle_forces/"
+                    + active_athlete["name"]
+                    + "_trials.png",
                     transparent=None,
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
         except Exception as e:
             print("Error in process athlete muscle force groups")
             print(e)
@@ -948,15 +950,130 @@ def run_process_athlete(bool, save_figures):
             fig.set_size_inches(11, 5.5)
             if save_figures:
                 plt.savefig(
-                    "../results/so/" + active_athlete["name"] + "_total" + ".png",
+                    "../results/muscle_forces/total/"
+                    + active_athlete["name"]
+                    + "_trials.png",
                     transparent=None,
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in process athlete total muscle force")
+            print(e)
+
+        try:
+            fig, axs = plt.subplots(1)
+            fig.suptitle(
+                "Total Muscle Force Athlete "
+                + str(active_athlete["number"])
+                + "; Model: "
+                + active_athlete["model"]
+                + "; Preferred: "
+                + active_athlete["technique"],
+                fontweight="bold",
+            )
+            plt.subplots_adjust(
+                wspace=0.386,
+                hspace=0.362,
+                top=0.902,
+                right=0.985,
+                left=0.06,
+                bottom=0.083,
+            )
+            fig.set_label("Normalised Muscle Force [N/kg]")
+            x_label = "% concentric deadlift cycle"
+            y_label = "Normalised Muscle Force [N/kg]"
+
+            sumo_array = [
+                normalize_forces(
+                    active_athlete_total_sumo_force_0, active_athlete["bodymass"]
+                ),
+                normalize_forces(
+                    active_athlete_total_sumo_force_1, active_athlete["bodymass"]
+                ),
+                normalize_forces(
+                    active_athlete_total_sumo_force_2, active_athlete["bodymass"]
+                ),
+                normalize_forces(
+                    active_athlete_total_sumo_force_3, active_athlete["bodymass"]
+                ),
+            ]
+            conv_array = [
+                normalize_forces(
+                    active_athlete_total_conv_force_0, active_athlete["bodymass"]
+                ),
+                normalize_forces(
+                    active_athlete_total_conv_force_1, active_athlete["bodymass"]
+                ),
+                normalize_forces(
+                    active_athlete_total_conv_force_2, active_athlete["bodymass"]
+                ),
+                normalize_forces(
+                    active_athlete_total_conv_force_3, active_athlete["bodymass"]
+                ),
+            ]
+            sumo_array = np.array(sumo_array)
+            conv_array = np.array(conv_array)
+
+            axs.set_title(
+                "Total Muscle Forces",
+                fontweight="bold",
+            )
+            plt.xlabel(x_label)
+            plt.ylabel(y_label)
+            spm1d.plot.plot_mean_sd(
+                sumo_array,
+                linecolor="r",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="Sumo",
+                autoset_ylim=True,
+                roi=None,
+            )
+            spm1d.plot.plot_mean_sd(
+                conv_array,
+                linecolor="b",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="Conv",
+                autoset_ylim=True,
+                roi=None,
+            )
+            # Add a legend
+            plt.legend(axs.lines, ["SDL", "CDL"])
+
+            t = spm1d.stats.ttest_paired(sumo_array, conv_array)
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, 0),
+                        1,
+                        200,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs_0.add_patch(rec)
+
+            fig.set_size_inches(11, 6)
+            if save_figures:
+                plt.savefig(
+                    "../results/muscle_forces/total/"
+                    + active_athlete["name"]
+                    + "_mean.png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
+            plt.show()
+        except Exception as e:
+            print("Error in process athlete total muscle force means with spm")
             print(e)
 
         try:
@@ -1176,12 +1293,12 @@ def run_process_athlete(bool, save_figures):
                 plt.savefig(
                     "../results/muscle_forces/groups/"
                     + active_athlete["name"]
-                    + ".png",
+                    + "_trials.png",
                     transparent=None,
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
             ###############################################################################################################
         except Exception as e:
             print("Error in technique summary active athlete")
@@ -1341,7 +1458,9 @@ def run_process_athlete(bool, save_figures):
             fig_0.set_size_inches(12, 6)
             if save_figures:
                 plt.savefig(
-                    "../results/muscle_forces/peak/" + active_athlete["name"] + ".png",
+                    "../results/muscle_forces/peak/"
+                    + active_athlete["name"]
+                    + "_mean.png",
                     transparent=None,
                     dpi=300,
                     format="png",
