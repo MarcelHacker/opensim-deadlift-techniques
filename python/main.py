@@ -4,9 +4,9 @@
 import unittest
 from src.imports import *  # file paths of the athlete
 
-from src.local_functions import *  # local functions for the project
+from src.modules import *  # local modules for the project
+from src.processAthlete import run_process_athlete
 
-from src.kinematicsPlot import run_kinematics_plot
 from src.momentsPlot import run_moments_plot
 from src.forcesPlot import run_forces_plot
 from src.momentArmsHipPlot import run_moment_arms_hip_plot
@@ -55,6 +55,7 @@ if __name__ == "__main__":
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
     save_figures = False
+    run_process_athlete(True, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
     # run_total_muscle_force_plot_trails(False, save_figures)
@@ -72,7 +73,7 @@ if __name__ == "__main__":
     # run_muscle_force_groups(False, save_figures)
 
     # run_muscle_force_groups_overall(False, save_figures)
-    run_muscle_force_groups_summary(True, save_figures)
+    run_muscle_force_groups_summary(False, save_figures)
     run_muscle_group_preferences(False, save_figures)
     run_peak_muscle_force_bars(False, save_figures)
     ########################## NORMALIZED MUSCLE FORCES ###################################

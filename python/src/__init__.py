@@ -1,6 +1,6 @@
 # Define the __all__ variable
-__all__ = ["local_functions", "imports"]
+__all__ = ["modules", "imports"]
 
 # Import the submodules
-from . import local_functions
+from . import modules
 from . import imports
