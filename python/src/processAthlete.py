@@ -12,8 +12,8 @@ def run_process_athlete(bool, save_figures):
             trial_color_3 = "darkgreen"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Kinematics Trials "
-                + active_athlete["name"]
+                "Kinematics Trials Athlete "
+                + active_athlete["number"]
                 + "; Model: "
                 + active_athlete["model"]
                 + "; Preferred: "
@@ -160,7 +160,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
 
         except Exception as e:
             print("Error in process athlete kinematics")
@@ -175,8 +175,8 @@ def run_process_athlete(bool, save_figures):
             trial_color_3 = "darkgreen"
             fig, axs = plt.subplots(cols, rows)
             fig.suptitle(
-                "Joint Moments Trials "
-                + active_athlete["name"]
+                "Joint Moments Trials Athlete "
+                + active_athlete["number"]
                 + "; Model: "
                 + active_athlete["model"]
                 + "; Preferred: "
@@ -323,7 +323,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
 
         except Exception as e:
             print("Error in process athletes joint moments")
@@ -346,8 +346,8 @@ def run_process_athlete(bool, save_figures):
             x_label = "% concentric deadlift cycle"
             fig, axs = plt.subplots(3, 3)
             fig.suptitle(
-                "Muscle Force Groups "
-                + active_athlete["name"]
+                "Muscle Force Groups Athlete "
+                + active_athlete["number"]
                 + "; Model: "
                 + active_athlete["model"]
                 + "; Preferred: "
@@ -843,7 +843,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
         except Exception as e:
             print("Error in process athlete muscle force groups")
             print(e)
@@ -857,8 +857,8 @@ def run_process_athlete(bool, save_figures):
             linestyle_trail_3 = "dashdot"
             fig, axs = plt.subplots(cols)
             fig.suptitle(
-                "Total Muscle Force Trials "
-                + active_athlete["name"]
+                "Total Muscle Force Athlete "
+                + active_athlete["number"]
                 + "; Model: "
                 + active_athlete["model"]
                 + "; Preferred: "
@@ -866,12 +866,12 @@ def run_process_athlete(bool, save_figures):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.385,
-                hspace=0.213,
-                top=0.902,
+                wspace=0.373,
+                hspace=0.262,
+                top=0.89,
                 right=0.988,
-                left=0.064,
-                bottom=0.06,
+                left=0.076,
+                bottom=0.088,
             )
             fig.set_label("Total Muscle Force [N]")
             x_label = "% concentric deadlift cycle"
@@ -945,7 +945,7 @@ def run_process_athlete(bool, save_figures):
             plt.legend()
             plt.xlabel(x_label)
             plt.ylabel(y_label)
-            fig.set_size_inches(13, 7.5)
+            fig.set_size_inches(11, 5.5)
             if save_figures:
                 plt.savefig(
                     "../results/so/" + active_athlete["name"] + "_total" + ".png",
@@ -953,7 +953,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
 
         except Exception as e:
             print("Error in process athlete total muscle force")
@@ -1057,16 +1057,16 @@ def run_process_athlete(bool, save_figures):
             )
             fig_0, axs_0 = plt.subplots(1, 4)
             fig_0.suptitle(
-                "Muscle Force Means " + active_athlete["name"],
+                "Muscle Force Means Athlete " + active_athlete["number"],
                 fontweight="bold",
             )
             plt.subplots_adjust(
                 wspace=0.193,
                 hspace=0.271,
-                top=0.9,
-                right=0.927,
-                left=0.05,
-                bottom=0.212,
+                top=0.883,
+                right=0.937,
+                left=0.045,
+                bottom=0.104,
             )
 
             # Hip extensors
@@ -1171,7 +1171,7 @@ def run_process_athlete(bool, save_figures):
                 0
             ].get_legend_handles_labels()  # get legend from first plot
             fig_0.legend(handles, labels, loc="center right")
-            fig_0.set_size_inches(13, 7.5)
+            fig_0.set_size_inches(15, 5)
             if save_figures:
                 plt.savefig(
                     "../results/muscle_forces/groups/"
@@ -1181,7 +1181,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
             ###############################################################################################################
         except Exception as e:
             print("Error in technique summary active athlete")
@@ -1190,22 +1190,20 @@ def run_process_athlete(bool, save_figures):
         try:
             y_label = "Normalized Peak Muscle Force [N/kg]"
 
-            fig_0, axs_0 = plt.subplots(4)
+            fig_0, axs_0 = plt.subplots(1, 4)
             fig_0.suptitle(
-                "Peak Muscle Forces; " + active_athlete["name"],
+                "Peak Muscle Forces Athlete " + active_athlete["number"],
                 fontweight="bold",
             )
             plt.subplots_adjust(
                 wspace=0.33,
                 hspace=0.293,
-                top=0.915,
-                right=0.896,
-                left=0.051,
-                bottom=0.04,
+                top=0.898,
+                right=0.988,
+                left=0.05,
+                bottom=0.044,
             )
-            xlabel = [
-                "Athlete " + str(active_athlete["number"]),
-            ]
+            xlabel = ["Perferred", "Non-preferred"]
             # Hip extensors
             preferred_hip_extensors_active_athlete = getNormalizedPeakForces(
                 active_athlete["number"], "hip_extensors", True
@@ -1230,7 +1228,7 @@ def run_process_athlete(bool, save_figures):
                 color=bar_colors,
             )
             axs_0[0].bar_label(rects, label_type="center", color="white")
-            print("FRESH")
+            print(peak_forces_hip_extensors)
             axs_0[0].errorbar(
                 xlabel,
                 peak_forces_hip_extensors,
@@ -1239,8 +1237,9 @@ def run_process_athlete(bool, save_figures):
                 color="black",
                 elinewidth=3,
             )
+            print("FRESH")
             axs_0[0].set_ylabel(y_label)
-            axs_0[0].set_title("Hip Extensors, SDL")
+            axs_0[0].set_title("Hip Extensors")
 
             # Hip flexors
             preferred_hip_flexors_active_athlete = getNormalizedPeakForces(
@@ -1273,7 +1272,7 @@ def run_process_athlete(bool, save_figures):
                 elinewidth=3,
             )
             axs_0[1].set_ylabel(y_label)
-            axs_0[1].set_title("Hip Flexors, SDL")
+            axs_0[1].set_title("Hip Flexors")
 
             preferred_hip_adductors_active_athlete = getNormalizedPeakForces(
                 active_athlete["number"], "hip_adductors", True
@@ -1305,7 +1304,7 @@ def run_process_athlete(bool, save_figures):
                 elinewidth=3,
             )
             axs_0[2].set_ylabel(y_label)
-            axs_0[2].set_title("Hip Adductors, SDL")
+            axs_0[2].set_title("Hip Adductors")
 
             preferred_knee_extensors_active_athlete = getNormalizedPeakForces(
                 active_athlete["number"], "knee_extensors", True
@@ -1337,13 +1336,9 @@ def run_process_athlete(bool, save_figures):
                 elinewidth=3,
             )
             axs_0[3].set_ylabel(y_label)
-            axs_0[3].set_title("Knee Extensors, SDL")
+            axs_0[3].set_title("Knee Extensors")
 
-            handles, labels = axs_0[
-                0
-            ].get_legend_handles_labels()  # get legend from first plot
-            fig_0.legend(handles, labels, loc="center right")
-            fig_0.set_size_inches(13, 7.5)
+            fig_0.set_size_inches(12, 6)
             if save_figures:
                 plt.savefig(
                     "../results/muscle_forces/peak/" + active_athlete["name"] + ".png",
