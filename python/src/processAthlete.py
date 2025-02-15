@@ -368,6 +368,7 @@ def run_process_athlete(bool, save_figures):
 
             # hamstrings medial
             plt.sca(axs[0, 0])
+            axs[0, 0].set_xlim(left=0, right=100)
             plt.plot(
                 active_athlete_hamstrings_medial_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -418,6 +419,7 @@ def run_process_athlete(bool, save_figures):
             plt.xlabel(x_label)
             # hamstrings lateral
             plt.sca(axs[0, 1])
+            axs[0, 1].set_xlim(left=0, right=100)
             plt.plot(
                 active_athlete_hamstrings_lateral_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -469,6 +471,7 @@ def run_process_athlete(bool, save_figures):
 
             # vasti
             plt.sca(axs[0, 2])
+            axs[0, 2].set_xlim(left=0, right=100)
             plt.plot(
                 active_athlete_vasti_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -520,6 +523,8 @@ def run_process_athlete(bool, save_figures):
 
             # gluteus maximus
             plt.sca(axs[1, 0])
+            axs[1, 0].set_xlim(left=0, right=100)
+
             plt.plot(
                 active_athlete_gluteusmax_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -571,6 +576,8 @@ def run_process_athlete(bool, save_figures):
 
             # adductors
             plt.sca(axs[1, 1])
+            axs[1, 1].set_xlim(left=0, right=100)
+
             plt.plot(
                 active_athlete_adductors_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -622,6 +629,8 @@ def run_process_athlete(bool, save_figures):
 
             # gluteus medius
             plt.sca(axs[1, 2])
+            axs[1, 2].set_xlim(left=0, right=100)
+
             plt.plot(
                 active_athlete_gluteusmed_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -673,6 +682,8 @@ def run_process_athlete(bool, save_figures):
 
             # Triceps surae
             plt.sca(axs[2, 0])
+            axs[2, 0].set_xlim(left=0, right=100)
+
             plt.plot(
                 active_athlete_triceps_surae_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -724,6 +735,8 @@ def run_process_athlete(bool, save_figures):
 
             # hip flexors
             plt.sca(axs[2, 1])
+            axs[2, 1].set_xlim(left=0, right=100)
+
             plt.plot(
                 active_athlete_hip_flexors_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -775,6 +788,8 @@ def run_process_athlete(bool, save_figures):
 
             # Gluteus minimus
             plt.sca(axs[2, 2])
+            axs[2, 2].set_xlim(left=0, right=100)
+
             plt.plot(
                 active_athlete_gluteusmin_sumo_force_0,
                 label=label_sumo_trial_0,
