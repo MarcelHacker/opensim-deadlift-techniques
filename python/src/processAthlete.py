@@ -1,7 +1,7 @@
 from src.imports import *
 import datetime
 
-# from matplotlib.backends.backend_pdf import PdfPages
+from matplotlib.backends.backend_pdf import PdfPages
 
 
 def run_process_athlete(bool, save_figures):
@@ -163,7 +163,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
 
         except Exception as e:
             print("Error in process athlete kinematics trials")
@@ -181,12 +181,12 @@ def run_process_athlete(bool, save_figures):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.2,
+                wspace=0.245,
                 hspace=0.208,
-                top=0.89,
-                right=0.912,
-                left=0.05,
-                bottom=0.077,
+                top=0.88,
+                right=0.925,
+                left=0.045,
+                bottom=0.1,
             )
 
             coordinates_r = [
@@ -398,7 +398,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
 
         except Exception as e:
             print("Error in process athlete kinematics means")
@@ -556,7 +556,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
 
         except Exception as e:
             print("Error in process athletes joint moments trials")
@@ -774,7 +774,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
 
         except Exception as e:
             print("Error in process athlete dynamics means")
@@ -1294,7 +1294,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
         except Exception as e:
             print("Error in process athlete muscle force groups trials")
             print(e)
@@ -1681,7 +1681,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
         except Exception as e:
             print("Error in process athlete muscle force groups means")
             print(e)
@@ -1790,7 +1790,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
 
         except Exception as e:
             print("Error in process athlete total muscle force trials")
@@ -1882,7 +1882,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
         except Exception as e:
             print("Error in process athlete total muscle force means with spm")
             print(e)
@@ -2108,7 +2108,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
             ###############################################################################################################
         except Exception as e:
             print("Error in technique summary active athlete")
@@ -2275,8 +2275,69 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            plt.show()
+            # plt.show()
             ###############################################################################################################
         except Exception as e:
             print("Error in process athlete peak muscle forces")
+            print(e)
+
+        ################## PDF ##################################################################################
+        try:
+            with PdfPages(f"{active_athlete['name']}.pdf") as pdf:
+                # first page
+                firstPage = plt.figure(figsize=(11.69, 8.27))
+                firstPage.clf()
+                txt = (
+                    "Biomechanical & Muscle Force Analysis Deadlift\n\n"
+                    f"Athlete: {active_athlete['number']}\n"
+                    f"Bodymass: {active_athlete['bodymass']} kg\n"
+                    f"Preferred: {active_athlete['technique']}\n"
+                    f"Load: {active_athlete['load']} kg\n"
+                    f"e1RM: {active_athlete['fmax']} kg\n\n"
+                    f"Test date: {active_athlete['testdate']}"
+                )
+
+                # Add text to the figure
+                firstPage.text(
+                    0.5,
+                    0.6,
+                    txt,
+                    transform=firstPage.transFigure,
+                    size=24,
+                    ha="center",
+                    va="center",
+                )
+                # Additional small text
+                firstPage.text(
+                    0.1,
+                    0.1,
+                    "Department of Sport and Human Movement Science, Biomechanics, Kinesiology and Computer Science in Sport\nVienna",
+                    size=12,
+                )
+
+                # Save to PDF
+                pdf.savefig()
+                plt.close()
+
+                pdf.savefig(fig_0)
+                pdf.savefig(fig_1)
+                pdf.savefig(fig_2)
+                pdf.savefig(fig_3)
+                pdf.savefig(fig_4)
+                pdf.savefig(fig_5)
+                pdf.savefig(fig_6)
+                pdf.savefig(fig_7)
+                pdf.savefig(fig_8)
+                pdf.savefig(fig_9)
+
+                # We can also set the file's metadata via the PdfPages object:
+                d = pdf.infodict()
+                d["Title"] = "Biomechanical Analysis Deadlift Techniques"
+                d["Author"] = "Marcel Hacker"
+                d["Subject"] = "Kinematics, Kinetics and Muscle Force Analysis"
+                d["Keywords"] = "biomechanics"
+                d["CreationDate"] = datetime.datetime(2025, 2, 16)
+                d["ModDate"] = datetime.datetime.today()
+        except Exception as e:
+            print("Error in PDFs")
             print(e)
