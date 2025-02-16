@@ -1,15 +1,18 @@
 from src.imports import *
+import datetime
+
+# from matplotlib.backends.backend_pdf import PdfPages
 
 
 def run_process_athlete(bool, save_figures):
     if bool:
+        trial_color_0 = "red"
+        trial_color_1 = "blue"
+        trial_color_2 = "orange"
+        trial_color_3 = "darkgreen"
         x_label = "% concentric deadlift cycle"
         ###########################################  START IK #######################################################
         try:
-            trial_color_0 = "red"
-            trial_color_1 = "blue"
-            trial_color_2 = "orange"
-            trial_color_3 = "darkgreen"
             fig, axs = plt.subplots(2, 3)
             fig.suptitle(
                 "Kinematics Trials Athlete "
@@ -28,7 +31,6 @@ def run_process_athlete(bool, save_figures):
                 left=0.05,
                 bottom=0.07,
             )
-
             coordinates_r = [
                 "hip_flexion_r",
                 "knee_angle_r",
@@ -272,86 +274,67 @@ def run_process_athlete(bool, save_figures):
             plt.sca(axs[0])
             plt.title("HIP")
             axs[0].set_xlim(left=0, right=100)
-            spm1d.plot.plot_mean_sd(
-                hip_flexion_sumo_array,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="SUMO",
-                autoset_ylim=True,
-                roi=None,
-            )
-            spm1d.plot.plot_mean_sd(
-                hip_flexion_conv_array,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="CONV",
-                autoset_ylim=True,
-                roi=None,
-            )
+            plot_means(hip_flexion_sumo_array, "r", "SUMO")
+            plot_means(hip_flexion_conv_array, "b", "CONV")
+            t = spm1d.stats.ttest_paired(hip_flexion_sumo_array, hip_flexion_conv_array)
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -90),
+                        1,
+                        300,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[0].add_patch(rec)
             plt.ylabel("Hip Flex [°]")
             plt.xlabel(x_label)
 
             plt.sca(axs[1])
             plt.title("KNEE")
             axs[1].set_xlim(left=0, right=100)
-            spm1d.plot.plot_mean_sd(
-                knee_flexion_sumo_array,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="SUMO",
-                autoset_ylim=True,
-                roi=None,
+            plot_means(knee_flexion_sumo_array, "r", "SUMO")
+            plot_means(knee_flexion_conv_array, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                knee_flexion_sumo_array, knee_flexion_conv_array
             )
-            spm1d.plot.plot_mean_sd(
-                knee_flexion_conv_array,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="CONV",
-                autoset_ylim=True,
-                roi=None,
-            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -90),
+                        1,
+                        200,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[1].add_patch(rec)
             plt.ylabel("Knee Flex [°]")
             plt.xlabel(x_label)
 
             plt.sca(axs[2])
             plt.title("ANKLE")
             axs[2].set_xlim(left=0, right=100)
-            spm1d.plot.plot_mean_sd(
-                ankle_flexion_sumo_array,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="SUMO",
-                autoset_ylim=True,
-                roi=None,
+            plot_means(ankle_flexion_sumo_array, "r", "SUMO")
+            plot_means(ankle_flexion_conv_array, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                ankle_flexion_sumo_array, ankle_flexion_conv_array
             )
-            spm1d.plot.plot_mean_sd(
-                ankle_flexion_conv_array,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="CONV",
-                autoset_ylim=True,
-                roi=None,
-            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -90),
+                        1,
+                        200,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[2].add_patch(rec)
             plt.ylabel("Ankle Flex [°]")
             plt.xlabel(x_label)
+
             handles, labels = axs[
                 0
             ].get_legend_handles_labels()  # get legend from first plot
@@ -372,10 +355,6 @@ def run_process_athlete(bool, save_figures):
         ########################################### END IK #######################################################
         ###########################################  START ID #######################################################
         try:
-            trial_color_0 = "red"
-            trial_color_1 = "blue"
-            trial_color_2 = "orange"
-            trial_color_3 = "darkgreen"
             fig, axs = plt.subplots(2, 3)
             fig.suptitle(
                 "Joint Moments Trials Athlete "
@@ -394,7 +373,6 @@ def run_process_athlete(bool, save_figures):
                 left=0.067,
                 bottom=0.067,
             )
-
             coordinates_r = [
                 "hip_flexion_r_moment",
                 "knee_angle_r_moment",
@@ -570,7 +548,6 @@ def run_process_athlete(bool, save_figures):
                 active_athlete_id_conv_time_normalised_3["hip_flexion_r_moment"],
                 active_athlete_id_conv_time_normalised_3["hip_flexion_l_moment"],
             ]
-
             hip_flexion_moment_sumo_array = np.array(hip_flexion_moment_sumo_array)
             hip_flexion_moment_conv_array = np.array(hip_flexion_moment_conv_array)
 
@@ -584,7 +561,6 @@ def run_process_athlete(bool, save_figures):
                 active_athlete_id_sumo_time_normalised_3["knee_angle_r_moment"],
                 active_athlete_id_sumo_time_normalised_3["knee_angle_l_moment"],
             ]
-
             knee_flexion_moment_conv_array = [
                 active_athlete_id_conv_time_normalised_0["knee_angle_r_moment"],
                 active_athlete_id_conv_time_normalised_0["knee_angle_l_moment"],
@@ -595,7 +571,6 @@ def run_process_athlete(bool, save_figures):
                 active_athlete_id_conv_time_normalised_3["knee_angle_r_moment"],
                 active_athlete_id_conv_time_normalised_3["knee_angle_l_moment"],
             ]
-
             knee_flexion_moment_sumo_array = np.array(knee_flexion_moment_sumo_array)
             knee_flexion_moment_conv_array = np.array(knee_flexion_moment_conv_array)
 
@@ -619,93 +594,75 @@ def run_process_athlete(bool, save_figures):
                 active_athlete_id_conv_time_normalised_3["ankle_angle_r_moment"],
                 active_athlete_id_conv_time_normalised_3["ankle_angle_l_moment"],
             ]
-
             ankle_flexion_moment_sumo_array = np.array(ankle_flexion_moment_sumo_array)
             ankle_flexion_moment_conv_array = np.array(ankle_flexion_moment_conv_array)
 
             plt.sca(axs[0])
             plt.title("HIP")
             axs[0].set_xlim(left=0, right=100)
-            spm1d.plot.plot_mean_sd(
-                hip_flexion_moment_sumo_array,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="SUMO",
-                autoset_ylim=True,
-                roi=None,
+            plot_means(hip_flexion_moment_sumo_array, "r", "SUMO")
+            plot_means(hip_flexion_moment_conv_array, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                hip_flexion_moment_sumo_array, hip_flexion_moment_conv_array
             )
-            spm1d.plot.plot_mean_sd(
-                hip_flexion_moment_conv_array,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="CONV",
-                autoset_ylim=True,
-                roi=None,
-            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -600),
+                        1,
+                        600,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[0].add_patch(rec)
             plt.ylabel("Hip Moment [Nm]")
             plt.xlabel(x_label)
 
             plt.sca(axs[1])
             plt.title("KNEE")
             axs[1].set_xlim(left=0, right=100)
-            spm1d.plot.plot_mean_sd(
-                knee_flexion_moment_sumo_array,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="SUMO",
-                autoset_ylim=True,
-                roi=None,
+            plot_means(knee_flexion_moment_sumo_array, "r", "SUMO")
+            plot_means(knee_flexion_moment_conv_array, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                knee_flexion_moment_sumo_array, knee_flexion_moment_conv_array
             )
-            spm1d.plot.plot_mean_sd(
-                knee_flexion_moment_conv_array,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="CONV",
-                autoset_ylim=True,
-                roi=None,
-            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -300),
+                        1,
+                        600,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[1].add_patch(rec)
             plt.ylabel("Knee Moment [Nm]")
             plt.xlabel(x_label)
 
             plt.sca(axs[2])
             plt.title("ANKLE")
             axs[2].set_xlim(left=0, right=100)
-            spm1d.plot.plot_mean_sd(
-                ankle_flexion_moment_sumo_array,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="SUMO",
-                autoset_ylim=True,
-                roi=None,
+            plot_means(ankle_flexion_moment_sumo_array, "r", "SUMO")
+            plot_means(ankle_flexion_moment_conv_array, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                ankle_flexion_moment_sumo_array, ankle_flexion_moment_conv_array
             )
-            spm1d.plot.plot_mean_sd(
-                ankle_flexion_moment_conv_array,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="CONV",
-                autoset_ylim=True,
-                roi=None,
-            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -600),
+                        1,
+                        600,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[2].add_patch(rec)
             plt.ylabel("Ankle Moment [Nm]")
             plt.xlabel(x_label)
+
             handles, labels = axs[
                 0
             ].get_legend_handles_labels()  # get legend from first plot
@@ -724,7 +681,6 @@ def run_process_athlete(bool, save_figures):
             print("Error in process athlete dynamics means")
             print(e)
         ###########################################  END ID #######################################################
-
         try:
             color_sumo = "red"
             color_conv = "blue"
@@ -739,7 +695,6 @@ def run_process_athlete(bool, save_figures):
             linestyle_trial_1 = "dashed"
             linestyle_trial_2 = "dotted"
             linestyle_trial_3 = "dashdot"
-            x_label = "% concentric deadlift cycle"
             fig, axs = plt.subplots(3, 3)
             fig.suptitle(
                 "Muscle Force Groups Athlete "
@@ -750,7 +705,6 @@ def run_process_athlete(bool, save_figures):
                 + active_athlete["technique"],
                 fontweight="bold",
             )
-            fig.set_label("Muscle Force Groups")
             plt.subplots_adjust(
                 wspace=0.275,
                 hspace=0.198,
@@ -1247,13 +1201,13 @@ def run_process_athlete(bool, save_figures):
             print(e)
 
         try:
-            cols = 2
             color_sumo = "red"
             color_conv = "blue"
             linestyle_trail_1 = "dotted"
             linestyle_trail_2 = "dashed"
             linestyle_trail_3 = "dashdot"
-            fig, axs = plt.subplots(cols)
+            y_label = "Muscle force [N]"
+            fig, axs = plt.subplots(2)
             fig.suptitle(
                 "Total Muscle Force Athlete "
                 + str(active_athlete["number"])
@@ -1272,8 +1226,6 @@ def run_process_athlete(bool, save_figures):
                 bottom=0.088,
             )
             fig.set_label("Total Muscle Force [N]")
-            x_label = "% concentric deadlift cycle"
-            y_label = "Muscle force [N]"
 
             plt.sca(axs[0])
             plt.title(
@@ -1356,7 +1308,7 @@ def run_process_athlete(bool, save_figures):
             plt.show()
 
         except Exception as e:
-            print("Error in process athlete total muscle force")
+            print("Error in process athlete total muscle force trials")
             print(e)
 
         try:
@@ -1379,7 +1331,6 @@ def run_process_athlete(bool, save_figures):
                 bottom=0.083,
             )
             fig.set_label("Normalised Muscle Force [N/kg]")
-            x_label = "% concentric deadlift cycle"
             y_label = "Normalised Muscle Force [N/kg]"
 
             sumo_array = [
@@ -1419,29 +1370,8 @@ def run_process_athlete(bool, save_figures):
             )
             plt.xlabel(x_label)
             plt.ylabel(y_label)
-            spm1d.plot.plot_mean_sd(
-                sumo_array,
-                linecolor="r",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="Sumo",
-                autoset_ylim=True,
-                roi=None,
-            )
-            spm1d.plot.plot_mean_sd(
-                conv_array,
-                linecolor="b",
-                linestyle="-",
-                facecolor="0.8",
-                edgecolor="0.8",
-                alpha=0.5,
-                label="Conv",
-                autoset_ylim=True,
-                roi=None,
-            )
-            # Add a legend
+            plot_means(sumo_array, "r", "SUMO")
+            plot_means(conv_array, "b", "CONV")
             plt.legend(axs.lines, ["SDL", "CDL"])
 
             t = spm1d.stats.ttest_paired(sumo_array, conv_array)
@@ -1451,11 +1381,11 @@ def run_process_athlete(bool, save_figures):
                     rec = plt.Rectangle(
                         (index, 0),
                         1,
-                        200,
+                        400,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs_0.add_patch(rec)
+                    axs.add_patch(rec)
 
             fig.set_size_inches(11, 6)
             if save_figures:
@@ -1476,7 +1406,6 @@ def run_process_athlete(bool, save_figures):
             label_sumo = "SDL"
             label_conv = "CDL"
             y_label = "Normalized muscle force [N/kg]"
-            x_label = "% concentric deadlift cycle"
 
             sumo_hip_extensors_r_active_athlete = getNormalizedForces(
                 active_athlete["number"], "hip_extensors_r", "sumo"
