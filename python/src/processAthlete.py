@@ -531,6 +531,24 @@ def run_process_athlete(bool, save_figures):
             print(e)
 
         try:
+            fig, axs = plt.subplots(1, 3)
+            fig.suptitle(
+                "Joint Moments Means Athlete "
+                + str(active_athlete["number"])
+                + "; Model: "
+                + active_athlete["model"]
+                + "; Preferred: "
+                + active_athlete["technique"],
+                fontweight="bold",
+            )
+            plt.subplots_adjust(
+                wspace=0.249,
+                hspace=0.19,
+                top=0.904,
+                right=0.905,
+                left=0.067,
+                bottom=0.067,
+            )
             hip_flexion_moment_sumo_array = [
                 active_athlete_id_sumo_time_normalised_0["hip_flexion_r_moment"],
                 active_athlete_id_sumo_time_normalised_0["hip_flexion_l_moment"],
@@ -692,7 +710,7 @@ def run_process_athlete(bool, save_figures):
                 0
             ].get_legend_handles_labels()  # get legend from first plot
             fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(12, 5)
+            fig.set_size_inches(13, 5.5)
             if save_figures:
                 plt.savefig(
                     "../results/id/" + active_athlete["name"] + "_mean.png",
