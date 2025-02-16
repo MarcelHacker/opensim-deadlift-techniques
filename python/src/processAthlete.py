@@ -2283,7 +2283,9 @@ def run_process_athlete(bool, save_figures):
 
         ################## PDF ##################################################################################
         try:
-            with PdfPages(f"{active_athlete['name']}.pdf") as pdf:
+            with PdfPages(
+                f"/Users/marcelhacker/Documents/opensim-deadlift-techniques/results/pdf/{active_athlete['name']}.pdf"
+            ) as pdf:
                 # first page
                 firstPage = plt.figure(figsize=(11.69, 8.27))
                 firstPage.clf()
