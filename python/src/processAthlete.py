@@ -497,7 +497,7 @@ def run_process_athlete(bool, save_figures):
                 0, 0
             ].get_legend_handles_labels()  # get legend from first plot
             fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(13, 7.5)
+            fig.set_size_inches(14, 7.5)
             if save_figures:
                 plt.savefig(
                     "../results/id/" + active_athlete["name"] + "_trials.png",
@@ -657,9 +657,9 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -600),
+                        (index, -300),
                         1,
-                        600,
+                        300,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
@@ -715,7 +715,7 @@ def run_process_athlete(bool, save_figures):
                 0
             ].get_legend_handles_labels()  # get legend from first plot
             fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(14, 5)
+            fig.set_size_inches(14.5, 5.5)
             if save_figures:
                 plt.savefig(
                     "../results/id/" + active_athlete["name"] + "_mean.png",
@@ -1367,6 +1367,7 @@ def run_process_athlete(bool, save_figures):
             # vasti
             plt.sca(axs[0, 2])
             axs[0, 2].set_xlim(left=0, right=100)
+            axs[0, 2].set_ylim(bottom=0)
             plot_means(active_athlete_vasti_sumo, "r", "SUMO")
             plot_means(active_athlete_vasti_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1404,6 +1405,7 @@ def run_process_athlete(bool, save_figures):
             # gluteus maximus
             plt.sca(axs[1, 0])
             axs[1, 0].set_xlim(left=0, right=100)
+            axs[1, 0].set_ylim(bottom=0)
             plot_means(active_athlete_gluteusmax_sumo, "r", "SUMO")
             plot_means(active_athlete_gluteusmax_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
