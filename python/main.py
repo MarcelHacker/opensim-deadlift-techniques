@@ -47,7 +47,7 @@ if __name__ == "__main__":
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
     save_figures = True
-    export_csv(False)  # export force data to csv
+    export_csv(True)  # export force data to csv
     run_process_athlete(True, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)

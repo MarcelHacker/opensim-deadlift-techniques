@@ -686,9 +686,9 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -600),
+                        (index, -700),
                         1,
-                        600,
+                        700,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
@@ -708,9 +708,9 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -100),
+                        (index, -200),
                         1,
-                        250,
+                        550,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
@@ -1391,7 +1391,7 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -100),
+                        (index, -300),
                         1,
                         30000,
                         facecolor="lightsteelblue",
@@ -1429,9 +1429,9 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -1000),
+                        (index, -4000),
                         1,
-                        30000,
+                        48000,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
@@ -1866,7 +1866,7 @@ def run_process_athlete(bool, save_figures):
                     rec = plt.Rectangle(
                         (index, 0),
                         1,
-                        800,
+                        900,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
@@ -2316,7 +2316,6 @@ def run_process_athlete(bool, save_figures):
                     "Department of Sport and Human Movement Science, Biomechanics, Kinesiology and Computer Science in Sport\nVienna",
                     size=12,
                 )
-
                 # Save to PDF
                 pdf.savefig()
                 plt.close()
