@@ -13,8 +13,8 @@ def run_process_athlete(bool, save_figures):
         x_label = "% concentric deadlift cycle"
         ###########################################  START IK #######################################################
         try:
-            fig, axs = plt.subplots(2, 3)
-            fig.suptitle(
+            fig_0, axs_0 = plt.subplots(2, 3)
+            fig_0.suptitle(
                 "Kinematics Trials Athlete "
                 + str(active_athlete["number"])
                 + "; Model: "
@@ -50,7 +50,7 @@ def run_process_athlete(bool, save_figures):
             for i in range(len(coordinates_r)):
                 plt.sca(axs[0, i])
                 plt.title("SDL")
-                axs[0, i].set_xlim(left=0, right=100)
+                axs_0[0, i].set_xlim(left=0, right=100)
                 plt.plot(
                     active_athlete_ik_sumo_time_normalised_0[coordinates_r[i]],
                     label="Trial 1 r",
@@ -98,8 +98,8 @@ def run_process_athlete(bool, save_figures):
                 plt.ylabel(ylabels[i])
 
             for i in range(len(coordinates_r)):
-                plt.sca(axs[1, i])
-                axs[1, i].set_xlim(left=0, right=100)
+                plt.sca(axs_0[1, i])
+                axs_0[1, i].set_xlim(left=0, right=100)
                 plt.title("CDL")
                 plt.plot(
                     active_athlete_ik_conv_time_normalised_0[coordinates_r[i]],
@@ -148,11 +148,11 @@ def run_process_athlete(bool, save_figures):
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
-            handles, labels = axs[
+            handles, labels = axs_0[
                 0, 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(13, 7.5)
+            fig_0.legend(handles, labels, loc="center right")
+            fig_0.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
                     "../results/ik/" + active_athlete["name"] + "_trials.png",
@@ -167,8 +167,8 @@ def run_process_athlete(bool, save_figures):
             print(e)
 
         try:
-            fig, axs = plt.subplots(1, 3)
-            fig.suptitle(
+            fig_1, axs_1 = plt.subplots(1, 3)
+            fig_1.suptitle(
                 "Kinematics Means Athlete "
                 + str(active_athlete["number"])
                 + "; Model: "
@@ -271,9 +271,9 @@ def run_process_athlete(bool, save_figures):
             ankle_flexion_sumo_array = np.array(ankle_flexion_sumo_array)
             ankle_flexion_conv_array = np.array(ankle_flexion_conv_array)
 
-            plt.sca(axs[0])
+            plt.sca(axs_1[0])
             plt.title("HIP")
-            axs[0].set_xlim(left=0, right=100)
+            axs_1[0].set_xlim(left=0, right=100)
             plot_means(hip_flexion_sumo_array, "r", "SUMO")
             plot_means(hip_flexion_conv_array, "b", "CONV")
             t = spm1d.stats.ttest_paired(hip_flexion_sumo_array, hip_flexion_conv_array)
@@ -287,13 +287,13 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[0].add_patch(rec)
+                    axs_1[0].add_patch(rec)
             plt.ylabel("Hip Flex [°]")
             plt.xlabel(x_label)
 
-            plt.sca(axs[1])
+            plt.sca(axs_1[1])
             plt.title("KNEE")
-            axs[1].set_xlim(left=0, right=100)
+            axs_1[1].set_xlim(left=0, right=100)
             plot_means(knee_flexion_sumo_array, "r", "SUMO")
             plot_means(knee_flexion_conv_array, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -309,13 +309,13 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[1].add_patch(rec)
+                    axs_1[1].add_patch(rec)
             plt.ylabel("Knee Flex [°]")
             plt.xlabel(x_label)
 
-            plt.sca(axs[2])
+            plt.sca(axs_1[2])
             plt.title("ANKLE")
-            axs[2].set_xlim(left=0, right=100)
+            axs_1[2].set_xlim(left=0, right=100)
             plot_means(ankle_flexion_sumo_array, "r", "SUMO")
             plot_means(ankle_flexion_conv_array, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -331,15 +331,15 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[2].add_patch(rec)
+                    axs_1[2].add_patch(rec)
             plt.ylabel("Ankle Flex [°]")
             plt.xlabel(x_label)
 
-            handles, labels = axs[
+            handles, labels = axs_1[
                 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(12, 6)
+            fig_1.legend(handles, labels, loc="center right")
+            fig_1.set_size_inches(12, 6)
             if save_figures:
                 plt.savefig(
                     "../results/ik/" + active_athlete["name"] + "_mean.png",
@@ -355,8 +355,8 @@ def run_process_athlete(bool, save_figures):
         ########################################### END IK #######################################################
         ###########################################  START ID #######################################################
         try:
-            fig, axs = plt.subplots(2, 4)
-            fig.suptitle(
+            fig_2, axs_2 = plt.subplots(2, 4)
+            fig_2.suptitle(
                 "Joint Moments Trials Athlete "
                 + str(active_athlete["number"])
                 + "; Model: "
@@ -393,8 +393,8 @@ def run_process_athlete(bool, save_figures):
             ]
 
             for i in range(len(coordinates_r)):
-                plt.sca(axs[0, i])
-                axs[0, i].set_xlim(left=0, right=100)
+                plt.sca(axs_2[0, i])
+                axs_2[0, i].set_xlim(left=0, right=100)
                 plt.title("SDL")
                 plt.plot(
                     active_athlete_id_sumo_time_normalised_0[coordinates_r[i]],
@@ -443,8 +443,8 @@ def run_process_athlete(bool, save_figures):
                 plt.ylabel(ylabels[i])
 
             for i in range(len(coordinates_r)):
-                plt.sca(axs[1, i])
-                axs[1, i].set_xlim(left=0, right=100)
+                plt.sca(axs_2[1, i])
+                axs_2[1, i].set_xlim(left=0, right=100)
                 plt.title("CDL")
                 plt.plot(
                     active_athlete_id_conv_time_normalised_0[coordinates_r[i]],
@@ -493,11 +493,11 @@ def run_process_athlete(bool, save_figures):
                 plt.ylabel(ylabels[i])
                 plt.xlabel(x_label)
 
-            handles, labels = axs[
+            handles, labels = axs_2[
                 0, 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(14, 7.5)
+            fig_2.legend(handles, labels, loc="center right")
+            fig_2.set_size_inches(14, 7.5)
             if save_figures:
                 plt.savefig(
                     "../results/id/" + active_athlete["name"] + "_trials.png",
@@ -512,8 +512,8 @@ def run_process_athlete(bool, save_figures):
             print(e)
 
         try:
-            fig, axs = plt.subplots(1, 4)
-            fig.suptitle(
+            fig_3, axs_3 = plt.subplots(1, 4)
+            fig_3.suptitle(
                 "Joint Moments Means Athlete "
                 + str(active_athlete["number"])
                 + "; Model: "
@@ -623,9 +623,9 @@ def run_process_athlete(bool, save_figures):
             ankle_flexion_moment_sumo_array = np.array(ankle_flexion_moment_sumo_array)
             ankle_flexion_moment_conv_array = np.array(ankle_flexion_moment_conv_array)
 
-            plt.sca(axs[0])
+            plt.sca(axs_3[0])
             plt.title("HIP FLEXION")
-            axs[0].set_xlim(left=0, right=100)
+            axs_3[0].set_xlim(left=0, right=100)
             plot_means(hip_flexion_moment_sumo_array, "r", "SUMO")
             plot_means(hip_flexion_moment_conv_array, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -641,13 +641,13 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[0].add_patch(rec)
+                    axs_3[0].add_patch(rec)
             plt.ylabel("Hip Moment [Nm]")
             plt.xlabel(x_label)
 
-            plt.sca(axs[1])
+            plt.sca(axs_3[1])
             plt.title("HIP ADDUCTION")
-            axs[1].set_xlim(left=0, right=100)
+            axs_3[1].set_xlim(left=0, right=100)
             plot_means(hip_adduction_moment_sumo_array, "r", "SUMO")
             plot_means(hip_adduction_moment_conv_array, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -663,13 +663,13 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[1].add_patch(rec)
+                    axs_3[1].add_patch(rec)
             plt.ylabel("Hip Moment [Nm]")
             plt.xlabel(x_label)
 
-            plt.sca(axs[2])
+            plt.sca(axs_3[2])
             plt.title("KNEE")
-            axs[2].set_xlim(left=0, right=100)
+            axs_3[2].set_xlim(left=0, right=100)
             plot_means(knee_flexion_moment_sumo_array, "r", "SUMO")
             plot_means(knee_flexion_moment_conv_array, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -685,13 +685,13 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[2].add_patch(rec)
+                    axs_3[2].add_patch(rec)
             plt.ylabel("Knee Moment [Nm]")
             plt.xlabel(x_label)
 
-            plt.sca(axs[3])
+            plt.sca(axs_3[3])
             plt.title("ANKLE")
-            axs[3].set_xlim(left=0, right=100)
+            axs_3[3].set_xlim(left=0, right=100)
             plot_means(ankle_flexion_moment_sumo_array, "r", "SUMO")
             plot_means(ankle_flexion_moment_conv_array, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -707,15 +707,15 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[3].add_patch(rec)
+                    axs_3[3].add_patch(rec)
             plt.ylabel("Ankle Moment [Nm]")
             plt.xlabel(x_label)
 
-            handles, labels = axs[
+            handles, labels = axs_3[
                 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(14.5, 5.5)
+            fig_3.legend(handles, labels, loc="center right")
+            fig_3.set_size_inches(14.5, 5.5)
             if save_figures:
                 plt.savefig(
                     "../results/id/" + active_athlete["name"] + "_mean.png",
@@ -743,8 +743,8 @@ def run_process_athlete(bool, save_figures):
             linestyle_trial_1 = "dashed"
             linestyle_trial_2 = "dotted"
             linestyle_trial_3 = "dashdot"
-            fig, axs = plt.subplots(3, 3)
-            fig.suptitle(
+            fig_4, axs_4 = plt.subplots(3, 3)
+            fig_4.suptitle(
                 "Muscle Force Groups Athlete "
                 + str(active_athlete["number"])
                 + "; Model: "
@@ -763,8 +763,8 @@ def run_process_athlete(bool, save_figures):
             )
 
             # hamstrings medial
-            plt.sca(axs[0, 0])
-            axs[0, 0].set_xlim(left=0, right=100)
+            plt.sca(axs_4[0, 0])
+            axs_4[0, 0].set_xlim(left=0, right=100)
             plt.plot(
                 active_athlete_hamstrings_medial_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -813,8 +813,8 @@ def run_process_athlete(bool, save_figures):
             )
             plt.ylabel("Hamstrings medial [N]")
             # hamstrings lateral
-            plt.sca(axs[0, 1])
-            axs[0, 1].set_xlim(left=0, right=100)
+            plt.sca(axs_4[0, 1])
+            axs_4[0, 1].set_xlim(left=0, right=100)
             plt.plot(
                 active_athlete_hamstrings_lateral_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -864,8 +864,8 @@ def run_process_athlete(bool, save_figures):
             plt.ylabel("Hamstrings lateral [N]")
 
             # vasti
-            plt.sca(axs[0, 2])
-            axs[0, 2].set_xlim(left=0, right=100)
+            plt.sca(axs_4[0, 2])
+            axs_4[0, 2].set_xlim(left=0, right=100)
             plt.plot(
                 active_athlete_vasti_sumo_force_0,
                 label=label_sumo_trial_0,
@@ -915,8 +915,8 @@ def run_process_athlete(bool, save_figures):
             plt.ylabel("Vasti [N]")
 
             # gluteus maximus
-            plt.sca(axs[1, 0])
-            axs[1, 0].set_xlim(left=0, right=100)
+            plt.sca(axs_4[1, 0])
+            axs_4[1, 0].set_xlim(left=0, right=100)
 
             plt.plot(
                 active_athlete_gluteusmax_sumo_force_0,
@@ -967,8 +967,8 @@ def run_process_athlete(bool, save_figures):
             plt.ylabel("Gluteus maximus [N]")
 
             # adductors
-            plt.sca(axs[1, 1])
-            axs[1, 1].set_xlim(left=0, right=100)
+            plt.sca(axs_4[1, 1])
+            axs_4[1, 1].set_xlim(left=0, right=100)
 
             plt.plot(
                 active_athlete_adductors_sumo_force_0,
@@ -1019,8 +1019,8 @@ def run_process_athlete(bool, save_figures):
             plt.ylabel("Adductors [N]")
 
             # gluteus medius
-            plt.sca(axs[1, 2])
-            axs[1, 2].set_xlim(left=0, right=100)
+            plt.sca(axs_4[1, 2])
+            axs_4[1, 2].set_xlim(left=0, right=100)
 
             plt.plot(
                 active_athlete_gluteusmed_sumo_force_0,
@@ -1071,8 +1071,8 @@ def run_process_athlete(bool, save_figures):
             plt.ylabel("Gluteus medius [N]")
 
             # Triceps surae
-            plt.sca(axs[2, 0])
-            axs[2, 0].set_xlim(left=0, right=100)
+            plt.sca(axs_4[2, 0])
+            axs_4[2, 0].set_xlim(left=0, right=100)
 
             plt.plot(
                 active_athlete_triceps_surae_sumo_force_0,
@@ -1124,8 +1124,8 @@ def run_process_athlete(bool, save_figures):
             plt.xlabel(x_label)
 
             # hip flexors
-            plt.sca(axs[2, 1])
-            axs[2, 1].set_xlim(left=0, right=100)
+            plt.sca(axs_4[2, 1])
+            axs_4[2, 1].set_xlim(left=0, right=100)
 
             plt.plot(
                 active_athlete_hip_flexors_sumo_force_0,
@@ -1177,8 +1177,8 @@ def run_process_athlete(bool, save_figures):
             plt.xlabel(x_label)
 
             # Gluteus minimus
-            plt.sca(axs[2, 2])
-            axs[2, 2].set_xlim(left=0, right=100)
+            plt.sca(axs_4[2, 2])
+            axs_4[2, 2].set_xlim(left=0, right=100)
 
             plt.plot(
                 active_athlete_gluteusmin_sumo_force_0,
@@ -1229,11 +1229,11 @@ def run_process_athlete(bool, save_figures):
             plt.ylabel("Gluteus minimus [N]")
             plt.xlabel(x_label)
 
-            handles, labels = axs[
+            handles, labels = axs_4[
                 0, 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(13, 7.5)
+            fig_4.legend(handles, labels, loc="center right")
+            fig_4.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
                     "../results/muscle_forces/"
@@ -1249,8 +1249,8 @@ def run_process_athlete(bool, save_figures):
             print(e)
 
         try:
-            fig, axs = plt.subplots(3, 3)
-            fig.suptitle(
+            fig_5, axs_5 = plt.subplots(3, 3)
+            fig_5.suptitle(
                 "Muscle Force Groups Means Athlete "
                 + str(active_athlete["number"])
                 + "; Model: "
@@ -1287,8 +1287,8 @@ def run_process_athlete(bool, save_figures):
             )
 
             # hamstrings medial
-            plt.sca(axs[0, 0])
-            axs[0, 0].set_xlim(left=0, right=100)
+            plt.sca(axs_5[0, 0])
+            axs_5[0, 0].set_xlim(left=0, right=100)
             plot_means(active_athlete_hamstrings_medial_sumo, "r", "SUMO")
             plot_means(active_athlete_hamstrings_medial_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1305,7 +1305,7 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[0, 0].add_patch(rec)
+                    axs_5[0, 0].add_patch(rec)
             plt.ylabel("Hamstrings medial [N]")
 
             active_athlete_hamstrings_lateral_sumo = [
@@ -1328,8 +1328,8 @@ def run_process_athlete(bool, save_figures):
             )
 
             # hamstrings lateral
-            plt.sca(axs[0, 1])
-            axs[0, 1].set_xlim(left=0, right=100)
+            plt.sca(axs_5[0, 1])
+            axs_5[0, 1].set_xlim(left=0, right=100)
             plot_means(active_athlete_hamstrings_lateral_sumo, "r", "SUMO")
             plot_means(active_athlete_hamstrings_lateral_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1346,7 +1346,7 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[0, 1].add_patch(rec)
+                    axs_5[0, 1].add_patch(rec)
             plt.ylabel("Hamstrings lateral [N]")
 
             active_athlete_vasti_sumo = [
@@ -1365,9 +1365,9 @@ def run_process_athlete(bool, save_figures):
             active_athlete_vasti_conv = np.array(active_athlete_vasti_conv)
 
             # vasti
-            plt.sca(axs[0, 2])
-            axs[0, 2].set_xlim(left=0, right=100)
-            axs[0, 2].set_ylim(bottom=0)
+            plt.sca(axs_5[0, 2])
+            axs_5[0, 2].set_xlim(left=0, right=100)
+            axs_5[0, 2].set_ylim(bottom=0)
             plot_means(active_athlete_vasti_sumo, "r", "SUMO")
             plot_means(active_athlete_vasti_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1384,7 +1384,7 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[0, 2].add_patch(rec)
+                    axs_5[0, 2].add_patch(rec)
             plt.ylabel("Vasti [N]")
 
             active_athlete_gluteusmax_sumo = [
@@ -1403,9 +1403,9 @@ def run_process_athlete(bool, save_figures):
             active_athlete_gluteusmax_conv = np.array(active_athlete_gluteusmax_conv)
 
             # gluteus maximus
-            plt.sca(axs[1, 0])
-            axs[1, 0].set_xlim(left=0, right=100)
-            axs[1, 0].set_ylim(bottom=0)
+            plt.sca(axs_5[1, 0])
+            axs_5[1, 0].set_xlim(left=0, right=100)
+            axs_5[1, 0].set_ylim(bottom=0)
             plot_means(active_athlete_gluteusmax_sumo, "r", "SUMO")
             plot_means(active_athlete_gluteusmax_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1422,7 +1422,7 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[1, 0].add_patch(rec)
+                    axs_5[1, 0].add_patch(rec)
             plt.ylabel("Gluteus maximus [N]")
 
             active_athlete_adductors_sumo = [
@@ -1441,8 +1441,8 @@ def run_process_athlete(bool, save_figures):
             active_athlete_adductors_conv = np.array(active_athlete_adductors_conv)
 
             # adductors
-            plt.sca(axs[1, 1])
-            axs[1, 1].set_xlim(left=0, right=100)
+            plt.sca(axs_5[1, 1])
+            axs_5[1, 1].set_xlim(left=0, right=100)
             plot_means(active_athlete_adductors_sumo, "r", "SUMO")
             plot_means(active_athlete_adductors_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1459,7 +1459,7 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[1, 1].add_patch(rec)
+                    axs_5[1, 1].add_patch(rec)
             plt.ylabel("Adductors [N]")
 
             active_athlete_gluteusmed_sumo = [
@@ -1478,8 +1478,8 @@ def run_process_athlete(bool, save_figures):
             active_athlete_gluteusmed_conv = np.array(active_athlete_gluteusmed_conv)
 
             # gluteus medius
-            plt.sca(axs[1, 2])
-            axs[1, 2].set_xlim(left=0, right=100)
+            plt.sca(axs_5[1, 2])
+            axs_5[1, 2].set_xlim(left=0, right=100)
             plot_means(active_athlete_gluteusmed_sumo, "r", "SUMO")
             plot_means(active_athlete_gluteusmed_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1496,7 +1496,7 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[1, 2].add_patch(rec)
+                    axs_5[1, 2].add_patch(rec)
             plt.ylabel("Gluteus medius [N]")
 
             active_athlete_triceps_surae_sumo = [
@@ -1519,8 +1519,8 @@ def run_process_athlete(bool, save_figures):
             )
 
             # Triceps surae
-            plt.sca(axs[2, 0])
-            axs[2, 0].set_xlim(left=0, right=100)
+            plt.sca(axs_5[2, 0])
+            axs_5[2, 0].set_xlim(left=0, right=100)
             plot_means(active_athlete_triceps_surae_sumo, "r", "SUMO")
             plot_means(active_athlete_triceps_surae_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1537,7 +1537,7 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[2, 0].add_patch(rec)
+                    axs_5[2, 0].add_patch(rec)
             plt.ylabel("Triceps surae [N]")
             plt.xlabel(x_label)
 
@@ -1556,8 +1556,8 @@ def run_process_athlete(bool, save_figures):
             active_athlete_hip_flexors_sumo = np.array(active_athlete_hip_flexors_sumo)
             active_athlete_hip_flexors_conv = np.array(active_athlete_hip_flexors_conv)
             # hip flexors
-            plt.sca(axs[2, 1])
-            axs[2, 1].set_xlim(left=0, right=100)
+            plt.sca(axs_5[2, 1])
+            axs_5[2, 1].set_xlim(left=0, right=100)
             plot_means(active_athlete_hip_flexors_sumo, "r", "SUMO")
             plot_means(active_athlete_hip_flexors_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1574,7 +1574,7 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[2, 1].add_patch(rec)
+                    axs_5[2, 1].add_patch(rec)
             plt.ylabel("Hip flexors [N]")
             plt.xlabel(x_label)
 
@@ -1594,8 +1594,8 @@ def run_process_athlete(bool, save_figures):
             active_athlete_gluteusmin_conv = np.array(active_athlete_gluteusmin_conv)
 
             # Gluteus minimus
-            plt.sca(axs[2, 2])
-            axs[2, 2].set_xlim(left=0, right=100)
+            plt.sca(axs_5[2, 2])
+            axs_5[2, 2].set_xlim(left=0, right=100)
             plot_means(active_athlete_gluteusmin_sumo, "r", "SUMO")
             plot_means(active_athlete_gluteusmin_conv, "b", "CONV")
             t = spm1d.stats.ttest_paired(
@@ -1612,11 +1612,11 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs[2, 2].add_patch(rec)
+                    axs_5[2, 2].add_patch(rec)
             plt.ylabel("Gluteus minimus [N]")
             plt.xlabel(x_label)
 
-            handles, labels = axs[
+            handles, labels = axs_5[
                 0, 0
             ].get_legend_handles_labels()  # get legend from first plot
             fig.legend(handles, labels, loc="center right")
@@ -1642,8 +1642,8 @@ def run_process_athlete(bool, save_figures):
             linestyle_trail_2 = "dashed"
             linestyle_trail_3 = "dashdot"
             y_label = "Muscle force [N]"
-            fig, axs = plt.subplots(2)
-            fig.suptitle(
+            fig_6, axs_6 = plt.subplots(2)
+            fig_6.suptitle(
                 "Total Muscle Force Athlete "
                 + str(active_athlete["number"])
                 + "; Model: "
@@ -1662,7 +1662,7 @@ def run_process_athlete(bool, save_figures):
             )
             fig.set_label("Total Muscle Force [N]")
 
-            plt.sca(axs[0])
+            plt.sca(axs_6[0])
             plt.title(
                 "SDL",
                 fontweight="bold",
@@ -1691,12 +1691,12 @@ def run_process_athlete(bool, save_figures):
                 linestyle=linestyle_trail_3,
             )
             # axs[0].set_yticks(np.arange(10000, 38000, 3000))
-            axs[0].set_xticks(np.arange(0, 101, 5))
-            axs[0].set_xlim(left=0, right=100)
+            axs_6[0].set_xticks(np.arange(0, 101, 5))
+            axs_6[0].set_xlim(left=0, right=100)
             plt.legend()
             plt.ylabel(y_label)
 
-            plt.sca(axs[1])
+            plt.sca(axs_6[1])
             plt.title(
                 "CDL",
                 fontweight="bold",
@@ -1725,12 +1725,12 @@ def run_process_athlete(bool, save_figures):
                 linestyle=linestyle_trail_3,
             )
             # axs[1].set_yticks(np.arange(10000, 38000, 3000))
-            axs[1].set_xticks(np.arange(0, 101, 5))
-            axs[1].set_xlim(left=0, right=100)
+            axs_6[1].set_xticks(np.arange(0, 101, 5))
+            axs_6[1].set_xlim(left=0, right=100)
             plt.legend()
             plt.xlabel(x_label)
             plt.ylabel(y_label)
-            fig.set_size_inches(11, 5.5)
+            fig_6.set_size_inches(11, 5.5)
             if save_figures:
                 plt.savefig(
                     "../results/muscle_forces/total/"
@@ -1747,8 +1747,8 @@ def run_process_athlete(bool, save_figures):
             print(e)
 
         try:
-            fig, axs = plt.subplots(1)
-            fig.suptitle(
+            fig_7, axs_7 = plt.subplots(1)
+            fig_7.suptitle(
                 "Total Muscle Force Athlete "
                 + str(active_athlete["number"])
                 + "; Model: "
@@ -1765,7 +1765,7 @@ def run_process_athlete(bool, save_figures):
                 left=0.06,
                 bottom=0.083,
             )
-            fig.set_label("Normalised Muscle Force [N/kg]")
+            fig_7.set_label("Normalised Muscle Force [N/kg]")
             y_label = "Normalised Muscle Force [N/kg]"
 
             sumo_array = [
@@ -1799,7 +1799,7 @@ def run_process_athlete(bool, save_figures):
             sumo_array = np.array(sumo_array)
             conv_array = np.array(conv_array)
 
-            axs.set_title(
+            axs_7.set_title(
                 "Total Muscle Forces",
                 fontweight="bold",
             )
@@ -1807,7 +1807,7 @@ def run_process_athlete(bool, save_figures):
             plt.ylabel(y_label)
             plot_means(sumo_array, "r", "SUMO")
             plot_means(conv_array, "b", "CONV")
-            plt.legend(axs.lines, ["SDL", "CDL"])
+            plt.legend(axs_7.lines, ["SDL", "CDL"])
 
             t = spm1d.stats.ttest_paired(sumo_array, conv_array)
             ti = t.inference(alpha=0.05, two_tailed=True)
@@ -1820,9 +1820,9 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs.add_patch(rec)
+                    axs_7.add_patch(rec)
 
-            fig.set_size_inches(11, 6)
+            fig_7.set_size_inches(11, 6)
             if save_figures:
                 plt.savefig(
                     "../results/muscle_forces/total/"
@@ -1932,8 +1932,8 @@ def run_process_athlete(bool, save_figures):
                     conv_knee_extensors_l_active_athlete,
                 )
             )
-            fig_0, axs_0 = plt.subplots(1, 4)
-            fig_0.suptitle(
+            fig_8, axs_8 = plt.subplots(1, 4)
+            fig_8.suptitle(
                 "Muscle Force Means Athlete " + str(active_athlete["number"]),
                 fontweight="bold",
             )
@@ -1947,8 +1947,8 @@ def run_process_athlete(bool, save_figures):
             )
 
             # Hip extensors
-            plt.sca(axs_0[0])
-            axs_0[0].set_title(
+            plt.sca(axs_8[0])
+            axs_8[0].set_title(
                 "Hip Extensors",
             )
             plot_means(sumo_hip_extensors_active_athlete, "r", label_sumo)
@@ -1968,11 +1968,11 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs_0[0].add_patch(rec)
+                    axs_8[0].add_patch(rec)
 
             # Hip flexors
-            plt.sca(axs_0[1])
-            axs_0[1].set_title(
+            plt.sca(axs_8[1])
+            axs_8[1].set_title(
                 "Hip Flexors",
             )
             plt.xlabel(x_label)
@@ -1992,17 +1992,17 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs_0[1].add_patch(rec)
+                    axs_8[1].add_patch(rec)
 
             # Hip adductors
-            plt.sca(axs_0[2])
-            axs_0[2].set_title(
+            plt.sca(axs_8[2])
+            axs_8[2].set_title(
                 "Hip Adductors",
             )
             plt.xlabel(x_label)
             plot_means(sumo_hip_adductors_active_athlete, "r", label_sumo)
             plot_means(conv_hip_adductors_active_athlete, "b", label_conv)
-            axs_0[2].set_ylim(ymin=0)
+            axs_8[2].set_ylim(ymin=0)
 
             t = spm1d.stats.ttest_paired(
                 sumo_hip_adductors_active_athlete, conv_hip_adductors_active_athlete
@@ -2017,17 +2017,17 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs_0[2].add_patch(rec)
+                    axs_8[2].add_patch(rec)
 
             # row 0, column 3
-            plt.sca(axs_0[3])
-            axs_0[3].set_title(
+            plt.sca(axs_8[3])
+            axs_8[3].set_title(
                 "Knee Extensors",
             )
             plt.xlabel(x_label)
             plot_means(sumo_knee_extensors_active_athlete, "r", label_sumo)
             plot_means(conv_knee_extensors_active_athlete, "b", label_conv)
-            axs_0[3].set_ylim(ymin=0)
+            axs_8[3].set_ylim(ymin=0)
 
             t = spm1d.stats.ttest_paired(
                 sumo_knee_extensors_active_athlete, conv_knee_extensors_active_athlete
@@ -2042,9 +2042,9 @@ def run_process_athlete(bool, save_figures):
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
-                    axs_0[3].add_patch(rec)
+                    axs_8[3].add_patch(rec)
 
-            handles, labels = axs_0[
+            handles, labels = axs_8[
                 0
             ].get_legend_handles_labels()  # get legend from first plot
             fig_0.legend(handles, labels, loc="center right")
@@ -2067,8 +2067,8 @@ def run_process_athlete(bool, save_figures):
         try:
             y_label = "Normalized Peak Muscle Force [N/kg]"
 
-            fig_0, axs_0 = plt.subplots(1, 4)
-            fig_0.suptitle(
+            fig_9, axs_9 = plt.subplots(1, 4)
+            fig_9.suptitle(
                 "Peak Muscle Forces Athlete " + str(active_athlete["number"]),
                 fontweight="bold",
             )
@@ -2098,15 +2098,15 @@ def run_process_athlete(bool, save_figures):
             ]
             bar_labels = ["Preferred", "Non-preferred"]
             bar_colors = ["tab:red", "tab:blue"]
-            rects = axs_0[0].bar(
+            rects = axs_9[0].bar(
                 xlabel,
                 peak_forces_hip_extensors,
                 label=bar_labels,
                 color=bar_colors,
             )
-            axs_0[0].bar_label(rects, label_type="center", color="white")
+            axs_9[0].bar_label(rects, label_type="center", color="white")
             print(peak_forces_hip_extensors)
-            axs_0[0].errorbar(
+            axs_9[0].errorbar(
                 xlabel,
                 peak_forces_hip_extensors,
                 yerr=yerr_hip_extensors,
@@ -2115,8 +2115,8 @@ def run_process_athlete(bool, save_figures):
                 elinewidth=3,
             )
             print("FRESH")
-            axs_0[0].set_ylabel(y_label)
-            axs_0[0].set_title("Hip Extensors")
+            axs_9[0].set_ylabel(y_label)
+            axs_9[0].set_title("Hip Extensors")
 
             # Hip flexors
             preferred_hip_flexors_active_athlete = getNormalizedPeakForces(
@@ -2133,14 +2133,14 @@ def run_process_athlete(bool, save_figures):
                 np.std(preferred_hip_flexors_active_athlete),
                 np.std(non_preferred_hip_flexors_active_athlete),
             ]
-            rects = axs_0[1].bar(
+            rects = axs_9[1].bar(
                 xlabel,
                 peak_forces_hip_flexors,
                 label=bar_labels,
                 color=bar_colors,
             )
-            axs_0[1].bar_label(rects, label_type="center", color="white")
-            axs_0[1].errorbar(
+            axs_9[1].bar_label(rects, label_type="center", color="white")
+            axs_9[1].errorbar(
                 xlabel,
                 peak_forces_hip_flexors,
                 yerr=yerr_hip_flexors,
@@ -2148,8 +2148,8 @@ def run_process_athlete(bool, save_figures):
                 color="black",
                 elinewidth=3,
             )
-            axs_0[1].set_ylabel(y_label)
-            axs_0[1].set_title("Hip Flexors")
+            axs_9[1].set_ylabel(y_label)
+            axs_9[1].set_title("Hip Flexors")
 
             preferred_hip_adductors_active_athlete = getNormalizedPeakForces(
                 active_athlete["number"], "hip_adductors", True
@@ -2165,14 +2165,14 @@ def run_process_athlete(bool, save_figures):
                 np.std(preferred_hip_adductors_active_athlete),
                 np.std(non_preferred_sumo_hip_adductors_active_athlete),
             ]
-            rects = axs_0[2].bar(
+            rects = axs_9[2].bar(
                 xlabel,
                 peak_forces_hip_adductors,
                 label=bar_labels,
                 color=bar_colors,
             )
-            axs_0[2].bar_label(rects, label_type="center", color="white")
-            axs_0[2].errorbar(
+            axs_9[2].bar_label(rects, label_type="center", color="white")
+            axs_9[2].errorbar(
                 xlabel,
                 peak_forces_hip_adductors,
                 yerr=yerr_hip_adductors,
@@ -2180,8 +2180,8 @@ def run_process_athlete(bool, save_figures):
                 color="black",
                 elinewidth=3,
             )
-            axs_0[2].set_ylabel(y_label)
-            axs_0[2].set_title("Hip Adductors")
+            axs_9[2].set_ylabel(y_label)
+            axs_9[2].set_title("Hip Adductors")
 
             preferred_knee_extensors_active_athlete = getNormalizedPeakForces(
                 active_athlete["number"], "knee_extensors", True
@@ -2197,14 +2197,14 @@ def run_process_athlete(bool, save_figures):
                 np.std(preferred_knee_extensors_active_athlete),
                 np.std(non_preferred_knee_extensors_active_athlete),
             ]
-            rects = axs_0[3].bar(
+            rects = axs_9[3].bar(
                 xlabel,
                 peak_forces_knee_extensors,
                 label=bar_labels,
                 color=bar_colors,
             )
-            axs_0[3].bar_label(rects, label_type="center", color="white")
-            axs_0[3].errorbar(
+            axs_9[3].bar_label(rects, label_type="center", color="white")
+            axs_9[3].errorbar(
                 xlabel,
                 peak_forces_knee_extensors,
                 yerr=yerr_knee_extensors,
@@ -2212,10 +2212,10 @@ def run_process_athlete(bool, save_figures):
                 color="black",
                 elinewidth=3,
             )
-            axs_0[3].set_ylabel(y_label)
-            axs_0[3].set_title("Knee Extensors")
+            axs_9[3].set_ylabel(y_label)
+            axs_9[3].set_title("Knee Extensors")
 
-            fig_0.set_size_inches(12, 6)
+            fig_9.set_size_inches(12, 6)
             if save_figures:
                 plt.savefig(
                     "../results/muscle_forces/peak/"
