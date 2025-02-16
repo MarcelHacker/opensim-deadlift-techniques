@@ -1,9 +1,11 @@
 {
+  "number": 1,
+  "testdate": "2024-12-19T18:25:43.511Z",
   "name": "athlete_1",
   "model": "athlete_1_scaled_increased_force_3",
   "age": 25,
   "gender": "male",
-  "mass": 82.5,
+  "bodymass": 82.5,
   "height": 177,
   "load": 150,
   "fmax": 195,
