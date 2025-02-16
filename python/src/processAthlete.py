@@ -522,10 +522,10 @@ def run_process_athlete(bool, save_figures):
             plt.subplots_adjust(
                 wspace=0.249,
                 hspace=0.19,
-                top=0.904,
-                right=0.905,
-                left=0.067,
-                bottom=0.067,
+                top=0.883,
+                right=0.918,
+                left=0.057,
+                bottom=0.094,
             )
             hip_flexion_moment_sumo_array = [
                 active_athlete_id_sumo_time_normalised_0["hip_flexion_r_moment"],
