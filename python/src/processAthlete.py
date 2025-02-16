@@ -366,12 +366,12 @@ def run_process_athlete(bool, save_figures):
                 fontweight="bold",
             )
             plt.subplots_adjust(
-                wspace=0.249,
-                hspace=0.19,
+                wspace=0.318,
+                hspace=0.183,
                 top=0.904,
-                right=0.905,
-                left=0.067,
-                bottom=0.067,
+                right=0.91,
+                left=0.051,
+                bottom=0.064,
             )
             coordinates_r = [
                 "hip_flexion_r_moment",
@@ -657,9 +657,9 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -300),
+                        (index, -600),
                         1,
-                        300,
+                        600,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
@@ -1378,7 +1378,7 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -100),
+                        (index, -1000),
                         1,
                         30000,
                         facecolor="lightsteelblue",
@@ -1416,7 +1416,7 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -100),
+                        (index, -1000),
                         1,
                         30000,
                         facecolor="lightsteelblue",
