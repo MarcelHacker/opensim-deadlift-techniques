@@ -163,7 +163,220 @@ def run_process_athlete(bool, save_figures):
             plt.show()
 
         except Exception as e:
-            print("Error in process athlete kinematics")
+            print("Error in process athlete kinematics trials")
+            print(e)
+
+        try:
+            fig, axs = plt.subplots(1, 3)
+            fig.suptitle(
+                "Kinematics Means Athlete "
+                + str(active_athlete["number"])
+                + "; Model: "
+                + active_athlete["model"]
+                + "; Preferred: "
+                + active_athlete["technique"],
+                fontweight="bold",
+            )
+            plt.subplots_adjust(
+                wspace=0.2,
+                hspace=0.208,
+                top=0.89,
+                right=0.912,
+                left=0.05,
+                bottom=0.077,
+            )
+            fig.set_label("Kinematics")
+            x_label = "% concentric deadlift cycle"
+
+            coordinates_r = [
+                "hip_flexion_r",
+                "knee_angle_r",
+                "ankle_angle_r",
+            ]
+            coordinates_l = [
+                "hip_flexion_l",
+                "knee_angle_l",
+                "ankle_angle_l",
+            ]
+            ylabels = [
+                "Hip Flex [°]",
+                "Knee Flex [°]",
+                "Ankle Flex [°]",
+            ]
+
+            hip_flexion_sumo_array = [
+                active_athlete_ik_sumo_time_normalised_0["hip_flexion_r"],
+                active_athlete_ik_sumo_time_normalised_0["hip_flexion_l"],
+                active_athlete_ik_sumo_time_normalised_1["hip_flexion_r"],
+                active_athlete_ik_sumo_time_normalised_1["hip_flexion_l"],
+                active_athlete_ik_sumo_time_normalised_2["hip_flexion_r"],
+                active_athlete_ik_sumo_time_normalised_2["hip_flexion_l"],
+                active_athlete_ik_sumo_time_normalised_3["hip_flexion_r"],
+                active_athlete_ik_sumo_time_normalised_3["hip_flexion_l"],
+            ]
+
+            hip_flexion_conv_array = [
+                active_athlete_ik_conv_time_normalised_0["hip_flexion_r"],
+                active_athlete_ik_conv_time_normalised_0["hip_flexion_l"],
+                active_athlete_ik_conv_time_normalised_1["hip_flexion_r"],
+                active_athlete_ik_conv_time_normalised_1["hip_flexion_l"],
+                active_athlete_ik_conv_time_normalised_2["hip_flexion_r"],
+                active_athlete_ik_conv_time_normalised_2["hip_flexion_l"],
+                active_athlete_ik_conv_time_normalised_3["hip_flexion_r"],
+                active_athlete_ik_conv_time_normalised_3["hip_flexion_l"],
+            ]
+
+            hip_flexion_sumo_array = np.array(hip_flexion_sumo_array)
+            hip_flexion_conv_array = np.array(hip_flexion_conv_array)
+
+            knee_flexion_sumo_array = [
+                active_athlete_ik_sumo_time_normalised_0["knee_angle_r"],
+                active_athlete_ik_sumo_time_normalised_0["knee_angle_l"],
+                active_athlete_ik_sumo_time_normalised_1["knee_angle_r"],
+                active_athlete_ik_sumo_time_normalised_1["knee_angle_l"],
+                active_athlete_ik_sumo_time_normalised_2["knee_angle_r"],
+                active_athlete_ik_sumo_time_normalised_2["knee_angle_l"],
+                active_athlete_ik_sumo_time_normalised_3["knee_angle_r"],
+                active_athlete_ik_sumo_time_normalised_3["knee_angle_l"],
+            ]
+
+            knee_flexion_conv_array = [
+                active_athlete_ik_conv_time_normalised_0["knee_angle_r"],
+                active_athlete_ik_conv_time_normalised_0["knee_angle_l"],
+                active_athlete_ik_conv_time_normalised_1["knee_angle_r"],
+                active_athlete_ik_conv_time_normalised_1["knee_angle_l"],
+                active_athlete_ik_conv_time_normalised_2["knee_angle_r"],
+                active_athlete_ik_conv_time_normalised_2["knee_angle_l"],
+                active_athlete_ik_conv_time_normalised_3["knee_angle_r"],
+                active_athlete_ik_conv_time_normalised_3["knee_angle_l"],
+            ]
+
+            knee_flexion_sumo_array = np.array(knee_flexion_sumo_array)
+            knee_flexion_conv_array = np.array(knee_flexion_conv_array)
+
+            ankle_flexion_sumo_array = [
+                active_athlete_ik_sumo_time_normalised_0["ankle_angle_r"],
+                active_athlete_ik_sumo_time_normalised_0["ankle_angle_l"],
+                active_athlete_ik_sumo_time_normalised_1["ankle_angle_r"],
+                active_athlete_ik_sumo_time_normalised_1["ankle_angle_l"],
+                active_athlete_ik_sumo_time_normalised_2["ankle_angle_r"],
+                active_athlete_ik_sumo_time_normalised_2["ankle_angle_l"],
+                active_athlete_ik_sumo_time_normalised_3["ankle_angle_r"],
+                active_athlete_ik_sumo_time_normalised_3["ankle_angle_l"],
+            ]
+            ankle_flexion_conv_array = [
+                active_athlete_ik_conv_time_normalised_0["ankle_angle_r"],
+                active_athlete_ik_conv_time_normalised_0["ankle_angle_l"],
+                active_athlete_ik_conv_time_normalised_1["ankle_angle_r"],
+                active_athlete_ik_conv_time_normalised_1["ankle_angle_l"],
+                active_athlete_ik_conv_time_normalised_2["ankle_angle_r"],
+                active_athlete_ik_conv_time_normalised_2["ankle_angle_l"],
+                active_athlete_ik_conv_time_normalised_3["ankle_angle_r"],
+                active_athlete_ik_conv_time_normalised_3["ankle_angle_l"],
+            ]
+
+            ankle_flexion_sumo_array = np.array(ankle_flexion_sumo_array)
+            ankle_flexion_conv_array = np.array(ankle_flexion_conv_array)
+
+            plt.sca(axs[0])
+            plt.title("HIP")
+            axs[0].set_xlim(left=0, right=100)
+            spm1d.plot.plot_mean_sd(
+                hip_flexion_sumo_array,
+                linecolor="r",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="SUMO",
+                autoset_ylim=True,
+                roi=None,
+            )
+            spm1d.plot.plot_mean_sd(
+                hip_flexion_conv_array,
+                linecolor="b",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="CONV",
+                autoset_ylim=True,
+                roi=None,
+            )
+            plt.ylabel("Hip Flex [°]")
+            plt.xlabel(x_label)
+
+            plt.sca(axs[1])
+            plt.title("KNEE")
+            axs[1].set_xlim(left=0, right=100)
+            spm1d.plot.plot_mean_sd(
+                knee_flexion_sumo_array,
+                linecolor="r",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="SUMO",
+                autoset_ylim=True,
+                roi=None,
+            )
+            spm1d.plot.plot_mean_sd(
+                knee_flexion_conv_array,
+                linecolor="b",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="CONV",
+                autoset_ylim=True,
+                roi=None,
+            )
+            plt.ylabel("Knee Flex [°]")
+            plt.xlabel(x_label)
+
+            plt.sca(axs[2])
+            plt.title("ANKLE")
+            axs[2].set_xlim(left=0, right=100)
+            spm1d.plot.plot_mean_sd(
+                ankle_flexion_sumo_array,
+                linecolor="r",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="SUMO",
+                autoset_ylim=True,
+                roi=None,
+            )
+            spm1d.plot.plot_mean_sd(
+                ankle_flexion_conv_array,
+                linecolor="b",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="CONV",
+                autoset_ylim=True,
+                roi=None,
+            )
+            plt.ylabel("Ankle Flex [°]")
+            plt.xlabel(x_label)
+            handles, labels = axs[
+                0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="center right")
+            fig.set_size_inches(12, 6)
+            if save_figures:
+                plt.savefig(
+                    "../results/ik/" + active_athlete["name"] + "_mean.png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
+            plt.show()
+
+        except Exception as e:
+            print("Error in process athlete kinematics means")
             print(e)
 
         try:
