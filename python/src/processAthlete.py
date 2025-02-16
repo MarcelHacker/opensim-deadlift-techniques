@@ -48,7 +48,7 @@ def run_process_athlete(bool, save_figures):
             ]
 
             for i in range(len(coordinates_r)):
-                plt.sca(axs[0, i])
+                plt.sca(axs_0[0, i])
                 plt.title("SDL")
                 axs_0[0, i].set_xlim(left=0, right=100)
                 plt.plot(
@@ -657,9 +657,9 @@ def run_process_athlete(bool, save_figures):
             for index, value in enumerate(t.z):
                 if value > ti.zstar or value < (-ti.zstar):
                     rec = plt.Rectangle(
-                        (index, -600),
+                        (index, -250),
                         1,
-                        600,
+                        250,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
@@ -1619,8 +1619,8 @@ def run_process_athlete(bool, save_figures):
             handles, labels = axs_5[
                 0, 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig.legend(handles, labels, loc="center right")
-            fig.set_size_inches(13, 7.5)
+            fig_5.legend(handles, labels, loc="center right")
+            fig_5.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
                     "../results/muscle_forces/"
@@ -1660,7 +1660,7 @@ def run_process_athlete(bool, save_figures):
                 left=0.076,
                 bottom=0.088,
             )
-            fig.set_label("Total Muscle Force [N]")
+            fig_6.set_label("Total Muscle Force [N]")
 
             plt.sca(axs_6[0])
             plt.title(
@@ -1690,7 +1690,6 @@ def run_process_athlete(bool, save_figures):
                 color=color_sumo,
                 linestyle=linestyle_trail_3,
             )
-            # axs[0].set_yticks(np.arange(10000, 38000, 3000))
             axs_6[0].set_xticks(np.arange(0, 101, 5))
             axs_6[0].set_xlim(left=0, right=100)
             plt.legend()
@@ -2047,8 +2046,8 @@ def run_process_athlete(bool, save_figures):
             handles, labels = axs_8[
                 0
             ].get_legend_handles_labels()  # get legend from first plot
-            fig_0.legend(handles, labels, loc="center right")
-            fig_0.set_size_inches(15, 5)
+            fig_8.legend(handles, labels, loc="center right")
+            fig_8.set_size_inches(15, 5)
             if save_figures:
                 plt.savefig(
                     "../results/muscle_forces/groups/"
