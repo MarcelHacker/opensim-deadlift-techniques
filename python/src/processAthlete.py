@@ -3,14 +3,14 @@ from src.imports import *
 
 def run_process_athlete(bool, save_figures):
     if bool:
+        x_label = "% concentric deadlift cycle"
+        ###########################################  START IK #######################################################
         try:
-            rows = 3
-            cols = 2
             trial_color_0 = "red"
             trial_color_1 = "blue"
             trial_color_2 = "orange"
             trial_color_3 = "darkgreen"
-            fig, axs = plt.subplots(cols, rows)
+            fig, axs = plt.subplots(2, 3)
             fig.suptitle(
                 "Kinematics Trials Athlete "
                 + str(active_athlete["number"])
@@ -28,8 +28,6 @@ def run_process_athlete(bool, save_figures):
                 left=0.05,
                 bottom=0.07,
             )
-            fig.set_label("Kinematics")
-            x_label = "% concentric deadlift cycle"
 
             coordinates_r = [
                 "hip_flexion_r",
@@ -185,8 +183,6 @@ def run_process_athlete(bool, save_figures):
                 left=0.05,
                 bottom=0.077,
             )
-            fig.set_label("Kinematics")
-            x_label = "% concentric deadlift cycle"
 
             coordinates_r = [
                 "hip_flexion_r",
@@ -197,11 +193,6 @@ def run_process_athlete(bool, save_figures):
                 "hip_flexion_l",
                 "knee_angle_l",
                 "ankle_angle_l",
-            ]
-            ylabels = [
-                "Hip Flex [°]",
-                "Knee Flex [°]",
-                "Ankle Flex [°]",
             ]
 
             hip_flexion_sumo_array = [
@@ -378,15 +369,14 @@ def run_process_athlete(bool, save_figures):
         except Exception as e:
             print("Error in process athlete kinematics means")
             print(e)
-
+        ########################################### END IK #######################################################
+        ###########################################  START ID #######################################################
         try:
-            rows = 3
-            cols = 2
             trial_color_0 = "red"
             trial_color_1 = "blue"
             trial_color_2 = "orange"
             trial_color_3 = "darkgreen"
-            fig, axs = plt.subplots(cols, rows)
+            fig, axs = plt.subplots(2, 3)
             fig.suptitle(
                 "Joint Moments Trials Athlete "
                 + str(active_athlete["number"])
@@ -404,8 +394,6 @@ def run_process_athlete(bool, save_figures):
                 left=0.067,
                 bottom=0.067,
             )
-            fig.set_label("Joint Moments [Nm]")
-            x_label = "% concentric deadlift cycle"
 
             coordinates_r = [
                 "hip_flexion_r_moment",
@@ -539,8 +527,185 @@ def run_process_athlete(bool, save_figures):
             plt.show()
 
         except Exception as e:
-            print("Error in process athletes joint moments")
+            print("Error in process athletes joint moments trials")
             print(e)
+
+        try:
+            hip_flexion_moment_sumo_array = [
+                active_athlete_id_sumo_time_normalised_0["hip_flexion_r_moment"],
+                active_athlete_id_sumo_time_normalised_0["hip_flexion_l_moment"],
+                active_athlete_id_sumo_time_normalised_1["hip_flexion_r_moment"],
+                active_athlete_id_sumo_time_normalised_1["hip_flexion_l_moment"],
+                active_athlete_id_sumo_time_normalised_2["hip_flexion_r_moment"],
+                active_athlete_id_sumo_time_normalised_2["hip_flexion_l_moment"],
+                active_athlete_id_sumo_time_normalised_3["hip_flexion_r_moment"],
+                active_athlete_id_sumo_time_normalised_3["hip_flexion_l_moment"],
+            ]
+
+            hip_flexion_moment_conv_array = [
+                active_athlete_id_conv_time_normalised_0["hip_flexion_r_moment"],
+                active_athlete_id_conv_time_normalised_0["hip_flexion_l_moment"],
+                active_athlete_id_conv_time_normalised_1["hip_flexion_r_moment"],
+                active_athlete_id_conv_time_normalised_1["hip_flexion_l_moment"],
+                active_athlete_id_conv_time_normalised_2["hip_flexion_r_moment"],
+                active_athlete_id_conv_time_normalised_2["hip_flexion_l_moment"],
+                active_athlete_id_conv_time_normalised_3["hip_flexion_r_moment"],
+                active_athlete_id_conv_time_normalised_3["hip_flexion_l_moment"],
+            ]
+
+            hip_flexion_moment_sumo_array = np.array(hip_flexion_moment_sumo_array)
+            hip_flexion_moment_conv_array = np.array(hip_flexion_moment_conv_array)
+
+            knee_flexion_moment_sumo_array = [
+                active_athlete_id_sumo_time_normalised_0["knee_angle_r_moment"],
+                active_athlete_id_sumo_time_normalised_0["knee_angle_l_moment"],
+                active_athlete_id_sumo_time_normalised_1["knee_angle_r_moment"],
+                active_athlete_id_sumo_time_normalised_1["knee_angle_l_moment"],
+                active_athlete_id_sumo_time_normalised_2["knee_angle_r_moment"],
+                active_athlete_id_sumo_time_normalised_2["knee_angle_l_moment"],
+                active_athlete_id_sumo_time_normalised_3["knee_angle_r_moment"],
+                active_athlete_id_sumo_time_normalised_3["knee_angle_l_moment"],
+            ]
+
+            knee_flexion_moment_conv_array = [
+                active_athlete_id_conv_time_normalised_0["knee_angle_r_moment"],
+                active_athlete_id_conv_time_normalised_0["knee_angle_l_moment"],
+                active_athlete_id_conv_time_normalised_1["knee_angle_r_moment"],
+                active_athlete_id_conv_time_normalised_1["knee_angle_l_moment"],
+                active_athlete_id_conv_time_normalised_2["knee_angle_r_moment"],
+                active_athlete_id_conv_time_normalised_2["knee_angle_l_moment"],
+                active_athlete_id_conv_time_normalised_3["knee_angle_r_moment"],
+                active_athlete_id_conv_time_normalised_3["knee_angle_l_moment"],
+            ]
+
+            knee_flexion_moment_sumo_array = np.array(knee_flexion_moment_sumo_array)
+            knee_flexion_moment_conv_array = np.array(knee_flexion_moment_conv_array)
+
+            ankle_flexion_moment_sumo_array = [
+                active_athlete_id_sumo_time_normalised_0["ankle_angle_r_moment"],
+                active_athlete_id_sumo_time_normalised_0["ankle_angle_l_moment"],
+                active_athlete_id_sumo_time_normalised_1["ankle_angle_r_moment"],
+                active_athlete_id_sumo_time_normalised_1["ankle_angle_l_moment"],
+                active_athlete_id_sumo_time_normalised_2["ankle_angle_r_moment"],
+                active_athlete_id_sumo_time_normalised_2["ankle_angle_l_moment"],
+                active_athlete_id_sumo_time_normalised_3["ankle_angle_r_moment"],
+                active_athlete_id_sumo_time_normalised_3["ankle_angle_l_moment"],
+            ]
+            ankle_flexion_moment_conv_array = [
+                active_athlete_id_conv_time_normalised_0["ankle_angle_r_moment"],
+                active_athlete_id_conv_time_normalised_0["ankle_angle_l_moment"],
+                active_athlete_id_conv_time_normalised_1["ankle_angle_r_moment"],
+                active_athlete_id_conv_time_normalised_1["ankle_angle_l_moment"],
+                active_athlete_id_conv_time_normalised_2["ankle_angle_r_moment"],
+                active_athlete_id_conv_time_normalised_2["ankle_angle_l_moment"],
+                active_athlete_id_conv_time_normalised_3["ankle_angle_r_moment"],
+                active_athlete_id_conv_time_normalised_3["ankle_angle_l_moment"],
+            ]
+
+            ankle_flexion_moment_sumo_array = np.array(ankle_flexion_moment_sumo_array)
+            ankle_flexion_moment_conv_array = np.array(ankle_flexion_moment_conv_array)
+
+            plt.sca(axs[0])
+            plt.title("HIP")
+            axs[0].set_xlim(left=0, right=100)
+            spm1d.plot.plot_mean_sd(
+                hip_flexion_moment_sumo_array,
+                linecolor="r",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="SUMO",
+                autoset_ylim=True,
+                roi=None,
+            )
+            spm1d.plot.plot_mean_sd(
+                hip_flexion_moment_conv_array,
+                linecolor="b",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="CONV",
+                autoset_ylim=True,
+                roi=None,
+            )
+            plt.ylabel("Hip Moment [Nm]")
+            plt.xlabel(x_label)
+
+            plt.sca(axs[1])
+            plt.title("KNEE")
+            axs[1].set_xlim(left=0, right=100)
+            spm1d.plot.plot_mean_sd(
+                knee_flexion_moment_sumo_array,
+                linecolor="r",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="SUMO",
+                autoset_ylim=True,
+                roi=None,
+            )
+            spm1d.plot.plot_mean_sd(
+                knee_flexion_moment_conv_array,
+                linecolor="b",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="CONV",
+                autoset_ylim=True,
+                roi=None,
+            )
+            plt.ylabel("Knee Moment [Nm]")
+            plt.xlabel(x_label)
+
+            plt.sca(axs[2])
+            plt.title("ANKLE")
+            axs[2].set_xlim(left=0, right=100)
+            spm1d.plot.plot_mean_sd(
+                ankle_flexion_moment_sumo_array,
+                linecolor="r",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="SUMO",
+                autoset_ylim=True,
+                roi=None,
+            )
+            spm1d.plot.plot_mean_sd(
+                ankle_flexion_moment_conv_array,
+                linecolor="b",
+                linestyle="-",
+                facecolor="0.8",
+                edgecolor="0.8",
+                alpha=0.5,
+                label="CONV",
+                autoset_ylim=True,
+                roi=None,
+            )
+            plt.ylabel("Ankle Moment [Nm]")
+            plt.xlabel(x_label)
+            handles, labels = axs[
+                0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="center right")
+            fig.set_size_inches(12, 5)
+            if save_figures:
+                plt.savefig(
+                    "../results/id/" + active_athlete["name"] + "_mean.png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
+            plt.show()
+
+        except Exception as e:
+            print("Error in process athlete dynamics means")
+            print(e)
+        ###########################################  END ID #######################################################
 
         try:
             color_sumo = "red"
