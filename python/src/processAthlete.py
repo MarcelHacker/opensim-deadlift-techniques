@@ -1287,9 +1287,9 @@ def run_process_athlete(bool, save_figures):
             fig_4.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
-                    "../results/muscle_forces/"
+                    "../results/muscle_forces/groups/"
                     + active_athlete["name"]
-                    + "_trials.png",
+                    + "_details_trials.png",
                     transparent=None,
                     dpi=300,
                     format="png",
@@ -1674,9 +1674,9 @@ def run_process_athlete(bool, save_figures):
             fig_5.set_size_inches(13, 7.5)
             if save_figures:
                 plt.savefig(
-                    "../results/muscle_forces/"
+                    "../results/muscle_forces/groups/"
                     + active_athlete["name"]
-                    + "_trials.png",
+                    + "_details_mean.png",
                     transparent=None,
                     dpi=300,
                     format="png",
