@@ -1197,9 +1197,394 @@ def run_process_athlete(bool, save_figures):
                 )
             plt.show()
         except Exception as e:
-            print("Error in process athlete muscle force groups")
+            print("Error in process athlete muscle force groups trials")
             print(e)
 
+        try:
+            fig, axs = plt.subplots(3, 3)
+            fig.suptitle(
+                "Muscle Force Groups Means Athlete "
+                + str(active_athlete["number"])
+                + "; Model: "
+                + active_athlete["model"]
+                + "; Preferred: "
+                + active_athlete["technique"],
+                fontweight="bold",
+            )
+            plt.subplots_adjust(
+                wspace=0.275,
+                hspace=0.198,
+                top=0.935,
+                right=0.921,
+                left=0.06,
+                bottom=0.06,
+            )
+            active_athlete_hamstrings_medial_sumo = [
+                active_athlete_hamstrings_medial_sumo_force_0,
+                active_athlete_hamstrings_medial_sumo_force_1,
+                active_athlete_hamstrings_medial_sumo_force_2,
+                active_athlete_hamstrings_medial_sumo_force_3,
+            ]
+            active_athlete_hamstrings_medial_conv = [
+                active_athlete_hamstrings_medial_conv_force_0,
+                active_athlete_hamstrings_medial_conv_force_1,
+                active_athlete_hamstrings_medial_conv_force_2,
+                active_athlete_hamstrings_medial_conv_force_3,
+            ]
+            active_athlete_hamstrings_medial_sumo = np.array(
+                active_athlete_hamstrings_medial_sumo
+            )
+            active_athlete_hamstrings_medial_conv = np.array(
+                active_athlete_hamstrings_medial_conv
+            )
+
+            # hamstrings medial
+            plt.sca(axs[0, 0])
+            axs[0, 0].set_xlim(left=0, right=100)
+            plot_means(active_athlete_hamstrings_medial_sumo, "r", "SUMO")
+            plot_means(active_athlete_hamstrings_medial_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_hamstrings_medial_sumo,
+                active_athlete_hamstrings_medial_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[0, 0].add_patch(rec)
+            plt.ylabel("Hamstrings medial [N]")
+
+            active_athlete_hamstrings_lateral_sumo = [
+                active_athlete_hamstrings_lateral_sumo_force_0,
+                active_athlete_hamstrings_lateral_sumo_force_1,
+                active_athlete_hamstrings_lateral_sumo_force_2,
+                active_athlete_hamstrings_lateral_sumo_force_3,
+            ]
+            active_athlete_hamstrings_lateral_conv = [
+                active_athlete_hamstrings_lateral_conv_force_0,
+                active_athlete_hamstrings_lateral_conv_force_1,
+                active_athlete_hamstrings_lateral_conv_force_2,
+                active_athlete_hamstrings_lateral_conv_force_3,
+            ]
+            active_athlete_hamstrings_lateral_sumo = np.array(
+                active_athlete_hamstrings_lateral_sumo
+            )
+            active_athlete_hamstrings_lateral_conv = np.array(
+                active_athlete_hamstrings_lateral_conv
+            )
+
+            # hamstrings lateral
+            plt.sca(axs[0, 1])
+            axs[0, 1].set_xlim(left=0, right=100)
+            plot_means(active_athlete_hamstrings_lateral_sumo, "r", "SUMO")
+            plot_means(active_athlete_hamstrings_lateral_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_hamstrings_lateral_sumo,
+                active_athlete_hamstrings_lateral_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[0, 1].add_patch(rec)
+            plt.ylabel("Hamstrings lateral [N]")
+
+            active_athlete_vasti_sumo = [
+                active_athlete_vasti_sumo_force_0,
+                active_athlete_vasti_sumo_force_1,
+                active_athlete_vasti_sumo_force_2,
+                active_athlete_vasti_sumo_force_3,
+            ]
+            active_athlete_vasti_conv = [
+                active_athlete_vasti_conv_force_0,
+                active_athlete_vasti_conv_force_1,
+                active_athlete_vasti_conv_force_2,
+                active_athlete_vasti_conv_force_3,
+            ]
+            active_athlete_vasti_sumo = np.array(active_athlete_vasti_sumo)
+            active_athlete_vasti_conv = np.array(active_athlete_vasti_conv)
+
+            # vasti
+            plt.sca(axs[0, 2])
+            axs[0, 2].set_xlim(left=0, right=100)
+            plot_means(active_athlete_vasti_sumo, "r", "SUMO")
+            plot_means(active_athlete_vasti_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_vasti_sumo,
+                active_athlete_vasti_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[0, 2].add_patch(rec)
+            plt.ylabel("Vasti [N]")
+
+            active_athlete_gluteusmax_sumo = [
+                active_athlete_gluteusmax_sumo_force_0,
+                active_athlete_gluteusmax_sumo_force_1,
+                active_athlete_gluteusmax_sumo_force_2,
+                active_athlete_gluteusmax_sumo_force_3,
+            ]
+            active_athlete_gluteusmax_conv = [
+                active_athlete_gluteusmax_conv_force_0,
+                active_athlete_gluteusmax_conv_force_1,
+                active_athlete_gluteusmax_conv_force_2,
+                active_athlete_gluteusmax_conv_force_3,
+            ]
+            active_athlete_gluteusmax_sumo = np.array(active_athlete_gluteusmax_sumo)
+            active_athlete_gluteusmax_conv = np.array(active_athlete_gluteusmax_conv)
+
+            # gluteus maximus
+            plt.sca(axs[1, 0])
+            axs[1, 0].set_xlim(left=0, right=100)
+            plot_means(active_athlete_gluteusmax_sumo, "r", "SUMO")
+            plot_means(active_athlete_gluteusmax_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_gluteusmax_sumo,
+                active_athlete_gluteusmax_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[1, 0].add_patch(rec)
+            plt.ylabel("Gluteus maximus [N]")
+
+            active_athlete_adductors_sumo = [
+                active_athlete_adductors_sumo_force_0,
+                active_athlete_adductors_sumo_force_1,
+                active_athlete_adductors_sumo_force_2,
+                active_athlete_adductors_sumo_force_3,
+            ]
+            active_athlete_adductors_conv = [
+                active_athlete_adductors_conv_force_0,
+                active_athlete_adductors_conv_force_1,
+                active_athlete_adductors_conv_force_2,
+                active_athlete_adductors_conv_force_3,
+            ]
+            active_athlete_adductors_sumo = np.array(active_athlete_adductors_sumo)
+            active_athlete_adductors_conv = np.array(active_athlete_adductors_conv)
+
+            # adductors
+            plt.sca(axs[1, 1])
+            axs[1, 1].set_xlim(left=0, right=100)
+            plot_means(active_athlete_adductors_sumo, "r", "SUMO")
+            plot_means(active_athlete_adductors_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_adductors_sumo,
+                active_athlete_adductors_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[1, 1].add_patch(rec)
+            plt.ylabel("Adductors [N]")
+
+            active_athlete_gluteusmed_sumo = [
+                active_athlete_gluteusmed_sumo_force_0,
+                active_athlete_gluteusmed_sumo_force_1,
+                active_athlete_gluteusmed_sumo_force_2,
+                active_athlete_gluteusmed_sumo_force_3,
+            ]
+            active_athlete_gluteusmed_conv = [
+                active_athlete_gluteusmed_conv_force_0,
+                active_athlete_gluteusmed_conv_force_1,
+                active_athlete_gluteusmed_conv_force_2,
+                active_athlete_gluteusmed_conv_force_3,
+            ]
+            active_athlete_gluteusmed_sumo = np.array(active_athlete_gluteusmed_sumo)
+            active_athlete_gluteusmed_conv = np.array(active_athlete_gluteusmed_conv)
+
+            # gluteus medius
+            plt.sca(axs[1, 2])
+            axs[1, 2].set_xlim(left=0, right=100)
+            plot_means(active_athlete_gluteusmed_sumo, "r", "SUMO")
+            plot_means(active_athlete_gluteusmed_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_gluteusmed_sumo,
+                active_athlete_gluteusmed_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[1, 2].add_patch(rec)
+            plt.ylabel("Gluteus medius [N]")
+
+            active_athlete_triceps_surae_sumo = [
+                active_athlete_triceps_surae_sumo_force_0,
+                active_athlete_triceps_surae_sumo_force_1,
+                active_athlete_triceps_surae_sumo_force_2,
+                active_athlete_triceps_surae_sumo_force_3,
+            ]
+            active_athlete_triceps_surae_conv = [
+                active_athlete_triceps_surae_conv_force_0,
+                active_athlete_triceps_surae_conv_force_1,
+                active_athlete_triceps_surae_conv_force_2,
+                active_athlete_triceps_surae_conv_force_3,
+            ]
+            active_athlete_triceps_surae_sumo = np.array(
+                active_athlete_triceps_surae_sumo
+            )
+            active_athlete_triceps_surae_conv = np.array(
+                active_athlete_triceps_surae_conv
+            )
+
+            # Triceps surae
+            plt.sca(axs[2, 0])
+            axs[2, 0].set_xlim(left=0, right=100)
+            plot_means(active_athlete_triceps_surae_sumo, "r", "SUMO")
+            plot_means(active_athlete_triceps_surae_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_triceps_surae_sumo,
+                active_athlete_triceps_surae_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[2, 0].add_patch(rec)
+            plt.ylabel("Triceps surae [N]")
+            plt.xlabel(x_label)
+
+            active_athlete_hip_flexors_sumo = [
+                active_athlete_hip_flexors_sumo_force_0,
+                active_athlete_hip_flexors_sumo_force_1,
+                active_athlete_hip_flexors_sumo_force_2,
+                active_athlete_hip_flexors_sumo_force_3,
+            ]
+            active_athlete_hip_flexors_conv = [
+                active_athlete_hip_flexors_conv_force_0,
+                active_athlete_hip_flexors_conv_force_1,
+                active_athlete_hip_flexors_conv_force_2,
+                active_athlete_hip_flexors_conv_force_3,
+            ]
+            active_athlete_hip_flexors_sumo = np.array(active_athlete_hip_flexors_sumo)
+            active_athlete_hip_flexors_conv = np.array(active_athlete_hip_flexors_conv)
+            # hip flexors
+            plt.sca(axs[2, 1])
+            axs[2, 1].set_xlim(left=0, right=100)
+            plot_means(active_athlete_hip_flexors_sumo, "r", "SUMO")
+            plot_means(active_athlete_hip_flexors_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_hip_flexors_sumo,
+                active_athlete_hip_flexors_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[2, 1].add_patch(rec)
+            plt.ylabel("Hip flexors [N]")
+            plt.xlabel(x_label)
+
+            active_athlete_gluteusmin_sumo = [
+                active_athlete_gluteusmin_sumo_force_0,
+                active_athlete_gluteusmin_sumo_force_1,
+                active_athlete_gluteusmin_sumo_force_2,
+                active_athlete_gluteusmin_sumo_force_3,
+            ]
+            active_athlete_gluteusmin_conv = [
+                active_athlete_gluteusmin_conv_force_0,
+                active_athlete_gluteusmin_conv_force_1,
+                active_athlete_gluteusmin_conv_force_2,
+                active_athlete_gluteusmin_conv_force_3,
+            ]
+            active_athlete_gluteusmin_sumo = np.array(active_athlete_gluteusmin_sumo)
+            active_athlete_gluteusmin_conv = np.array(active_athlete_gluteusmin_conv)
+
+            # Gluteus minimus
+            plt.sca(axs[2, 2])
+            axs[2, 2].set_xlim(left=0, right=100)
+            plot_means(active_athlete_gluteusmin_sumo, "r", "SUMO")
+            plot_means(active_athlete_gluteusmin_conv, "b", "CONV")
+            t = spm1d.stats.ttest_paired(
+                active_athlete_gluteusmin_sumo,
+                active_athlete_gluteusmin_conv,
+            )
+            ti = t.inference(alpha=0.05, two_tailed=True)
+            for index, value in enumerate(t.z):
+                if value > ti.zstar or value < (-ti.zstar):
+                    rec = plt.Rectangle(
+                        (index, -100),
+                        1,
+                        30000,
+                        facecolor="lightsteelblue",
+                        alpha=0.3,
+                    )
+                    axs[2, 2].add_patch(rec)
+            plt.ylabel("Gluteus minimus [N]")
+            plt.xlabel(x_label)
+
+            handles, labels = axs[
+                0, 0
+            ].get_legend_handles_labels()  # get legend from first plot
+            fig.legend(handles, labels, loc="center right")
+            fig.set_size_inches(13, 7.5)
+            if save_figures:
+                plt.savefig(
+                    "../results/muscle_forces/"
+                    + active_athlete["name"]
+                    + "_trials.png",
+                    transparent=None,
+                    dpi=300,
+                    format="png",
+                )
+            plt.show()
+        except Exception as e:
+            print("Error in process athlete muscle force groups means")
+            print(e)
+        ########################################### TOTAL FORCES ############################################
         try:
             color_sumo = "red"
             color_conv = "blue"
@@ -1381,7 +1766,7 @@ def run_process_athlete(bool, save_figures):
                     rec = plt.Rectangle(
                         (index, 0),
                         1,
-                        400,
+                        800,
                         facecolor="lightsteelblue",
                         alpha=0.3,
                     )
