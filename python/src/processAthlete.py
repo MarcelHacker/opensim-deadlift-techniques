@@ -390,7 +390,7 @@ def run_process_athlete(bool, save_figures):
                 0
             ].get_legend_handles_labels()  # get legend from first plot
             fig_1.legend(handles, labels, loc="center right")
-            fig_1.set_size_inches(13, 6)
+            fig_1.set_size_inches(14, 5)
             if save_figures:
                 plt.savefig(
                     "../results/ik/" + active_athlete["name"] + "_mean.png",
@@ -675,7 +675,7 @@ def run_process_athlete(bool, save_figures):
             ankle_flexion_moment_conv_array = np.array(ankle_flexion_moment_conv_array)
 
             plt.sca(axs_3[0])
-            plt.title("HIP FLEXION")
+            plt.title("EXTENSION")
             axs_3[0].set_xlim(left=0, right=100)
             plot_means(hip_flexion_moment_sumo_array, "r", "SUMO")
             plot_means(hip_flexion_moment_conv_array, "b", "CONV")
@@ -697,7 +697,7 @@ def run_process_athlete(bool, save_figures):
             plt.xlabel(x_label)
 
             plt.sca(axs_3[1])
-            plt.title("HIP ADDUCTION")
+            plt.title("ADDUCTION")
             axs_3[1].set_xlim(left=0, right=100)
             plot_means(hip_adduction_moment_sumo_array, "r", "SUMO")
             plot_means(hip_adduction_moment_conv_array, "b", "CONV")
@@ -719,7 +719,7 @@ def run_process_athlete(bool, save_figures):
             plt.xlabel(x_label)
 
             plt.sca(axs_3[2])
-            plt.title("KNEE")
+            plt.title("EXTENSION")
             axs_3[2].set_xlim(left=0, right=100)
             plot_means(knee_flexion_moment_sumo_array, "r", "SUMO")
             plot_means(knee_flexion_moment_conv_array, "b", "CONV")
@@ -741,7 +741,7 @@ def run_process_athlete(bool, save_figures):
             plt.xlabel(x_label)
 
             plt.sca(axs_3[3])
-            plt.title("ANKLE")
+            plt.title("EXTENSION")
             axs_3[3].set_xlim(left=0, right=100)
             plot_means(ankle_flexion_moment_sumo_array, "r", "SUMO")
             plot_means(ankle_flexion_moment_conv_array, "b", "CONV")
