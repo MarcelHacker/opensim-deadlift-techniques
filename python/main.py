@@ -14,9 +14,6 @@ from src.momentArmsHipPlot import run_moment_arms_hip_plot
 # from src.rawEmgPlot import run_raw_emg_plot
 # from src.normEmgPlot import run_norm_emg_plot
 
-from src.increaseForce import increase_max_isometric_force
-from src.pdfExport import create_pdf_report
-from src.spmTotalMuscleForces import run_total_muscle_force_plot_spm
 from src.statisticsOverall import run_muscle_force_groups_overall
 from src.statisticsSummary import run_muscle_force_groups_summary
 from src.summaryPreferences import run_muscle_group_preferences

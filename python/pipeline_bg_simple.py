@@ -4,13 +4,14 @@ Code to run OpenSim analysis Marcel's data BSc
 
 from msk_modelling_python import *
 import msk_modelling_python as msk
+
 file = r"C:\Git\research_data\Projects\opensim-deadlift-techniques\simulations\athlete_1_increased_force_3\conv_dl_0\c3dfile\analog_filtered.csv"
 df = msk.bops.import_file(file)
 
 print(df.head())
 
 df_time_normalised = msk.bops.time_normalise_df(df)
-new_file = file.replace(".csv", "_time_normalised.csv") 
+new_file = file.replace(".csv", "_time_normalised.csv")
 df_time_normalised.to_csv(new_file)
 
 exit()
@@ -22,8 +23,8 @@ run_id = False
 run_so = False
 
 current_dir = os.path.dirname(__file__)
-athlete_name = 'athlete_1_increased_force_3'
-athlete_path = os.path.join(os.path.dirname(current_dir), 'simulations', athlete_name)
+athlete_name = "athlete_1_increased_force_3"
+athlete_path = os.path.join(os.path.dirname(current_dir), "simulations", athlete_name)
 osim_model_path = os.path.join(athlete_path, "scaled_model.osim")
 
 if not os.path.exists(osim_model_path):
@@ -34,8 +35,8 @@ max_isometric_force_scale_factor = 1
 
 # motion files
 trial_name = "conv_dl_0"
-c3d_file_path = os.path.join(athlete_path, trial_name, 'c3dfile.c3d')
-motion_trc_file_path = os.path.join(athlete_path, trial_name, 'ik.mot')
+c3d_file_path = os.path.join(athlete_path, trial_name, "c3dfile.c3d")
+motion_trc_file_path = os.path.join(athlete_path, trial_name, "ik.mot")
 grf_mot_file_path = None
 grf_xml_file_path = None
 actuators_so_file_path = None
@@ -57,7 +58,7 @@ if run_setup:
             ".c3d", "\\forces\\" + file_name_no_ext + "\\grf.mot"
         )
         msk.bops.create_grf_xml(
-            grf_file, 
+            grf_file,
             output_file="",
             apply_force_body_name="calcn_r",
             force_expressed_in_body_name="ground",
