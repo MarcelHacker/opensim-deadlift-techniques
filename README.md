@@ -9,17 +9,12 @@ source activate
 cd "/Users/marcelhacker/Documents/opensim-deadlift-techniques"
 cd python
 
-#
+## FOR WINDOWS PC
 
-FOR WINDOWS PC
-
-# 1. Activate env
+# 1. Activate env and navigate to project
 
 cd "C:\Users\ihack\Documents\penv\Scripts"
 activate
-
-# 2. Navigate to project
-
 cd "C:\Users\ihack\Documents\opensim-deadlift-techniques"
 
 # install opensim python
@@ -28,12 +23,6 @@ e:
 cd "E:\OpenSim 4.5\sdk\Python"
 python setup_win_python38.py
 python -m pip install .
-
-# Current Problems
-
-TRC files are crashing when joint centers are calculated manualy.
-
-Pelvis_rotation xml -> zu ändern zu -180 bis 180 Grad oder Radiant
 
 # WORKFLOW
 
@@ -45,6 +34,12 @@ Pelvis_rotation xml -> zu ändern zu -180 bis 180 Grad oder Radiant
 6. Inverse Kinematics
 7. Inverse Daynamics
 8. Static optimisation
+
+# Current Problems
+
+TRC files are crashing when joint centers are calculated manualy.
+
+Pelvis_rotation xml -> zu ändern zu -180 bis 180 Grad oder Radiant
 
 # MAC path for python packages:
 
@@ -59,17 +54,13 @@ export PYTHONPATH=/Users/marcelhacker/Applications/OpenSim_4.5/sdk/Python:$PYTHO
 alias python=python3
 source ~/.bashrc
 
-# CONDA deactivation (deinstall it):
-
-conda deactivate
-
 # Learnings
 
 The scaling pose and the dynamic markerpositions have to match the model (generic) pose!
 
 # VICON Export
 
-Select only the labelled markers and export those only to trc.
+Select only the labelled markers and export those only to trc. TRC Version 4.
 
 ## Citations
 
@@ -81,10 +72,10 @@ Rajagopal, A., Dembia, C. L., DeMers, M. S., Delp, D. D., Hicks, J. L., & Delp, 
 
 Harrington, M. E., Zavatsky, A. B., Lawson, S. E., Yuan, Z., & Theologis, T. N. (2007). Prediction of the hip joint centre in adults, children, and patients with cerebral palsy based on magnetic resonance imaging. Journal of biomechanics, 40(3), 595–602. https://doi.org/10.1016/j.jbiomech.2006.02.003
 
-# if remote hungs up run
+## if remote hungs up run
 
 git config http.postBuffer 524288000
 
-# also include PYTHON in the path of terminal
+## also include PYTHON in the path of terminal
 
 PYTHONPATH=/Users/marcelhacker/Applications/OpenSim_4.5/sdk/Python:$PYTHONPATH
