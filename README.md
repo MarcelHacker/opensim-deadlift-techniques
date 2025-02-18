@@ -9,7 +9,7 @@ source activate
 cd "/Users/marcelhacker/Documents/opensim-deadlift-techniques"
 cd python
 
-# 
+#
 
 FOR WINDOWS PC
 
@@ -84,3 +84,7 @@ Harrington, M. E., Zavatsky, A. B., Lawson, S. E., Yuan, Z., & Theologis, T. N. 
 # if remote hungs up run
 
 git config http.postBuffer 524288000
+
+# also include PYTHON in the path of terminal
+
+PYTHONPATH=/Users/marcelhacker/Applications/OpenSim_4.5/sdk/Python:$PYTHONPATH
