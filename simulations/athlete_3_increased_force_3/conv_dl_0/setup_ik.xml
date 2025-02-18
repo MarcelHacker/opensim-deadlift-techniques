@@ -64,19 +64,19 @@
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>1.5</weight>
+					<weight>0.5</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="LDUPA">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>true</apply>
+					<apply>false</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>1.5</weight>
+					<weight>0.5</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="LMUPA">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>true</apply>
+					<apply>false</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>1.5</weight>
+					<weight>0.5</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="LLEP">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
@@ -92,7 +92,7 @@
 				</IKMarkerTask>
 				<IKMarkerTask name="LRAD">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>true</apply>
+					<apply>false</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>1</weight>
 				</IKMarkerTask>
@@ -100,7 +100,7 @@
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>1</weight>
+					<weight>1.25</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="LRFIN">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
