@@ -1,0 +1,10 @@
+wheel==0.45.1
+matplotlib==3.10.0
+numpy==2.2.3
+opensim==4.5
+opensim.egg==info
+pandas==2.2.3
+scipy==1.15.2
+seaborn==0.13.2
+spm1d==0.4.33
+vtk==9.4.1
