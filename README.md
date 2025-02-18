@@ -38,8 +38,8 @@ python -m pip install .
 4. Transform the data, when needed with extractMarkers.py
 5. Scaling the generic model
 6. Inverse Kinematics
-7. Inverse Daynamics
-8. Static optimisation
+7. Inverse Dynamics
+8. Static Optimisation with Sum of Activations _SQUARED_
 
 # Current Problems
 
