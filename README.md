@@ -1,28 +1,34 @@
 # opensim-deadlift-techniques
 
-FOR MAC
+## FOR MAC
 
-# 1. Activate env and nagivate to project
+1. Activate env and nagivate to project:
 
+```md
 cd "/Users/marcelhacker/penv/bin"
 source activate
 cd "/Users/marcelhacker/Documents/opensim-deadlift-techniques"
 cd python
+```
 
-## FOR WINDOWS PC
+## FOR WINDOWS
 
-# 1. Activate env and navigate to project
+1. Activate env and navigate to project:
 
+```md
 cd "C:\Users\ihack\Documents\penv\Scripts"
 activate
 cd "C:\Users\ihack\Documents\opensim-deadlift-techniques"
+```
 
-# install opensim python
+## Install opensim python
 
+```md
 e:
 cd "E:\OpenSim 4.5\sdk\Python"
 python setup_win_python38.py
 python -m pip install .
+```
 
 # WORKFLOW
 
@@ -45,7 +51,9 @@ Pelvis_rotation xml -> zu ändern zu -180 bis 180 Grad oder Radiant
 
 Macintosh HD/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/side-packages
 
+```md
 export PYTHONPATH=/Users/marcelhacker/Applications/OpenSim_4.5/sdk/Python:$PYTHONPATH
+```
 
 ## Python alias for terminal
 
@@ -76,9 +84,13 @@ git config http.postBuffer 524288000
 
 also include PYTHON in the path of terminal:
 
+```md
 PYTHONPATH=/Users/marcelhacker/Applications/OpenSim_4.5/sdk/Python:$PYTHONPATH
+```
 
 Create Alias for python command in terminal:
 
+```md
 alias python=python3
 source ~/.bashrc
+```
