@@ -32,14 +32,13 @@ python -m pip install .
 
 # WORKFLOW
 
-1. Export c3d from VICON.
-2. Extract TRC for markers, and MOT for ground reaction force data.
-3. Add and Calculate joint centers
-4. Transform the data, when needed with extractMarkers.py
-5. Scaling the generic model
-6. Inverse Kinematics
-7. Inverse Dynamics
-8. Static Optimisation with Sum of Activations _SQUARED_
+1. Export .c3d and .trc from VICON data.
+2. Extract .TRC for markers, and .MOT for ground reaction force data.
+3. Add and Calculate joint centers in MOKKA, for now.
+4. Scaling the generic model.
+5. Inverse Kinematics.
+6. Inverse Dynamics.
+7. Static Optimisation with Sum of Activations _SQUARED_.
 
 # Current Problems
 
