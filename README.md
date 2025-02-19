@@ -32,6 +32,8 @@ python -m pip install .
 
 # WORKFLOW
 
+Important: Add the external weight to the hands to account for barbell.
+
 1. Export .c3d and .trc from VICON data.
 2. Extract .TRC for markers, and .MOT for ground reaction force data.
 3. Add and Calculate joint centers in MOKKA, for now.

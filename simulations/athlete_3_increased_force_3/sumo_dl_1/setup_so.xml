@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<OpenSimDocument Version="40500">
-	<AnalyzeTool>
-		<!--Name of the .osim file used to construct a model.-->
-		<model_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_3_increased_force_3/sumo_dl_1/../scaled_model.osim</model_file>
-		<!--Directory used for writing results.-->
-		<results_directory>.</results_directory>
-	</AnalyzeTool>
-</OpenSimDocument>
