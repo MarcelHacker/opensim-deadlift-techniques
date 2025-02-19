@@ -1,125 +1,109 @@
 from src.imports import *
 import datetime
-
 from matplotlib.backends.backend_pdf import PdfPages
 
 
-def run_validation_athlete(bool, save_figures):
-    if bool:
-        trial_color_0 = "red"
-        trial_color_1 = "blue"
-        trial_color_2 = "orange"
-        trial_color_3 = "darkgreen"
-        x_label = "% concentric deadlift cycle"
-        try:
-            fig_0, axs_0 = plt.subplots(2, 3)
-            fig_0.suptitle(
-                "Pelvis Checks, SDL, Athlete "
-                + str(active_athlete["number"])
-                + "; Model: "
-                + active_athlete["model"]
-                + "; Preferred: "
-                + active_athlete["technique"],
-                fontweight="bold",
-            )
-            plt.subplots_adjust(
-                wspace=0.277,
-                hspace=0.126,
-                top=0.914,
-                right=0.92,
-                left=0.05,
-                bottom=0.064,
-            )
-            coordinates_moments = [
-                "pelvis_tilt_moment",
-                "pelvis_list_moment",
-                "pelvis_rotation_moment",
-            ]
-            coordinates_forces = [
-                "pelvis_tx_force",
-                "pelvis_ty_force",
-                "pelvis_tz_force",
-            ]
-            labels_moments = [
-                "Pelvis Tilt [Nm]",
-                "Pelvis List [Nm]",
-                "Pelvis Rotation [Nm]",
-            ]
-            labels_force = [
-                "Pelvis tx [Nm]",
-                "Pelvis ty [Nm]",
-                "Pelvis tz [Nm]",
-            ]
+def plot_pelvis_checks(title, technique, data_moments, data_forces, save_path=None):
+    trial_colors = ["red", "blue", "orange", "darkgreen"]
+    x_label = "% concentric deadlift cycle"
 
-            for i in range(len(coordinates_moments)):
-                plt.sca(axs_0[0, i])
-                axs_0[0, i].set_xlim(left=0, right=100)
-                plt.title("SDL")
-                plt.plot(
-                    active_athlete_id_sumo_time_normalised_0[coordinates_moments[i]],
-                    label="Trial 1",
-                    color=trial_color_0,
-                )
-                plt.plot(
-                    active_athlete_id_sumo_time_normalised_1[coordinates_moments[i]],
-                    label="Trial 2",
-                    color=trial_color_1,
-                )
-                plt.plot(
-                    active_athlete_id_sumo_time_normalised_2[coordinates_moments[i]],
-                    label="Trial 3",
-                    color=trial_color_2,
-                )
-                plt.plot(
-                    active_athlete_id_sumo_time_normalised_3[coordinates_moments[i]],
-                    label="Trial 4",
-                    color=trial_color_3,
-                )
-                plt.ylabel(labels_moments[i])
+    fig, axs = plt.subplots(2, 3)
+    fig.suptitle(title, fontweight="bold")
+    plt.subplots_adjust(
+        wspace=0.277, hspace=0.126, top=0.914, right=0.92, left=0.05, bottom=0.064
+    )
 
-            for i in range(len(coordinates_forces)):
-                plt.sca(axs_0[1, i])
-                axs_0[1, i].set_xlim(left=0, right=100)
-                plt.plot(
-                    active_athlete_id_sumo_time_normalised_0[coordinates_forces[i]],
-                    label="Trial 1",
-                    color=trial_color_0,
-                )
-                plt.plot(
-                    active_athlete_id_sumo_time_normalised_1[coordinates_forces[i]],
-                    label="Trial 2",
-                    color=trial_color_1,
-                )
-                plt.plot(
-                    active_athlete_id_sumo_time_normalised_2[coordinates_forces[i]],
-                    label="Trial 3",
-                    color=trial_color_2,
-                )
-                plt.plot(
-                    active_athlete_id_sumo_time_normalised_3[coordinates_forces[i]],
-                    label="Trial 4",
-                    color=trial_color_3,
-                )
-                plt.ylabel(labels_force[i])
-                plt.xlabel(x_label)
+    coordinates = {
+        "moments": [
+            "pelvis_tilt_moment",
+            "pelvis_list_moment",
+            "pelvis_rotation_moment",
+        ],
+        "forces": ["pelvis_tx_force", "pelvis_ty_force", "pelvis_tz_force"],
+    }
+    labels = {
+        "moments": ["Pelvis Tilt [Nm]", "Pelvis List [Nm]", "Pelvis Rotation [Nm]"],
+        "forces": ["Pelvis tx [Nm]", "Pelvis ty [Nm]", "Pelvis tz [Nm]"],
+    }
 
-            handles, labels = axs_0[
-                0, 0
-            ].get_legend_handles_labels()  # get legend from first plot
-            fig_0.legend(handles, labels, loc="center right")
-            fig_0.set_size_inches(14, 7.5)
-            if save_figures:
-                plt.savefig(
-                    "../results/validation/" + active_athlete["name"] + ".png",
-                    transparent=None,
-                    dpi=300,
-                    format="png",
-                )
-            plt.show()
+    for i, coord in enumerate(coordinates["moments"]):
+        plt.sca(axs[0, i])
+        axs[0, i].set_xlim(0, 100)
+        plt.title(technique)
+        for j, trial_data in enumerate(data_moments):
+            plt.plot(trial_data[coord], label=f"Trial {j+1}", color=trial_colors[j])
+        plt.ylabel(labels["moments"][i])
 
-        except Exception as e:
-            print("Error in Pelvis Checks, SDL, Athlete")
-            print(e)
+    for i, coord in enumerate(coordinates["forces"]):
+        plt.sca(axs[1, i])
+        axs[1, i].set_xlim(0, 100)
+        for j, trial_data in enumerate(data_forces):
+            plt.plot(trial_data[coord], label=f"Trial {j+1}", color=trial_colors[j])
+        plt.ylabel(labels["forces"][i])
+        plt.xlabel(x_label)
+
+    handles, labels = axs[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="center right")
+    fig.set_size_inches(14, 7.5)
+
+    if save_path:
+        plt.savefig(save_path, dpi=300, format="png")
+    plt.show()
+
+
+def run_validation_athlete(run_validation, save_figures):
+    if not run_validation:
+        return
+
+    try:
+        plot_pelvis_checks(
+            f"Pelvis Checks, SDL, Athlete {active_athlete['number']}; Model: {active_athlete['model']}; Preferred: {active_athlete['technique']}; Load: {active_athlete['load']} kg",
+            "SDL",
+            [
+                active_athlete_id_sumo_time_normalised_0,
+                active_athlete_id_sumo_time_normalised_1,
+                active_athlete_id_sumo_time_normalised_2,
+                active_athlete_id_sumo_time_normalised_3,
+            ],
+            [
+                active_athlete_id_sumo_time_normalised_0,
+                active_athlete_id_sumo_time_normalised_1,
+                active_athlete_id_sumo_time_normalised_2,
+                active_athlete_id_sumo_time_normalised_3,
+            ],
+            (
+                f"../results/validation/{active_athlete['name']}_sdl.png"
+                if save_figures
+                else None
+            ),
+        )
+    except Exception as e:
+        print("Error in Pelvis Checks, SDL, Athlete", e)
+
+    try:
+        plot_pelvis_checks(
+            f"Pelvis Checks, CDL, Athlete {active_athlete['number']}; Model: {active_athlete['model']}; Preferred: {active_athlete['technique']}; Load: {active_athlete['load']} kg",
+            "CDL",
+            [
+                active_athlete_id_conv_time_normalised_0,
+                active_athlete_id_conv_time_normalised_1,
+                active_athlete_id_conv_time_normalised_2,
+                active_athlete_id_conv_time_normalised_3,
+            ],
+            [
+                active_athlete_id_conv_time_normalised_0,
+                active_athlete_id_conv_time_normalised_1,
+                active_athlete_id_conv_time_normalised_2,
+                active_athlete_id_conv_time_normalised_3,
+            ],
+            (
+                f"../results/validation/{active_athlete['name']}_cdl.png"
+                if save_figures
+                else None
+            ),
+        )
+    except Exception as e:
+        print("Error in Pelvis Checks, CDL, Athlete", e)
         ################## PDF ##################################################################################
         try:
             with PdfPages(
