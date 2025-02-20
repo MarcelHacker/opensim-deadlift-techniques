@@ -44,9 +44,13 @@ if __name__ == "__main__":
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
+    increase_max_isometric_force(
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_3_increased_force_13/scaled_model_no_force_increased.osim",
+        14,
+    )
     save_figures = False
     export_csv(False)  # export force data to csv
-    run_validation_athlete(True, save_figures)
+    run_validation_athlete(False, save_figures)
     run_process_athlete(False, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
