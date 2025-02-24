@@ -50,7 +50,7 @@
 				</IKMarkerTask>
 				<IKMarkerTask name="CLAV">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>false</apply>
+					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>0.5</weight>
 				</IKMarkerTask>
@@ -68,7 +68,7 @@
 				</IKMarkerTask>
 				<IKMarkerTask name="LDUPA">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>false</apply>
+					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>0.5</weight>
 				</IKMarkerTask>
@@ -92,13 +92,13 @@
 				</IKMarkerTask>
 				<IKMarkerTask name="LRAD">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>false</apply>
+					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>0.5</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="LUL">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>false</apply>
+					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>0.5</weight>
 				</IKMarkerTask>
@@ -122,7 +122,7 @@
 				</IKMarkerTask>
 				<IKMarkerTask name="RDUPA">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>false</apply>
+					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>0.5</weight>
 				</IKMarkerTask>
@@ -146,13 +146,13 @@
 				</IKMarkerTask>
 				<IKMarkerTask name="RRAD">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>false</apply>
+					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>0.5</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="RUL">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
-					<apply>false</apply>
+					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>0.5</weight>
 				</IKMarkerTask>
