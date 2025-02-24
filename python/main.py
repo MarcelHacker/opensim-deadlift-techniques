@@ -43,7 +43,7 @@ if __name__ == "__main__":
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
 
-    save_figures = True
+    save_figures = False
     export_csv(True)  # export force data to csv
     run_validation_athlete(True, save_figures)
     run_process_athlete(True, save_figures)
