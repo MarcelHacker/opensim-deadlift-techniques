@@ -36,7 +36,7 @@ if __name__ == "__main__":
     ## unittest.main()
     # create_pdf_report(False)
     increase_max_isometric_force(
-        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_8/scaled_model_no_increased_force.osim",
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_1_increased_force_9/scaled_model_no_increased_force.osim",
         10,
     )
     # Athlete.create_athlete_json(
