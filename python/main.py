@@ -45,8 +45,8 @@ if __name__ == "__main__":
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
     increase_max_isometric_force(
-        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_5/scaled_model_no_force_increased.osim",
-        16,
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_5/scaled_model_no_increased_force.osim",
+        6,
     )
     save_figures = False
     export_csv(False)  # export force data to csv
