@@ -9,8 +9,6 @@ from src.validateAthlete import run_validation_athlete
 from src.processAthlete import run_process_athlete
 
 
-from src.momentArmsHipPlot import run_moment_arms_hip_plot
-
 # from src.activationsComparison import run_activations_comparison_from_emg
 # from src.rawEmgPlot import run_raw_emg_plot
 # from src.normEmgPlot import run_norm_emg_plot
@@ -44,14 +42,11 @@ if __name__ == "__main__":
     # Athlete.create_athlete_json(
     #   created_athlete, dir_athletes + "/simulations/athlete_2"
     # )
-    increase_max_isometric_force(
-        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_5/scaled_model_no_increased_force.osim",
-        6,
-    )
-    save_figures = False
-    export_csv(False)  # export force data to csv
-    run_validation_athlete(False, save_figures)
-    run_process_athlete(False, save_figures)
+
+    save_figures = True
+    export_csv(True)  # export force data to csv
+    run_validation_athlete(True, save_figures)
+    run_process_athlete(True, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
     # run_total_muscle_force_plot_trails(False, save_figures)
