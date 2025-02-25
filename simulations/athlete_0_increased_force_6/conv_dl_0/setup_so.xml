@@ -12,7 +12,7 @@
 		<!--Output precision.  It is 8 by default.-->
 		<output_precision>20</output_precision>
 		<!--Initial time for the simulation.-->
-		<initial_time>4.9000000000000004</initial_time>
+		<initial_time>4.7999999999999998</initial_time>
 		<!--Final time for the simulation.-->
 		<final_time>6.2800000000000002</final_time>
 		<!--Set of analyses to be run during the investigation.-->
