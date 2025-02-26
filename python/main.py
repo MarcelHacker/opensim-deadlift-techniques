@@ -36,14 +36,16 @@ if __name__ == "__main__":
     ## unittest.main()
     # create_pdf_report(False)
 
-    # Athlete.create_athlete_json(
-    #   created_athlete, dir_athletes + "/simulations/athlete_2"
-    # )
+    increase_max_isometric_force(
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_15/scaled_model_no_force_increased.osim",
+        20,
+    )
 
-    save_figures = True
-    export_csv(True)  # export force data to csv
-    run_validation_athlete(True, save_figures)
-    run_process_athlete(True, save_figures)
+    save_figures = False
+    run = False
+    export_csv(run)  # export force data to csv
+    run_validation_athlete(run, save_figures)
+    run_process_athlete(run, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
     # run_total_muscle_force_plot_trails(False, save_figures)
