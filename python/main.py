@@ -37,8 +37,8 @@ if __name__ == "__main__":
     # create_pdf_report(False)
 
     increase_max_isometric_force(
-        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_15/scaled_model_no_force_increased.osim",
-        20,
+        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_20/scaled_model_no_force_increased.osim",
+        25,
     )
 
     save_figures = False
