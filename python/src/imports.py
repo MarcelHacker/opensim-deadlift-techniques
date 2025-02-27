@@ -241,7 +241,7 @@ class Athlete:
 
 
 # set this name for the active folder
-active_athlete_foldername = "athlete_1_increased_force_10"
+active_athlete_foldername = "athlete_2_increased_force_50"
 
 ################################ CREATING ATHLETE ###########################################
 active_athlete = None  # define active_athlete
