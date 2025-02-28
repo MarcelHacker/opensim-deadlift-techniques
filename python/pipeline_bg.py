@@ -89,8 +89,8 @@ def run_so(osim_model_path, trial_path):
 
 
 if __name__ == "__main__":
-    # trial_path = r"C:\Git\research_documents\students\marcel_BSc_vienna\data\pilot01\sumo_dl_80kg01"
-    osim_model_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_3_increased_force_3/scaled_model.osim"
+    trial_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_55/conv_dl_0/"
+    model_path = r"/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_2_increased_force_55/scaled_model.osim"
     # trial = msk.bops.Trial(trial_path)
 
     # if not trial.check_files():
@@ -99,8 +99,9 @@ if __name__ == "__main__":
     # increase_isom_force(osim_model_path, 3)
     # increase_isom_force(osim_model_path, 3)
 
-    ikfile = r"C:\Git\research_documents\students\marcel_BSc_vienna\opensim-deadlift-techniques\athlete_0\motion\sumo_dl_80kg02\IK\ik.mot"
+    # ikfile = r"C:\Git\research_documents\students\marcel_BSc_vienna\opensim-deadlift-techniques\athlete_0\motion\sumo_dl_80kg02\IK\ik.mot"
     # bops.checkMuscleMomentArms(osim_model_path, ik_file_path=ikfile, leg="l")
+    run_ik(model_path, trial_path)
 
     print("Script completed successfully!")
 # %% END
