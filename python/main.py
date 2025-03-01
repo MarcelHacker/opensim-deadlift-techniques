@@ -36,8 +36,8 @@ if __name__ == "__main__":
     ## unittest.main()
     # create_pdf_report(False)
 
-    save_figures = False
-    run = False
+    save_figures = True
+    run = True
     export_csv(run)  # export force data to csv
     run_validation_athlete(run, save_figures)
     run_process_athlete(run, save_figures)

@@ -62,7 +62,7 @@
 		<!--Name of the body whose center of mass is adjusted. The heaviest segment in the model should normally be chosen. For a gait model, the torso segment is usually the best choice.-->
 		<adjusted_com_body>torso</adjusted_com_body>
 		<!--Name of the output model file (.osim) containing adjustments to anthropometry made to reduce average residuals. This file is written if the property adjust_com_to_reduce_residuals is set to true. If a name is not specified, the model is written out to a file called adjusted_model.osim.-->
-		<output_model_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_6/sumo_dl_2/adjusted_rra.osim</output_model_file>
+		<output_model_file>adjusted_rra.osim</output_model_file>
 		<!--True-false flag indicating whether or not to turn on verbose printing for cmc.-->
 		<use_verbose_printing>false</use_verbose_printing>
 	</RRATool>
