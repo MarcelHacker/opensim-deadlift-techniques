@@ -36,6 +36,7 @@ if __name__ == "__main__":
     ## unittest.main()
     # create_pdf_report(False)
 
+    # todo fix athlete_0_increased_force_6/sumo_dl_1/actuators_so.xml
     save_figures = True
     run = True
     export_csv(run)  # export force data to csv
