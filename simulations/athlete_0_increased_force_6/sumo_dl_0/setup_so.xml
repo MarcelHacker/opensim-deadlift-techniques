@@ -2,7 +2,7 @@
 <OpenSimDocument Version="40500">
 	<AnalyzeTool>
 		<!--Name of the .osim file used to construct a model.-->
-		<model_file>../scaled_model.osim</model_file>
+		<model_file>/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_6/sumo_dl_0/../scaled_model.osim</model_file>
 		<!--Replace the model's force set with sets specified in <force_set_files>? If false, the force set is appended to.-->
 		<replace_force_set>false</replace_force_set>
 		<!--List of xml files used to construct a force set for the model.-->
@@ -14,7 +14,7 @@
 		<!--Initial time for the simulation.-->
 		<initial_time>5.0099999999999998</initial_time>
 		<!--Final time for the simulation.-->
-		<final_time>7.04</final_time>
+		<final_time>6.6500000000000004</final_time>
 		<!--Flag indicating whether or not to compute equilibrium values for states other than the coordinates or speeds.  For example, equilibrium muscle fiber lengths or muscle forces.-->
 		<solve_for_equilibrium_for_auxiliary_states>false</solve_for_equilibrium_for_auxiliary_states>
 		<!--Maximum number of integrator steps.-->
@@ -34,7 +34,7 @@
 					<!--Start time.-->
 					<start_time>5.0099999999999998</start_time>
 					<!--End time.-->
-					<end_time>7.04</end_time>
+					<end_time>6.6500000000000004</end_time>
 					<!--Specifies how often to store results during a simulation. More specifically, the interval (a positive integer) specifies how many successful integration steps should be taken before results are recorded again.-->
 					<step_interval>1</step_interval>
 					<!--Flag (true or false) indicating whether the results are in degrees or not.-->
