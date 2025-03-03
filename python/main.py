@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # create_pdf_report(False)
 
     # todo fix athlete_0_increased_force_6/sumo_dl_1/actuators_so.xml
-    save_figures = True
+    save_figures = False
     run = True
     export_csv(run)  # export force data to csv
     run_validation_athlete(run, save_figures)
