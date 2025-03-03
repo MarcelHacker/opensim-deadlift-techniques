@@ -37,12 +37,9 @@ if __name__ == "__main__":
     # create_pdf_report(False)
 
     # todo fix athlete_0_increased_force_6/sumo_dl_1/actuators_so.xml
-    increase_max_isometric_force(
-        "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_6/scaled_model_no_increased_force.osim",
-        10,
-    )
-    save_figures = False
-    run = False
+
+    save_figures = True
+    run = True
     export_csv(run)  # export force data to csv
     run_validation_athlete(run, save_figures)
     run_process_athlete(run, save_figures)
