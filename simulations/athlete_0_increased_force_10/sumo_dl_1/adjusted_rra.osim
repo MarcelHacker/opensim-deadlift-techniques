@@ -2095,7 +2095,7 @@
 					<!--The mass of the body (kg)-->
 					<mass>19.976535566852945</mass>
 					<!--The location (Vec3) of the mass center in the body frame.-->
-					<mass_center>-0.077339167286926844 0.3154903030541184 0.056373037295798199</mass_center>
+					<mass_center>-0.09193872895647684 0.3154903030541184 0.04160526629241499</mass_center>
 					<!--The elements of the inertia tensor (Vec6) as [Ixx Iyy Izz Ixy Ixz Iyz] measured about the mass_center and not the body origin.-->
 					<inertia>1.0672628436324734 0.54684101618469572 1.036066486521209 0 0 0</inertia>
 				</Body>
