@@ -46,7 +46,7 @@
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>0.5</weight>
+					<weight>1</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="CLAV">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
@@ -58,7 +58,7 @@
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>0.5</weight>
+					<weight>1</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="LUUPA">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
@@ -112,7 +112,7 @@
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
 					<apply>true</apply>
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
-					<weight>0.5</weight>
+					<weight>1</weight>
 				</IKMarkerTask>
 				<IKMarkerTask name="RUUPA">
 					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
