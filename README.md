@@ -2,6 +2,12 @@
 
 ## FOR MAC
 
+Important:
+
+```md
+export PYTHONPATH=/Users/marcelhacker/Applications/OpenSim_4.5/sdk/Python:$PYTHONPATH
+```
+
 1. Activate env and nagivate to project:
 
 ```md

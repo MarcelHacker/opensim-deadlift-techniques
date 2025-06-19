@@ -4,18 +4,18 @@
 import unittest
 from src.imports import *  # file paths of the athlete
 from src.modules import *  # local modules for the project
-from src.exportCSV import export_csv
-from src.validateAthlete import run_validation_athlete
-from src.processAthlete import run_process_athlete
+#from src.exportCSV import export_csv
+#from src.validateAthlete import run_validation_athlete
+#from src.processAthlete import run_process_athlete
 
 
 # from src.activationsComparison import run_activations_comparison_from_emg
 # from src.rawEmgPlot import run_raw_emg_plot
 # from src.normEmgPlot import run_norm_emg_plot
 
-from src.statisticsOverall import run_muscle_force_groups_overall
-from src.statisticsSummary import run_muscle_force_groups_summary
-from src.summaryPreferences import run_muscle_group_preferences
+#from src.statisticsOverall import run_muscle_force_groups_overall
+#from src.statisticsSummary import run_muscle_force_groups_summary
+#from src.summaryPreferences import run_muscle_group_preferences
 
 
 #####################################################################################
@@ -38,11 +38,11 @@ if __name__ == "__main__":
 
     # todo fix athlete_2_increased_force_60/conv_dl_0
 
-    save_figures = True
-    run = True
-    export_csv(run)  # export force data to csv
-    run_validation_athlete(run, save_figures)
-    run_process_athlete(run, save_figures)
+    save_figures = False
+    run = False
+    #export_csv(run)  # export force data to csv
+    #run_validation_athlete(run, save_figures)
+    #run_process_athlete(run, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
     # run_total_muscle_force_plot_trails(False, save_figures)
@@ -59,8 +59,8 @@ if __name__ == "__main__":
     # run_muscle_force_groups(False, save_figures)
 
     # run_muscle_force_groups_overall(False, save_figures)
-    run_muscle_force_groups_summary(False, save_figures)
-    run_muscle_group_preferences(False, save_figures)
+    #run_muscle_force_groups_summary(False, save_figures)
+    #run_muscle_group_preferences(False, save_figures)
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
 
