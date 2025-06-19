@@ -554,6 +554,82 @@ try:
 except Exception as e:
     print("Error in muscle activations files; src/imports.py")
     print(e)
+    
+##################################################################################################
+# RRA sumo
+try:
+    active_athlete_rra_sumo_0 = pd.read_csv(
+        active_athlete["paths"]["rra"]["sumo_dl_0"],
+        sep="\t",
+        skiprows=11, # fix this
+    )
+    active_athlete_rra_sumo_1 = pd.read_csv(
+        active_athlete["paths"]["rra"]["sumo_dl_1"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_rra_sumo_2 = pd.read_csv(
+        active_athlete["paths"]["rra"]["sumo_dl_2"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_rra_sumo_3 = pd.read_csv(
+        active_athlete["paths"]["rra"]["sumo_dl_3"],
+        sep="\t",
+        skiprows=6,
+    )
+    # RRA conv
+    active_athlete_rra_conv_0 = pd.read_csv(
+        active_athlete["paths"]["rra"]["conv_dl_0"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_rra_conv_1 = pd.read_csv(
+        active_athlete["paths"]["rra"]["conv_dl_1"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_rra_conv_2 = pd.read_csv(
+        active_athlete["paths"]["rra"]["conv_dl_2"],
+        sep="\t",
+        skiprows=6,
+    )
+    active_athlete_rra_conv_3 = pd.read_csv(
+        active_athlete["paths"]["rra"]["conv_dl_3"],
+        sep="\t",
+        skiprows=6,
+    )
+    
+    ## normalise
+    active_athlete_rra_conv_time_normalised_0 = (
+        time_normalise_df(active_athlete_rra_conv_0)
+    )
+    active_athlete_rra_conv_time_normalised_1 = (
+        time_normalise_df(active_athlete_rra_conv_1)
+    )
+    active_athlete_rra_conv_time_normalised_2 = (
+        time_normalise_df(active_athlete_rra_conv_2)
+    )
+    active_athlete_rra_conv_time_normalised_3 = (
+        time_normalise_df(active_athlete_rra_conv_3)
+    )
+    # sumo
+    active_athlete_rra_sumo_time_normalised_0 = (
+        time_normalise_df(active_athlete_rra_sumo_0)
+    ) 
+    active_athlete_rra_sumo_time_normalised_1 = (
+        time_normalise_df(active_athlete_rra_sumo_1)
+    )
+    active_athlete_rra_sumo_time_normalised_2 = (
+        time_normalise_df(active_athlete_rra_sumo_2)
+    )
+    active_athlete_rra_sumo_time_normalised_3 = (
+        time_normalise_df(active_athlete_rra_sumo_3)
+    )
+
+except Exception as e:
+    print("Error in RRA files; src/imports.py")
+    print(e)
 ##################################################################################################
 try:
     # active_athlete_emg_channels_order = active_athlete["paths"]["emg"]["channels_order"]

@@ -35,6 +35,16 @@
       "conv_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/conv_dl_2/id.sto",
       "conv_dl_3": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/conv_dl_3/id.sto"
     },
+    "rra": {
+      "sumo_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/sumo_dl_0/_Kinematics_q.sto",
+      "sumo_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/sumo_dl_1/_Kinematics_q.sto",
+      "sumo_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/sumo_dl_2/_Kinematics_q.sto",
+      "sumo_dl_3": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/sumo_dl_3/_Kinematics_q.sto",
+      "conv_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/conv_dl_0/_Kinematics_q.sto",
+      "conv_dl_1": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/conv_dl_1/_Kinematics_q.sto",
+      "conv_dl_2": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/conv_dl_2/_Kinematics_q.sto",
+      "conv_dl_3": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/conv_dl_3/_Kinematics_q.sto"
+    },
     "so": {
       "activations": {
         "sumo_dl_0": "/Users/marcelhacker/Documents/opensim-deadlift-techniques/simulations/athlete_0_increased_force_10/sumo_dl_0/_StaticOptimization_activation.sto",

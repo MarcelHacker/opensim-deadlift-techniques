@@ -4,9 +4,10 @@
 import unittest
 from src.imports import *  # file paths of the athlete
 from src.modules import *  # local modules for the project
-#from src.exportCSV import export_csv
-#from src.validateAthlete import run_validation_athlete
-#from src.processAthlete import run_process_athlete
+from src.exportCSV import export_csv
+from src.validateAthlete import run_validation_athlete
+from src.processAthlete import run_process_athlete
+from src.validateRRA import run_validation_rra_athlete
 
 
 # from src.activationsComparison import run_activations_comparison_from_emg
@@ -39,8 +40,10 @@ if __name__ == "__main__":
     # todo fix athlete_2_increased_force_60/conv_dl_0
 
     save_figures = False
-    run = False
+    run = True
+    
     #export_csv(run)  # export force data to csv
+    run_validation_rra_athlete(run, save_figures)
     #run_validation_athlete(run, save_figures)
     #run_process_athlete(run, save_figures)
     ################################## USED FUNCTIONS ###################################################
