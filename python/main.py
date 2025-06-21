@@ -39,12 +39,12 @@ if __name__ == "__main__":
 
     # todo fix athlete_2_increased_force_60/conv_dl_0
 
-    save_figures = False
+    save_figures = True
     run = True
     
     #export_csv(run)  # export force data to csv
     run_validation_rra_athlete(run, save_figures)
-    #run_validation_athlete(run, save_figures)
+    run_validation_athlete(run, save_figures)
     #run_process_athlete(run, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
