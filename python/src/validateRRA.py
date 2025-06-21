@@ -66,8 +66,9 @@ def plot_rra_coordinates(title, technique, data_ik, data_rra, save_path=None):
 def run_validation_rra_athlete(run_validation, save_figures):
     if not run_validation:
         return
-
+    
     try:
+        print("\ntime rra lised:", active_athlete_rra_sumo_time_normalised_0)
         plot_rra_coordinates(
             f"RRA, SDL, Athlete {active_athlete['number']}; Model: {active_athlete['model']}; Preferred: {active_athlete['technique']}; Load: {active_athlete['load']} kg",
             "SDL",

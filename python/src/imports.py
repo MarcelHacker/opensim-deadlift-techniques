@@ -561,45 +561,51 @@ try:
     active_athlete_rra_sumo_0 = pd.read_csv(
         active_athlete["paths"]["rra"]["sumo_dl_0"],
         sep="\t",
-        skiprows=11, # fix this
+        skiprows=10, 
     )
+    print("\n: RRA test:",active_athlete_rra_sumo_0)
     active_athlete_rra_sumo_1 = pd.read_csv(
         active_athlete["paths"]["rra"]["sumo_dl_1"],
         sep="\t",
-        skiprows=6,
+        skiprows=10,
     )
     active_athlete_rra_sumo_2 = pd.read_csv(
         active_athlete["paths"]["rra"]["sumo_dl_2"],
         sep="\t",
-        skiprows=6,
+        skiprows=10,
     )
     active_athlete_rra_sumo_3 = pd.read_csv(
         active_athlete["paths"]["rra"]["sumo_dl_3"],
         sep="\t",
-        skiprows=6,
+        skiprows=10,
     )
     # RRA conv
     active_athlete_rra_conv_0 = pd.read_csv(
         active_athlete["paths"]["rra"]["conv_dl_0"],
         sep="\t",
-        skiprows=6,
+        skiprows=10,
     )
     active_athlete_rra_conv_1 = pd.read_csv(
         active_athlete["paths"]["rra"]["conv_dl_1"],
         sep="\t",
-        skiprows=6,
+        skiprows=10,
     )
     active_athlete_rra_conv_2 = pd.read_csv(
         active_athlete["paths"]["rra"]["conv_dl_2"],
         sep="\t",
-        skiprows=6,
+        skiprows=10,
     )
     active_athlete_rra_conv_3 = pd.read_csv(
         active_athlete["paths"]["rra"]["conv_dl_3"],
         sep="\t",
-        skiprows=6,
+        skiprows=10,
     )
     
+except Exception as e:
+    print("Error in RRA files getting; src/imports.py")
+    print(e)
+# RRA 
+try: 
     ## normalise
     active_athlete_rra_conv_time_normalised_0 = (
         time_normalise_df(active_athlete_rra_conv_0)
@@ -628,7 +634,7 @@ try:
     )
 
 except Exception as e:
-    print("Error in RRA files; src/imports.py")
+    print("Error in RRA files normalising; src/imports.py")
     print(e)
 ##################################################################################################
 try:
