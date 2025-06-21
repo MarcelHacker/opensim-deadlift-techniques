@@ -39,13 +39,13 @@ if __name__ == "__main__":
 
     # todo fix athlete_2_increased_force_60/conv_dl_0
 
-    save_figures = True
+    save_figures = False
     run = True
     
     export_csv(run)  # export force data to csv
     #run_validation_rra_athlete(run, save_figures)
-    #run_validation_athlete(run, save_figures)
-    # run_process_athlete(run, save_figures)
+    run_validation_athlete(run, save_figures)
+    run_process_athlete(run, save_figures)
     ################################## USED FUNCTIONS ###################################################
     # run_total_muscle_force_plot_spm(False, save_figures)
     # run_total_muscle_force_plot_trails(False, save_figures)
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     #run_muscle_force_groups(run, save_figures)
 
     # run_muscle_force_groups_overall(run, save_figures)
-    run_muscle_force_groups_summary(run, save_figures)
+    # run_muscle_force_groups_summary(run, save_figures)
     # run_muscle_group_preferences(run, save_figures)
     ########################## NORMALIZED MUSCLE FORCES ###################################
     # run_normalized_muscle_force(False)
