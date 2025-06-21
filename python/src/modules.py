@@ -1118,7 +1118,11 @@ def plot_data(
 def normalize_forces(array, bodymass):
     normalized_array = []
     for value in array:
+        print("\nWert: ",value)
+        print("\nKörpermasse: ", bodymass)
+        print("Noramlisiert: \n",value/bodymass)
         normalized_array.append(value / bodymass)
+    print("\nNormalisiert array: \n", normalized_array)
     return normalized_array
 
 
