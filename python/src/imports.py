@@ -606,7 +606,7 @@ except Exception as e:
     print(e)
 # RRA 
 try: 
-    ## normalise
+    # normalised
     active_athlete_rra_conv_time_normalised_0 = (
         time_normalise_df(active_athlete_rra_conv_0)
     )
@@ -632,7 +632,6 @@ try:
     active_athlete_rra_sumo_time_normalised_3 = (
         time_normalise_df(active_athlete_rra_sumo_3)
     )
-
 except Exception as e:
     print("Error in RRA files normalising; src/imports.py")
     print(e)
