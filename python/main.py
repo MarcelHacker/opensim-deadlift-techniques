@@ -15,8 +15,8 @@ from src.validateRRA import run_validation_rra_athlete
 # from src.normEmgPlot import run_norm_emg_plot
 
 # from src.statisticsOverall import run_muscle_force_groups_overall
-from src.statisticsSummary import run_muscle_force_groups_summary
-from src.summaryPreferences import run_muscle_group_preferences
+# from src.statisticsSummary import run_muscle_force_groups_summary
+# from src.summaryPreferences import run_muscle_group_preferences
 
 
 #####################################################################################
@@ -47,7 +47,7 @@ if __name__ == "__main__":
     run_validation_athlete(run, save_figures)
     run_process_athlete(run, save_figures)
     ################################## USED FUNCTIONS ###################################################
-    # run_total_muscle_force_plot_spm(False, save_figures)
+    run_total_muscle_force_plot_spm(run, save_figures)
     # run_total_muscle_force_plot_trails(False, save_figures)
     # run_muscle_moments_plot(False, save_figures)
     # run_norm_emg_plot(False)
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     # run_forces_plot(False, save_figures)
     # run_moment_arms_hip_plot(False, save_figures)
     ########################## MUSCLE FORCES ##############################################
-    #run_muscle_force_groups(run, save_figures)
+    run_muscle_force_groups(run, save_figures)
 
     # run_muscle_force_groups_overall(run, save_figures)
     # run_muscle_force_groups_summary(run, save_figures)

@@ -163,7 +163,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in process athlete kinematics trials")
@@ -398,7 +398,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in process athlete kinematics means")
@@ -556,7 +556,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in process athletes joint moments trials")
@@ -774,7 +774,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in process athlete dynamics means")
@@ -1294,7 +1294,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
         except Exception as e:
             print("Error in process athlete muscle force groups trials")
             print(e)
@@ -1681,7 +1681,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
         except Exception as e:
             print("Error in process athlete muscle force groups means")
             print(e)
@@ -1790,7 +1790,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
 
         except Exception as e:
             print("Error in process athlete total muscle force trials")
@@ -1882,7 +1882,7 @@ def run_process_athlete(bool, save_figures):
                     dpi=300,
                     format="png",
                 )
-            # plt.show()
+            plt.show()
         except Exception as e:
             print("Error in process athlete total muscle force means with spm")
             print(e)
